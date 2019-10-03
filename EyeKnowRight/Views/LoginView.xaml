@@ -1,0 +1,33 @@
+﻿<Window x:Class="EyeKnowRight.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeKnowRight.Views"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Login" Height="300" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+    <Grid>
+        <StackPanel >
+            <materialDesign:PackIcon HorizontalAlignment="Center" Width="100"  Height="100" Kind="Account"/>
+            <StackPanel Width="200">
+                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Username"/>
+                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                    <TextBox Padding="2 0 0 0" x:Name="Username"   Width="200"  Height="25" ></TextBox>
+                </Border>
+                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="UserNameValidation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+            </StackPanel>
+
+            <StackPanel Width="200">
+                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Password"/>
+                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                    <TextBox Padding="2 0 0 0" x:Name="Password"  Width="200"  Height="25" ></TextBox>
+                </Border>
+                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="PasswordValidation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+            </StackPanel>
+            <TextBlock/>
+            
+            <Button Width="200" x:Name="Login">Login</Button>
+        </StackPanel>
+    </Grid>
+</Window>

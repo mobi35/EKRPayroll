@@ -1,0 +1,508 @@
+﻿<UserControl x:Class="EyeKnowRight.AccountView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeKnowRight.Views"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" Background="White" d:DesignWidth="800" >
+    <Grid >
+
+       
+
+
+
+        <StackPanel>
+            <TextBlock x:Name="Bagwis" Text="Kansoy"/>
+            <Button Click="AddNewUserClick" Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}">
+                <StackPanel Orientation="Horizontal"> 
+                <materialDesign:PackIcon Kind="AccountPlus"/>
+                <TextBlock Text="  Add New Employee"/>
+               
+                </StackPanel>
+             
+            </Button>
+            <Button Click="DeleteUser" x:Name="AccountDelete" IsEnabled="False" Background="Red" BorderBrush="{x:Null}"  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="47" Height="30" FontSize="10"  >
+                <materialDesign:PackIcon Kind="Delete"/>
+              
+            </Button>
+            <Grid>
+                <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 0 200 0" Foreground="Gray" Kind="Magnify"/>
+            </Grid>
+            <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -22 20 0" Width="200">
+              
+                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                    <TextBox Padding="2 0 0 0"   x:Name="SearchBox"  Width="200"  Height="25" TextChanged="SearchChanged" ></TextBox>
+                </Border>
+            </StackPanel>
+            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}">ASD</TextBlock>
+
+        </StackPanel>
+
+        <!-- DATA GRID START -->
+        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeGrid" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="OnSelect" >
+            <DataGrid.Columns>
+                <DataGridTextColumn FontSize="11" Width="100"  Header="Employee Id" Binding="{Binding EmployeeID}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="Middle Name" Binding="{Binding MiddleName}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
+
+                <DataGridTemplateColumn Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+
+                        <DataTemplate>
+                            <StackPanel  Orientation="Horizontal">
+                                
+                                <Button Width="70"  Height="23" Click="GetEdit" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
+                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
+                                </Button>
+
+
+                                <Button Width="70" Margin="-30"   Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
+                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- DATA GRID END -->
+
+
+        <!-- ADD USER DIALOG BOX START -->
+        <materialDesign:DialogHost  IsOpen="False" x:Name="AddUserDialog"  Margin="0,-126,0,-32"  >
+
+            <materialDesign:DialogHost.DialogContent>
+
+                <StackPanel >
+
+
+                    <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
+                    </Button>
+
+                    <StackPanel Margin="60 -20 60  60"  Orientation="Vertical">
+                        <TextBox Visibility="Collapsed" x:Name="EmployeePK"></TextBox>
+                        <TextBox Visibility="Collapsed"  x:Name="Mode">Add</TextBox>
+                        <StackPanel x:Name="FirstStep"  Visibility="Visible">
+
+                            <Border BorderThickness="1" CornerRadius="90" BorderBrush="Blue" Width="70" Height="70">
+                                <materialDesign:PackIcon Kind="Account" Foreground="Blue" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="50" Width="50"  />
+                            </Border>
+                            <TextBlock/>
+                            <TextBlock Text="Personal Employee Details" Width="200" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="15"></TextBlock>
+                            <TextBlock/>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="First Name"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" x:Name="FirstName" Text="{Binding Path=FirstName , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="FirstName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Middle Name"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" x:Name="MiddleName" Text="{Binding Path=MiddleName , Mode=TwoWay}"   Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="MiddleName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Last Name"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" x:Name="LastName"  Text="{Binding Path=LastName , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap"  x:Name="LastName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Birth Date"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <DatePicker HorizontalAlignment="Right"  Text="{Binding Path=BirthDate , Mode=TwoWay}" VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="BirthDate"   Width="200"  Height="25" >
+
+
+                                    </DatePicker>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="BirthDate_ValidationMsg"    FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Street"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" x:Name="Street"    Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4"  x:Name="Street_ValidationMsg"  TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="City"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+
+                                    <ComboBox Padding="5 7   0 1" x:Name="City"   Width="200"  Height="25" >
+                                        <ComboBoxItem>Manila City</ComboBoxItem>
+                                        <ComboBoxItem>Pasig City</ComboBoxItem>
+                                        <ComboBoxItem>Quezon City</ComboBoxItem>
+                                    </ComboBox>
+                                </Border>
+                                <TextBlock Foreground="Red" x:Name="City_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Gender "/>
+                            <StackPanel   Orientation="Horizontal" Width="200">
+
+                                <RadioButton x:Name="Gender_Male" IsChecked="True" Margin="20 0 20 0" Content="Male"/>
+                                <RadioButton x:Name="Gender_Female" Content="Female"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                        <StackPanel x:Name="SecondStep" Visibility="Collapsed">
+
+                            <Border BorderThickness="2" CornerRadius="90" BorderBrush="Blue" Width="70" Height="70">
+                                <materialDesign:PackIcon Kind="AccountPlus"  Foreground="Red" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="50" Width="50"  />
+                            </Border>
+                            <TextBlock/>
+                            
+                            
+                            
+                            
+                            <TextBlock Text="Employee Account Details" HorizontalAlignment="Center" TextAlignment="Center"  Width="200" TextWrapping="Wrap"  FontSize="15"></TextBlock>
+                            <TextBlock/>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Username"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 1" x:Name="UserName" Width="200"  Text="{Binding Path=UserName , Mode=TwoWay}"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" x:Name="UserName_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Password"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <PasswordBox Padding="2 0 0 1" x:Name="Password"  Width="200"  Height="25" ></PasswordBox>
+                                </Border>
+                                <TextBlock Foreground="Red" x:Name="Password_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Confirm Password"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <PasswordBox Padding="2 0 0 1" x:Name="RepeatPassword"    Width="200"  Height="25" ></PasswordBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" x:Name="RepeatPassword_ValidationMsg"  TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Email Address"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 1" x:Name="Email"  Text="{Binding Path=Email , Mode=TwoWay}"   Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" x:Name="Email_ValidationMsg" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                            </StackPanel>
+
+                            <StackPanel Width="200" >
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Image"/>
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Button Height="25" Width="80" HorizontalAlignment="Right"  Click="Button_Click"  Style="{StaticResource MaterialDesignFlatButton}"  Content="Upload" />
+                                </StackPanel>
+                            </StackPanel>
+
+
+
+                        </StackPanel>
+
+                        <StackPanel x:Name="LastStep" Visibility="Collapsed">
+                            <Border BorderThickness="2" CornerRadius="90" BorderBrush="Blue" Width="70" Height="70">
+                                <materialDesign:PackIcon Kind="Approval" Foreground="Green" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="50" Width="50"  />
+                            </Border>
+                            <TextBlock/>
+                            <TextBlock Text="Company Profile" HorizontalAlignment="Center"  FontSize="15"></TextBlock>
+
+                            <TextBlock/>
+                            <TextBlock/>
+
+
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Heirarchy"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <ComboBox  Padding="5 7   0 1" x:Name="Position"  Text="{Binding Path=Position , Mode=TwoWay}"   Width="200"  Height="25">
+                                        <ComboBoxItem>Admin</ComboBoxItem>
+                                        <ComboBoxItem>Employee</ComboBoxItem>
+                                        <ComboBoxItem>Intern</ComboBoxItem>
+                                    </ComboBox>
+                                </Border>
+                                <TextBlock Foreground="Red" x:Name="Position_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Job Position"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <ComboBox  Padding="5 7   0 1" x:Name="JobTitle"  Text="{Binding Path=JobTitle , Mode=TwoWay}"   Width="200"  Height="25">
+                                        <ComboBoxItem>Junior Programmer</ComboBoxItem>
+                                        <ComboBoxItem>Senior Programmer</ComboBoxItem>
+                                        <ComboBoxItem>Graphic Artist</ComboBoxItem>
+                                    </ComboBox>
+
+                                </Border>
+                                <TextBlock Foreground="Red" x:Name="JobTitle_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+
+                                <StackPanel Width="200">
+                                    <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Salary"/>
+                                    <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                        <TextBox Padding="2 0 0 1" x:Name="Salary"  Text="{Binding Path=Salary , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                    </Border>
+                                    <TextBlock Foreground="Red"  x:Name="Salary_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                                </StackPanel>
+                                <TextBlock/>
+                                <TextBlock/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+
+                                <Button   Width="200" Click="AddUser">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <materialDesign:PackIcon Kind="Send" Margin="0 0 4 0"/>
+                                        <TextBlock Text="Submit Profile"/>
+                                    </StackPanel>
+                                </Button>
+                                <TextBlock Text="     "/>
+                                <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Width="100">Cancel</Button>
+
+                            </StackPanel>
+                        </StackPanel>
+                        <TextBlock/>
+                        <TextBlock/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Width="50" Click="PreviousStep_Click" Background="{x:Null}" BorderBrush="{x:Null}" x:Name="PreviousStep">
+                                <materialDesign:PackIcon Foreground="Black" Kind="ArrowLeft"></materialDesign:PackIcon>
+                            </Button>
+                            <TextBlock x:Name="StepsCounter">1</TextBlock>
+                            <TextBlock> /3</TextBlock>
+                            <Button Width="50"  Background="{x:Null}" BorderBrush="{x:Null}" Click="NextStep_Click" x:Name="NextStep" >
+                                <materialDesign:PackIcon Foreground="Black" Kind="ArrowRight"></materialDesign:PackIcon>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <!-- ADD USER DIALOG BOX END -->
+
+
+
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="AcountDetails" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="400" Height="240" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" Margin="15 ">
+                  
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical"> 
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Kind="AccountBox"/>
+                                <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Full Name"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left" Foreground="Black" FontSize="18" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                            </TextBlock>
+                                </StackPanel>
+                                <Border BorderBrush="Black" BorderThickness="1" Width="70"  Height="70">  
+                                <Image Width="250"  Stretch="Uniform"  MaxHeight="120" MaxWidth="150" Height="70" Source="{Binding Picture}"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Kind="AccountKey"/>
+                                <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Username"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="18" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                            </TextBlock>
+
+
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal">
+
+
+                            <StackPanel Width="90">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="GenderMaleFemale"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Gender"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Gender, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+                            <StackPanel Margin="20 0 0 0" Width="400">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="HomeCircle"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Address"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Address, Mode=TwoWay}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+
+                        <StackPanel  Orientation="Horizontal">
+
+
+                            <StackPanel Width="120">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="Briefcase"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Position"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+                            <StackPanel Margin="-60 0 0 0" Width="400">
+
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="Coin" Margin="50 0 0 0"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Text="Salary" Margin="2"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Salary, Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="50 5" TextWrapping="Wrap">
+                   
+                                </TextBlock>
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+
+
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Done
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+
+        <materialDesign:DialogHost Background="{x:Null}" Identifier="RootDialog" x:Name="MaterialDesign" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="300" Height="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15 ">
+                        <materialDesign:PackIcon Kind="Check" Foreground="LightGreen" Width="50" Height="50"/>
+                        <TextBlock Foreground="Gray" FontSize="18" Width="200" Margin="15 5" TextWrapping="Wrap">
+                           Successfully Registered
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Done
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False" Identifier="RootDialog" x:Name="SuccessfullyDeletedDialogBox" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="300" Height="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15 ">
+                        <materialDesign:PackIcon Kind="Check" Foreground="LightGreen" Width="50" Height="50"/>
+                        <TextBlock x:Name="SuccessfullyDeletedDialogBoxText" Foreground="Gray" FontSize="18" Width="200" Margin="15 5" TextWrapping="Wrap">
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Done
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+
+
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False" Identifier="RootDialog" x:Name="SuccessfullyEdited" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="300" Height="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15 ">
+                        <materialDesign:PackIcon Kind="Check" Foreground="LightGreen" Width="50" Height="50"/>
+                        <TextBlock Foreground="Gray" FontSize="18" Width="200" Margin="15 5" TextWrapping="Wrap">
+                       Successfully Edited
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Done
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+        <materialDesign:DialogHost Background="{x:Null}" Identifier="RootDialog" x:Name="AccountDeleteDialog"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="300" Height="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15 ">
+                        <materialDesign:PackIcon Kind="AlertBox" Foreground="DarkRed" Width="50" Height="50"/>
+                        <TextBlock  x:Name="DeleteText" Foreground="Gray" FontSize="18" Width="200" Margin="15 5" TextWrapping="Wrap">
+
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="AccountDeleteYes" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Yes
+                        </Button>
+
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            No
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+    </Grid>
+
+
+</UserControl>

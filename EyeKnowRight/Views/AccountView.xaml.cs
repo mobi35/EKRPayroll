@@ -181,7 +181,51 @@ namespace EyeKnowRight
 
             return numberOfWrong;
         }
-       
+
+        public void UpdateDailyTimeRecord(string username)
+        {
+            var dateNow = DateTime.Now;
+            var firstCutOffDate = DateTime.Now;
+            EyeKnowRightDB db = new EyeKnowRightDB();
+            if (dateNow.Day >= 11 && dateNow.Day <= 25)
+            {
+
+                for (int i = 11; i <= 25; i++)
+                {
+                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
+                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
+                    dailyTimeRecord.UserName = username;
+                    db.DailyTimeRecords.Add(dailyTimeRecord);
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+
+                var daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+
+                for (int i = 26; i <= daysInMonth; i++)
+                {
+                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
+                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
+                    dailyTimeRecord.UserName = username;
+                    db.DailyTimeRecords.Add(dailyTimeRecord);
+                    db.SaveChanges();
+
+                }
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
+                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
+                    dailyTimeRecord.UserName = username;
+                    db.DailyTimeRecords.Add(dailyTimeRecord);
+                    db.SaveChanges();
+                }
+            }
+
+
+        }
         private void AddUser(object sender, RoutedEventArgs e)
         {
          
@@ -227,6 +271,8 @@ namespace EyeKnowRight
             db.Employees.Add(addNew);
 
             db.SaveChanges();
+
+             UpdateDailyTimeRecord(UserName.Text);
 
              MaterialDesign.IsOpen = true;
                    

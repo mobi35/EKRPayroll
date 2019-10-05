@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,5 +14,23 @@ namespace EyeKnowRight.Models
     {
         [Key]
         public int DailyTimeRecordPK { get; set; }
+
+        public string UserName { get; set; }
+
+        public DateTime? TimeIn { get; set; }
+
+        public DateTime? TimeOut { get; set; }
+
+        public double Accumulated { get; set; }
+
+        public double Late { get; set; }
+
+        public double OverTime { get; set; }
+
+        public DateTime? DateTimeStamps { get; set; }
+
+
+
+
     }
-}
+    }

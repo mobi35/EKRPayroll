@@ -239,7 +239,7 @@ namespace EyeKnowRight
                 if (Mode.Text == "Add") { 
             
             Employee addNew = new Employee();
-            addNew.EmployeeID = "Buratsimagon";
+            addNew.EmployeeID = "New";
             if (Gender_Male.IsChecked == true)
             {
                 addNew.Gender = Gender_Male.Content.ToString();
@@ -259,10 +259,10 @@ namespace EyeKnowRight
             addNew.Password = Password.Password;
             addNew.Address = Street.Text + ", " + City.Text;
             addNew.BirthDate = BirthDate.SelectedDate;
-            addNew.Position = Position.Text;
+            addNew.Position = Position.SelectedValue.ToString();
                  
             addNew.Salary = Double.Parse(Salary.Text);
-            addNew.JobTitle = JobTitle.Text;
+            addNew.JobTitle = JobTitle.SelectedValue.ToString();
             addNew.UserName = UserName.Text;
             addNew.DateRegistered = DateTime.Now;
             addNew.EmployeeID = "Tanjiro";

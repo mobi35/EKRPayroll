@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace EyeKnowRight.ViewModels
 {
-    public class ShellViewModel
+    public class ShellViewModel : Screen
     {
+      
+      //  private readonly IWindowManager windowManager;
+  
+
     }
 }

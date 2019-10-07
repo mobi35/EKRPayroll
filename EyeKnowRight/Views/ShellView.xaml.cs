@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace EyeKnowRight.Views
 {
-    /// <summary>
-    /// Interação lógica para MainWindow.xam
-    /// </summary>
+
     public partial class ShellView : Window
     {
         public ShellView()
@@ -38,6 +36,19 @@ namespace EyeKnowRight.Views
         {
             FuckingGrid.Children.Add(new AccountView());
 
+            
+
         }
+
+        private void LogoutAccount(object sender, RoutedEventArgs e)
+        {
+
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+
+        }
+
+
+
     }
 }

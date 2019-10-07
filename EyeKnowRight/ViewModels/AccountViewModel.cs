@@ -9,7 +9,7 @@ namespace EyeKnowRight.ViewModels
 {
     public class AccountViewModel : Screen
     {
-        private string age ="BURAT ACCOUNT";
+        private string age =" ACCOUNT";
 
         public string Bagwis
         {

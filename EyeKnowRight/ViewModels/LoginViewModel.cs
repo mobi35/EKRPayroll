@@ -11,7 +11,7 @@ namespace EyeKnowRight.ViewModels
 {
     public class LoginViewModel : Screen
     {
-        private string age ="BURAT";
+        private string age ="";
 
         private readonly ShellViewModel shellViewModel;
         private readonly IWindowManager windowManager;

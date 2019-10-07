@@ -50,7 +50,7 @@
             <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131"/>
         </Button>
         <Grid Margin="40 0 0 0" x:Name="FuckingGrid" Width="auto" >
-            <TextBlock>Burat</TextBlock>
+            <TextBlock></TextBlock>
         </Grid>
         <Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
@@ -106,6 +106,12 @@
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="#FF0069C1" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Settings" Margin="10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="45" Padding="0" x:Name="AccountLogout" Selected="LogoutAccount">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20"  Foreground="Red" Margin="5" VerticalAlignment="Center"/>
+                            <TextBlock Text="Logout" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

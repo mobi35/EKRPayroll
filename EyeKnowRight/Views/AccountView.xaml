@@ -14,7 +14,7 @@
 
 
         <StackPanel>
-            <TextBlock x:Name="Bagwis" Text="Kansoy"/>
+            <TextBlock x:Name="Bagwis" Text=""/>
             <Button Click="AddNewUserClick" Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}">
                 <StackPanel Orientation="Horizontal"> 
                 <materialDesign:PackIcon Kind="AccountPlus"/>
@@ -27,16 +27,18 @@
                 <materialDesign:PackIcon Kind="Delete"/>
               
             </Button>
-            <Grid>
-                <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 0 200 0" Foreground="Gray" Kind="Magnify"/>
-            </Grid>
-            <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -22 20 0" Width="200">
+      
+            <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
               
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                     <TextBox Padding="2 0 0 0"   x:Name="SearchBox"  Width="200"  Height="25" TextChanged="SearchChanged" ></TextBox>
                 </Border>
             </StackPanel>
-            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}">ASD</TextBlock>
+
+            <Grid>
+                <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 -30 200 0" Foreground="Gray" Kind="Magnify"/>
+            </Grid>
+            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
 
         </StackPanel>
 

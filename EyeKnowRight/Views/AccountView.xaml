@@ -312,9 +312,9 @@
 
 
 
-        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="AcountDetails" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+        <materialDesign:DialogHost Background="{x:Null}"  IsOpen="False"  x:Name="AcountDetails" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
-                <Grid Background="{x:Null}" Width="400" Height="240" HorizontalAlignment="Center">
+                <Grid Background="{x:Null}" Width="600"  Height="400" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" Margin="15 ">
                   
                         <StackPanel>
@@ -402,13 +402,26 @@
                                 </TextBlock>
                             </StackPanel>
 
-
                         </StackPanel>
 
 
 
                     </StackPanel>
 
+                    <StackPanel  Margin="0 200 0 0">
+
+                        <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeDTR" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn FontSize="11" Width="130"  Header="Date" Binding="{Binding LastName}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Time in" Binding="{Binding EmployeeID}"/>
+                                <DataGridTextColumn FontSize="11" Width="130"  Header="Time out" Binding="{Binding FirstName}"/>
+                                <DataGridTextColumn FontSize="11" Width="70"  Header="Late" Binding="{Binding MiddleName}"/>
+                                <DataGridTextColumn FontSize="11" Width="130"  Header="Overtime" Binding="{Binding LastName}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
                         <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">

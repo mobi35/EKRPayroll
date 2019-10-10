@@ -52,7 +52,12 @@ namespace EyeKnowRight.ViewModels
             
             if(employee == 1)
             {
-                windowManager.ShowWindow(shellViewModel); //If you want a modal dialog, then use ShowDialog that returns a bool?
+                var date = DateTime.Now.Date;
+                var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
+                dtr.TimeIn = DateTime.Now;
+                db.SaveChanges();
+                
+                windowManager.ShowWindow(shellViewModel); 
                 TryClose();
             }else
             {

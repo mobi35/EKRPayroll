@@ -511,8 +511,16 @@ namespace EyeKnowRight
                 }
 
                 AcountDetails.IsOpen = true;
+
+                var dtr = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName).ToList();
+
+                EmployeeDTR.ItemsSource = dtr;
             }
         }
+
+
+
+
         byte[] imageString;
         private void OpenFileDialog(object sender, RoutedEventArgs e)
         {

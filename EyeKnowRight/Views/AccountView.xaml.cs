@@ -515,6 +515,7 @@ namespace EyeKnowRight
                 var dtr = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName).ToList();
 
                 EmployeeDTR.ItemsSource = dtr;
+                EmployeeDTR.Items.Refresh();
             }
         }
 

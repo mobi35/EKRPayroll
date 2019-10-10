@@ -21,7 +21,7 @@ namespace EyeKnowRight.ViewModels
             this.windowManager = windowManager;
             this.shellViewModel = shellViewModel;
         }
-        EyeKnowRightDB db = new EyeKnowRightDB();
+        EyeKnowRightDB dbz = new EyeKnowRightDB();
         public string Bagwis
         {
             get { return age; }
@@ -48,25 +48,28 @@ namespace EyeKnowRight.ViewModels
         public void Login()
         {
 
-            var employee = db.Employees.Where(a => a.UserName == username && a.Password == password).ToList().Count();
-            
+            var employee = dbz.Employees.Where(a => a.UserName == username && a.Password == password).ToList().Count();
+            try {  
             if(employee == 1)
             {
                 var date = DateTime.Now.Date;
-                var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
-                dtr.TimeIn = DateTime.Now;
-                db.SaveChanges();
-                
-                windowManager.ShowWindow(shellViewModel); 
-                TryClose();
+                var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
+                dtrs.TimeIn = DateTime.Now;
+                    dbz.SaveChanges();
+
+                Application.Current.Properties["UserName"] = Username;
             }else
             {
                 MessageBox.Show("Failed");
             }
 
-        
-          
 
+            }catch(Exception e)
+            {
+
+            }
+            windowManager.ShowWindow(shellViewModel);
+            TryClose();
         }
 
 

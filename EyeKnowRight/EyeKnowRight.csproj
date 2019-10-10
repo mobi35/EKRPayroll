@@ -113,13 +113,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Migrations\201910031525459_pek.cs" />
-    <Compile Include="Migrations\201910031525459_pek.designer.cs">
-      <DependentUpon>201910031525459_pek.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910041551465_21.cs" />
-    <Compile Include="Migrations\201910041551465_21.designer.cs">
-      <DependentUpon>201910041551465_21.cs</DependentUpon>
+    <Compile Include="Migrations\201910101244037_2.cs" />
+    <Compile Include="Migrations\201910101244037_2.designer.cs">
+      <DependentUpon>201910101244037_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
@@ -166,11 +162,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201910031525459_pek.resx">
-      <DependentUpon>201910031525459_pek.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910041551465_21.resx">
-      <DependentUpon>201910041551465_21.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910101244037_2.resx">
+      <DependentUpon>201910101244037_2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EyeKnowRight.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace EyeKnowRight.Views
         public ShellView()
         {
             InitializeComponent();
+            UserNameText.Text = Application.Current.Properties["UserName"].ToString();
             ButtonOpen.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             FuckingGrid.Margin = new Thickness(270, 15, 0, 0);
         }
@@ -39,9 +41,52 @@ namespace EyeKnowRight.Views
             
 
         }
-
+        EyeKnowRightDB db = new EyeKnowRightDB();
         private void LogoutAccount(object sender, RoutedEventArgs e)
         {
+
+            var date = DateTime.Now.Date;
+            var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
+            dtr.TimeOut = DateTime.Now;
+
+            double timeInDate = 0;
+            if (dtr.TimeIn != null)
+            {
+                if(dtr.TimeIn.Value.TimeOfDay.TotalMinutes < 480)
+                {
+                    timeInDate = 480;
+                }else
+                {
+                    timeInDate = dtr.TimeIn.Value.TimeOfDay.TotalMinutes;
+                }
+               
+                double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
+
+                if (dtr.TimeIn.Value.TimeOfDay.TotalMinutes > 480 )
+                {
+                   dtr.Late = timeInDate - 480;
+                }
+
+            
+
+
+                if (DateTime.Now.Date.TimeOfDay.TotalMinutes <= 1020) { 
+                dtr.Accumulated += accumulatedTime;
+                }else
+                {
+                    dtr.Accumulated += 1020 - timeInDate; 
+                }
+                db.SaveChanges();
+
+
+            }else
+            {
+
+            }
+            
+            
+
+
 
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();

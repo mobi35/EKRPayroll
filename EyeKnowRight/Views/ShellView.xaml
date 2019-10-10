@@ -115,6 +115,8 @@
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
+                <TextBlock x:Name="UserNameText" Text="Adrian" Margin="0 90" FontSize="18" Padding="10"/>
+               
             </StackPanel>
             <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Click="ClosePanel">
                 <materialDesign:PackIcon Kind="Close"/>

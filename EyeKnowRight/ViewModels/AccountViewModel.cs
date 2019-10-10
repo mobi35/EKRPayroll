@@ -16,8 +16,12 @@ namespace EyeKnowRight.ViewModels
             get { return age; }
             set { age = value; }
         }
-
-
+        private double accumulated = 0;
+        public double Accumulated
+        {
+            get { return accumulated / 20; }
+            set { accumulated = value; }
+        }
 
     }
 }

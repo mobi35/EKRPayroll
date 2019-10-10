@@ -314,7 +314,7 @@
 
         <materialDesign:DialogHost Background="{x:Null}"  IsOpen="False"  x:Name="AcountDetails" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
-                <Grid Background="{x:Null}" Width="600"  Height="400" HorizontalAlignment="Center">
+                <Grid Background="{x:Null}" Width="600"  Height="590" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" Margin="15 ">
                   
                         <StackPanel>
@@ -414,16 +414,17 @@
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
                             <DataGrid.Columns>
-                                <DataGridTextColumn FontSize="11" Width="130"  Header="Date" Binding="{Binding LastName}"/>
-                                <DataGridTextColumn FontSize="11" Width="100"  Header="Time in" Binding="{Binding EmployeeID}"/>
-                                <DataGridTextColumn FontSize="11" Width="130"  Header="Time out" Binding="{Binding FirstName}"/>
-                                <DataGridTextColumn FontSize="11" Width="70"  Header="Late" Binding="{Binding MiddleName}"/>
-                                <DataGridTextColumn FontSize="11" Width="130"  Header="Overtime" Binding="{Binding LastName}"/>
+                                <DataGridTextColumn FontSize="11" Width="90"  Header="Date" Binding="{Binding DateTimeStamps,StringFormat='d',Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="90"  Header="Time in" Binding="{Binding TimeIn,StringFormat='T',Mode=TwoWay }"/>
+                                <DataGridTextColumn FontSize="11" Width="90"  Header="Time out" Binding="{Binding TimeOut, StringFormat='T',Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="135"  Header="Accumulated (mins)" Binding="{Binding Accumulated}"/>
+                                <DataGridTextColumn FontSize="11" Width="60"  Header="Late" Binding="{Binding Late,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="60"  Header="Overtime" Binding="{Binding OverTime,Mode=TwoWay}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15">
                         <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
                             Done
                         </Button>
@@ -443,7 +444,7 @@
                            Successfully Registered
                         </TextBlock>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="15">
                         <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
                             Done
                         </Button>

@@ -22,7 +22,12 @@ namespace EyeKnowRight.Views
         public ShellView()
         {
             InitializeComponent();
+            try { 
             UserNameText.Text = Application.Current.Properties["UserName"].ToString();
+            }catch(Exception e)
+            {
+
+            }
             ButtonOpen.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             FuckingGrid.Margin = new Thickness(270, 15, 0, 0);
         }
@@ -48,7 +53,7 @@ namespace EyeKnowRight.Views
             var date = DateTime.Now.Date;
             var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
             dtr.TimeOut = DateTime.Now;
-
+            db.SaveChanges();
             double timeInDate = 0;
             if (dtr.TimeIn != null)
             {
@@ -62,10 +67,7 @@ namespace EyeKnowRight.Views
                
                 double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
 
-                if (dtr.TimeIn.Value.TimeOfDay.TotalMinutes > 480 )
-                {
-                   dtr.Late = timeInDate - 480;
-                }
+         
 
             
 

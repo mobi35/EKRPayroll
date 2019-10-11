@@ -54,7 +54,19 @@ namespace EyeKnowRight.ViewModels
             {
                 var date = DateTime.Now.Date;
                 var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
-                dtrs.TimeIn = DateTime.Now;
+                    
+                    dtrs.TimeIn = DateTime.Now;
+
+                    if (dtrs.FirstTimeIn == null)
+                    {
+                        dtrs.FirstTimeIn = DateTime.Now;
+
+                        if (dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes > 480)
+                        {
+                            dtrs.Late = dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes - 480;
+                        }
+
+                    }
                     dbz.SaveChanges();
 
                 Application.Current.Properties["UserName"] = Username;

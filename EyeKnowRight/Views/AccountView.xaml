@@ -415,7 +415,7 @@
                   AutoGenerateColumns="False" IsReadOnly="True"  >
                             <DataGrid.Columns>
                                 <DataGridTextColumn FontSize="11" Width="90"  Header="Date" Binding="{Binding DateTimeStamps,StringFormat='d',Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="90"  Header="Time in" Binding="{Binding TimeIn,StringFormat='T',Mode=TwoWay }"/>
+                                <DataGridTextColumn FontSize="11" Width="90"  Header="Time in" Binding="{Binding FirstTimeIn,StringFormat='T',Mode=TwoWay }"/>
                                 <DataGridTextColumn FontSize="11" Width="90"  Header="Time out" Binding="{Binding TimeOut, StringFormat='T',Mode=TwoWay}"/>
                                 <DataGridTextColumn FontSize="11" Width="135"  Header="Accumulated (mins)" Binding="{Binding Accumulated}"/>
                                 <DataGridTextColumn FontSize="11" Width="60"  Header="Late" Binding="{Binding Late,Mode=TwoWay}"/>

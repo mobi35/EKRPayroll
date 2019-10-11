@@ -21,6 +21,8 @@ namespace EyeKnowRight.Models
 
         public DateTime? TimeOut { get; set; }
 
+        public DateTime? FirstTimeIn { get; set; }
+
         public double Accumulated { get; set; }
 
         public double Late { get; set; }

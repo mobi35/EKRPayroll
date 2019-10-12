@@ -186,21 +186,13 @@ namespace EyeKnowRight
         {
             var dateNow = DateTime.Now;
             var firstCutOffDate = DateTime.Now;
-            EyeKnowRightDB db = new EyeKnowRightDB();
-            if (dateNow.Day >= 11 && dateNow.Day <= 25)
+
+
+
+
+            if (dateNow.Day >= 25 && dateNow.Day <= 31 || dateNow.Day >= 1 && dateNow.Day <= 10)
             {
 
-                for (int i = 11; i <= 25; i++)
-                {
-                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
-                    dailyTimeRecord.UserName = username;
-                    db.DailyTimeRecords.Add(dailyTimeRecord);
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
 
                 var daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
@@ -211,10 +203,22 @@ namespace EyeKnowRight
                     dailyTimeRecord.UserName = username;
                     db.DailyTimeRecords.Add(dailyTimeRecord);
                     db.SaveChanges();
-
                 }
 
                 for (int i = 1; i <= 10; i++)
+                {
+                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
+                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, i);
+                    dailyTimeRecord.UserName = username;
+                    db.DailyTimeRecords.Add(dailyTimeRecord);
+                    db.SaveChanges();
+                }
+
+            }
+
+            else
+            {
+                for (int i = 11; i <= 25; i++)
                 {
                     DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
                     dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);

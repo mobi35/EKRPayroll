@@ -40,17 +40,19 @@
         </StackPanel>
 
         <!-- DATA GRID START -->
-        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="PayrollGrid" Height="400" Background="{x:Null}"
+        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="LeaveGrid" Height="400" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="11" Width="100"  Header="Start Payroll" Binding="{Binding StartPayroll}"/>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="End Payroll" Binding="{Binding EndPayroll}"/>
+                <DataGridTextColumn FontSize="11" Width="100"  Header="Type Of Leave" Binding="{Binding TypeOfLeave}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="Start Leave" Binding="{Binding StartDate}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="End Leave" Binding="{Binding EndLeave}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="Status" Binding="{Binding Status}"/>
                 <DataGridTemplateColumn Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel  Orientation="Horizontal">
-                                <Button Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding PayrollPK}" Click="Button_Click"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"    >
+                                <Button Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding PayrollPK}"   Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"    >
                                     <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
                                 </Button>
                             </StackPanel>
@@ -75,35 +77,44 @@
                     </Button>
 
 
+                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Choose Start Date"/>
+                    <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                        <DatePicker HorizontalAlignment="Right"   VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="StartLeaveDate"   Width="200"  Height="25" >
+
+                        </DatePicker>
+                    </Border>
+
+                    <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
 
 
                     <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Choose End Date"/>
                     <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                        <DatePicker HorizontalAlignment="Right"  Text="{Binding Path=BirthDate , Mode=TwoWay}" VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="EndLeaveDate"   Width="200"  Height="25" >
+                        <DatePicker HorizontalAlignment="Right" VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="EndLeaveDate"   Width="200"  Height="25" >
 
                         </DatePicker>
                     </Border>
 
                     <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap"     FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Type of leave"/>
 
-
-
-                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Choose Start Date"/>
                     <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                        <DatePicker HorizontalAlignment="Right"  Text="{Binding Path=BirthDate , Mode=TwoWay}" VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="StartLeaveDate"   Width="200"  Height="25" >
 
-                        </DatePicker>
+                        <ComboBox Padding="5 7   0 1" x:Name="TypeOfLeave"   Width="200"  Height="25" >
+                            <ComboBoxItem>Sick Leave</ComboBoxItem>
+                            <ComboBoxItem>Medical Leave</ComboBoxItem>
+                            <ComboBoxItem>Personal Leave</ComboBoxItem>
+                        </ComboBox>
                     </Border>
-                        
-                    <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
 
 
                     <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Reason for leave"/>
                     <Border  Width="200"  Height="200"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                        <TextBox   VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"    TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="250" MaxWidth="300" Height="300" Width="300" x:Name="Message"    />
+                        <TextBox   VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"    TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="250" MaxWidth="300" Height="300" Width="300" x:Name="ReasonForLeave"    />
                     </Border>
                     <TextBlock/>
-                    <Button   Width="200" >
+                    <Button Click="SendRequestLeave"  Width="200" >
                         <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon Kind="Send" Margin="0 0 4 0"/>
                             <TextBlock Text="Request"/>

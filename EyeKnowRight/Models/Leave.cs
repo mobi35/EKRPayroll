@@ -11,5 +11,18 @@ namespace EyeKnowRight.Models
     {
         [Key]
         public int LeavePK { get; set; }
+
+        public string UserName { get; set; }
+        public string TypeOfLeave { get; set; }
+
+        public string ReasonForLeaving { get; set; }
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? EndLeave { get; set; }
+
+        public string Status { get; set; }
+
+       
+
     }
 }

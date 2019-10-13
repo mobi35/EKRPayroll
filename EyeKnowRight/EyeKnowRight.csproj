@@ -111,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\AdminLeaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\OvertimeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -135,13 +139,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Migrations\201910121633299_XZX.cs" />
-    <Compile Include="Migrations\201910121633299_XZX.designer.cs">
-      <DependentUpon>201910121633299_XZX.cs</DependentUpon>
+    <Compile Include="Migrations\201910122157490_Kurek.cs" />
+    <Compile Include="Migrations\201910122157490_Kurek.designer.cs">
+      <DependentUpon>201910122157490_Kurek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910130805135_Leavee.cs" />
+    <Compile Include="Migrations\201910130805135_Leavee.designer.cs">
+      <DependentUpon>201910130805135_Leavee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910130810051_leavemodel.cs" />
+    <Compile Include="Migrations\201910130810051_leavemodel.designer.cs">
+      <DependentUpon>201910130810051_leavemodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910130847398_xxcz.cs" />
+    <Compile Include="Migrations\201910130847398_xxcz.designer.cs">
+      <DependentUpon>201910130847398_xxcz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910130914400_ccxz.cs" />
+    <Compile Include="Migrations\201910130914400_ccxz.designer.cs">
+      <DependentUpon>201910130914400_ccxz.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\AdminLeaveViewModel.cs" />
     <Compile Include="ViewModels\OvertimeViewModel.cs" />
     <Compile Include="ViewModels\EmployeeLeaveViewModel.cs" />
     <Compile Include="ViewModels\PayrollViewModel.cs" />
@@ -149,6 +170,9 @@
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminLeaveView.xaml.cs">
+      <DependentUpon>AdminLeaveView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OvertimeView.xaml.cs">
       <DependentUpon>OvertimeView.xaml</DependentUpon>
@@ -200,8 +224,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201910121633299_XZX.resx">
-      <DependentUpon>201910121633299_XZX.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910122157490_Kurek.resx">
+      <DependentUpon>201910122157490_Kurek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910130805135_Leavee.resx">
+      <DependentUpon>201910130805135_Leavee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910130810051_leavemodel.resx">
+      <DependentUpon>201910130810051_leavemodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910130847398_xxcz.resx">
+      <DependentUpon>201910130847398_xxcz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910130914400_ccxz.resx">
+      <DependentUpon>201910130914400_ccxz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

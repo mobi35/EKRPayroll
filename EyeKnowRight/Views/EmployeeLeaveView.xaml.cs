@@ -31,16 +31,67 @@ namespace EyeKnowRight
         public EmployeeLeaveView()
         {
             InitializeComponent();
-            var payroll = db.Payrolls.Where(a => a.IsActive == false).ToList();
-            
-            PayrollGrid.ItemsSource = payroll;
+            var user = Application.Current.Properties["UserName"].ToString();
+            var leave = db.Leaves.Where(a => a.UserName == user).ToList();
+
+            LeaveGrid.ItemsSource = leave;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SendRequestLeave(object sender, RoutedEventArgs e)
         {
-            int payrollPK = (int)((Button)sender).Tag;
-            var deductions = db.Deductionss.Where(a => a.PayrollPK == payrollPK).ToList();
-          //  DeductionGrid.ItemsSource = deductions;
+            if(StartLeaveDate.SelectedDate < DateTime.Now || EndLeaveDate.SelectedDate < DateTime.Now)
+            {
+
+                MessageBox.Show("No past dates");
+            }else if (StartLeaveDate.SelectedDate == null || EndLeaveDate.SelectedDate == null)
+            {
+                MessageBox.Show("Please fill up the date");
+            }
+            else if (StartLeaveDate.SelectedDate > EndLeaveDate.SelectedDate)
+            {
+                MessageBox.Show("This is not a valid date");
+            }
+            else if (ReasonForLeave.Text == "")
+            {
+                MessageBox.Show("Please add a reason for leaving");
+            }else if(TypeOfLeave.SelectedItem == null)
+            {
+                MessageBox.Show("Please add the type of leave");
+            }else
+            {
+                TimeSpan? dateRangeComparison = EndLeaveDate.SelectedDate - StartLeaveDate.SelectedDate;
+                var user = Application.Current.Properties["UserName"].ToString();
+                var getUser = db.Employees.FirstOrDefault(a => a.UserName == user);
+
+               // bool leaveOk = false;
+                if(TypeOfLeave.Text == "Paternity Leave" && getUser.PaternityLeave < dateRangeComparison.Value.TotalDays)
+                {
+                    MessageBox.Show("Not enough paternity leave");
+                }
+                else if (TypeOfLeave.Text == "Sick Leave" && getUser.SickLeave < dateRangeComparison.Value.TotalDays)
+                {
+                    MessageBox.Show("Not enough sick leave");
+                }else { 
+                Leave leave = new Leave();
+                leave.ReasonForLeaving = ReasonForLeave.Text;
+                leave.UserName = user;
+                leave.TypeOfLeave = TypeOfLeave.Text;
+                leave.StartDate = StartLeaveDate.SelectedDate;
+                leave.EndLeave = EndLeaveDate.SelectedDate;
+                    leave.Status = "Pending";
+                db.Leaves.Add(leave);
+                db.SaveChanges();
+
+                    var leaveList = db.Leaves.Where(a => a.UserName == user).ToList();
+
+                    LeaveGrid.ItemsSource = leaveList;
+                    MessageBox.Show("Leave Added");
+                }
+            }
+            //MessageBox.Show("No past dates");
+            //int payrollPK = (int)((Button)sender).Tag;
+            //var deductions = db.Deductionss.Where(a => a.PayrollPK == payrollPK).ToList();
+            //  DeductionGrid.ItemsSource = deductions;
         }
     }
 }

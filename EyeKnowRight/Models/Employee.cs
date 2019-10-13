@@ -46,7 +46,15 @@ namespace EyeKnowRight.Models
         public DateTime? BirthDate { get; set; }
         public int? MyProperty { get; set; }
 
+        public int MaternityLeave { get; set; }
 
+        public int PaternityLeave { get; set; }
+
+        public int SickLeave { get; set; }
+
+        public int BereavementLeave { get; set; }
+
+        public int MedicalLeave { get; set; }
 
 
     }

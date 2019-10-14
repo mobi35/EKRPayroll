@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -191,7 +192,7 @@ namespace EyeKnowRight
             for (int i = 0; i <= totalDaysOfMonths.Value.TotalDays; i++)
             {
                 DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                dailyTimeRecord.DateTimeStamps = DateTime.Now.AddDays(i);
+                dailyTimeRecord.DateTimeStamps = DateTime.Now.AddDays(i).Date;
                 dailyTimeRecord.UserName = username;
                 db.DailyTimeRecords.Add(dailyTimeRecord);
                 db.SaveChanges();
@@ -200,6 +201,16 @@ namespace EyeKnowRight
 
 
         }
+
+
+     
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+
         private void AddUser(object sender, RoutedEventArgs e)
         {
          
@@ -233,25 +244,33 @@ namespace EyeKnowRight
             addNew.Password = Password.Password;
             addNew.Address = Street.Text + ", " + City.Text;
             addNew.BirthDate = BirthDate.SelectedDate;
-            addNew.Position = Position.SelectedValue.ToString();
-                 
+                    addNew.Position = Position.Text;
+
+            addNew.PersonalLeave = Int32.Parse(PersonalLeave.Text);
+            addNew.MaternityLeave = Int32.Parse(MaternityLeave.Text);
+            addNew.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+            addNew.SickLeave = Int32.Parse(SickLeave.Text);
+            addNew.BereavementLeave = Int32.Parse(BereavementLeave.Text);
+            addNew.MedicalLeave = Int32.Parse(MedicalLeave.Text);
+
+            addNew.SSSNumber = SSSNumber.Text;
+            addNew.PagibigNumber = PagibigNumber.Text;
+            addNew.TINNumber = TINNumber.Text;
+
             addNew.Salary = Double.Parse(Salary.Text);
             addNew.JobTitle = JobTitle.SelectedValue.ToString();
             addNew.UserName = UserName.Text;
             addNew.DateRegistered = DateTime.Now;
             addNew.EmployeeID = "Tanjiro";
             addNew.Age = 69;
-             addNew.DaysContract = 12;
+             addNew.DaysContract = Int32.Parse(MonthsOfStay.Text);
             db.Employees.Add(addNew);
 
             db.SaveChanges();
 
-             UpdateDailyTimeRecord(UserName.Text,12);
+             UpdateDailyTimeRecord(UserName.Text, addNew.DaysContract);
 
              MaterialDesign.IsOpen = true;
-                   
-          
-           
                 }else if (Mode.Text == "Edit")
                 {
                     if(CheckValidations() == 0) { 
@@ -275,7 +294,18 @@ namespace EyeKnowRight
                     employee.BirthDate = BirthDate.SelectedDate;
                     employee.Position = Position.Text;
 
-                    employee.Salary = Double.Parse(Salary.Text);
+                    employee.PersonalLeave = Int32.Parse(PersonalLeave.Text);
+                    employee.MaternityLeave = Int32.Parse(MaternityLeave.Text);
+                    employee.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+                    employee.SickLeave = Int32.Parse(SickLeave.Text);
+                    employee.BereavementLeave = Int32.Parse(BereavementLeave.Text);
+                    employee.MedicalLeave = Int32.Parse(MedicalLeave.Text);
+
+                    employee.SSSNumber = SSSNumber.Text;
+                    employee.PagibigNumber = PagibigNumber.Text;
+                    employee.TINNumber = TINNumber.Text;
+
+                     employee.Salary = Double.Parse(Salary.Text);
                     employee.JobTitle = JobTitle.Text;
                     employee.UserName = UserName.Text;
                     employee.DateRegistered = DateTime.Now;
@@ -366,7 +396,7 @@ namespace EyeKnowRight
 
         private void NextStep_Click(object sender, RoutedEventArgs e)
         {
-            if(step < 3) {  
+            if(step < 5) {  
             step++;
             }
             StepChangeVisibility(step);
@@ -378,8 +408,11 @@ namespace EyeKnowRight
           
             LastStep.Visibility = Visibility.Collapsed;
             SecondStep.Visibility = Visibility.Collapsed;
+            ThirdStep.Visibility = Visibility.Collapsed;
+            Fourth.Visibility = Visibility.Collapsed;
             FirstStep.Visibility = Visibility.Collapsed;
             StepsCounter.Text = step.ToString();
+
             if (step == 1) { 
                 FirstStep.Visibility = Visibility.Visible;
                 this.step = 1;
@@ -389,8 +422,17 @@ namespace EyeKnowRight
                 this.step = 2;
             }
             else if(step == 3) { 
-                LastStep.Visibility = Visibility.Visible;
+                ThirdStep.Visibility = Visibility.Visible;
                 this.step = 3;
+            }else if (step== 4) 
+            {
+                Fourth.Visibility = Visibility.Visible;
+                this.step = 4;
+            }
+            else if (step == 5)
+            {
+                LastStep.Visibility = Visibility.Visible;
+                this.step = 5;
             }
 
         }

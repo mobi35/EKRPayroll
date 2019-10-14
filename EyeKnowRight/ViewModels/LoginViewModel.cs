@@ -55,18 +55,18 @@ namespace EyeKnowRight.ViewModels
         public void Login()
         {
           
-            var employee = dbz.Employees.Where(a => a.UserName == username && a.Password == password).ToList().Count();
-          
+            var employee = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault();
+
             var userModel = dbz.Employees.Where(a => a.UserName == username).FirstOrDefault();
          
-            if(userModel != null) { 
+            if(userModel != null && employee == null) { 
             if (userModel.NumberOfTries > 5 )
                 {
                     passwordValidation = "Maximum tries";
                     NotifyOfPropertyChange("PasswordValidation");
 
                 }
-            } else if (employee == 1)
+            } else if (employee != null)
                 {
                 
                     var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
@@ -89,11 +89,11 @@ namespace EyeKnowRight.ViewModels
 
                     }
                     dbz.SaveChanges();
-                   
+              
                 Application.Current.Properties["UserName"] = Username;
                     windowManager.ShowWindow(shellViewModel);
-                    TryClose();
-                }
+                TryClose();
+            }
                 else
             {
                     var checkTriesEmployee = dbz.Employees.FirstOrDefault(a => a.UserName == username);

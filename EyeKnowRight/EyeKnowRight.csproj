@@ -70,6 +70,7 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.17\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -86,6 +87,7 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -101,6 +103,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -139,32 +142,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Migrations\201910122157490_Kurek.cs" />
-    <Compile Include="Migrations\201910122157490_Kurek.designer.cs">
-      <DependentUpon>201910122157490_Kurek.cs</DependentUpon>
+    <Compile Include="Migrations\201910141143315_Test.cs" />
+    <Compile Include="Migrations\201910141143315_Test.designer.cs">
+      <DependentUpon>201910141143315_Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910130805135_Leavee.cs" />
-    <Compile Include="Migrations\201910130805135_Leavee.designer.cs">
-      <DependentUpon>201910130805135_Leavee.cs</DependentUpon>
+    <Compile Include="Migrations\201910141543360_Added Personal Leave.cs" />
+    <Compile Include="Migrations\201910141543360_Added Personal Leave.designer.cs">
+      <DependentUpon>201910141543360_Added Personal Leave.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910130810051_leavemodel.cs" />
-    <Compile Include="Migrations\201910130810051_leavemodel.designer.cs">
-      <DependentUpon>201910130810051_leavemodel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910130847398_xxcz.cs" />
-    <Compile Include="Migrations\201910130847398_xxcz.designer.cs">
-      <DependentUpon>201910130847398_xxcz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910130914400_ccxz.cs" />
-    <Compile Include="Migrations\201910130914400_ccxz.designer.cs">
-      <DependentUpon>201910130914400_ccxz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910140250393_bandura.cs" />
-    <Compile Include="Migrations\201910140250393_bandura.designer.cs">
-      <DependentUpon>201910140250393_bandura.cs</DependentUpon>
+    <Compile Include="Migrations\201910141606555_ZXXZ.cs" />
+    <Compile Include="Migrations\201910141606555_ZXXZ.designer.cs">
+      <DependentUpon>201910141606555_ZXXZ.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
+    <Compile Include="Reports\EKRDataset.cs">
+      <DependentUpon>EKRDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EKRDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EKRDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\AdminLeaveViewModel.cs" />
     <Compile Include="ViewModels\OvertimeViewModel.cs" />
@@ -228,32 +227,35 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201910122157490_Kurek.resx">
-      <DependentUpon>201910122157490_Kurek.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910141143315_Test.resx">
+      <DependentUpon>201910141143315_Test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910130805135_Leavee.resx">
-      <DependentUpon>201910130805135_Leavee.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910141543360_Added Personal Leave.resx">
+      <DependentUpon>201910141543360_Added Personal Leave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910130810051_leavemodel.resx">
-      <DependentUpon>201910130810051_leavemodel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910130847398_xxcz.resx">
-      <DependentUpon>201910130847398_xxcz.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910130914400_ccxz.resx">
-      <DependentUpon>201910130914400_ccxz.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910140250393_bandura.resx">
-      <DependentUpon>201910140250393_bandura.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910141606555_ZXXZ.resx">
+      <DependentUpon>201910141606555_ZXXZ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PayrollReport.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\EKRDataset.xsc">
+      <DependentUpon>EKRDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\EKRDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EKRDataset.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\EKRDataset.xss">
+      <DependentUpon>EKRDataset.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

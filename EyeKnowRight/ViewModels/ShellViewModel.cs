@@ -14,8 +14,6 @@ namespace EyeKnowRight.ViewModels
         //  private readonly IWindowManager windowManager;
         public ShellViewModel()
         {
-
-
             var getPayroll = db.Payrolls.ToList();
             var getUserList = db.Employees.ToList();
 
@@ -52,6 +50,8 @@ namespace EyeKnowRight.ViewModels
                 }
 
             }
+
+
             else if (DateTime.Now.Day == 26)
             {
              

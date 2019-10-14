@@ -24,10 +24,6 @@ namespace EyeKnowRight.Views
         {
             InitializeComponent();
         }
-        EyeKnowRightDB db = new EyeKnowRightDB();
-        private void Login_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
+   
     }
 }

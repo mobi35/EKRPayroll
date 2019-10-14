@@ -228,6 +228,101 @@
 
                         </StackPanel>
 
+                        <StackPanel x:Name="ThirdStep" Visibility="Collapsed">
+                            <Border BorderThickness="2" CornerRadius="90" BorderBrush="Blue" Width="70" Height="70">
+                                <materialDesign:PackIcon Kind="Airplane" Foreground="Green" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="50" Width="50"  />
+                            </Border>
+                            <TextBlock/>
+                            <TextBlock Text="Leave" HorizontalAlignment="Center"  FontSize="15"></TextBlock>
+                            <TextBlock/>
+                            
+                            
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Personal Leave"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="PersonalLeave" Text="{Binding Path=PersonalLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="PersonalLeave_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Maternity Leave"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="MaternityLeave" Text="{Binding Path=MaternityLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="MaternityLeave_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Paternity Leave"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="PaternityLeave" Text="{Binding Path=PaternityLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="PaternityLeave_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Sick Leave"/>
+                                <Border  Width="200"  Height="25"   CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="SickLeave" Text="{Binding Path=SickLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="SickLeave_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Bereavement Leave"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="BereavementLeave" Text="{Binding Path=BereavementLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="Bereavement_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Medical Leave"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="MedicalLeave" Text="{Binding Path=MedicalLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="MedicalLeave_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                        <StackPanel x:Name="Fourth" Visibility="Collapsed">
+                            <Border BorderThickness="2" CornerRadius="90" BorderBrush="Blue" Width="70" Height="70">
+                                <materialDesign:PackIcon Kind="Hospital" Foreground="Green" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="50" Width="50"  />
+                            </Border>
+                            <TextBlock/>
+                            <TextBlock Text="Government Benefits" HorizontalAlignment="Center"  FontSize="15"></TextBlock>
+
+                            <TextBlock/>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="SSS Number"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" x:Name="SSSNumber" Text="{Binding Path=SSSNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="SSS_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="TIN Number"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" x:Name="TINNumber" Text="{Binding Path=TINNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="TINNumber_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Pagibig Number"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <TextBox Padding="2 0 0 0" x:Name="PagibigNumber" Text="{Binding Path=PagibigNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                </Border>
+                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="PagibigNumber_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                            </StackPanel>
+
+
+                        </StackPanel>
+
                         <StackPanel x:Name="LastStep" Visibility="Collapsed">
                             <Border BorderThickness="2" CornerRadius="90" BorderBrush="Blue" Width="70" Height="70">
                                 <materialDesign:PackIcon Kind="Approval" Foreground="Green" VerticalAlignment="Center"  HorizontalAlignment="Center" Height="50" Width="50"  />
@@ -247,6 +342,15 @@
                                         <ComboBoxItem>Admin</ComboBoxItem>
                                         <ComboBoxItem>Employee</ComboBoxItem>
                                         <ComboBoxItem>Intern</ComboBoxItem>
+                                    </ComboBox>
+                                </Border>
+
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Months of stay"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <ComboBox  Padding="5 7   0 1" x:Name="MonthsOfStay"  Text="{Binding Path=DaysContract , Mode=TwoWay}"   Width="200"  Height="25">
+                                        <ComboBoxItem>12</ComboBoxItem>
+                                        <ComboBoxItem>24</ComboBoxItem>
+                                        <ComboBoxItem>36</ComboBoxItem>
                                     </ComboBox>
                                 </Border>
                                 <TextBlock Foreground="Red" x:Name="Position_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
@@ -299,7 +403,7 @@
                                 <materialDesign:PackIcon Foreground="Black" Kind="ArrowLeft"></materialDesign:PackIcon>
                             </Button>
                             <TextBlock x:Name="StepsCounter">1</TextBlock>
-                            <TextBlock> /3</TextBlock>
+                            <TextBlock> /5</TextBlock>
                             <Button Width="50"  Background="{x:Null}" BorderBrush="{x:Null}" Click="NextStep_Click" x:Name="NextStep" >
                                 <materialDesign:PackIcon Foreground="Black" Kind="ArrowRight"></materialDesign:PackIcon>
                             </Button>
@@ -404,11 +508,84 @@
 
                         </StackPanel>
 
+                        <StackPanel  Orientation="Horizontal">
 
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Sick Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding SickLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Maternity Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding MaternityLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Paternity Leave"/>
+                                </StackPanel>
+                                <TextBlock   Text="{Binding PaternityLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Personal Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding PersonalLeave}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Medical Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding MedicalLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="100">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Bereavement Leave"/>
+                                </StackPanel>
+                                <TextBlock   Text="{Binding BereavementLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+                        </StackPanel>
 
                     </StackPanel>
 
-                    <StackPanel  Margin="0 200 0 0">
+                    <StackPanel  Margin="0 240 0 0">
 
                         <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeDTR" SelectionMode="Extended" Height="400" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   

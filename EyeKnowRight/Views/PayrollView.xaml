@@ -5,32 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EyeKnowRight.Views"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+           xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
-
-       
-
-
-
-        <StackPanel>
-            <TextBlock x:Name="Bagwis" Text=""/>
-         
-          
-      
-            <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
-              
-                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Padding="2 0 0 0"   x:Name="SearchBox"  Width="200"  Height="25" ></TextBox>
-                </Border>
-            </StackPanel>
-
-            <Grid>
-                <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 -30 200 0" Foreground="Gray" Kind="Magnify"/>
-            </Grid>
-            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
-
-        </StackPanel>
+            
+        <WindowsFormsHost Name="WFH"  HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="800" >
+            <rv:ReportViewer ShowRefreshButton="false" ShowFindControls="False" ShowContextMenu="false" ShowCredentialPrompts="false" ShowPromptAreaButton="false" ShowStopButton="false"  ShowZoomControl="false" ShowParameterPrompts="False"  ShowPageNavigationControls="False" ShowBackButton="False" ShowProgress="False" ShowDocumentMapButton="False" x:Name="ReportViewerDemo"/>
+        </WindowsFormsHost>
 
         <!-- DATA GRID START -->
         <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="PayrollGrid" Height="400" Background="{x:Null}"
@@ -51,6 +33,11 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            <DataGrid.ItemContainerStyle >
+                <Style TargetType="{x:Type DataGridRow}" >
+                    <EventSetter  Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
         </DataGrid>
         <!-- DATA GRID END -->
 

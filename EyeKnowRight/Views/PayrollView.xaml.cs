@@ -1,11 +1,14 @@
 ﻿using EyeKnowRight.Models;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Reporting.WinForms;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,7 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Windows.Forms.Integration;
 namespace EyeKnowRight
 {
     /// <summary>
@@ -31,9 +34,26 @@ namespace EyeKnowRight
         public PayrollView()
         {
             InitializeComponent();
+        
             var payroll = db.Payrolls.Where(a => a.IsActive == false).ToList();
-            
             PayrollGrid.ItemsSource = payroll;
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var xx = (Payroll)PayrollGrid.SelectedItem;
+            MessageBox.Show(xx.StartPayroll + " ");
+
+            var getPayroll = db.Payrolls.FirstOrDefault(a => a.PayrollPK == xx.PayrollPK);
+            var deductions = db.Deductionss.Where(a => a.PayrollPK == getPayroll.PayrollPK).ToList();
+
+
+            ReportViewerDemo.Reset();
+            DataTable dt = ToDataTable(deductions);
+            ReportDataSource ds = new ReportDataSource("dataset", dt);
+            ReportViewerDemo.LocalReport.DataSources.Add(ds);
+            ReportViewerDemo.LocalReport.ReportEmbeddedResource = "EyeKnowRight.Reports.PayrollReport.rdlc";
+            ReportViewerDemo.RefreshReport();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,5 +62,37 @@ namespace EyeKnowRight
             var deductions = db.Deductionss.Where(a => a.PayrollPK == payrollPK).ToList();
             DeductionGrid.ItemsSource = deductions;
         }
+
+
+        public static DataTable ToDataTable<T>(List<T> items)
+        {
+            DataTable dataTable = new DataTable(typeof(T).Name);
+
+            //Get all the properties
+            PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo prop in Props)
+            {
+                //Defining type of data column gives proper data table 
+                var type = (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType);
+                //Setting column names as Property names
+                dataTable.Columns.Add(prop.Name, type);
+            }
+            foreach (T item in items)
+            {
+                var values = new object[Props.Length];
+                for (int i = 0; i < Props.Length; i++)
+                {
+                    //inserting property values to datatable rows
+                    values[i] = Props[i].GetValue(item, null);
+                }
+                dataTable.Rows.Add(values);
+            }
+            //put a breakpoint here and check datatable
+            return dataTable;
+        }
+
+    
+
+  
     }
 }

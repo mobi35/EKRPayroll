@@ -8,11 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
-
-       
-
-
-
         <StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
             <Button  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" >
@@ -63,11 +58,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <!-- DATA GRID END -->
-
-
         <!-- ADD USER DIALOG BOX START -->
         <materialDesign:DialogHost  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
-
             <materialDesign:DialogHost.DialogContent >
                     <StackPanel Margin="40">
 

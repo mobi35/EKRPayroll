@@ -40,8 +40,318 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid>
-     
-       
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="AccountSettings" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="500" Height="400" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal"> 
+                    <StackPanel Orientation="Horizontal" Width="170" Margin="4 15 0 0 ">
+                       
+                        <TextBlock Foreground="Gray" FontSize="12" Width="200" Margin="15 5" TextWrapping="Wrap">
+                           
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" Click="Click_ChangePassword" Margin="0 0 0 8" Content="Change Password"/>
+                         <Button Style="{StaticResource MaterialDesignFlatButton}"  Click="Click_UpdateInformation"  FontSize="12.5" Margin="0 0 0 8" Content="Update Information"/>
+                               <Button Style="{StaticResource MaterialDesignFlatButton}"  Click="Click_ChangePicture"  FontSize="12.5" Margin="0 0 0 8" Content="Change Picture"/>
+                            </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="15 ">
+
+                         
+                            <TextBlock x:Name="ChangeAccountPassword" Visibility="Collapsed" Foreground="Gray" FontSize="12" Width="200" Margin="15 5" TextWrapping="Wrap">
+                              
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Current Password"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <PasswordBox Padding="2 0 0 1" x:Name="CurrentPassword"      Width="200"  Height="25" ></PasswordBox>
+
+                                  </Border>
+                                
+                                      <Border Visibility = "Collapsed"  Width="200"  Height="25" x:Name="CurrentPassword_Validation"   Background="{x:Null}" BorderBrush="Black">
+                                       <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap"  x:Name="CurrentPassword_Validation_Text"   FontSize="12" Text="" />
+                                   </Border>
+                                   <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Old Password"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <PasswordBox Padding="2 0 0 1" x:Name="NewPassword"      Width="200"  Height="25" ></PasswordBox>
+                                  </Border>
+                               
+                                  <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Confirm Old Password"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <PasswordBox Padding="2 0 0 1" x:Name="NewPasswordConfirm"     Width="200"  Height="25" ></PasswordBox>
+                                  </Border>
+                                
+                               <Border  Width="200"  Height="25"   Background="{x:Null}" BorderBrush="Black">
+                                       <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="OldPassword_Validation"  FontSize="12" Text="Requsired" Visibility = "Collapsed"/>
+                                   </Border>
+                                
+                                    <Border  x:Name="CompleteFieldValidation" Visibility = "Collapsed"  Width="200"  Height="25"   Background="{x:Null}" BorderBrush="Black">
+                                       <TextBlock Foreground="Red" Padding="4" x:Name="CompleteFieldValidation_Text" TextWrapping="Wrap"  FontSize="12" Text="Requsired" />
+                                   </Border>
+                                <Button Margin="0 10 0 0" Click="Update_Password" Content="Change Password"/>
+                                
+                           </TextBlock>
+
+                            <TextBlock x:Name="UpdateAccountInformation" Visibility="Collapsed" Foreground="Gray" FontSize="12" Width="200" Margin="15 5" TextWrapping="Wrap">
+                              
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="First Name"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 1" x:Name="FirstName"  Text="{Binding Path=FirstName , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                  </Border>
+                                
+                                   <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Middle Name"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 1" x:Name="MiddleName"  Text="{Binding Path=MiddleName , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                  </Border>
+                                
+                                  <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Last Name"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 1" x:Name="LastName"  Text="{Binding Path=LastName , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                  </Border>
+                                
+                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Email Address"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 1" x:Name="Email"  Text="{Binding Path=Email , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                  </Border>
+                                
+                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Address"/>
+                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 1" x:Name="Address"  Text="{Binding Path=Address , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                  </Border>
+                             
+                                    <Border  Width="200"  Height="25"   Background="{x:Null}" BorderBrush="Black">
+                                       <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="UpdateInformationValidation"  FontSize="12" Text="Requsired" Visibility = "Collapsed"/>
+                                   </Border>
+                                <Button Margin="0 10 0 0" Click="UpdateInformationClick" Content="Update Information"/>
+                                
+                        </TextBlock>
+
+                            <TextBlock x:Name="ChangeAccountPicture" Visibility="Collapsed" Foreground="Gray" FontSize="12" Width="200" Margin="15 5" TextWrapping="Wrap">
+
+                            
+                            <Border BorderBrush="Black" BorderThickness="1" Width="70"  Height="70">  
+                                <Image Width="250"  Stretch="Uniform"  MaxHeight="120" MaxWidth="150" Height="70" Source="{Binding Picture}"/>
+                                </Border>
+                             
+                             
+                                <StackPanel Margin="0 20 50 0">
+                                    <Button Height="25" Width="80" HorizontalAlignment="Right"  Click="Image_Upload"  Style="{StaticResource MaterialDesignFlatButton}"  Content="Upload" />
+                                </StackPanel>
+                                
+                             
+                                <Button Margin="0 10 0 0" Click="Update_ProfilePicture" Content="Change Profile Picture"/>
+                                
+                           </TextBlock>
+                      
+                    </StackPanel>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="15">
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Exit
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+        <materialDesign:DialogHost Background="{x:Null}"  IsOpen="False"  x:Name="AcountDetails" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="630"  Height="590" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" Margin="15 ">
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <materialDesign:PackIcon Kind="AccountBox"/>
+                                        <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Full Name"/>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left" Foreground="Black" FontSize="18" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                    </TextBlock>
+                                </StackPanel>
+                                <Border BorderBrush="Black" BorderThickness="1" Width="70"  Height="70">
+                                    <Image Width="250"  Stretch="Uniform"  MaxHeight="120" MaxWidth="150" Height="70" Source="{Binding Picture}"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Kind="AccountKey"/>
+                                <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Username"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="18" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                            </TextBlock>
+
+
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal">
+
+
+                            <StackPanel Width="90">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="GenderMaleFemale"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Gender"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Gender, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+                            <StackPanel Margin="20 0 0 0" Width="400">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="HomeCircle"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Address"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Address, Mode=TwoWay}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+
+                        </StackPanel>
+
+
+                        <StackPanel  Orientation="Horizontal">
+
+
+                            <StackPanel Width="120">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="Briefcase"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Position"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+                            
+                            
+
+                            <StackPanel Margin="-60 0 0 0" Width="400">
+
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="Coin" Margin="50 0 0 0"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Text="Salary" Margin="2"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Salary, Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="50 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+                            </StackPanel>
+
+                        </StackPanel>
+
+
+                        <StackPanel  Orientation="Horizontal">
+
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+                                  
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Sick Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding SickLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Maternity Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding MaternityLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Paternity Leave"/>
+                                </StackPanel>
+                                <TextBlock   Text="{Binding PaternityLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Personal Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding PersonalLeave}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="80">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Medical Leave"/>
+                                </StackPanel>
+                                <TextBlock  Text="{Binding MedicalLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+
+                            <StackPanel Width="100">
+                                <StackPanel Orientation="Horizontal" >
+
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Bereavement Leave"/>
+                                </StackPanel>
+                                <TextBlock   Text="{Binding BereavementLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+
+
+                    </StackPanel>
+
+                    <StackPanel  Margin="0 240 0 0">
+
+                        <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeDTR" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn FontSize="11" Width="90"  Header="Date" Binding="{Binding DateTimeStamps,StringFormat='d',Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="90"  Header="Time in" Binding="{Binding FirstTimeIn,StringFormat='T',Mode=TwoWay }"/>
+                                <DataGridTextColumn FontSize="11" Width="90"  Header="Time out" Binding="{Binding TimeOut, StringFormat='T',Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="135"  Header="Accumulated (mins)" Binding="{Binding AccumulatedString}"/>
+                                <DataGridTextColumn FontSize="11" Width="80"  Header="Late" Binding="{Binding LateString,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="80"  Header="Overtime" Binding="{Binding OverTime,Mode=TwoWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15">
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Done
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
         <Grid  x:Name="GridBackground" >
            
         </Grid>
@@ -91,15 +401,8 @@
                             <TextBlock Text="Payroll" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Notebook" Width="20" Height="20" Foreground="Green" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Memo" Margin="10"/>
-                            <TextBlock Background="DarkRed" Padding="4" FontSize="13" Foreground="White"  VerticalAlignment="Center" Text="1" Margin="7,10,11,10"/>
-
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                  
+                        <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Leave" Margin="10"/>
@@ -107,18 +410,7 @@
 
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Coin" Width="20" Height="20" Foreground="#FFE6A701" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Loan" Margin="10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="#FF0069C1" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Settings" Margin="10"/>
-                        </StackPanel>
-                    </ListViewItem>
+                    
                     <ListViewItem Height="45" Padding="0" x:Name="AccountLogout" Selected="LogoutAccount">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Logout" Width="20" Height="20"  Foreground="Red" Margin="5" VerticalAlignment="Center"/>
@@ -141,16 +433,17 @@
                             </StackPanel>
                         </ListViewItem>
 
-
-                        <ListViewItem Height="45" Padding="0" Selected="EmployeeOvertime">
+                        <ListViewItem Height="45" Padding="0" Selected="LogoutAccount">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="Timer" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Overtime" Margin="10"/>
-                                <TextBlock Background="DarkRed" Padding="4" FontSize="13" Foreground="White"  VerticalAlignment="Center" Text="1" Margin="7,10,11,10"/>
-
+                                <materialDesign:PackIcon Kind="Logout" Width="20" Height="20"  Foreground="Red" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Logout" Margin="10"/>
                             </StackPanel>
                         </ListViewItem>
 
+
+
+                        <Button  Click="GetAccountDetailsData"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"  Content="My Profile"/>
+                        <Button   Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AccountSettings}"  Content="Settings"/>
 
                     </ListView>
                 </Grid>

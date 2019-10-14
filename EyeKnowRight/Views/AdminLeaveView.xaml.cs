@@ -50,6 +50,14 @@ namespace EyeKnowRight
             leave.Status = "Accepted";
             var user = db.Employees.FirstOrDefault(a => a.UserName == leave.UserName);
             TimeSpan? difference = leave.EndLeave - leave.StartDate;
+            for (int i = 0; i <= difference.Value.TotalDays;i++)
+            {
+                var leaveDate = leave.StartDate.Value.AddDays(i).Date;
+                var getDTR = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user.UserName && a.DateTimeStamps == leaveDate);
+                getDTR.Remarks = "Leave";
+                getDTR.Accumulated = 540;
+                db.SaveChanges();
+            }
             if (leave.TypeOfLeave == "Sick Leave")
             {
                 user.SickLeave -= (int)difference.Value.TotalDays;

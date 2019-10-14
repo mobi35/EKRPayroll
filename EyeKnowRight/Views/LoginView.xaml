@@ -23,11 +23,11 @@
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                     <TextBox Padding="2 0 0 0" x:Name="Password"  Width="200"  Height="25" ></TextBox>
                 </Border>
-                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="PasswordValidation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                <TextBlock  Foreground="Red" Padding="4" TextWrapping="Wrap"  FontSize="12" x:Name="PasswordValidation" Text="{Binding PasswordValidation, Mode=TwoWay}"  Visibility = "Visible"/>
             </StackPanel>
             <TextBlock/>
             
-            <Button Width="200" x:Name="Login">Login</Button>
+            <Button Width="200" Click="Login_Click" x:Name="Login">Login</Button>
         </StackPanel>
     </Grid>
 </Window>

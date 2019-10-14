@@ -56,6 +56,9 @@ namespace EyeKnowRight.Models
 
         public int MedicalLeave { get; set; }
 
+        public int NumberOfTries { get; set; }
+
+        public int DaysContract { get; set; }
 
     }
 }

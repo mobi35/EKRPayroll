@@ -77,10 +77,7 @@ namespace EyeKnowRight.ViewModels
                     payroll.IsActive = true;
                     db.Payrolls.Add(payroll);
                     
-                    foreach (var list in getUserList)
-                    {
-                        UpdateDailyTimeRecord(list.UserName);
-                    }
+                   
                     db.SaveChanges();
                 }
             }
@@ -109,10 +106,7 @@ namespace EyeKnowRight.ViewModels
                     payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 25);
 
                     db.Payrolls.Add(payroll);
-                    foreach (var list in getUserList)
-                    {
-                        UpdateDailyTimeRecord(list.UserName);
-                    }
+                  
                     db.SaveChanges();
                 }
             }
@@ -120,46 +114,6 @@ namespace EyeKnowRight.ViewModels
         }
 
 
-        public void UpdateDailyTimeRecord(string username)
-        {
-            var dateNow = DateTime.Now;
-            var firstCutOffDate = DateTime.Now;
-
-            if (dateNow.Day >= 25 && dateNow.Day <= 31 || dateNow.Day >= 1 && dateNow.Day <= 10)
-            {
-                var daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-
-                for (int i = 26; i <= daysInMonth; i++)
-                {
-                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
-                    dailyTimeRecord.UserName = username;
-                    db.DailyTimeRecords.Add(dailyTimeRecord);
-                    db.SaveChanges();
-                }
-
-                for (int i = 1; i <= 10; i++)
-                {
-                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, i);
-                    dailyTimeRecord.UserName = username;
-                    db.DailyTimeRecords.Add(dailyTimeRecord);
-                    db.SaveChanges();
-                }
-            }
-
-            else
-            {
-                for (int i = 11; i <= 25; i++)
-                {
-                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
-                    dailyTimeRecord.UserName = username;
-                    db.DailyTimeRecords.Add(dailyTimeRecord);
-                    db.SaveChanges();
-                }
-            }
-        }
 
         public void ComputeSalary(DateTime? start, DateTime? end)
         {

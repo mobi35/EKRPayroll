@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EyeKnowRight.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace EyeKnowRight.Views
         public LoginView()
         {
             InitializeComponent();
+        }
+        EyeKnowRightDB db = new EyeKnowRightDB();
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+          
         }
     }
 }

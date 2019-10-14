@@ -182,45 +182,21 @@ namespace EyeKnowRight
             return numberOfWrong;
         }
 
-        public void UpdateDailyTimeRecord(string username)
+        public void UpdateDailyTimeRecord(string username, int months )
         {
+            var computedDateMonths = DateTime.Now.AddMonths(months);
+            TimeSpan? totalDaysOfMonths = computedDateMonths - DateTime.Now;
             var dateNow = DateTime.Now;
-            var firstCutOffDate = DateTime.Now;
-
-            if (dateNow.Day > 25 && dateNow.Day <= 31 || dateNow.Day >= 1 && dateNow.Day < 10)
+           
+            for (int i = 0; i <= totalDaysOfMonths.Value.TotalDays; i++)
             {
-                var daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                for (int i = 26; i <= daysInMonth; i++)
-                {
-                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
-                    dailyTimeRecord.UserName = username;
-                    db.DailyTimeRecords.Add(dailyTimeRecord);
-                    db.SaveChanges();
-                }
-
-                for (int i = 1; i <= 10; i++)
-                {
-                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, i);
-                    dailyTimeRecord.UserName = username;
-                    db.DailyTimeRecords.Add(dailyTimeRecord);
-                    db.SaveChanges();
-                }
-
+                DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
+                dailyTimeRecord.DateTimeStamps = DateTime.Now.AddDays(i);
+                dailyTimeRecord.UserName = username;
+                db.DailyTimeRecords.Add(dailyTimeRecord);
+                db.SaveChanges();
             }
 
-            else
-            {
-                for (int i = 11; i <= 25; i++)
-                {
-                    DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
-                    dailyTimeRecord.DateTimeStamps = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i);
-                    dailyTimeRecord.UserName = username;
-                    db.DailyTimeRecords.Add(dailyTimeRecord);
-                    db.SaveChanges();
-                }
-            }
 
 
         }
@@ -265,12 +241,12 @@ namespace EyeKnowRight
             addNew.DateRegistered = DateTime.Now;
             addNew.EmployeeID = "Tanjiro";
             addNew.Age = 69;
-      
+             addNew.DaysContract = 12;
             db.Employees.Add(addNew);
 
             db.SaveChanges();
 
-             UpdateDailyTimeRecord(UserName.Text);
+             UpdateDailyTimeRecord(UserName.Text,12);
 
              MaterialDesign.IsOpen = true;
                    

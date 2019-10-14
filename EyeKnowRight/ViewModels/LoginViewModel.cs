@@ -41,23 +41,40 @@ namespace EyeKnowRight.ViewModels
             get { return password; }
             set { password = value; }
         }
+        private string passwordValidation ;
+        public string PasswordValidation
+        {
+            get { return passwordValidation; }
+            set { passwordValidation = value;
+             
+            }
+        }
 
-
-
+        
 
         public void Login()
         {
-
+          
             var employee = dbz.Employees.Where(a => a.UserName == username && a.Password == password).ToList().Count();
-            try {  
-            if(employee == 1)
-            {
+          
+            var userModel = dbz.Employees.Where(a => a.UserName == username).FirstOrDefault();
+         
+            if(userModel != null) { 
+            if (userModel.NumberOfTries > 5 )
+                {
+                    passwordValidation = "Maximum tries";
+                    NotifyOfPropertyChange("PasswordValidation");
+
+                }
+            } else if (employee == 1)
+                {
+                
                     var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
                 var date = DateTime.Now.Date;
                 var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
                     
                     dtrs.TimeIn = DateTime.Now;
-
+                    userModel.NumberOfTries = 0;
                     if (dtrs.FirstTimeIn == null)
                     {
                         dtrs.FirstTimeIn = DateTime.Now;
@@ -72,21 +89,25 @@ namespace EyeKnowRight.ViewModels
 
                     }
                     dbz.SaveChanges();
-
+                   
                 Application.Current.Properties["UserName"] = Username;
                     windowManager.ShowWindow(shellViewModel);
                     TryClose();
                 }
                 else
             {
-                MessageBox.Show("Failed");
+                    var checkTriesEmployee = dbz.Employees.FirstOrDefault(a => a.UserName == username);
+                    if (checkTriesEmployee != null)
+                    {
+                        checkTriesEmployee.NumberOfTries += 1;
+                        dbz.SaveChanges();
+                    }
+                passwordValidation = "Wrong information";
+                NotifyOfPropertyChange("PasswordValidation");
             }
 
 
-            }catch(Exception e)
-            {
-
-            }
+           
          
         }
 

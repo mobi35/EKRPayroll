@@ -37,8 +37,7 @@ namespace EyeKnowRight.Models
 
         public DateTime? DateTimeStamps { get; set; }
 
-
-
+        public string Remarks { get; set; }
 
     }
 }

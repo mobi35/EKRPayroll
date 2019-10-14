@@ -159,6 +159,10 @@
     <Compile Include="Migrations\201910130914400_ccxz.designer.cs">
       <DependentUpon>201910130914400_ccxz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910140250393_bandura.cs" />
+    <Compile Include="Migrations\201910140250393_bandura.designer.cs">
+      <DependentUpon>201910140250393_bandura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
@@ -238,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910130914400_ccxz.resx">
       <DependentUpon>201910130914400_ccxz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910140250393_bandura.resx">
+      <DependentUpon>201910140250393_bandura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

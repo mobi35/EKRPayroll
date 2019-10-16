@@ -4,5 +4,8 @@
 
     partial class EKRDataset
     {
+        partial class DeductionsDataTable
+        {
+        }
     }
 }

@@ -341,7 +341,7 @@
                                     <ComboBox  Padding="5 7   0 1" x:Name="Position"  Text="{Binding Path=Position , Mode=TwoWay}"   Width="200"  Height="25">
                                         <ComboBoxItem>Admin</ComboBoxItem>
                                         <ComboBoxItem>Employee</ComboBoxItem>
-                                        <ComboBoxItem>Intern</ComboBoxItem>
+                                        <ComboBoxItem>HR Assistant</ComboBoxItem>
                                     </ComboBox>
                                 </Border>
 

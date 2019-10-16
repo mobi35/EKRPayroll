@@ -58,13 +58,22 @@ namespace EyeKnowRight.ViewModels
             var employee = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault();
 
             var userModel = dbz.Employees.Where(a => a.UserName == username).FirstOrDefault();
-         
-            if(userModel != null && employee == null) { 
+
+            if (userModel == null)
+            {
+                passwordValidation = "Wrong Information";
+                NotifyOfPropertyChange("PasswordValidation");
+            }
+            else if(userModel != null && employee == null) { 
             if (userModel.NumberOfTries > 5 )
                 {
                     passwordValidation = "Maximum tries";
                     NotifyOfPropertyChange("PasswordValidation");
 
+                }else
+                {
+                    passwordValidation = "Wrong Password";
+                    NotifyOfPropertyChange("PasswordValidation");
                 }
             } else if (employee != null)
                 {

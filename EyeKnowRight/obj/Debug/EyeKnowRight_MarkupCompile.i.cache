@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ADRIAN\Desktop\Footlong\ekrpayroll\EyeKnowRight\obj\Debug\
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\
 EyeKnowRight
 none
 false
 DEBUG;TRACE
-C:\Users\ADRIAN\Desktop\Footlong\ekrpayroll\EyeKnowRight\App.xaml
-8-1298170010
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\App.xaml
+9-1515915613
 
-42-375222496
-90715589774
-Views\DashboardView.xaml;Views\AdminLeaveView.xaml;Views\OvertimeView.xaml;Views\EmployeeLeaveView.xaml;Views\PayrollView.xaml;Views\AccountView.xaml;Views\LoginView.xaml;Views\ShellView.xaml;
+431898727982
+90-405448608
+Views\DashboardView.xaml;Views\AdminLeaveView.xaml;Views\OvertimeView.xaml;Views\EmployeeLeaveView.xaml;Views\PayrollPrintView.xaml;Views\PayrollView.xaml;Views\AccountView.xaml;Views\LoginView.xaml;Views\ShellView.xaml;
 
 False
 

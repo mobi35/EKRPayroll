@@ -279,11 +279,27 @@ namespace EyeKnowRight.Reports {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DeductionsDataTable : global::System.Data.TypedTableBase<DeductionsRow> {
             
-            private global::System.Data.DataColumn columnBasicSalary;
+            private global::System.Data.DataColumn columnPayrollViewKey;
             
             private global::System.Data.DataColumn columnUserName;
             
+            private global::System.Data.DataColumn columnLateDeduction;
+            
+            private global::System.Data.DataColumn columnBasicSalary;
+            
+            private global::System.Data.DataColumn columnAccumulated;
+            
+            private global::System.Data.DataColumn columnSSS;
+            
             private global::System.Data.DataColumn columnTotalSalary;
+            
+            private global::System.Data.DataColumn columnPayrollStart;
+            
+            private global::System.Data.DataColumn columnPayrollEnd;
+            
+            private global::System.Data.DataColumn columnTIN;
+            
+            private global::System.Data.DataColumn columnPagibig;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -320,9 +336,9 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn BasicSalaryColumn {
+            public global::System.Data.DataColumn PayrollViewKeyColumn {
                 get {
-                    return this.columnBasicSalary;
+                    return this.columnPayrollViewKey;
                 }
             }
             
@@ -336,9 +352,73 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LateDeductionColumn {
+                get {
+                    return this.columnLateDeduction;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BasicSalaryColumn {
+                get {
+                    return this.columnBasicSalary;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AccumulatedColumn {
+                get {
+                    return this.columnAccumulated;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SSSColumn {
+                get {
+                    return this.columnSSS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TotalSalaryColumn {
                 get {
                     return this.columnTotalSalary;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PayrollStartColumn {
+                get {
+                    return this.columnPayrollStart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PayrollEndColumn {
+                get {
+                    return this.columnPayrollEnd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TINColumn {
+                get {
+                    return this.columnTIN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PagibigColumn {
+                get {
+                    return this.columnPagibig;
                 }
             }
             
@@ -379,12 +459,20 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DeductionsRow AddDeductionsRow(string BasicSalary, string UserName, string TotalSalary) {
+            public DeductionsRow AddDeductionsRow(string PayrollViewKey, string UserName, string LateDeduction, string BasicSalary, string Accumulated, string SSS, string TotalSalary, string PayrollStart, string PayrollEnd, string TIN, string Pagibig) {
                 DeductionsRow rowDeductionsRow = ((DeductionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        BasicSalary,
+                        PayrollViewKey,
                         UserName,
-                        TotalSalary};
+                        LateDeduction,
+                        BasicSalary,
+                        Accumulated,
+                        SSS,
+                        TotalSalary,
+                        PayrollStart,
+                        PayrollEnd,
+                        TIN,
+                        Pagibig};
                 rowDeductionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDeductionsRow);
                 return rowDeductionsRow;
@@ -407,20 +495,44 @@ namespace EyeKnowRight.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnBasicSalary = base.Columns["BasicSalary"];
+                this.columnPayrollViewKey = base.Columns["PayrollViewKey"];
                 this.columnUserName = base.Columns["UserName"];
+                this.columnLateDeduction = base.Columns["LateDeduction"];
+                this.columnBasicSalary = base.Columns["BasicSalary"];
+                this.columnAccumulated = base.Columns["Accumulated"];
+                this.columnSSS = base.Columns["SSS"];
                 this.columnTotalSalary = base.Columns["TotalSalary"];
+                this.columnPayrollStart = base.Columns["PayrollStart"];
+                this.columnPayrollEnd = base.Columns["PayrollEnd"];
+                this.columnTIN = base.Columns["TIN"];
+                this.columnPagibig = base.Columns["Pagibig"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnBasicSalary = new global::System.Data.DataColumn("BasicSalary", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBasicSalary);
+                this.columnPayrollViewKey = new global::System.Data.DataColumn("PayrollViewKey", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPayrollViewKey);
                 this.columnUserName = new global::System.Data.DataColumn("UserName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUserName);
+                this.columnLateDeduction = new global::System.Data.DataColumn("LateDeduction", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLateDeduction);
+                this.columnBasicSalary = new global::System.Data.DataColumn("BasicSalary", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBasicSalary);
+                this.columnAccumulated = new global::System.Data.DataColumn("Accumulated", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAccumulated);
+                this.columnSSS = new global::System.Data.DataColumn("SSS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSSS);
                 this.columnTotalSalary = new global::System.Data.DataColumn("TotalSalary", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalSalary);
+                this.columnPayrollStart = new global::System.Data.DataColumn("PayrollStart", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPayrollStart);
+                this.columnPayrollEnd = new global::System.Data.DataColumn("PayrollEnd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPayrollEnd);
+                this.columnTIN = new global::System.Data.DataColumn("TIN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTIN);
+                this.columnPagibig = new global::System.Data.DataColumn("Pagibig", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPagibig);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -563,17 +675,17 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string BasicSalary {
+            public string PayrollViewKey {
                 get {
                     try {
-                        return ((string)(this[this.tableDeductions.BasicSalaryColumn]));
+                        return ((string)(this[this.tableDeductions.PayrollViewKeyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BasicSalary\' in table \'Deductions\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PayrollViewKey\' in table \'Deductions\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeductions.BasicSalaryColumn] = value;
+                    this[this.tableDeductions.PayrollViewKeyColumn] = value;
                 }
             }
             
@@ -595,6 +707,70 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string LateDeduction {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.LateDeductionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LateDeduction\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.LateDeductionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BasicSalary {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.BasicSalaryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BasicSalary\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.BasicSalaryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Accumulated {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.AccumulatedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Accumulated\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.AccumulatedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SSS {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.SSSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SSS\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.SSSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalSalary {
                 get {
                     try {
@@ -611,14 +787,78 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsBasicSalaryNull() {
-                return this.IsNull(this.tableDeductions.BasicSalaryColumn);
+            public string PayrollStart {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.PayrollStartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PayrollStart\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.PayrollStartColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetBasicSalaryNull() {
-                this[this.tableDeductions.BasicSalaryColumn] = global::System.Convert.DBNull;
+            public string PayrollEnd {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.PayrollEndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PayrollEnd\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.PayrollEndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TIN {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.TINColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIN\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.TINColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Pagibig {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeductions.PagibigColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Pagibig\' in table \'Deductions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeductions.PagibigColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPayrollViewKeyNull() {
+                return this.IsNull(this.tableDeductions.PayrollViewKeyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPayrollViewKeyNull() {
+                this[this.tableDeductions.PayrollViewKeyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -635,6 +875,54 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsLateDeductionNull() {
+                return this.IsNull(this.tableDeductions.LateDeductionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetLateDeductionNull() {
+                this[this.tableDeductions.LateDeductionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBasicSalaryNull() {
+                return this.IsNull(this.tableDeductions.BasicSalaryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBasicSalaryNull() {
+                this[this.tableDeductions.BasicSalaryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAccumulatedNull() {
+                return this.IsNull(this.tableDeductions.AccumulatedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAccumulatedNull() {
+                this[this.tableDeductions.AccumulatedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSSSNull() {
+                return this.IsNull(this.tableDeductions.SSSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSSSNull() {
+                this[this.tableDeductions.SSSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTotalSalaryNull() {
                 return this.IsNull(this.tableDeductions.TotalSalaryColumn);
             }
@@ -643,6 +931,54 @@ namespace EyeKnowRight.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTotalSalaryNull() {
                 this[this.tableDeductions.TotalSalaryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPayrollStartNull() {
+                return this.IsNull(this.tableDeductions.PayrollStartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPayrollStartNull() {
+                this[this.tableDeductions.PayrollStartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPayrollEndNull() {
+                return this.IsNull(this.tableDeductions.PayrollEndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPayrollEndNull() {
+                this[this.tableDeductions.PayrollEndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTINNull() {
+                return this.IsNull(this.tableDeductions.TINColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTINNull() {
+                this[this.tableDeductions.TINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPagibigNull() {
+                return this.IsNull(this.tableDeductions.PagibigColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPagibigNull() {
+                this[this.tableDeductions.PagibigColumn] = global::System.Convert.DBNull;
             }
         }
         

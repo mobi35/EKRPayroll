@@ -126,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\PayrollPrintView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PayrollView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -182,6 +186,9 @@
     </Compile>
     <Compile Include="Views\EmployeeLeaveView.xaml.cs">
       <DependentUpon>EmployeeLeaveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PayrollPrintView.xaml.cs">
+      <DependentUpon>PayrollPrintView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PayrollView.xaml.cs">
       <DependentUpon>PayrollView.xaml</DependentUpon>

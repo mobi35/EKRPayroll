@@ -33,13 +33,21 @@ namespace EyeKnowRight.Views
                 if(employee.Position == "Admin")
                 {
                     AdminPanel.Visibility = Visibility.Visible;
+                    HRPanel.Visibility = Visibility.Collapsed;
                     UserPanel.Visibility = Visibility.Collapsed;
                 }
-                else
+                else if(employee.Position == "Employee")
                 {
                     UserPanel.Visibility = Visibility.Visible;
                     AdminPanel.Visibility = Visibility.Collapsed;
-                  
+                    HRPanel.Visibility = Visibility.Collapsed;
+
+                }
+                else
+                {
+                    HRPanel.Visibility = Visibility.Visible;
+                    AdminPanel.Visibility = Visibility.Collapsed;
+                    UserPanel.Visibility = Visibility.Collapsed;
                 }
             }
             catch (Exception e)

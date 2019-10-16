@@ -10,10 +10,7 @@
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
             
-        <WindowsFormsHost Name="WFH"  HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="800" >
-            <rv:ReportViewer ShowRefreshButton="false" ShowFindControls="False" ShowContextMenu="false" ShowCredentialPrompts="false" ShowPromptAreaButton="false" ShowStopButton="false"  ShowZoomControl="false" ShowParameterPrompts="False"  ShowPageNavigationControls="False" ShowBackButton="False" ShowProgress="False" ShowDocumentMapButton="False" x:Name="ReportViewerDemo"/>
-        </WindowsFormsHost>
-
+     
         <!-- DATA GRID START -->
         <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="PayrollGrid" Height="400" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   

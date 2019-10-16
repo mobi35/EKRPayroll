@@ -110,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\AppraisalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DashboardView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,6 +127,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\EmployeeLeaveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EmployeePrintView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DailyAttendanceReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -158,6 +170,22 @@
     <Compile Include="Migrations\201910141606555_ZXXZ.designer.cs">
       <DependentUpon>201910141606555_ZXXZ.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910161649246_2.cs" />
+    <Compile Include="Migrations\201910161649246_2.designer.cs">
+      <DependentUpon>201910161649246_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910161753109_asd.cs" />
+    <Compile Include="Migrations\201910161753109_asd.designer.cs">
+      <DependentUpon>201910161753109_asd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910161802034_123.cs" />
+    <Compile Include="Migrations\201910161802034_123.designer.cs">
+      <DependentUpon>201910161802034_123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910161812313_12.cs" />
+    <Compile Include="Migrations\201910161812313_12.designer.cs">
+      <DependentUpon>201910161812313_12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
     <Compile Include="Reports\EKRDataset.cs">
@@ -175,6 +203,9 @@
     <Compile Include="ViewModels\PayrollViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="Views\AppraisalView.xaml.cs">
+      <DependentUpon>AppraisalView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
@@ -186,6 +217,12 @@
     </Compile>
     <Compile Include="Views\EmployeeLeaveView.xaml.cs">
       <DependentUpon>EmployeeLeaveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeePrintView.xaml.cs">
+      <DependentUpon>EmployeePrintView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DailyAttendanceReport.xaml.cs">
+      <DependentUpon>DailyAttendanceReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PayrollPrintView.xaml.cs">
       <DependentUpon>PayrollPrintView.xaml</DependentUpon>
@@ -243,10 +280,24 @@
     <EmbeddedResource Include="Migrations\201910141606555_ZXXZ.resx">
       <DependentUpon>201910141606555_ZXXZ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910161649246_2.resx">
+      <DependentUpon>201910161649246_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910161753109_asd.resx">
+      <DependentUpon>201910161753109_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910161802034_123.resx">
+      <DependentUpon>201910161802034_123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910161812313_12.resx">
+      <DependentUpon>201910161812313_12.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailyReportPrint.rdlc" />
+    <EmbeddedResource Include="Reports\EmployeeView.rdlc" />
     <EmbeddedResource Include="Reports\PayrollReport.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

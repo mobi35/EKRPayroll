@@ -82,6 +82,12 @@ namespace EyeKnowRight.Views
 
         }
 
+        private void AppraisalSelect(object sender, RoutedEventArgs e)
+        {
+            FuckingGrid.Children.Add(new AppraisalView());
+
+        }
+
         private void DashboardSelect(object sender, RoutedEventArgs e)
         {
             FuckingGrid.Children.Add(new DashboardView());

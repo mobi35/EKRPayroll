@@ -1,4 +1,5 @@
 ﻿using EyeKnowRight.Models;
+using EyeKnowRight.Views;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
@@ -29,6 +30,8 @@ namespace EyeKnowRight
         private BackgroundWorker _backGroundWorker = new BackgroundWorker();
 
         private int workerState;
+
+        List<DailyTimeRecord> dailyTimeRecord  =new List<DailyTimeRecord>();
 
         public event PropertyChangedEventHandler PropertyChanged;
         public int WorkerState
@@ -202,8 +205,14 @@ namespace EyeKnowRight
 
         }
 
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var xx = (Employee)EmployeeGrid.SelectedItem;
+            //MessageBox.Show(xx.StartPayroll + " ");
+            EmployeePrintView employeePrint = new EmployeePrintView(xx.EmployeePK);
+            employeePrint.Show();
+        }
 
-     
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -256,7 +265,7 @@ namespace EyeKnowRight
             addNew.SSSNumber = SSSNumber.Text;
             addNew.PagibigNumber = PagibigNumber.Text;
             addNew.TINNumber = TINNumber.Text;
-
+                    addNew.LastAppraiseDate = null;
             addNew.Salary = Double.Parse(Salary.Text);
             addNew.JobTitle = JobTitle.SelectedValue.ToString();
             addNew.UserName = UserName.Text;
@@ -394,6 +403,8 @@ namespace EyeKnowRight
             StepsCounter.Text = step.ToString();
         }
 
+        
+
         private void NextStep_Click(object sender, RoutedEventArgs e)
         {
             if(step < 5) {  
@@ -401,6 +412,18 @@ namespace EyeKnowRight
             }
             StepChangeVisibility(step);
             StepsCounter.Text = step.ToString();
+        }
+        public int AttendancePK = 0;
+
+        private void GetAttendance(object sender, RoutedEventArgs e)
+        {
+            int attendancePK = (int)((Button)sender).Tag;
+         
+             var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == attendancePK);
+            AttendancePK = employee.EmployeePK;
+            EmployeeAttendance.ItemsSource = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName).ToList();
+
+
         }
 
         private void StepChangeVisibility(int step)
@@ -568,6 +591,56 @@ namespace EyeKnowRight
                     imageString = ms.ToArray();
                 }
 
+            }
+        }
+        
+
+        private void PrintAttendance(object sender, RoutedEventArgs e)
+        {
+            DailyAttendanceReport dailyAttendance = new DailyAttendanceReport(dailyTimeRecord);
+            dailyAttendance.Show();
+
+        }
+            private void StartDateUpdate(object sender, SelectionChangedEventArgs e)
+        {
+
+
+           if(AttendanceStartDate.SelectedDate != null & AttendanceEndDate.SelectedDate != null)
+            {
+                if(AttendanceStartDate.SelectedDate > AttendanceEndDate.SelectedDate)
+                { 
+                    MessageBox.Show("Please enter a valid date");
+
+                }
+                else
+                {
+                    var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == AttendancePK);
+                    var startDate = AttendanceStartDate.SelectedDate.Value.Date;
+                    var endDate = AttendanceEndDate.SelectedDate.Value.Date;
+                    var dailyRecords = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName && a.DateTimeStamps >= startDate && a.DateTimeStamps <= endDate).ToList();
+                    EmployeeAttendance.ItemsSource = dailyRecords;
+                    dailyTimeRecord = dailyRecords;
+                }
+            }
+        }
+
+        private void EndDateUpdate(object sender, SelectionChangedEventArgs e)
+        {
+            if (AttendanceStartDate.SelectedDate != null & AttendanceEndDate.SelectedDate != null)
+            {
+                if (AttendanceStartDate.SelectedDate > AttendanceEndDate.SelectedDate)
+                {
+                    MessageBox.Show("Please enter a valid date");
+                }
+                else
+                {
+                    var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == AttendancePK);
+                    var startDate = AttendanceStartDate.SelectedDate.Value.Date;
+                    var endDate = AttendanceEndDate.SelectedDate.Value.Date;
+                   var dailyRecords = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName && a.DateTimeStamps >= startDate && a.DateTimeStamps <= endDate).ToList();
+                    EmployeeAttendance.ItemsSource = dailyRecords;
+                    dailyTimeRecord = dailyRecords;
+                }
             }
         }
     }

@@ -67,7 +67,7 @@ namespace EyeKnowRight.Models
         public string TINNumber { get; set; }
         public string PagibigNumber { get; set; }
 
-        
+        public DateTime? LastAppraiseDate { get; set; }
 
             
     }

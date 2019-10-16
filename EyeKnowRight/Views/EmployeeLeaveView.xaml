@@ -77,7 +77,8 @@
                     </Button>
 
 
-                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Choose Start Date"/>
+                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Choose 
+                               "/>
                     <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                         <DatePicker HorizontalAlignment="Right"   VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="StartLeaveDate"   Width="200"  Height="25" >
 

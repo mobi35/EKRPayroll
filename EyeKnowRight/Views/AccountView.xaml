@@ -67,11 +67,20 @@
                                 <Button Width="70" Margin="-30"   Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
                                     <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
                                 </Button>
+
+                                <Button Width="70" Margin="-30"   Height="23" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
+                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
+                                </Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            <DataGrid.ItemContainerStyle >
+                <Style TargetType="{x:Type DataGridRow}" >
+                    <EventSetter  Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
         </DataGrid>
         <!-- DATA GRID END -->
 
@@ -680,6 +689,68 @@
 
                         </TextBlock>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="AccountDeleteYes" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Yes
+                        </Button>
+
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            No
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+
+        <materialDesign:DialogHost Background="{x:Null}"  IsOpen="False"  Identifier="RootDialog" x:Name="ViewAttendance"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+              
+                <Grid Background="{x:Null}" Width="700" Height="500" HorizontalAlignment="Center">
+                    
+                    <StackPanel Margin="0 20" HorizontalAlignment="Center" Orientation="Horizontal">
+                     
+                        <StackPanel Width="200">
+                        <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Start Date"/>
+                        <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                            <DatePicker HorizontalAlignment="Right"   VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="AttendanceStartDate"   Width="200"  Height="25" SelectedDateChanged="StartDateUpdate" >
+
+                            </DatePicker>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Width="200" Margin="40 0 0 0">
+                        <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="End Date"/>
+                        <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <DatePicker SelectedDateChanged="EndDateUpdate"  HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="AttendanceEndDate"   Width="200"  Height="25" >
+
+                            </DatePicker>
+                        </Border>
+                    </StackPanel>
+
+                        <StackPanel Width="200" Margin="40 0 0 0">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Print"/>
+                              
+                            <Button Click="PrintAttendance">Print</Button>
+                        </StackPanel>
+                      
+                    </StackPanel>
+
+
+                    <DataGrid Margin="20 50 50 50"  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeAttendance" SelectionMode="Extended" Height="300" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Date" Binding="{Binding DateTimeStamps,StringFormat='d',Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Time in" Binding="{Binding FirstTimeIn,StringFormat='T',Mode=TwoWay }"/>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Time out" Binding="{Binding TimeOut, StringFormat='T',Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="150"  Header="Accumulated (mins)" Binding="{Binding AccumulatedString}"/>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Late" Binding="{Binding LateString,Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Overtime" Binding="{Binding OverTime,Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
                         <Button Click="AccountDeleteYes" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
                             Yes

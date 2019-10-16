@@ -754,3 +754,13 @@ C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnow
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\PayrollPrintView.g.cs
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\PayrollPrintView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EmployeePrintView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EmployeePrintView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\DailyAttendanceReport.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\DailyAttendanceReport.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\AppraisalView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\AppraisalView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._2.resources
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.asd.resources
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._123.resources
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._12.resources

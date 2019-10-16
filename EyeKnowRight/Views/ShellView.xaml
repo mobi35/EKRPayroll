@@ -401,7 +401,13 @@
                             <TextBlock Text="Payroll" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
-                  
+
+                        <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Appraisal" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
                         <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>

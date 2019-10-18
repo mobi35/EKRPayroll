@@ -213,6 +213,16 @@ namespace EyeKnowRight
             employeePrint.Show();
         }
 
+
+        private void AppraisalDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var xx = (Evaluation)EmployeeAppraisal.SelectedItem;
+            //MessageBox.Show(xx.StartPayroll + " ");
+            EvaluationPrintView evaluation = new EvaluationPrintView(xx.EvaluationPK);
+            evaluation.Show();
+        }
+
+
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -253,19 +263,18 @@ namespace EyeKnowRight
             addNew.Password = Password.Password;
             addNew.Address = Street.Text + ", " + City.Text;
             addNew.BirthDate = BirthDate.SelectedDate;
-                    addNew.Position = Position.Text;
-
+            addNew.Position = Position.Text;
             addNew.PersonalLeave = Int32.Parse(PersonalLeave.Text);
             addNew.MaternityLeave = Int32.Parse(MaternityLeave.Text);
             addNew.PaternityLeave = Int32.Parse(PaternityLeave.Text);
             addNew.SickLeave = Int32.Parse(SickLeave.Text);
             addNew.BereavementLeave = Int32.Parse(BereavementLeave.Text);
             addNew.MedicalLeave = Int32.Parse(MedicalLeave.Text);
-
+            addNew.Department = Department.Text;
             addNew.SSSNumber = SSSNumber.Text;
             addNew.PagibigNumber = PagibigNumber.Text;
             addNew.TINNumber = TINNumber.Text;
-                    addNew.LastAppraiseDate = null;
+            addNew.LastAppraiseDate = null;
             addNew.Salary = Double.Parse(Salary.Text);
             addNew.JobTitle = JobTitle.SelectedValue.ToString();
             addNew.UserName = UserName.Text;
@@ -309,7 +318,7 @@ namespace EyeKnowRight
                     employee.SickLeave = Int32.Parse(SickLeave.Text);
                     employee.BereavementLeave = Int32.Parse(BereavementLeave.Text);
                     employee.MedicalLeave = Int32.Parse(MedicalLeave.Text);
-
+                    employee.Department = Department.Text;
                     employee.SSSNumber = SSSNumber.Text;
                     employee.PagibigNumber = PagibigNumber.Text;
                     employee.TINNumber = TINNumber.Text;
@@ -331,7 +340,17 @@ namespace EyeKnowRight
             
         }
 
-        private void GetEdit(object sender, RoutedEventArgs e)
+        
+
+
+       private void GetAppraisal(object sender, RoutedEventArgs e)
+        {
+            string userName = (string)((Button)sender).Tag;
+            var getEmployeeAppraisal = db.Evaluations.Where(a => a.UserName == userName).ToList();
+            EmployeeAppraisal.ItemsSource = getEmployeeAppraisal;
+
+        }
+       private void GetEdit(object sender, RoutedEventArgs e)
         {
 
           

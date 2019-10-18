@@ -21,7 +21,7 @@
             <StackPanel Width="200">
                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Password"/>
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Padding="2 0 0 0" x:Name="Password"  Width="200"  Height="25" ></TextBox>
+                    <PasswordBox Padding="2 0 0 0" x:Name="Password"  Width="200"  Height="25" ></PasswordBox>
                 </Border>
                 <TextBlock  Foreground="Red" Padding="4" TextWrapping="Wrap"  FontSize="12" x:Name="PasswordValidation" Text="{Binding PasswordValidation, Mode=TwoWay}"  Visibility = "Visible"/>
             </StackPanel>

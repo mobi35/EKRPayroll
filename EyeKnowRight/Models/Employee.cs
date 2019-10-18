@@ -69,6 +69,7 @@ namespace EyeKnowRight.Models
 
         public DateTime? LastAppraiseDate { get; set; }
 
+        public string Department { get; set; }
             
     }
 }

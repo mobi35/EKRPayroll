@@ -100,6 +100,8 @@ namespace EyeKnowRight.Views
             evaluation.Answer8 = (int)Answer8.Value;
             evaluation.Answer9 = (int)Answer9.Value;
             evaluation.Answer10 = (int)Answer10.Value;
+            evaluation.TotalScore = ( (int)Answer1.Value + (int)Answer2.Value + (int)Answer3.Value + (int)Answer4.Value + (int)Answer5.Value +
+                 (int)Answer6.Value + (int)Answer7.Value + (int)Answer8.Value + (int)Answer9.Value + (int)Answer10.Value ) / 10;
             evaluation.Comment = Comments.Text;
             evaluation.Remarks = Remarks.Text;
             evaluation.DateAppraise = DateTime.Now;

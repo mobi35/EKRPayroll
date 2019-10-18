@@ -6,25 +6,58 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.18056in</Width>
+              <Width>1.43576in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.18056in</Width>
+              <Width>1.34549in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.54167in</Width>
+              <Width>1.34549in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.7066in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.18056in</Width>
+              <Width>1.16493in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.34549in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
               <Height>0.30729in</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Date Time Stamps</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox1">
@@ -94,7 +127,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Accumulated String</Value>
+                              <Value>Accumulated</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -124,7 +157,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Late String</Value>
+                              <Value>Late</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -182,6 +215,38 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="DateTimeStamps">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!DateTimeStamps.Value</Value>
+                              <Style>
+                                <Format>M/d/yyyy</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>DateTimeStamps</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="TimeIn">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -190,7 +255,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TimeIn.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>hh:mm tt</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -220,7 +287,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TimeOut.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>h:mm tt</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -242,7 +311,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="AccumulatedString1">
+                    <Textbox Name="AccumulatedString">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -256,7 +325,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>AccumulatedString1</rd:DefaultName>
+                      <rd:DefaultName>AccumulatedString</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -341,6 +410,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -355,9 +425,9 @@
         </TablixRowHierarchy>
         <DataSetName>attendance</DataSetName>
         <Top>2.49875in</Top>
-        <Left>2.15847in</Left>
+        <Left>1.16889in</Left>
         <Height>0.61458in</Height>
-        <Width>6.08333in</Width>
+        <Width>8.34377in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -550,6 +620,10 @@
         </Field>
         <Field Name="UserName">
           <DataField>UserName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DateTimeStamps">
+          <DataField>DateTimeStamps</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

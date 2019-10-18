@@ -764,3 +764,6 @@ C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnow
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.asd.resources
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._123.resources
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._12.resources
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EvaluationPrintView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EvaluationPrintView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.zxc.resources

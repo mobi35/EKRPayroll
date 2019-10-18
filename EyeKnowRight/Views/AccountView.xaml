@@ -47,7 +47,7 @@
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="OnSelect" >
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="11" Width="100"  Header="Employee Id" Binding="{Binding EmployeeID}"/>
+               
                 <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Middle Name" Binding="{Binding MiddleName}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
@@ -60,17 +60,22 @@
                             <StackPanel  Orientation="Horizontal">
                                 
                                 <Button Width="70"  Height="23" Click="GetEdit" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
-                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
+                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="Green" Kind="AccountEdit"/>
                                 </Button>
 
 
-                                <Button Width="70" Margin="-30"   Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
+                                <Button Width="70"  Margin="-30" Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
                                     <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
                                 </Button>
 
-                                <Button Width="70" Margin="-30"   Height="23" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
-                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
+                                <Button Width="70"   Height="25" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
+                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Attendance" Foreground="CadetBlue" Kind="AccountStar"/>
                                 </Button>
+
+                                <Button Width="70"  Margin="-30"  Height="23" Click="GetAppraisal" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding UserName}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAppraisal}"   >
+                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Appraisal" Foreground="Black" Kind="School"/>
+                                </Button>
+
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -387,6 +392,25 @@
                                     <TextBlock Foreground="Red"  x:Name="Salary_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
 
                                 </StackPanel>
+
+
+                                <StackPanel Width="200">
+                                    <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Department"/>
+                                    <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                        <ComboBox  Padding="5 7   0 1" x:Name="Department"  Text="{Binding Path=Department , Mode=TwoWay}"   Width="200"  Height="25">
+                                            <ComboBoxItem>Sales and Marketing</ComboBoxItem>
+                                            <ComboBoxItem>Creative</ComboBoxItem>
+                                            <ComboBoxItem>IT</ComboBoxItem>
+                                            <ComboBoxItem>Production</ComboBoxItem>
+                                            <ComboBoxItem>Inventory</ComboBoxItem>
+                                            <ComboBoxItem>Public Relations</ComboBoxItem>
+                                            <ComboBoxItem>Human Resources</ComboBoxItem>
+                                        </ComboBox>
+                                    </Border>
+                                    <TextBlock Foreground="Red"  x:Name="Department_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
+                                </StackPanel>
+
                                 <TextBlock/>
                                 <TextBlock/>
                             </StackPanel>
@@ -686,24 +710,52 @@
                     <StackPanel Orientation="Horizontal" Margin="15 ">
                         <materialDesign:PackIcon Kind="AlertBox" Foreground="DarkRed" Width="50" Height="50"/>
                         <TextBlock  x:Name="DeleteText" Foreground="Gray" FontSize="18" Width="200" Margin="15 5" TextWrapping="Wrap">
-
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
                         <Button Click="AccountDeleteYes" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
                             Yes
                         </Button>
-
                         <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
                             No
                         </Button>
-
                     </StackPanel>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
-
         </materialDesign:DialogHost>
 
+
+        <materialDesign:DialogHost Background="{x:Null}" Identifier="RootDialog" IsOpen="False" x:Name="ViewAppraisal"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="500" Height="400" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" Margin="15 ">
+                        <DataGrid Margin="20 50 50 50"  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeAppraisal" SelectionMode="Extended" Height="300" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Username" Binding="{Binding UserName ,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Date Appraisal" Binding="{Binding DateAppraise, StringFormat='d' ,Mode=TwoWay }"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Comment" Binding="{Binding Comment ,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="150"  Header="Remarks" Binding="{Binding Remarks}"/>
+                            </DataGrid.Columns>
+                            <DataGrid.ItemContainerStyle >
+                                <Style TargetType="{x:Type DataGridRow}" >
+                                    <EventSetter  Event="Control.MouseDoubleClick" Handler="AppraisalDoubleClick"/>
+                                </Style>
+                            </DataGrid.ItemContainerStyle>
+                        </DataGrid>
+
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                     
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Close
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
 
         <materialDesign:DialogHost Background="{x:Null}"  IsOpen="False"  Identifier="RootDialog" x:Name="ViewAttendance"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
@@ -752,12 +804,10 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
-                        <Button Click="AccountDeleteYes" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
-                            Yes
-                        </Button>
+                     
 
                         <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
-                            No
+                           Close
                         </Button>
 
                     </StackPanel>

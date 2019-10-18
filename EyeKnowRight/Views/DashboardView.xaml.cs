@@ -24,14 +24,49 @@ namespace EyeKnowRight
     /// <summary>
     /// Interaction logic for Account.xaml
     /// </summary>
+    /// 
+
+
     public partial class DashboardView : UserControl
     {
-      
 
+        EyeKnowRightDB db = new EyeKnowRightDB();
+        public Func<ChartPoint, string> PointLabel { get; set; }
         public DashboardView()
         {
             InitializeComponent();
-          
+
+            PointLabel = chartPoint =>
+                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            DataContext = this;
+            DepartmentChart.Series.Clear();
+            LiveCharts.SeriesCollection psc = new LiveCharts.SeriesCollection();
+
+            List<Employee> employees = new List<Employee>();
+
+            employees = db.Employees.ToList();
+
+            var employeesSelect = db.Employees.GroupBy(a => a.Department)
+               .Select(l => new
+               {
+                   PayrollViewKey = l.Key,
+                   Number = l.Count(),
+                   Department = l.FirstOrDefault().Department
+
+               }).ToList();
+
+            foreach (var select in employeesSelect)
+            {
+                psc.Add(new LiveCharts.Wpf.PieSeries {  DataLabels = true, Values = new LiveCharts.ChartValues<decimal> { select.Number }, Title = select.Department });
+
+            }
+         
+            foreach (var ps in psc) {
+                DepartmentChart.Series.Add(ps);
+                        }
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

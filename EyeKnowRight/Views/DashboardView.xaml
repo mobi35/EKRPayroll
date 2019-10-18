@@ -16,12 +16,12 @@
             <TextBlock x:Name="Bagwis" Text=""/>
             <StackPanel Width="300" >
                 <TextBlock Text=""/>
-                <Wpf:PieChart Height="252" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
+                <Wpf:PieChart Height="252" x:Name="DepartmentChart" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
                     <Wpf:PieChart.Series>
-                        <Wpf:PieSeries Title="Ventes" Values="40"  />
-                        <Wpf:PieSeries Title="ZXC" Values="40"  />
-                        <Wpf:PieSeries Title="ZZXC" Values="40" />
-                        <Wpf:PieSeries Title="XZ" Values="40"  />
+                        <Wpf:PieSeries LabelPoint="{Binding PointLabel}" DataLabels="True" Title="Ventes" Values="40"  />
+                        <Wpf:PieSeries LabelPoint="{Binding PointLabel}" DataLabels="True" Title="ZXC" Values="40"  />
+                        <Wpf:PieSeries LabelPoint="{Binding PointLabel}" DataLabels="True" Title="ZZXC" Values="40" />
+                        <Wpf:PieSeries LabelPoint="{Binding PointLabel}" DataLabels="True" Title="XZ" Values="30"  />
                     </Wpf:PieChart.Series>
                 </Wpf:PieChart>
             </StackPanel>

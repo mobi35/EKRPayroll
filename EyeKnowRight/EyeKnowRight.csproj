@@ -138,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\EvaluationPrintView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PayrollPrintView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +162,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Helper\PasswordBoxHelper.cs" />
     <Compile Include="Migrations\201910141143315_Test.cs" />
     <Compile Include="Migrations\201910141143315_Test.designer.cs">
       <DependentUpon>201910141143315_Test.cs</DependentUpon>
@@ -185,6 +190,10 @@
     <Compile Include="Migrations\201910161812313_12.cs" />
     <Compile Include="Migrations\201910161812313_12.designer.cs">
       <DependentUpon>201910161812313_12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910180920344_zxc.cs" />
+    <Compile Include="Migrations\201910180920344_zxc.designer.cs">
+      <DependentUpon>201910180920344_zxc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
@@ -223,6 +232,9 @@
     </Compile>
     <Compile Include="Views\DailyAttendanceReport.xaml.cs">
       <DependentUpon>DailyAttendanceReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EvaluationPrintView.xaml.cs">
+      <DependentUpon>EvaluationPrintView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PayrollPrintView.xaml.cs">
       <DependentUpon>PayrollPrintView.xaml</DependentUpon>
@@ -292,10 +304,14 @@
     <EmbeddedResource Include="Migrations\201910161812313_12.resx">
       <DependentUpon>201910161812313_12.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910180920344_zxc.resx">
+      <DependentUpon>201910180920344_zxc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EvaluationPrint.rdlc" />
     <EmbeddedResource Include="Reports\DailyReportPrint.rdlc" />
     <EmbeddedResource Include="Reports\EmployeeView.rdlc" />
     <EmbeddedResource Include="Reports\PayrollReport.rdlc" />

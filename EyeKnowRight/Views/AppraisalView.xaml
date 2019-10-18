@@ -64,7 +64,7 @@
                         </StackPanel>
 
                         <StackPanel    VerticalAlignment="Top" >
-                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Receptiveness to chaning work environment"/>
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Receptiveness to changing work environment"/>
                             <Slider x:Name="Answer10"  VerticalAlignment="Center" TickFrequency="37.5" Minimum="0" Maximum="100" Value="0" Width="250" AutoToolTipPlacement="TopLeft"></Slider>
                         </StackPanel>
 

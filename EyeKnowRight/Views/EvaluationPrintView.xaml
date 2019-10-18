@@ -1,0 +1,16 @@
+﻿<Window x:Class="EyeKnowRight.Views.EvaluationPrintView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeKnowRight.Views"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        mc:Ignorable="d"
+        Title="PayrollPrintView" Height="800" Width="1000" ResizeMode="NoResize" WindowStyle="ThreeDBorderWindow" >
+    <Grid>
+        <WindowsFormsHost Name="WFH"  HorizontalAlignment="Left" Height="764"  VerticalAlignment="Top" Width="980" Margin="10,10,0,0" >
+            <rv:ReportViewer ShowRefreshButton="false" ShowFindControls="False" ShowContextMenu="false" ShowCredentialPrompts="false" ShowPromptAreaButton="false" ShowStopButton="false"  ShowZoomControl="false" ShowParameterPrompts="False"  ShowPageNavigationControls="False" ShowBackButton="False" ShowProgress="False" ShowDocumentMapButton="False" x:Name="ReportViewerDemo"/>
+        </WindowsFormsHost>
+
+    </Grid>
+</Window>

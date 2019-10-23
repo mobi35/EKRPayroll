@@ -23,11 +23,14 @@
                 </StackPanel>
              
             </Button>
-            <Button Click="DeleteUser" x:Name="AccountDelete" IsEnabled="False" Background="Red" BorderBrush="{x:Null}"  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="47" Height="30" FontSize="10"  >
+            <StackPanel Orientation="Horizontal">
+             
+
+                <Button Click="DeleteUser" x:Name="AccountDelete" IsEnabled="False" Background="Red" BorderBrush="{x:Null}"  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="47" Height="30" FontSize="10"  >
                 <materialDesign:PackIcon Kind="Delete"/>
-              
             </Button>
-      
+            </StackPanel>
+
             <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
               
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
@@ -704,7 +707,7 @@
 
         </materialDesign:DialogHost>
 
-        <materialDesign:DialogHost Background="{x:Null}" Identifier="RootDialog" x:Name="AccountDeleteDialog"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="AccountDeleteDialog"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
                 <Grid Background="{x:Null}" Width="300" Height="150" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Margin="15 ">
@@ -724,6 +727,9 @@
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
+
+
+        
 
         <materialDesign:DialogHost Background="{x:Null}" Identifier="RootDialog" IsOpen="False" x:Name="ViewAppraisal"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >

@@ -498,15 +498,33 @@ namespace EyeKnowRight
             {
                 userToDelete.Add(((Employee)EmployeeGrid.SelectedItems[i]).EmployeePK);
             }
-
             foreach (int id in userToDelete)
             {
                var selectEmployee =  db.Employees.First(a => a.EmployeePK == id);
-                db.Employees.Remove(selectEmployee);
+                selectEmployee.IsActive = false;
                 db.SaveChanges();
             }
             SuccessfullyDeletedDialogBox.IsOpen = true;
-            SuccessfullyDeletedDialogBoxText.Text = $"Successfully Deleted {EmployeeGrid.SelectedItems.Count} users";
+            SuccessfullyDeletedDialogBoxText.Text = $"Successfully Terminate {EmployeeGrid.SelectedItems.Count} users";
+            var data = db.Employees.ToList();
+            EmployeeGrid.ItemsSource = data;
+        }
+
+        private void AccountRestoreYes(object sender, RoutedEventArgs e)
+        {
+            List<int> userToRestore = new List<int>();
+            for (int i = EmployeeGrid.SelectedItems.Count - 1; i >= 0; i--)
+            {
+                userToRestore.Add(((Employee)EmployeeGrid.SelectedItems[i]).EmployeePK);
+            }
+            foreach (int id in userToRestore)
+            {
+                var selectEmployee = db.Employees.First(a => a.EmployeePK == id);
+                selectEmployee.IsActive = true;
+                db.SaveChanges();
+            }
+            SuccessfullyDeletedDialogBox.IsOpen = true;
+            SuccessfullyDeletedDialogBoxText.Text = $"Successfully Restored {EmployeeGrid.SelectedItems.Count} users";
             var data = db.Employees.ToList();
             EmployeeGrid.ItemsSource = data;
         }
@@ -516,9 +534,16 @@ namespace EyeKnowRight
             AccountDeleteDialog.IsOpen = true;
         }
 
+        private void RestoreUserClick(object sender, RoutedEventArgs e)
+        {
+            DeleteText.Text = $"Are you sure you want to restore {EmployeeGrid.SelectedItems.Count} user/s?";
+          //  RestoreDialog.IsOpen = true;
+        }
+
         private void OnSelect(object sender, SelectionChangedEventArgs e)
         {
             AccountDelete.IsEnabled = true;
+            //RestoreName.IsEnabled = true;
         }
 
         private void SearchChanged(object sender, TextChangedEventArgs e)

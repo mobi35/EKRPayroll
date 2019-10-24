@@ -22,9 +22,11 @@ namespace EyeKnowRight.Views
         public ShellView()
         {
             InitializeComponent();
-            try { 
-            UserNameText.Text = Application.Current.Properties["UserName"].ToString();
-            }catch(Exception e)
+            try
+            {
+                UserNameText.Text = Application.Current.Properties["UserName"].ToString();
+            }
+            catch (Exception e)
             {
 
             }
@@ -43,7 +45,7 @@ namespace EyeKnowRight.Views
         {
             FuckingGrid.Children.Add(new AccountView());
 
-            
+
 
         }
         EyeKnowRightDB db = new EyeKnowRightDB();
@@ -57,36 +59,40 @@ namespace EyeKnowRight.Views
             double timeInDate = 0;
             if (dtr.TimeIn != null)
             {
-                if(dtr.TimeIn.Value.TimeOfDay.TotalMinutes < 480)
+                if (dtr.TimeIn.Value.TimeOfDay.TotalMinutes < 480)
                 {
                     timeInDate = 480;
-                }else
+                }
+                else
                 {
                     timeInDate = dtr.TimeIn.Value.TimeOfDay.TotalMinutes;
                 }
-               
+
                 double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
-
-         
-
-            
-
-
-                if (DateTime.Now.Date.TimeOfDay.TotalMinutes <= 1020) { 
-                dtr.Accumulated += accumulatedTime;
-                }else
+              
+                if (DateTime.Now.Date.TimeOfDay.TotalMinutes <= 1020)
                 {
-                    dtr.Accumulated += 1020 - timeInDate; 
+                    dtr.Accumulated += accumulatedTime;
                 }
+                else
+                {
+                    dtr.Accumulated += 1020 - timeInDate;
+                }
+
+                int hour = (int)dtr.Accumulated  / 60;
+                int minutes = (int)dtr.Accumulated % 60;
+                dtr.AccumulatedString = $"{ hour }h:{ minutes }m";
+
                 db.SaveChanges();
 
 
-            }else
+            }
+            else
             {
 
             }
-            
-            
+
+
 
 
 

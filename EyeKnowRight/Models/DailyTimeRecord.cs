@@ -25,9 +25,15 @@ namespace EyeKnowRight.Models
 
         public double Accumulated { get; set; }
 
+        public string AccumulatedString { get; set; }
+
         public double Late { get; set; }
 
+        public string LateString { get; set; }
+
         public double OverTime { get; set; }
+
+        public string OverTimeString { get; set; }
 
         public DateTime? DateTimeStamps { get; set; }
 
@@ -35,4 +41,4 @@ namespace EyeKnowRight.Models
 
 
     }
-    }
+}

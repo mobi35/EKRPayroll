@@ -64,13 +64,19 @@ namespace EyeKnowRight.ViewModels
                         if (dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes > 480)
                         {
                             dtrs.Late = dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes - 480;
+                            int hour = (int)dtrs.Late / 60;
+                            int minutes = (int)dtrs.Late % 60;
+                            dtrs.LateString = $"{ hour }h:{ minutes }m";
                         }
 
                     }
                     dbz.SaveChanges();
 
                 Application.Current.Properties["UserName"] = Username;
-            }else
+                    windowManager.ShowWindow(shellViewModel);
+                    TryClose();
+                }
+                else
             {
                 MessageBox.Show("Failed");
             }
@@ -80,8 +86,7 @@ namespace EyeKnowRight.ViewModels
             {
 
             }
-            windowManager.ShowWindow(shellViewModel);
-            TryClose();
+         
         }
 
 

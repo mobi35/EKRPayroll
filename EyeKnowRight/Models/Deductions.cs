@@ -11,5 +11,24 @@ namespace EyeKnowRight.Models
     {
         [Key]
         public int DeductionPK { get; set; }
+
+        public double BasicSalary { get; set; }
+
+        public double LateDeduction { get; set; }
+
+        public double OverTimeAddition { get; set; }
+
+        public double AllAccumulatedTimeAddition { get; set; }
+
+        public double SSSDeduction { get; set; }
+
+        public double TinDeduction { get; set; }
+
+        public double PagibigDeduction { get; set; }
+
+        public double TotalSalary { get; set; }
+
+        public string UserName { get; set; }
+
     }
 }

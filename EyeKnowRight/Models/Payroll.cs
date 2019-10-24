@@ -11,5 +11,15 @@ namespace EyeKnowRight.Models
     {
         [Key]
         public int PayrollPK { get; set; }
+
+        public DateTime? StartPayroll { get; set; }
+
+        public DateTime? EndPayroll { get; set; }
+
+        public int NumberOfWorkingDays { get; set; }
+
+        public bool IsActive { get; set; }
+
+
     }
 }

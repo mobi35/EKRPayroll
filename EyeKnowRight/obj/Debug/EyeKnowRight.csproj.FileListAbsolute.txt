@@ -276,3 +276,47 @@ C:\Users\ADICHAN\Desktop\EKR NEW\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.
 C:\Users\ADICHAN\Desktop\EKR NEW\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
 C:\Users\ADICHAN\Desktop\EKR NEW\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._3.resources
 C:\Users\ADICHAN\Desktop\EKR NEW\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._5.resources
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\EyeKnowRight.exe.config
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\EyeKnowRight.exe
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\EyeKnowRight.pdb
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.Platform.Core.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.Platform.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\EntityFramework.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Google.Protobuf.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\MaterialDesignColors.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\MySql.Data.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Renci.SshNet.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.Platform.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.Platform.Core.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\EntityFramework.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Google.Protobuf.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\MySql.Data.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\bin\Debug\Renci.SshNet.xml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\Views\AccountView.g.cs
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\Views\LoginView.g.cs
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\Views\ShellView.g.cs
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\App.g.cs
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight_MarkupCompile.cache
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight_MarkupCompile.lref
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\App.baml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\Views\AccountView.baml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\Views\LoginView.baml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\Views\ShellView.baml
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.g.resources
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Properties.Resources.resources
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.GenerateResource.cache
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.CopyComplete
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.exe
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csprojAssemblyReference.cache
+C:\Users\ADRIAN\Desktop\last\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.xx.resources

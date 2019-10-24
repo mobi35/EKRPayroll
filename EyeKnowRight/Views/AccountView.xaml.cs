@@ -256,8 +256,16 @@ namespace EyeKnowRight
             addNew.BirthDate = BirthDate.SelectedDate;
             addNew.Position = Position.Text;
             addNew.PersonalLeave = Int32.Parse(PersonalLeave.Text);
-            addNew.MaternityLeave = Int32.Parse(MaternityLeave.Text);
-            addNew.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+            if(addNew.Gender == "Male")
+                    {
+                        addNew.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+                    }
+                    else
+                    {
+                        addNew.MaternityLeave = Int32.Parse(MaternityLeave.Text);
+                    }
+      
+         
             addNew.SickLeave = Int32.Parse(SickLeave.Text);
             addNew.BereavementLeave = Int32.Parse(BereavementLeave.Text);
             addNew.MedicalLeave = Int32.Parse(MedicalLeave.Text);
@@ -304,10 +312,18 @@ namespace EyeKnowRight
                     employee.BirthDate = BirthDate.SelectedDate;
                     employee.Position = Position.Text;
                     employee.PersonalLeave = Int32.Parse(PersonalLeave.Text);
-                    employee.MaternityLeave = Int32.Parse(MaternityLeave.Text);
-                    employee.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+                  
+                  
                     employee.SickLeave = Int32.Parse(SickLeave.Text);
-                    employee.BereavementLeave = Int32.Parse(BereavementLeave.Text);
+                        if (employee.Gender == "Male")
+                        {
+                            employee.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+                        }
+                        else
+                        {
+                            employee.MaternityLeave = Int32.Parse(MaternityLeave.Text);
+                        }
+                        employee.BereavementLeave = Int32.Parse(BereavementLeave.Text);
                     employee.MedicalLeave = Int32.Parse(MedicalLeave.Text);
                     employee.Department = Department.Text;
                     employee.SSSNumber = SSSNumber.Text;

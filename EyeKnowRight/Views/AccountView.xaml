@@ -197,8 +197,8 @@
                             <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Gender "/>
                             <StackPanel   Orientation="Horizontal" Width="200">
 
-                                <RadioButton x:Name="Gender_Male"  IsChecked="True" Margin="20 0 20 0" Content="Male" Checked="MaleCheck"/>
-                                <RadioButton Checked="FemaleCheck" x:Name="Gender_Female" Content="Female"/>
+                                <RadioButton x:Name="Gender_Male"   Margin="20 0 20 0" Content="Male" Checked="MaleCheck"/>
+                                <RadioButton Checked="FemaleCheck" IsChecked="True" x:Name="Gender_Female" Content="Female"/>
                             </StackPanel>
 
                         </StackPanel>

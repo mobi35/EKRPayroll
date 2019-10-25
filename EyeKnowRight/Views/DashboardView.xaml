@@ -15,7 +15,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock x:Name="Bagwis" Text=""/>
             <StackPanel Width="300" >
-                <TextBlock Text=""/>
+                <TextBlock HorizontalAlignment="Center"  Text="Number of user per each department"/>
                 <Wpf:PieChart Height="252" x:Name="DepartmentChart" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
                     <Wpf:PieChart.Series>
                         <Wpf:PieSeries LabelPoint="{Binding PointLabel}" DataLabels="True" Title="Ventes" Values="40"  />
@@ -26,15 +26,17 @@
                 </Wpf:PieChart>
             </StackPanel>
             <StackPanel Width="400">
-                <Wpf:CartesianChart Margin="0,30,-30,0" Height="202">
+                <Wpf:CartesianChart x:Name="AppraisalChart" Margin="0,30,-30,0" Height="202">
                 </Wpf:CartesianChart>
             </StackPanel>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+            
             <StackPanel Width="300" >
+                <TextBlock HorizontalAlignment="Center"  Text="Total Leave of user"/>
                 <TextBlock Text=""/>
-                <Wpf:PieChart Height="252" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
+                <Wpf:PieChart  Height="252" x:Name="LeaveChart" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
                     <Wpf:PieChart.Series>
                         <Wpf:PieSeries Title="aaa" Values="40" />
                         <Wpf:PieSeries Title="sdasd" Values="40" />

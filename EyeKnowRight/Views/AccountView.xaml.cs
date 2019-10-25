@@ -574,11 +574,9 @@ namespace EyeKnowRight
             }
             else
             {
-              
                 Magnifier.Visibility = Visibility.Visible;
                 var data = db.Employees.ToList();
                 EmployeeGrid.ItemsSource = data;
-
             }
         }
 

@@ -94,5 +94,28 @@ namespace EyeKnowRight
             leave.Status = "Rejected";
             db.SaveChanges();
         }
+
+        private void SearchChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchBox.Text != "")
+            {
+                Magnifier.Visibility = Visibility.Hidden;
+                var text = SearchBox.Text;
+                var data = db.Leaves
+                  .Where(a =>
+                  a.ReasonForLeaving.StartsWith(text) || a.ReasonForLeaving.EndsWith(text) ||
+                  a.Status.StartsWith(text) || a.Status.EndsWith(text) ||
+                  a.UserName.StartsWith(text) || a.UserName.EndsWith(text) 
+               ).ToList();
+                LeaveGrid.ItemsSource = data;
+            }
+            else
+            {
+                Magnifier.Visibility = Visibility.Visible;
+                var data = db.Leaves.ToList();
+                LeaveGrid.ItemsSource = data;
+            }
+        }
+
     }
 }

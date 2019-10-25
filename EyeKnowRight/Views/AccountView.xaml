@@ -9,10 +9,6 @@
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
 
-       
-
-
-
         <StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
             <Button Click="AddNewUserClick" Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}">
@@ -38,7 +34,6 @@
             </StackPanel>
 
             <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
-              
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                     <TextBox Padding="2 0 0 0"   x:Name="SearchBox"  Width="200"  Height="25" TextChanged="SearchChanged" ></TextBox>
                 </Border>
@@ -71,12 +66,12 @@
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>
-               
+                <DataGridTextColumn FontSize="11" Width="100"  Header="Is Active" Binding="{Binding IsActive}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Middle Name" Binding="{Binding MiddleName}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
                 <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
-
+               
                 <DataGridTemplateColumn Width="200">
                     <DataGridTemplateColumn.CellTemplate>
 
@@ -333,7 +328,7 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="SSS Number"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Padding="2 0 0 0" x:Name="SSSNumber" Text="{Binding Path=SSSNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox"  x:Name="SSSNumber" Text="{Binding Path=SSSNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
                                 </Border>
                                 <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="SSS_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
@@ -341,7 +336,7 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="TIN Number"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Padding="2 0 0 0" x:Name="TINNumber" Text="{Binding Path=TINNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="TINNumber" Text="{Binding Path=TINNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
                                 </Border>
                                 <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="TINNumber_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
@@ -349,7 +344,7 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Pagibig Number"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Padding="2 0 0 0" x:Name="PagibigNumber" Text="{Binding Path=PagibigNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                    <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox"  x:Name="PagibigNumber" Text="{Binding Path=PagibigNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
                                 </Border>
                                 <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="PagibigNumber_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
@@ -407,7 +402,7 @@
                                 <StackPanel Width="200">
                                     <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Salary"/>
                                     <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                        <TextBox Padding="2 0 0 1" x:Name="Salary"  Text="{Binding Path=Salary , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                        <TextBox Padding="2 0 0 1" x:Name="Salary" PreviewTextInput="NumberValidationTextBox" Text="{Binding Path=Salary , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
                                     </Border>
                                     <TextBlock Foreground="Red"  x:Name="Salary_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
 

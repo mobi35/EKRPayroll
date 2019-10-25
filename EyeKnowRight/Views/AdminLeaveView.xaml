@@ -23,7 +23,7 @@
             <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
               
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Padding="2 0 0 0"   x:Name="SearchBox"  Width="200"  Height="25" ></TextBox>
+                    <TextBox Padding="2 0 0 0" TextChanged="SearchChanged"  x:Name="SearchBox"  Width="200"  Height="25" ></TextBox>
                 </Border>
             </StackPanel>
 

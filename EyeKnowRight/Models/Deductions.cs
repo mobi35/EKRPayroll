@@ -32,9 +32,9 @@ namespace EyeKnowRight.Models
 
         public string UserName { get; set; }
 
-        public int WorkingDays { get; set; }
+        public int? WorkingDays { get; set; }
 
-        public int DaysPresent { get; set; }
+        public int? DaysPresent { get; set; }
 
     }
 }

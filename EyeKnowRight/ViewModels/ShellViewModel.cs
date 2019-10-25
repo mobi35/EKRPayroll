@@ -73,11 +73,13 @@ namespace EyeKnowRight.ViewModels
                     payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 26);
                     payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, 10);
                     payroll.IsActive = true;
+                    
                     db.Payrolls.Add(payroll);
 
                     foreach (var user in db.Employees.ToList())
                     {
                         user.LastAppraiseDate = null;
+                        
                         db.SaveChanges();
                     }
                    

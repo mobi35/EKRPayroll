@@ -1099,18 +1099,6 @@ C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\Views\Accoun
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\Views\LoginView.baml
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\Views\ShellView.baml
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.g.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.Test.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.AddedPersonalLeave.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.ZXXZ.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._2.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.asd.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._123.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._12.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.zxc.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.first.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.addedholiday.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.addedovertimetable.resources
-C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.addedworkingdaysanddayspresent.resources
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Properties.Resources.resources
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.GenerateResource.cache
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.cache
@@ -1119,3 +1107,8 @@ C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.CopyComplete
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.exe
 C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
+C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\Views\AdminOvertimeView.g.cs
+C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\Views\EmployeeOvertimeView.g.cs
+C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\Views\AdminOvertimeView.baml
+C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\Views\EmployeeOvertimeView.baml
+C:\Users\ADICHAN\Desktop\Cutifyes\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.first.resources

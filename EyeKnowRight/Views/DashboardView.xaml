@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="EyeKnowRight.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeKnowRight.Views"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" Background="White" d:DesignWidth="800" >
+    <Grid >
+
+
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock x:Name="Bagwis" Text=""/>
+            <StackPanel Width="300" >
+                <TextBlock Text=""/>
+                <Wpf:PieChart Height="252" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
+                    <Wpf:PieChart.Series>
+                        <Wpf:PieSeries Title="Ventes" Values="40"  />
+                        <Wpf:PieSeries Title="ZXC" Values="40"  />
+                        <Wpf:PieSeries Title="ZZXC" Values="40" />
+                        <Wpf:PieSeries Title="XZ" Values="40"  />
+                    </Wpf:PieChart.Series>
+                </Wpf:PieChart>
+            </StackPanel>
+            <StackPanel Width="400">
+                <Wpf:CartesianChart Margin="0,30,-30,0" Height="202">
+                </Wpf:CartesianChart>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+            <StackPanel Width="300" >
+                <TextBlock Text=""/>
+                <Wpf:PieChart Height="252" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
+                    <Wpf:PieChart.Series>
+                        <Wpf:PieSeries Title="aaa" Values="40" />
+                        <Wpf:PieSeries Title="sdasd" Values="40" />
+                        <Wpf:PieSeries Title="qwe" Values="40" />
+                        <Wpf:PieSeries Title="Ventes" Values="40"/>
+                    </Wpf:PieChart.Series>
+                </Wpf:PieChart>
+            </StackPanel>
+
+
+        </StackPanel>
+
+
+    </Grid>
+
+
+</UserControl>

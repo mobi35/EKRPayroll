@@ -45,15 +45,38 @@ namespace EyeKnowRight.Views
         {
             FuckingGrid.Children.Add(new AccountView());
 
-
+        }
+        private void PayrollSelect(object sender, RoutedEventArgs e)
+        {
+            FuckingGrid.Children.Add(new PayrollView());
 
         }
+
+        private void EmployeeOvertime(object sender, RoutedEventArgs e)
+        {
+            FuckingGrid.Children.Add(new OvertimeView());
+
+        }
+
+        private void DashboardSelect(object sender, RoutedEventArgs e)
+        {
+            FuckingGrid.Children.Add(new DashboardView());
+
+        }
+
+        
+        private void EmployeeLeave(object sender, RoutedEventArgs e)
+        {
+            FuckingGrid.Children.Add(new EmployeeLeaveView());
+
+        }
+        
         EyeKnowRightDB db = new EyeKnowRightDB();
         private void LogoutAccount(object sender, RoutedEventArgs e)
         {
-
+            var user = Application.Current.Properties["UserName"].ToString();
             var date = DateTime.Now.Date;
-            var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
+            var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
             dtr.TimeOut = DateTime.Now;
             db.SaveChanges();
             double timeInDate = 0;
@@ -68,10 +91,12 @@ namespace EyeKnowRight.Views
                     timeInDate = dtr.TimeIn.Value.TimeOfDay.TotalMinutes;
                 }
 
-                double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
               
-                if (DateTime.Now.Date.TimeOfDay.TotalMinutes <= 1020)
+              
+                if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= 1020)
                 {
+
+                    double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
                     dtr.Accumulated += accumulatedTime;
                 }
                 else
@@ -91,10 +116,6 @@ namespace EyeKnowRight.Views
             {
 
             }
-
-
-
-
 
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();

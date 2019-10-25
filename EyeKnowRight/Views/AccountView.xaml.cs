@@ -187,15 +187,9 @@ namespace EyeKnowRight
             var dateNow = DateTime.Now;
             var firstCutOffDate = DateTime.Now;
 
-
-
-
-            if (dateNow.Day >= 25 && dateNow.Day <= 31 || dateNow.Day >= 1 && dateNow.Day <= 10)
+            if (dateNow.Day > 25 && dateNow.Day <= 31 || dateNow.Day >= 1 && dateNow.Day < 10)
             {
-
-
                 var daysInMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-
                 for (int i = 26; i <= daysInMonth; i++)
                 {
                     DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class xxc : DbMigration
+    public partial class XZX : DbMigration
     {
         public override void Up()
         {
@@ -31,6 +31,7 @@
                 c => new
                     {
                         DeductionPK = c.Int(nullable: false, identity: true),
+                        PayrollPK = c.Int(nullable: false),
                         BasicSalary = c.Double(nullable: false),
                         LateDeduction = c.Double(nullable: false),
                         OverTimeAddition = c.Double(nullable: false),

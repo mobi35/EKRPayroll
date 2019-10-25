@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="EyeKnowRight.PayrollView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeKnowRight.Views"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" Background="White" d:DesignWidth="800" >
+    <Grid >
+
+       
+
+
+
+        <StackPanel>
+            <TextBlock x:Name="Bagwis" Text=""/>
+         
+          
+      
+            <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
+              
+                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                    <TextBox Padding="2 0 0 0"   x:Name="SearchBox"  Width="200"  Height="25" ></TextBox>
+                </Border>
+            </StackPanel>
+
+            <Grid>
+                <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 -30 200 0" Foreground="Gray" Kind="Magnify"/>
+            </Grid>
+            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
+
+        </StackPanel>
+
+        <!-- DATA GRID START -->
+        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="PayrollGrid" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+            <DataGrid.Columns>
+                <DataGridTextColumn FontSize="11" Width="100"  Header="Start Payroll" Binding="{Binding StartPayroll}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="End Payroll" Binding="{Binding EndPayroll}"/>
+                <DataGridTemplateColumn Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel  Orientation="Horizontal">
+                                <Button Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding PayrollPK}" Click="Button_Click"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=PayrollDialog}"   >
+                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- DATA GRID END -->
+
+
+        <!-- ADD USER DIALOG BOX START -->
+        <materialDesign:DialogHost  IsOpen="False" x:Name="PayrollDialog"  Margin="0,-126,0,-32"  >
+
+            <materialDesign:DialogHost.DialogContent>
+
+                <StackPanel Width="900">
+
+
+                    <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
+                    </Button>
+
+                    <StackPanel Margin="60 -20 60  60"  Orientation="Vertical">
+                        <TextBox Visibility="Collapsed" x:Name="EmployeePK"></TextBox>
+                        <TextBox Visibility="Collapsed"  x:Name="Mode">Add</TextBox>
+
+                        <DataGrid  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  x:Name="DeductionGrid" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Username" Binding="{Binding UserName,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Basic Salary" Binding="{Binding BasicSalary,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="120"  Header="Accumulated" Binding="{Binding AllAccumulatedTimeAddition,Mode=TwoWay }"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Late" Binding="{Binding LateDeduction,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Overtime" Binding="{Binding OvertimeAddition}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="SSS" Binding="{Binding SSSDeduction,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="TIN" Binding="{Binding TinDeduction,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Pagibig" Binding="{Binding PagibigDeduction,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Total Salary" Binding="{Binding TotalSalary,Mode=TwoWay}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <TextBlock/>
+                  
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <!-- ADD USER DIALOG BOX END -->
+
+
+    </Grid>
+
+
+</UserControl>

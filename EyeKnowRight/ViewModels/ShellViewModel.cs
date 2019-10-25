@@ -21,12 +21,12 @@ namespace EyeKnowRight.ViewModels
 
             if (getPayroll.Count == 0)
             {
-
+              
                 if (DateTime.Now.Day >= 26 )
                 {
                     Payroll payroll = new Payroll();
                     payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 26);
-                    payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.AddDays(1).Month, 10);
+                    payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, 10);
                     payroll.IsActive = true;
                     db.Payrolls.Add(payroll);
                     db.SaveChanges();
@@ -34,7 +34,7 @@ namespace EyeKnowRight.ViewModels
                 }else if (DateTime.Now.Day <= 10)
                 {
                     Payroll payroll = new Payroll();
-                    payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.AddDays(-1).Month, 26);
+                    payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, 26);
                     payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 10);
                     payroll.IsActive = true;
                     db.Payrolls.Add(payroll);
@@ -43,14 +43,11 @@ namespace EyeKnowRight.ViewModels
                 else if (DateTime.Now.Day >= 11 && DateTime.Now.Day <= 25)
                 {
                     Payroll payroll = new Payroll();
-                    payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 10);
+                    payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 11);
                     payroll.IsActive = true;
                     payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 25);
                     db.Payrolls.Add(payroll);
-                    foreach (var list in getUserList)
-                    {
-                        UpdateDailyTimeRecord(list.UserName);
-                    }
+                 
                     db.SaveChanges();
                 }
 
@@ -64,9 +61,10 @@ namespace EyeKnowRight.ViewModels
                 {
                     if (payroll.IsActive && payroll.EndPayroll == new DateTime(DateTime.Now.Year, DateTime.Now.Month, 25))
                     {
-                        ComputeSalary(payroll.StartPayroll, payroll.EndPayroll);
+                       
                         db.Payrolls.Where(a => a.PayrollPK == payroll.PayrollPK).FirstOrDefault().IsActive = false;
                         db.SaveChanges();
+                        ComputeSalary(payroll.StartPayroll, payroll.EndPayroll);
                         isExist25 = true;
                     }
                 }
@@ -88,7 +86,7 @@ namespace EyeKnowRight.ViewModels
             }
             else if (DateTime.Now.Day == 11)
             {
-               
+             
                 bool isExist11 = false;
 
                 foreach (var payroll in getPayroll)
@@ -102,8 +100,10 @@ namespace EyeKnowRight.ViewModels
                     }
                 }
 
-                if (!isExist11)
+                if (isExist11)
                 {
+
+                
                     Payroll payroll = new Payroll();
                     payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 11);
                     payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 25);
@@ -146,7 +146,7 @@ namespace EyeKnowRight.ViewModels
                     db.DailyTimeRecords.Add(dailyTimeRecord);
                     db.SaveChanges();
                 }
-            }s
+            }
 
             else
             {
@@ -163,6 +163,7 @@ namespace EyeKnowRight.ViewModels
 
         public void ComputeSalary(DateTime? start, DateTime? end)
         {
+            try { 
             var dailyTimeRecord = db.DailyTimeRecords.Where(a => a.DateTimeStamps >= start && a.DateTimeStamps <= end).ToList();
             var userList = db.Employees.ToList();
             foreach (var user in userList)
@@ -177,12 +178,21 @@ namespace EyeKnowRight.ViewModels
                         deduction.LateDeduction += dtr.Late * basicSalaryPerMinute;
                     }
                  }
-                userList.Remove(user);
+
+                    deduction.TotalSalary = deduction.AllAccumulatedTimeAddition;
+                    //userList.Remove(user);\\
+                    deduction.PayrollPK = db.Payrolls.FirstOrDefault(a => a.StartPayroll == start && a.EndPayroll == end).PayrollPK;
+                    deduction.UserName = user.UserName;
+                     deduction.BasicSalary = user.Salary; 
+                   
                 db.Deductionss.Add(deduction);
                 db.SaveChanges();
             }
 
+            }catch(Exception e)
+            {
 
+            }
 
         }
 

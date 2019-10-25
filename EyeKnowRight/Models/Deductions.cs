@@ -12,6 +12,8 @@ namespace EyeKnowRight.Models
         [Key]
         public int DeductionPK { get; set; }
 
+        public int PayrollPK { get; set; }
+
         public double BasicSalary { get; set; }
 
         public double LateDeduction { get; set; }

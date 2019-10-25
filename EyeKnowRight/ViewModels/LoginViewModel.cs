@@ -52,8 +52,9 @@ namespace EyeKnowRight.ViewModels
             try {  
             if(employee == 1)
             {
+                    var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
                 var date = DateTime.Now.Date;
-                var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date).FirstOrDefault();
+                var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
                     
                     dtrs.TimeIn = DateTime.Now;
 

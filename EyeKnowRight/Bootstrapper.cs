@@ -33,7 +33,7 @@ namespace EyeKnowRight
         }
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewFor<AdminLeaveViewModel>();
+            DisplayRootViewFor<LoginViewModel>();
         }
 
         protected override object GetInstance(Type service, string key)

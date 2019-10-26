@@ -75,7 +75,7 @@
                         <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
                     </Button>
 
-
+                    <TextBlock x:Name="LeavePK" Text="{Binding LeavePK,Mode=TwoWay}"/>
                     <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Name"/>
                     <TextBlock Text="{Binding UserName, Mode=TwoWay}" />
 
@@ -83,24 +83,24 @@
                     <TextBlock Text="{Binding StartDate, Mode=TwoWay}" />
 
                     <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="End Date"/>
-                    <TextBlock Text="{Binding EndDate, Mode=TwoWay}" />
+                    <TextBlock Text="{Binding EndLeave, Mode=TwoWay}" />
                     
                         <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Type of leave"/>
                     <TextBlock Text="{Binding TypeOfLeave, Mode=TwoWay}" />
 
                     <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Reason for leaving"/>
-                    <TextBlock Text="{Binding EndDate, Mode=TwoWay}" />
+                    <TextBlock Text="{Binding ReasonForLeaving, Mode=TwoWay}" />
 
                     
                     <TextBlock/>
-                    <Button   Width="200" >
+                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="LeaveAccept"   Width="200" >
                         <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon Kind="Send" Margin="0 0 4 0"/>
                             <TextBlock Text="Accept"/>
                         </StackPanel>
                     </Button>
 
-                    <Button   Width="200" >
+                    <Button  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="LeaveReject"   Width="200" >
                         <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon Kind="Send" Margin="0 0 4 0"/>
                             <TextBlock Text="Reject"/>

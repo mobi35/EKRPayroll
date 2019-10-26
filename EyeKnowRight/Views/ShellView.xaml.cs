@@ -70,7 +70,13 @@ namespace EyeKnowRight.Views
             FuckingGrid.Children.Add(new EmployeeLeaveView());
 
         }
-        
+
+        private void AdminLeaveSelect(object sender, RoutedEventArgs e)
+        {
+            FuckingGrid.Children.Add(new AdminLeaveView());
+
+        }
+
         EyeKnowRightDB db = new EyeKnowRightDB();
         private void LogoutAccount(object sender, RoutedEventArgs e)
         {

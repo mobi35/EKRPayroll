@@ -42,5 +42,31 @@ namespace EyeKnowRight
             var leave = db.Leaves.FirstOrDefault(a => a.LeavePK == leavePK);
             DataContext = leave;
         }
+
+        private void LeaveAccept(object sender, RoutedEventArgs e)
+        {
+            int leavePK = Int32.Parse(LeavePK.Text);
+            var leave = db.Leaves.FirstOrDefault(a => a.LeavePK == leavePK);
+            leave.Status = "Accepted";
+            var user = db.Employees.FirstOrDefault(a => a.UserName == leave.UserName);
+            TimeSpan? difference = leave.EndLeave - leave.StartDate;
+            if (leave.TypeOfLeave == "Sick Leave")
+            {
+                user.SickLeave -= (int)difference.Value.TotalDays;
+            } else if (leave.TypeOfLeave == "Medical Leave")
+            {
+
+            }
+            db.SaveChanges();
+           
+        }
+
+        private void LeaveReject(object sender, RoutedEventArgs e)
+        {
+            int leavePK = Int32.Parse(LeavePK.Text);
+            var leave = db.Leaves.FirstOrDefault(a => a.LeavePK == leavePK);
+            leave.Status = "Rejected";
+            db.SaveChanges();
+        }
     }
 }

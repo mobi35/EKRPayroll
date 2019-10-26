@@ -107,7 +107,7 @@
 
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Coin" Width="20" Height="20" Foreground="#FFE6A701" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Loan" Margin="10"/>

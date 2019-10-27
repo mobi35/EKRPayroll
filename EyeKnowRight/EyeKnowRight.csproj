@@ -208,8 +208,21 @@
     <Compile Include="Migrations\201910230918092_first.designer.cs">
       <DependentUpon>201910230918092_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910231806214_added holiday.cs" />
+    <Compile Include="Migrations\201910231806214_added holiday.designer.cs">
+      <DependentUpon>201910231806214_added holiday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910231813134_added overtime table.cs" />
+    <Compile Include="Migrations\201910231813134_added overtime table.designer.cs">
+      <DependentUpon>201910231813134_added overtime table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910271118203_added workingdays and dayspresent.cs" />
+    <Compile Include="Migrations\201910271118203_added workingdays and dayspresent.designer.cs">
+      <DependentUpon>201910271118203_added workingdays and dayspresent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
+    <Compile Include="Models\Overtime.cs" />
     <Compile Include="Reports\EKRDataset.cs">
       <DependentUpon>EKRDataset.xsd</DependentUpon>
     </Compile>
@@ -322,6 +335,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910230918092_first.resx">
       <DependentUpon>201910230918092_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910231806214_added holiday.resx">
+      <DependentUpon>201910231806214_added holiday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910231813134_added overtime table.resx">
+      <DependentUpon>201910231813134_added overtime table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910271118203_added workingdays and dayspresent.resx">
+      <DependentUpon>201910271118203_added workingdays and dayspresent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

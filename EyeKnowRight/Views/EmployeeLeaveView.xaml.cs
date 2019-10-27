@@ -32,6 +32,15 @@ namespace EyeKnowRight
         {
             InitializeComponent();
             var user = Application.Current.Properties["UserName"].ToString();
+            var name = db.Employees.FirstOrDefault(a => a.UserName == user);
+            if(name.Gender == "Male")
+            {
+                TypeOfLeave.Items.Add("Paternity Leave");
+            }
+            else
+            {
+                TypeOfLeave.Items.Add("Maternity Leave");
+            }
             var leave = db.Leaves.Where(a => a.UserName == user).ToList();
 
             LeaveGrid.ItemsSource = leave;

@@ -11,8 +11,6 @@
 
        
 
-
-
         <StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
             <Button  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=LeaveDialog}">
@@ -105,7 +103,11 @@
                             <ComboBoxItem>Sick Leave</ComboBoxItem>
                             <ComboBoxItem>Medical Leave</ComboBoxItem>
                             <ComboBoxItem>Personal Leave</ComboBoxItem>
+                            <ComboBoxItem>Bereavement Leave</ComboBoxItem>
+                          
                         </ComboBox>
+                        
+                        
                     </Border>
 
 

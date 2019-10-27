@@ -153,6 +153,7 @@ namespace EyeKnowRight.Views
             {
                 CompleteFieldValidation.Visibility = Visibility.Visible;
                 CompleteFieldValidation_Text.Text = "Please fill all the fields";
+                
             }else
             {
                 CompleteFieldValidation.Visibility = Visibility.Collapsed;
@@ -166,22 +167,26 @@ namespace EyeKnowRight.Views
             {
                 CurrentPassword_Validation.Visibility = Visibility.Collapsed;
             }
-            
-            if (NewPassword.Password != NewPasswordConfirm.Password)
+
+            if (employee.Password != CurrentPassword.Password)
+            {
+              // Wrong Old Password
+            }
+            else if (NewPassword.Password != NewPasswordConfirm.Password)
             {
                 CurrentPassword_Validation.Visibility = Visibility.Collapsed;
                 OldPassword_Validation.Visibility = Visibility.Visible;
                 OldPassword_Validation.Text = "New Password Doesn't Match";
             }else
             {
-                NewPasswordConfirm.Password = "";
-                NewPassword.Password = "";
-                CurrentPassword.Password = "";
                 OldPassword_Validation.Visibility = Visibility.Visible;
                 OldPassword_Validation.Foreground = Brushes.Green;
                 OldPassword_Validation.Text = "Successfully Changed";
                 employee.Password = NewPassword.Password;
                 db.SaveChanges();
+                NewPasswordConfirm.Password = "";
+                NewPassword.Password = "";
+                CurrentPassword.Password = "";
             }
 
 
@@ -255,12 +260,8 @@ namespace EyeKnowRight.Views
                 {
                     timeInDate = dtr.TimeIn.Value.TimeOfDay.TotalMinutes;
                 }
-
-              
-              
                 if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= 1020)
                 {
-
                     double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
                     dtr.Accumulated += accumulatedTime;
                 }
@@ -268,20 +269,14 @@ namespace EyeKnowRight.Views
                 {
                     dtr.Accumulated += 1020 - timeInDate;
                 }
-
                 int hour = (int)dtr.Accumulated  / 60;
                 int minutes = (int)dtr.Accumulated % 60;
                 dtr.AccumulatedString = $"{ hour }h:{ minutes }m";
-
                 db.SaveChanges();
-
-
             }
             else
             {
-
             }
-
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();
 

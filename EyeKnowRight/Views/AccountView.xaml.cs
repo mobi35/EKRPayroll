@@ -31,6 +31,16 @@ namespace EyeKnowRight
 
         private int workerState;
 
+        private string _gender;
+
+        public string Gender {
+            get { return _gender; }
+            set
+            {
+                _gender = value;
+            }
+        }
+
         List<DailyTimeRecord> dailyTimeRecord  =new List<DailyTimeRecord>();
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -185,7 +195,6 @@ namespace EyeKnowRight
 
             return numberOfWrong;
         }
-
         public void UpdateDailyTimeRecord(string username, int months )
         {
             var computedDateMonths = DateTime.Now.AddMonths(months);
@@ -200,11 +209,7 @@ namespace EyeKnowRight
                 db.DailyTimeRecords.Add(dailyTimeRecord);
                 db.SaveChanges();
             }
-
-
-
         }
-
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             var xx = (Employee)EmployeeGrid.SelectedItem;
@@ -212,8 +217,6 @@ namespace EyeKnowRight
             EmployeePrintView employeePrint = new EmployeePrintView(xx.EmployeePK);
             employeePrint.Show();
         }
-
-
         private void AppraisalDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var xx = (Evaluation)EmployeeAppraisal.SelectedItem;
@@ -222,24 +225,14 @@ namespace EyeKnowRight
             evaluation.Show();
         }
 
-
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-
         private void AddUser(object sender, RoutedEventArgs e)
         {
-         
-           
-            // END FIRST NAME
-
             if (CheckValidations() == 0) {
-              
-           
-
                 if (Mode.Text == "Add") { 
             
             Employee addNew = new Employee();
@@ -251,10 +244,8 @@ namespace EyeKnowRight
             {
                 addNew.Gender = Gender_Female.Content.ToString();
             }
-
-      
             addNew.Picture = imageString;
-         
+            addNew.Age =  GiveBirthday(addNew.BirthDate);
             addNew.Salary = 0;
             addNew.FirstName = FirstName.Text;
             addNew.MiddleName = MiddleName.Text;
@@ -271,6 +262,7 @@ namespace EyeKnowRight
             addNew.BereavementLeave = Int32.Parse(BereavementLeave.Text);
             addNew.MedicalLeave = Int32.Parse(MedicalLeave.Text);
             addNew.Department = Department.Text;
+            addNew.IsActive = true;
             addNew.SSSNumber = SSSNumber.Text;
             addNew.PagibigNumber = PagibigNumber.Text;
             addNew.TINNumber = TINNumber.Text;
@@ -311,7 +303,6 @@ namespace EyeKnowRight
                     employee.Address = Street.Text + ", " + City.Text;
                     employee.BirthDate = BirthDate.SelectedDate;
                     employee.Position = Position.Text;
-
                     employee.PersonalLeave = Int32.Parse(PersonalLeave.Text);
                     employee.MaternityLeave = Int32.Parse(MaternityLeave.Text);
                     employee.PaternityLeave = Int32.Parse(PaternityLeave.Text);
@@ -322,8 +313,7 @@ namespace EyeKnowRight
                     employee.SSSNumber = SSSNumber.Text;
                     employee.PagibigNumber = PagibigNumber.Text;
                     employee.TINNumber = TINNumber.Text;
-
-                     employee.Salary = Double.Parse(Salary.Text);
+                    employee.Salary = Double.Parse(Salary.Text);
                     employee.JobTitle = JobTitle.Text;
                     employee.UserName = UserName.Text;
                     employee.DateRegistered = DateTime.Now;
@@ -340,9 +330,6 @@ namespace EyeKnowRight
             
         }
 
-        
-
-
        private void GetAppraisal(object sender, RoutedEventArgs e)
         {
             string userName = (string)((Button)sender).Tag;
@@ -353,12 +340,9 @@ namespace EyeKnowRight
        private void GetEdit(object sender, RoutedEventArgs e)
         {
 
-          
             if (sender != null)
             {
-               
                 int employeeId = (int)((Button)sender).Tag;
-
                 var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeeId);
                 DataContext = employee;
                 try { 
@@ -422,10 +406,21 @@ namespace EyeKnowRight
             StepsCounter.Text = step.ToString();
         }
 
-        
-
         private void NextStep_Click(object sender, RoutedEventArgs e)
         {
+            if(ThirdStep != null)
+            {
+                if(Gender == "Male")
+                {
+                    MaternityPanel.Visibility = Visibility.Collapsed;
+                    PaternityPanel.Visibility = Visibility.Visible;
+                }else
+                {
+                    MaternityPanel.Visibility = Visibility.Visible;
+                    PaternityPanel.Visibility = Visibility.Collapsed;
+                }
+
+            }
             if(step < 5) {  
             step++;
             }
@@ -509,7 +504,6 @@ namespace EyeKnowRight
             var data = db.Employees.ToList();
             EmployeeGrid.ItemsSource = data;
         }
-
         private void AccountRestoreYes(object sender, RoutedEventArgs e)
         {
             List<int> userToRestore = new List<int>();
@@ -534,16 +528,16 @@ namespace EyeKnowRight
             AccountDeleteDialog.IsOpen = true;
         }
 
-        private void RestoreUserClick(object sender, RoutedEventArgs e)
+        private void RestoreUser(object sender, RoutedEventArgs e)
         {
-            DeleteText.Text = $"Are you sure you want to restore {EmployeeGrid.SelectedItems.Count} user/s?";
-          //  RestoreDialog.IsOpen = true;
+            RestoreText.Text = $"Are you sure you want to restore {EmployeeGrid.SelectedItems.Count} user/s?";
+            AccountRestoreDialog.IsOpen = true;
         }
 
         private void OnSelect(object sender, SelectionChangedEventArgs e)
         {
             AccountDelete.IsEnabled = true;
-            //RestoreName.IsEnabled = true;
+            AccountRestore.IsEnabled = true;
         }
 
         private void SearchChanged(object sender, TextChangedEventArgs e)
@@ -654,7 +648,6 @@ namespace EyeKnowRight
                 if(AttendanceStartDate.SelectedDate > AttendanceEndDate.SelectedDate)
                 { 
                     MessageBox.Show("Please enter a valid date");
-
                 }
                 else
                 {
@@ -681,11 +674,42 @@ namespace EyeKnowRight
                     var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == AttendancePK);
                     var startDate = AttendanceStartDate.SelectedDate.Value.Date;
                     var endDate = AttendanceEndDate.SelectedDate.Value.Date;
-                   var dailyRecords = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName && a.DateTimeStamps >= startDate && a.DateTimeStamps <= endDate).ToList();
+                     var dailyRecords = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName && a.DateTimeStamps >= startDate && a.DateTimeStamps <= endDate).ToList();
                     EmployeeAttendance.ItemsSource = dailyRecords;
                     dailyTimeRecord = dailyRecords;
                 }
             }
+        }
+        public static int? GiveBirthday(DateTime? dateOfBirth)
+        {
+            var birthDate = 0;
+            try
+            {
+                if (dateOfBirth.Value.Month >= DateTime.Now.Month)
+                {
+                    birthDate = DateTime.Now.Year - dateOfBirth.Value.Year;
+                    birthDate -= 1;
+                }
+                else
+                {
+                    birthDate = DateTime.Now.Year - dateOfBirth.Value.Year;
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            return birthDate;
+        }
+
+        private void MaleCheck(object sender, RoutedEventArgs e)
+        {
+            if(Gender_Male.Content != null)
+            _gender = Gender_Male.Content.ToString();
+        }
+        private void FemaleCheck(object sender, RoutedEventArgs e)
+        {
+            if (Gender_Female.Content != null)
+                _gender = Gender_Female.Content.ToString();
         }
     }
 }

@@ -34,6 +34,8 @@ namespace EyeKnowRight
           //  var user = Application.Current.Properties["UserName"].ToString();
             var leave = db.Leaves.Where(a => a.Status == "Pending").ToList();
             LeaveGrid.ItemsSource = leave;
+
+            
         }
 
         private void LeaveClick(object sender, RoutedEventArgs e)
@@ -63,7 +65,23 @@ namespace EyeKnowRight
                 user.SickLeave -= (int)difference.Value.TotalDays;
             } else if (leave.TypeOfLeave == "Medical Leave")
             {
-
+                user.MedicalLeave -= (int)difference.Value.TotalDays;
+            }
+            else if (leave.TypeOfLeave == "Bereavement Leave")
+            {
+                user.BereavementLeave -= (int)difference.Value.TotalDays;
+            }
+            else if (leave.TypeOfLeave == "Personal Leave")
+            {
+                user.PersonalLeave -= (int)difference.Value.TotalDays;
+            }
+            else if (leave.TypeOfLeave == "Paternity Leave")
+            {
+                user.PaternityLeave -= (int)difference.Value.TotalDays;
+            }
+            else if (leave.TypeOfLeave == "Maternity Leave")
+            {
+                user.MaternityLeave -= (int)difference.Value.TotalDays;
             }
             db.SaveChanges();
            

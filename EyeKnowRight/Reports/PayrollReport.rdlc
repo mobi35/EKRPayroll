@@ -319,7 +319,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!BasicSalary.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>'₱'#,0.00;('₱'#,0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -335,8 +337,10 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>fil-PH</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -349,7 +353,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Accumulated.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>'₱'#,0.00;('₱'#,0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -365,6 +371,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>fil-PH</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -379,7 +386,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!LateDeduction.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>'₱'#,0.00;('₱'#,0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -395,6 +404,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>fil-PH</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -409,7 +419,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!SSS.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>'$'#,0.00;('$'#,0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -425,6 +437,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -499,7 +512,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TotalSalary.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>'₱'#,0.00;('₱'#,0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -515,6 +530,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>fil-PH</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -548,7 +564,7 @@
         <DataSetName>dataset</DataSetName>
         <Top>1.39458in</Top>
         <Left>0.19667in</Left>
-        <Height>0.57291in</Height>
+        <Height>0.57292in</Height>
         <Width>10.1575in</Width>
         <Style>
           <Border>

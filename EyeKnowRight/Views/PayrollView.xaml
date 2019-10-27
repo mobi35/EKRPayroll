@@ -9,9 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
-            
      
-        <!-- DATA GRID START -->
         <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="PayrollGrid" Height="400" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
@@ -36,21 +34,13 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-        <!-- DATA GRID END -->
-
-
-        <!-- ADD USER DIALOG BOX START -->
+      
         <materialDesign:DialogHost  IsOpen="False" x:Name="PayrollDialog"  Margin="0,-126,0,-32"  >
-
             <materialDesign:DialogHost.DialogContent>
-
                 <StackPanel Width="900">
-
-
                     <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
                         <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
                     </Button>
-
                     <StackPanel Margin="60 -20 60  60"  Orientation="Vertical">
                         <TextBox Visibility="Collapsed" x:Name="EmployeePK"></TextBox>
                         <TextBox Visibility="Collapsed"  x:Name="Mode">Add</TextBox>

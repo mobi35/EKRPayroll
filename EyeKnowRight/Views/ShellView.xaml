@@ -67,12 +67,12 @@
                                       <Border Visibility = "Collapsed"  Width="200"  Height="25" x:Name="CurrentPassword_Validation"   Background="{x:Null}" BorderBrush="Black">
                                        <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap"  x:Name="CurrentPassword_Validation_Text"   FontSize="12" Text="" />
                                    </Border>
-                                   <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Old Password"/>
+                                   <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="New Password"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                 <PasswordBox Padding="2 0 0 1" x:Name="NewPassword"      Width="200"  Height="25" ></PasswordBox>
                                   </Border>
                                
-                                  <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Confirm Old Password"/>
+                                  <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Confirm New Password"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                 <PasswordBox Padding="2 0 0 1" x:Name="NewPasswordConfirm"     Width="200"  Height="25" ></PasswordBox>
                                   </Border>

@@ -27,7 +27,6 @@ namespace EyeKnowRight.Models
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Payroll> Payrolls { get; set; }
       
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
          

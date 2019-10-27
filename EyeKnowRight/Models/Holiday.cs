@@ -11,5 +11,9 @@ namespace EyeKnowRight.Models
     {
         [Key]
         public int HolidayPK { get; set; }
+
+        public DateTime? Month { get; set; }
+
+        public string HolidayName { get; set; }
     }
 }

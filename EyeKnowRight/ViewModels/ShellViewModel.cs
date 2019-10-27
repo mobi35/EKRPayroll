@@ -50,8 +50,6 @@ namespace EyeKnowRight.ViewModels
                 }
 
             }
-
-
             else if (DateTime.Now.Day == 26)
             {
              
@@ -129,25 +127,27 @@ namespace EyeKnowRight.ViewModels
             {
                 Deductions deduction = new Deductions();
                 double basicSalaryPerMinute = ((user.Salary / 9) /60);
+                    int daysPresent = 0;
                 foreach (var dtr in dailyTimeRecord)
                   {
+
+                    if (dtr.TimeOut != null)
+                            daysPresent++;
+
                     if(user.UserName == dtr.UserName)
                     {
                         deduction.AllAccumulatedTimeAddition += dtr.Accumulated * basicSalaryPerMinute;
                         deduction.LateDeduction += dtr.Late * basicSalaryPerMinute;
                     }
                  }
-
                     deduction.TotalSalary = deduction.AllAccumulatedTimeAddition;
-                    //userList.Remove(user);\\
                     deduction.PayrollPK = db.Payrolls.FirstOrDefault(a => a.StartPayroll == start && a.EndPayroll == end).PayrollPK;
                     deduction.UserName = user.UserName;
-                     deduction.BasicSalary = user.Salary; 
-                   
-                db.Deductionss.Add(deduction);
-                db.SaveChanges();
+                    deduction.DaysPresent = daysPresent;
+                    deduction.BasicSalary = user.Salary; 
+                    db.Deductionss.Add(deduction);
+                    db.SaveChanges();
             }
-
             }catch(Exception e)
             {
 

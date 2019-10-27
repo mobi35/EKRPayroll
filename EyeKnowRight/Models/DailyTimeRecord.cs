@@ -36,7 +36,7 @@ namespace EyeKnowRight.Models
         public string OverTimeString { get; set; }
 
         public DateTime? DateTimeStamps { get; set; }
-
+    
         public string Remarks { get; set; }
 
     }

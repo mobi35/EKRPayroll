@@ -59,7 +59,18 @@ namespace EyeKnowRight.ViewModels
 
             var userModel = dbz.Employees.Where(a => a.UserName == username).FirstOrDefault();
 
-            if (userModel == null)
+
+            if (userModel.IsActive == false)
+            {
+                passwordValidation = "This user is already terminated";
+                NotifyOfPropertyChange("PasswordValidation");
+            }
+            else if (userModel.DateRegistered.Value.AddMonths(userModel.DaysContract) <= DateTime.Now)
+            {
+                passwordValidation = "This user is already expired.";
+                NotifyOfPropertyChange("PasswordValidation");
+            }
+            else if (userModel == null)
             {
                 passwordValidation = "Wrong Information";
                 NotifyOfPropertyChange("PasswordValidation");
@@ -77,8 +88,7 @@ namespace EyeKnowRight.ViewModels
                 }
             } else if (employee != null)
                 {
-                
-                    var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
+                var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
                 var date = DateTime.Now.Date;
                 var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
                     
@@ -95,10 +105,8 @@ namespace EyeKnowRight.ViewModels
                             int minutes = (int)dtrs.Late % 60;
                             dtrs.LateString = $"{ hour }h:{ minutes }m";
                         }
-
                     }
                     dbz.SaveChanges();
-              
                 Application.Current.Properties["UserName"] = Username;
                     windowManager.ShowWindow(shellViewModel);
                 TryClose();

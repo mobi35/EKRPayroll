@@ -24,11 +24,17 @@
              
             </Button>
             <StackPanel Orientation="Horizontal">
-             
+
+
+                <Button Click="RestoreUser" x:Name="AccountRestore" IsEnabled="False" Background="Green" BorderBrush="{x:Null}"  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="47" Height="30" FontSize="10"  >
+                    <materialDesign:PackIcon Kind="Restore"/>
+                </Button>
 
                 <Button Click="DeleteUser" x:Name="AccountDelete" IsEnabled="False" Background="Red" BorderBrush="{x:Null}"  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="47" Height="30" FontSize="10"  >
                 <materialDesign:PackIcon Kind="Delete"/>
-            </Button>
+              </Button>
+                
+                
             </StackPanel>
 
             <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
@@ -49,6 +55,21 @@
         <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeGrid" Height="400" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="OnSelect" >
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Gray" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsActive}" Value="false">
+                            <Setter Property="Background" Value="LightCoral"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsActive}" Value="true">
+                            <Setter Property="Background" Value="Green"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                
                 <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
@@ -63,7 +84,7 @@
                             <StackPanel  Orientation="Horizontal">
                                 
                                 <Button Width="70"  Height="23" Click="GetEdit" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
-                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="Green" Kind="AccountEdit"/>
+                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="White" Kind="AccountEdit"/>
                                 </Button>
 
 
@@ -167,11 +188,8 @@
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="City"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
 
-                                    <ComboBox Padding="5 7   0 1" x:Name="City"   Width="200"  Height="25" >
-                                        <ComboBoxItem>Manila City</ComboBoxItem>
-                                        <ComboBoxItem>Pasig City</ComboBoxItem>
-                                        <ComboBoxItem>Quezon City</ComboBoxItem>
-                                    </ComboBox>
+                                    <TextBox Padding="2 0 0 0" x:Name="City"   Width="200"  Height="25" ></TextBox>
+
                                 </Border>
                                 <TextBlock Foreground="Red" x:Name="City_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
@@ -179,8 +197,8 @@
                             <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Gender "/>
                             <StackPanel   Orientation="Horizontal" Width="200">
 
-                                <RadioButton x:Name="Gender_Male" IsChecked="True" Margin="20 0 20 0" Content="Male"/>
-                                <RadioButton x:Name="Gender_Female" Content="Female"/>
+                                <RadioButton x:Name="Gender_Male"  IsChecked="True" Margin="20 0 20 0" Content="Male" Checked="MaleCheck"/>
+                                <RadioButton Checked="FemaleCheck" x:Name="Gender_Female" Content="Female"/>
                             </StackPanel>
 
                         </StackPanel>
@@ -262,15 +280,14 @@
                                 <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="PersonalLeave_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
 
-                            <StackPanel Width="200">
+                            <StackPanel x:Name="MaternityPanel" Visibility="Collapsed" Width="200">
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Maternity Leave"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="MaternityLeave" Text="{Binding Path=MaternityLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
                                 </Border>
                                 <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="MaternityLeave_Validation"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
-
-                            <StackPanel Width="200">
+                            <StackPanel x:Name="PaternityPanel"  Width="200">
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Paternity Leave"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="PaternityLeave" Text="{Binding Path=PaternityLeave , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
@@ -729,7 +746,27 @@
 
 
 
-        
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="AccountRestoreDialog"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="300" Height="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15 ">
+                        <materialDesign:PackIcon Kind="AlertBox" Foreground="DarkRed" Width="50" Height="50"/>
+                        <TextBlock  x:Name="RestoreText" Foreground="Gray" FontSize="18" Width="200" Margin="15 5" TextWrapping="Wrap">
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="AccountRestoreYes" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Yes
+                        </Button>
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            No
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+
 
         <materialDesign:DialogHost Background="{x:Null}" Identifier="RootDialog" IsOpen="False" x:Name="ViewAppraisal"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >

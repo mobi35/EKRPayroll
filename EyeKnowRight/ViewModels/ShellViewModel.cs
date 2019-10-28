@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using EyeKnowRight.Models;
+using EyeKnowRight.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,45 @@ namespace EyeKnowRight.ViewModels
 {
     public class ShellViewModel : Screen
     {
+
+
+        private string typeOfReports;
+
+        public string TypeOfReports
+        {
+            get { return typeOfReports; }
+            set { typeOfReports = value; }
+        }
+
+        private DateTime? startDate;
+
+        public DateTime? StartDate
+        {
+            get { return startDate; }
+            set { startDate = value; }
+        }
+
+        private DateTime? endDate;
+
+        public DateTime? EndDate
+        {
+            get { return endDate; }
+            set { endDate = value; }
+        }
+
+
+        private int numberOfEntries;
+
+        public int NumberOfEntries
+        {
+            get { return numberOfEntries; }
+            set { numberOfEntries = value; }
+        }
+
+
+
+
+
         EyeKnowRightDB db = new EyeKnowRightDB();
         //  private readonly IWindowManager windowManager;
         public ShellViewModel()
@@ -156,6 +196,16 @@ namespace EyeKnowRight.ViewModels
             }
 
         }
+
+        public void ReportClick()
+        {
+            Console.Write("damn");
+            Console.Write("damn");
+            Console.Write("damn");
+            Console.Write("damn");
+
+        }
+       
 
     }
 }

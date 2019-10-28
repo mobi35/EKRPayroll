@@ -7,13 +7,13 @@ namespace EyeKnowRight.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.3.0")]
-    public sealed partial class first : IMigrationMetadata
+    public sealed partial class NEWS : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(first));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NEWS));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910261412494_first"; }
+            get { return "201910271133500_NEWS"; }
         }
         
         string IMigrationMetadata.Source

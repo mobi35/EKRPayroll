@@ -72,6 +72,7 @@ namespace EyeKnowRight.Models
         public string Department { get; set; }
 
         public bool IsActive { get; set; }
-            
+
+        public string Status { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace EyeKnowRight.ViewModels
 {
@@ -50,10 +51,20 @@ namespace EyeKnowRight.ViewModels
             }
         }
 
-        
+
+        public void ExecuteFilterView(ActionExecutionContext context)
+        {
+            var keyArgs = context.EventArgs as KeyEventArgs;
+
+            if (keyArgs != null && keyArgs.Key == Key.Enter)
+            {
+                Login();
+            }
+        }
 
         public void Login()
         {
+
           
             var employee = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault();
 
@@ -98,7 +109,7 @@ namespace EyeKnowRight.ViewModels
                 var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
                 var date = DateTime.Now.Date;
                 var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
-                    
+                    if(dtrs != null) {  
                     dtrs.TimeIn = DateTime.Now;
                     userModel.NumberOfTries = 0;
                     if (dtrs.FirstTimeIn == null)
@@ -117,6 +128,11 @@ namespace EyeKnowRight.ViewModels
                 Application.Current.Properties["UserName"] = Username;
                     windowManager.ShowWindow(shellViewModel);
                 TryClose();
+                }else
+                {
+                    passwordValidation = "Can't login on weekends";
+                    NotifyOfPropertyChange("PasswordValidation");
+                }
             }
                 else
             {

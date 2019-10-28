@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class NEWS : DbMigration
     {
         public override void Up()
         {
@@ -83,6 +83,7 @@
                         LastAppraiseDate = c.DateTime(),
                         Department = c.String(),
                         IsActive = c.Boolean(nullable: false),
+                        Status = c.String(),
                     })
                 .PrimaryKey(t => t.EmployeePK);
             

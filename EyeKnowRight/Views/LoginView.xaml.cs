@@ -24,6 +24,11 @@ namespace EyeKnowRight.Views
         {
             InitializeComponent();
         }
-   
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            Username.Text = "";
+            Password.Password = "";
+        }
     }
 }

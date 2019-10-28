@@ -147,7 +147,9 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="First Name"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Padding="2 0 0 0" x:Name="FirstName" Text="{Binding Path=FirstName , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
+                                    <TextBox PreviewKeyDown="EnterClicked" Padding="2 0 0 0" x:Name="FirstName" Text="{Binding Path=FirstName , Mode=TwoWay}"  Width="200"  Height="25" >
+                                      
+                                    </TextBox>
                                 </Border>
                                 <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="FirstName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
@@ -157,7 +159,7 @@
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <TextBox Padding="2 0 0 0" x:Name="MiddleName" Text="{Binding Path=MiddleName , Mode=TwoWay}"   Width="200"  Height="25" ></TextBox>
                                 </Border>
-                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="MiddleName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                                <TextBlock PreviewKeyDown="EnterClicked" Foreground="Red" Padding="4" TextWrapping="Wrap" x:Name="MiddleName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
 
                             <StackPanel Width="200">
@@ -165,7 +167,7 @@
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <TextBox Padding="2 0 0 0" x:Name="LastName"  Text="{Binding Path=LastName , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
                                 </Border>
-                                <TextBlock Foreground="Red" Padding="4" TextWrapping="Wrap"  x:Name="LastName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                                <TextBlock PreviewKeyDown="EnterClicked" Foreground="Red" Padding="4" TextWrapping="Wrap"  x:Name="LastName_ValidationMsg"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
 
                             <StackPanel Width="200">
@@ -378,17 +380,17 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Heirarchy"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <ComboBox  Padding="5 7   0 1" x:Name="Position"  Text="{Binding Path=Position , Mode=TwoWay}"   Width="200"  Height="25">
+                                    <ComboBox SelectedIndex="2"  Padding="5 7   0 1" x:Name="Position"  Text="{Binding Path=Position , Mode=TwoWay}"   Width="200"  Height="25">
                                         <ComboBoxItem>Admin</ComboBoxItem>
-                                        <ComboBoxItem>Employee</ComboBoxItem>
+                                        <ComboBoxItem IsSelected="True">Employee</ComboBoxItem>
                                         <ComboBoxItem>HR Assistant</ComboBoxItem>
                                     </ComboBox>
                                 </Border>
-
+                            
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Months of stay"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <ComboBox  Padding="5 7   0 1" x:Name="MonthsOfStay"  Text="{Binding Path=DaysContract , Mode=TwoWay}"   Width="200"  Height="25">
-                                        <ComboBoxItem>12</ComboBoxItem>
+                                    <ComboBox SelectedIndex="1" Padding="5 7   0 1" x:Name="MonthsOfStay"  Text="{Binding Path=DaysContract , Mode=TwoWay}"   Width="200"  Height="25">
+                                        <ComboBoxItem  IsSelected="True">12</ComboBoxItem>
                                         <ComboBoxItem>24</ComboBoxItem>
                                         <ComboBoxItem>36</ComboBoxItem>
                                     </ComboBox>
@@ -400,8 +402,8 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Job Position"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <ComboBox  Padding="5 7   0 1" x:Name="JobTitle"  Text="{Binding Path=JobTitle , Mode=TwoWay}"   Width="200"  Height="25">
-                                        <ComboBoxItem>Junior Programmer</ComboBoxItem>
+                                    <ComboBox  SelectedIndex="1" Padding="5 7   0 1" x:Name="JobTitle"  Text="{Binding Path=JobTitle , Mode=TwoWay}"   Width="200"  Height="25">
+                                        <ComboBoxItem  IsSelected="True">Junior Programmer</ComboBoxItem>
                                         <ComboBoxItem>Senior Programmer</ComboBoxItem>
                                         <ComboBoxItem>Graphic Artist</ComboBoxItem>
                                     </ComboBox>
@@ -413,7 +415,7 @@
                                 <StackPanel Width="200">
                                     <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Salary"/>
                                     <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                        <TextBox Padding="2 0 0 1" x:Name="Salary" PreviewTextInput="NumberValidationTextBox" Text="{Binding Path=Salary , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
+                                        <TextBox Padding="2 0 0 1"  x:Name="Salary" PreviewTextInput="NumberValidationTextBox" Text="{Binding Path=Salary , Mode=TwoWay}"    Width="200"  Height="25" ></TextBox>
                                     </Border>
                                     <TextBlock Foreground="Red"  x:Name="Salary_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
 
@@ -422,9 +424,9 @@
 
                                 <StackPanel Width="200">
                                     <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Department"/>
-                                    <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                        <ComboBox  Padding="5 7   0 1" x:Name="Department"  Text="{Binding Path=Department , Mode=TwoWay}"   Width="200"  Height="25">
-                                            <ComboBoxItem>Sales and Marketing</ComboBoxItem>
+                                    <Border PreviewKeyDown="EnterClicked"  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                        <ComboBox SelectedIndex="1"  Padding="5 7   0 1" x:Name="Department"  Text="{Binding Path=Department , Mode=TwoWay}"   Width="200"  Height="25">
+                                            <ComboBoxItem  IsSelected="True">Sales and Marketing</ComboBoxItem>
                                             <ComboBoxItem>Creative</ComboBoxItem>
                                             <ComboBoxItem>IT</ComboBoxItem>
                                             <ComboBoxItem>Production</ComboBoxItem>
@@ -852,7 +854,7 @@
                             <DataGridTextColumn FontSize="11" Width="100"  Header="Overtime" Binding="{Binding OverTime,Mode=TwoWay}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
                      
 
                         <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">

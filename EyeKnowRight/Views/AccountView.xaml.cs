@@ -19,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace EyeKnowRight
 {
@@ -82,8 +83,44 @@ namespace EyeKnowRight
                
             }
 
+            var employees = db.Employees.ToList();
+
+            if(employees.Count > 0) {  
+            Employee last = db.Employees.ToList().Last();
+           
+            foreach(var emp in employees)
+            {
+                if(UserName.Text == emp.UserName && Mode.Text == "Add")
+                {
+                    numberOfWrong++;
+                    StepChangeVisibility(2);
+                    UserName_ValidationMsg.Text = "Username already existed";
+                    UserName_ValidationMsg.Visibility = Visibility.Visible;
+                    break;
+                }else if (last == emp)
+                {
+                    UserName_ValidationMsg.Visibility = Visibility.Collapsed;
+                }
+            }
+
+            }
+
 
             // START FIRST NAME
+
+            if (UserName.Text == "" && Mode.Text == "Add")
+            {
+                numberOfWrong++;
+                StepChangeVisibility(2);
+                UserName_ValidationMsg.Text = "This field is required";
+                UserName_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else
+            {
+
+                UserName_ValidationMsg.Visibility = Visibility.Collapsed;
+
+            }
 
             if (FirstName.Text == "")
             {
@@ -132,7 +169,23 @@ namespace EyeKnowRight
             {
                 Salary.Text = "0";
                 numberOfWrong++;
-                StepChangeVisibility(3);
+                StepChangeVisibility(5);
+                Salary_ValidationMsg.Text = "This field is required";
+                Salary_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else
+            {
+
+                Salary_ValidationMsg.Visibility = Visibility.Collapsed;
+
+            }
+
+
+            if (Salary.Text == "")
+            {
+                Salary.Text = "0";
+                numberOfWrong++;
+                StepChangeVisibility(5);
                 Salary_ValidationMsg.Text = "This field is required";
                 Salary_ValidationMsg.Visibility = Visibility.Visible;
             }
@@ -203,11 +256,13 @@ namespace EyeKnowRight
            
             for (int i = 0; i <= totalDaysOfMonths.Value.TotalDays; i++)
             {
+                if (DateTime.Now.AddDays(i).Date.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.AddDays(i).Date.DayOfWeek != DayOfWeek.Sunday) { 
                 DailyTimeRecord dailyTimeRecord = new DailyTimeRecord();
                 dailyTimeRecord.DateTimeStamps = DateTime.Now.AddDays(i).Date;
                 dailyTimeRecord.UserName = username;
                 db.DailyTimeRecords.Add(dailyTimeRecord);
                 db.SaveChanges();
+                }
             }
         }
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
@@ -232,122 +287,7 @@ namespace EyeKnowRight
         }
         private void AddUser(object sender, RoutedEventArgs e)
         {
-            if (CheckValidations() == 0) {
-                if (Mode.Text == "Add") { 
-            
-            Employee addNew = new Employee();
-            addNew.EmployeeID = "New";
-            if (Gender_Male.IsChecked == true)
-            {
-                addNew.Gender = Gender_Male.Content.ToString();
-            }else
-            {
-                addNew.Gender = Gender_Female.Content.ToString();
-            }
-            addNew.Picture = imageString;
-            addNew.Age =  GiveBirthday(addNew.BirthDate);
-            addNew.Salary = 0;
-            addNew.FirstName = FirstName.Text;
-            addNew.MiddleName = MiddleName.Text;
-            addNew.LastName = LastName.Text;
-            addNew.Email = Email.Text;
-            addNew.Password = Password.Password;
-            addNew.Address = Street.Text + ", " + City.Text;
-            addNew.BirthDate = BirthDate.SelectedDate;
-            addNew.Position = Position.Text;
-          
-            if(addNew.Gender == "Male")
-            {
-                addNew.PaternityLeave = 0;
-            }
-            else
-            {
-                addNew.MaternityLeave = 0;
-            }
-      
-            
-            addNew.SickLeave = 0;
-            addNew.BereavementLeave = 0;
-            addNew.MedicalLeave = 0;
-            addNew.PersonalLeave = 0;
-
-
-
-            addNew.Department = Department.Text;
-            addNew.IsActive = true;
-            addNew.SSSNumber = SSSNumber.Text;
-            addNew.PagibigNumber = PagibigNumber.Text;
-            addNew.TINNumber = TINNumber.Text;
-            addNew.LastAppraiseDate = null;
-            addNew.Salary = Double.Parse(Salary.Text);
-            addNew.JobTitle = JobTitle.SelectedValue.ToString();
-            addNew.UserName = UserName.Text;
-            addNew.DateRegistered = DateTime.Now;
-            addNew.EmployeeID = "Tanjiro";
-            addNew.Age = 69;
-             addNew.DaysContract = Int32.Parse(MonthsOfStay.Text);
-            db.Employees.Add(addNew);
-
-            db.SaveChanges();
-
-             UpdateDailyTimeRecord(UserName.Text, addNew.DaysContract);
-
-             MaterialDesign.IsOpen = true;
-                }else if (Mode.Text == "Edit")
-                {
-                    if(CheckValidations() == 0) { 
-                    int employeePk = Int32.Parse(EmployeePK.Text);
-                    var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeePk);
-                    if (Gender_Male.IsChecked == true)
-                    {
-                        employee.Gender = Gender_Male.Content.ToString();
-                    }
-                    else
-                    {
-                        employee.Gender = Gender_Female.Content.ToString();
-                    }
-                    employee.Salary = 0;
-                    employee.FirstName = FirstName.Text;
-                    employee.MiddleName = MiddleName.Text;
-                    employee.LastName = LastName.Text;
-                    employee.Email = Email.Text;
-                    employee.Password = Password.Password;
-                    employee.Address = Street.Text + ", " + City.Text;
-                    employee.BirthDate = BirthDate.SelectedDate;
-                    employee.Position = Position.Text;
-                    employee.PersonalLeave = Int32.Parse(PersonalLeave.Text);
-                  
-                  
-                    employee.SickLeave = Int32.Parse(SickLeave.Text);
-                        if (employee.Gender == "Male")
-                        {
-                            employee.PaternityLeave = Int32.Parse(PaternityLeave.Text);
-                        }
-                        else
-                        {
-                            employee.MaternityLeave = Int32.Parse(MaternityLeave.Text);
-                        }
-                        employee.BereavementLeave = Int32.Parse(BereavementLeave.Text);
-                    employee.MedicalLeave = Int32.Parse(MedicalLeave.Text);
-                    employee.Department = Department.Text;
-                    employee.SSSNumber = SSSNumber.Text;
-                    employee.PagibigNumber = PagibigNumber.Text;
-                    employee.TINNumber = TINNumber.Text;
-                    employee.Salary = Double.Parse(Salary.Text);
-                    employee.JobTitle = JobTitle.Text;
-                    employee.UserName = UserName.Text;
-                    employee.DateRegistered = DateTime.Now;
-                    employee.EmployeeID = "Tanjiro";
-                    employee.Age = 69;
-                  
-                    db.SaveChanges();
-                        SuccessfullyEdited.IsOpen = true;
-                    }
-                }
-                var data = db.Employees.ToList();
-                EmployeeGrid.ItemsSource = data;
-            }
-            
+            AddUserExecute();
         }
 
        private void GetAppraisal(object sender, RoutedEventArgs e)
@@ -495,10 +435,147 @@ namespace EyeKnowRight
             }
             else if (step == 5)
             {
+                if(Position.SelectedItem == null)
+                Position.SelectedIndex = 2;
+                if (MonthsOfStay.SelectedItem == null)
+                    MonthsOfStay.SelectedIndex = 1;
+                if (JobTitle.SelectedItem == null)
+                    JobTitle.SelectedIndex = 1;
+                if (Department.SelectedItem == null)
+                    Department.SelectedIndex = 1;
                 LastStep.Visibility = Visibility.Visible;
                 this.step = 5;
             }
 
+        }
+
+        public void AddUserExecute()
+        {
+            if (CheckValidations() == 0)
+            {
+                if (Mode.Text == "Add")
+                {
+                    Employee addNew = new Employee();
+                    addNew.EmployeeID = "New";
+                    if (Gender_Male.IsChecked == true)
+                    {
+                        addNew.Gender = Gender_Male.Content.ToString();
+                    }
+                    else
+                    {
+                        addNew.Gender = Gender_Female.Content.ToString();
+                    }
+                    addNew.Picture = imageString;
+                    addNew.Age = GiveBirthday(addNew.BirthDate);
+                    addNew.Salary = 0;
+                    addNew.FirstName = FirstName.Text;
+                    addNew.MiddleName = MiddleName.Text;
+                    addNew.LastName = LastName.Text;
+                    addNew.Email = Email.Text;
+                    addNew.Password = Password.Password;
+                    addNew.Address = Street.Text + ", " + City.Text;
+                    addNew.BirthDate = BirthDate.SelectedDate;
+                    addNew.Position = Position.Text;
+                    addNew.Status = "Active";
+                    if (addNew.Gender == "Male")
+                    {
+                        addNew.PaternityLeave = 0;
+                    }
+                    else
+                    {
+                        addNew.MaternityLeave = 0;
+                    }
+
+                    addNew.SickLeave = 0;
+                    addNew.BereavementLeave = 0;
+                    addNew.MedicalLeave = 0;
+                    addNew.PersonalLeave = 0;
+                    addNew.Department = Department.Text;
+                    addNew.IsActive = true;
+                    addNew.SSSNumber = SSSNumber.Text;
+                    addNew.PagibigNumber = PagibigNumber.Text;
+                    addNew.TINNumber = TINNumber.Text;
+                    addNew.LastAppraiseDate = null;
+                    addNew.Salary = Double.Parse(Salary.Text);
+                    addNew.JobTitle = JobTitle.Text;
+                    addNew.UserName = UserName.Text;
+                    addNew.DateRegistered = DateTime.Now;
+                    addNew.EmployeeID = "Tanjiro";
+                    addNew.Age = 69;
+                    addNew.DaysContract = Int32.Parse(MonthsOfStay.Text);
+                    db.Employees.Add(addNew);
+
+                    db.SaveChanges();
+
+                    UpdateDailyTimeRecord(UserName.Text, addNew.DaysContract);
+
+                    MaterialDesign.IsOpen = true;
+                }
+                else if (Mode.Text == "Edit")
+                {
+                    if (CheckValidations() == 0)
+                    {
+                        int employeePk = Int32.Parse(EmployeePK.Text);
+                        var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeePk);
+                        if (Gender_Male.IsChecked == true)
+                        {
+                            employee.Gender = Gender_Male.Content.ToString();
+                        }
+                        else
+                        {
+                            employee.Gender = Gender_Female.Content.ToString();
+                        }
+                        employee.Salary = 0;
+                        employee.FirstName = FirstName.Text;
+                        employee.MiddleName = MiddleName.Text;
+                        employee.LastName = LastName.Text;
+                        employee.Email = Email.Text;
+                        employee.Password = Password.Password;
+                        employee.Address = Street.Text + ", " + City.Text;
+                        employee.BirthDate = BirthDate.SelectedDate;
+                        employee.Position = Position.Text;
+                        employee.PersonalLeave = Int32.Parse(PersonalLeave.Text);
+
+
+                        employee.SickLeave = Int32.Parse(SickLeave.Text);
+                        if (employee.Gender == "Male")
+                        {
+                            employee.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+                        }
+                        else
+                        {
+                            employee.MaternityLeave = Int32.Parse(MaternityLeave.Text);
+                        }
+                        employee.BereavementLeave = Int32.Parse(BereavementLeave.Text);
+                        employee.MedicalLeave = Int32.Parse(MedicalLeave.Text);
+                        employee.Department = Department.Text;
+                        employee.SSSNumber = SSSNumber.Text;
+                        employee.PagibigNumber = PagibigNumber.Text;
+                        employee.TINNumber = TINNumber.Text;
+                        employee.Salary = Double.Parse(Salary.Text);
+                        employee.JobTitle = JobTitle.Text;
+                        employee.UserName = UserName.Text;
+                        employee.DateRegistered = DateTime.Now;
+                        employee.EmployeeID = "Tanjiro";
+                        employee.Age = 69;
+
+                        db.SaveChanges();
+                        SuccessfullyEdited.IsOpen = true;
+                    }
+                }
+                var data = db.Employees.ToList();
+                EmployeeGrid.ItemsSource = data;
+            }
+        }
+       
+
+        void EnterClicked(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddUserExecute();
+                e.Handled = true;
+            }
         }
 
         private void AddNewUserClick(object sender, RoutedEventArgs e)
@@ -530,6 +607,7 @@ namespace EyeKnowRight
             {
                var selectEmployee =  db.Employees.First(a => a.EmployeePK == id);
                 selectEmployee.IsActive = false;
+                selectEmployee.Status = "Terminated";
                 db.SaveChanges();
             }
             SuccessfullyDeletedDialogBox.IsOpen = true;
@@ -548,6 +626,7 @@ namespace EyeKnowRight
             {
                 var selectEmployee = db.Employees.First(a => a.EmployeePK == id);
                 selectEmployee.IsActive = true;
+                selectEmployee.Status = "Active";
                 db.SaveChanges();
             }
             SuccessfullyDeletedDialogBox.IsOpen = true;

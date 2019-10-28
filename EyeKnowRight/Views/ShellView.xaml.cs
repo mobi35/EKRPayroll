@@ -1,4 +1,5 @@
 ﻿using EyeKnowRight.Models;
+using EyeKnowRight.ViewModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -333,7 +334,90 @@ namespace EyeKnowRight.Views
 
        
         }
-    
-    
+
+        private void ReportClick(object sender, RoutedEventArgs e)
+        {
+            Reports(TypeOfReports.Text, StartDate.SelectedDate, EndDate.SelectedDate, Int32.Parse(NumberOfEntries.Text));
+            MessageBox.Show("PRINTED");
+        }
+
+        public void Reports(string typeOfReports, DateTime? startDate, DateTime? endDate, int numberOfEntries)
+        {
+
+            if (typeOfReports == "Attendance Reports")
+            {
+
+                List<AttendanceReportViewModel> reportsVM = new List<AttendanceReportViewModel>();
+
+                var employee = db.Employees.ToList();
+
+                var dailyTimeRecord = db.DailyTimeRecords.Where(a => a.DateTimeStamps >= startDate && a.DateTimeStamps <= endDate).ToList();
+
+                foreach (var emp in employee)
+                {
+                    foreach (var dtr in dailyTimeRecord)
+                    {
+                        if (emp.UserName == dtr.UserName)
+                        {
+                            reportsVM.Add(new AttendanceReportViewModel
+                            {
+                                FullName = emp.FirstName + " " + emp.MiddleName + " " + emp.LastName,
+                                TimeIn = dtr.TimeIn,
+                                TimeOut = dtr.TimeOut,
+                                DateTimeStamps = dtr.DateTimeStamps,
+                                Remarks = dtr.Remarks
+                            });
+
+                        }
+                    }
+                }
+                MainReportsView reportsView = new MainReportsView(reportsVM.Take(numberOfEntries).ToList());
+                reportsView.Show();
+
+            }else if (typeOfReports == "Assesment Reports")
+            {
+                var assesmentList = db.Evaluations.Where(a => a.DateAppraise >= startDate && a.DateAppraise <= endDate).ToList();
+                MainAssesmentReportsView assesmentReports = new MainAssesmentReportsView(assesmentList.Take(numberOfEntries).ToList());
+                assesmentReports.Show();
+            }else if (typeOfReports == "Employee Masterlist")
+            {
+                var employeeList = db.Employees.Where(a => a.DateRegistered >= startDate && a.DateRegistered <= endDate);
+                MainEmployeeMasterlistView mainEmployee = new MainEmployeeMasterlistView(employeeList.Take(numberOfEntries).ToList());
+                mainEmployee.Show();
+            }else if (typeOfReports == "Top Performing Employees")
+            {
+                var employees = db.Employees.ToList();
+                List<TopPerformingEmployees> topPerformingEmp = new List<TopPerformingEmployees>();
+                foreach(var emp in employees)
+                {
+                    double empLate = 0;
+                    int totalAttendance = 0;
+                    foreach (var dtr in db.DailyTimeRecords.Where(a => a.DateTimeStamps >= startDate && a.DateTimeStamps <= endDate).ToList())
+                    {
+                        if(emp.UserName == dtr.UserName)
+                        {
+                            empLate += dtr.Late;
+                            if (dtr.TimeIn != null && dtr.TimeOut != null)
+                                totalAttendance++;
+                        }
+                    }
+                    topPerformingEmp.Add(new TopPerformingEmployees
+                    {
+                        UserName = emp.UserName,
+                        TotalAttendance = totalAttendance,
+                        TotalLate = empLate
+                    });
+                }
+
+                MainTopPerformingView mainTop = new MainTopPerformingView(topPerformingEmp.OrderBy(a => a.TotalLate).Take(numberOfEntries).ToList());
+                mainTop.Show();
+
+            }
+
+
+               
+
+
+        }
     }
 }

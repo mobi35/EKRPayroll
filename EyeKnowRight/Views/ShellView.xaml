@@ -54,7 +54,7 @@
                         <TextBlock/>
                         <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Choose Report"/>
                     <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                        <ComboBox  Padding="5 7   0 1" x:Name="MonthsOfStay"  Text="{Binding Path=DaysContract , Mode=TwoWay}"   Width="200"  Height="25">
+                            <ComboBox  Padding="5 7   0 1"  x:Name="TypeOfReports"  Width="200"  Height="25">
                             <ComboBoxItem>Attendance Reports</ComboBoxItem>
                             <ComboBoxItem>Assesment Reports</ComboBoxItem>
                             <ComboBoxItem>Employee Masterlist</ComboBoxItem>
@@ -67,7 +67,7 @@
                     <StackPanel   Margin="10 0 0 0" HorizontalAlignment="Left">
                         <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Start Date"/>
                         <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                            <DatePicker HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="ReportStartDate"   Width="200"  Height="25" >
+                            <DatePicker HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="StartDate"   Width="200"  Height="25" >
 
                             </DatePicker>
                         </Border>
@@ -76,7 +76,7 @@
                     <StackPanel  Margin="10 0 0 0" HorizontalAlignment="Left">
                         <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="End Date"/>
                         <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                            <DatePicker HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="ReportEndDate"   Width="200"  Height="25" >
+                            <DatePicker HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="EndDate"   Width="200"  Height="25" >
 
                             </DatePicker>
                         </Border>
@@ -85,7 +85,7 @@
                     <StackPanel  Margin="10 0 0 0" HorizontalAlignment="Left">
                         <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Number of entries"/>
                         <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                            <ComboBox  Padding="5 7   0 1" x:Name="NumberOfEntries"  Text="{Binding Path=DaysContract , Mode=TwoWay}"   Width="200"  Height="25">
+                            <ComboBox  Padding="5 7   0 1" x:Name="NumberOfEntries"     Width="200"  Height="25">
                                 <ComboBoxItem>10</ComboBoxItem>
                                 <ComboBoxItem>50</ComboBoxItem>
                                 <ComboBoxItem>100</ComboBoxItem>
@@ -94,8 +94,7 @@
                         </Border>
 
                         <TextBlock/>
-                        <Button Content="Report" />
-                     
+                        <Button Click="ReportClick" Content="Report" />
                     </StackPanel>
 
                   

@@ -7,8 +7,13 @@
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
-    <Grid >
 
+
+
+    <Grid>
+
+       
+        
         <StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
             <Button Click="AddNewUserClick" Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}">
@@ -50,36 +55,42 @@
         <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeGrid" Height="400" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="OnSelect" >
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="Gray" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=IsActive}" Value="false">
-                            <Setter Property="Background" Value="LightCoral"/>
-                            <Setter Property="Foreground" Value="White"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Path=IsActive}" Value="true">
-                            <Setter Property="Background" Value="Green"/>
-                            <Setter Property="Foreground" Value="White"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
+            
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="11" Width="100"  Header="Is Active" Binding="{Binding IsActive}"/>
+             
                 <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Middle Name" Binding="{Binding MiddleName}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
                 <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
-               
+            
                 <DataGridTemplateColumn Width="200">
                     <DataGridTemplateColumn.CellTemplate>
 
                         <DataTemplate>
                             <StackPanel  Orientation="Horizontal">
-                                
+                                <Button Width="70" Margin="-29"  Height="23" Background="{x:Null}" Foreground="CadetBlue" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
+                                    <TextBlock   >
+                                        <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                        <Setter Property="Foreground" Value="Green" />
+                                                        <Setter Property="Text" Value="Active" />
+                                                    </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                                        <Setter Property="Foreground" Value="Red" />
+                                                        <Setter Property="Text" Value="Inactive" />
+                                                    </DataTrigger>
+                                            </Style.Triggers>
+                                            </Style>
+                                    </TextBlock.Style>
+                                    </TextBlock>
+                                  
+                                </Button>
+
                                 <Button Width="70"  Height="23" Click="GetEdit" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
-                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="White" Kind="AccountEdit"/>
+                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="Black" Kind="AccountEdit"/>
                                 </Button>
 
 

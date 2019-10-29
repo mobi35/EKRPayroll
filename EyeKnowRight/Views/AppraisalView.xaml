@@ -17,7 +17,7 @@
                        
                     </StackPanel>
                     <StackPanel Visibility="Visible"  x:Name="AppraiseStep1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15 40 15 0">
-                        <TextBox x:Name="UserTextBox"/>
+                        <TextBox IsEnabled="False" x:Name="UserTextBox"/>
                         <StackPanel    VerticalAlignment="Top" >
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Job Knowledge"/>
                             <Slider  x:Name="Answer1" VerticalAlignment="Center" TickFrequency="37.5" Minimum="0" Maximum="100" Value="0" Width="250" AutoToolTipPlacement="TopLeft"></Slider>

@@ -59,8 +59,19 @@ namespace EyeKnowRight.ViewModels
 
             var userModel = dbz.Employees.Where(a => a.UserName == username).FirstOrDefault();
 
+            var checkTriesEmployee = dbz.Employees.FirstOrDefault(a => a.UserName == username);
+            if (checkTriesEmployee != null)
+            {
+                checkTriesEmployee.NumberOfTries += 1;
+                dbz.SaveChanges();
+            }
+            if (userModel == null)
+            {
+                passwordValidation = "Wrong Information";
+                NotifyOfPropertyChange("PasswordValidation");
+            }
 
-            if (userModel.IsActive == false)
+            else if (userModel.IsActive == false)
             {
                 passwordValidation = "This user is already terminated";
                 NotifyOfPropertyChange("PasswordValidation");
@@ -70,11 +81,7 @@ namespace EyeKnowRight.ViewModels
                 passwordValidation = "This user is already expired.";
                 NotifyOfPropertyChange("PasswordValidation");
             }
-            else if (userModel == null)
-            {
-                passwordValidation = "Wrong Information";
-                NotifyOfPropertyChange("PasswordValidation");
-            }
+          
             else if(userModel != null && employee == null) { 
             if (userModel.NumberOfTries > 5 )
                 {
@@ -113,12 +120,7 @@ namespace EyeKnowRight.ViewModels
             }
                 else
             {
-                    var checkTriesEmployee = dbz.Employees.FirstOrDefault(a => a.UserName == username);
-                    if (checkTriesEmployee != null)
-                    {
-                        checkTriesEmployee.NumberOfTries += 1;
-                        dbz.SaveChanges();
-                    }
+                   
                 passwordValidation = "Wrong information";
                 NotifyOfPropertyChange("PasswordValidation");
             }

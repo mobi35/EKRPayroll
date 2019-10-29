@@ -255,20 +255,24 @@ namespace EyeKnowRight
             addNew.Address = Street.Text + ", " + City.Text;
             addNew.BirthDate = BirthDate.SelectedDate;
             addNew.Position = Position.Text;
-            addNew.PersonalLeave = Int32.Parse(PersonalLeave.Text);
+          
             if(addNew.Gender == "Male")
-                    {
-                        addNew.PaternityLeave = Int32.Parse(PaternityLeave.Text);
-                    }
-                    else
-                    {
-                        addNew.MaternityLeave = Int32.Parse(MaternityLeave.Text);
-                    }
+            {
+                addNew.PaternityLeave = 0;
+            }
+            else
+            {
+                addNew.MaternityLeave = 0;
+            }
       
-         
-            addNew.SickLeave = Int32.Parse(SickLeave.Text);
-            addNew.BereavementLeave = Int32.Parse(BereavementLeave.Text);
-            addNew.MedicalLeave = Int32.Parse(MedicalLeave.Text);
+            
+            addNew.SickLeave = 0;
+            addNew.BereavementLeave = 0;
+            addNew.MedicalLeave = 0;
+            addNew.PersonalLeave = 0;
+
+
+
             addNew.Department = Department.Text;
             addNew.IsActive = true;
             addNew.SSSNumber = SSSNumber.Text;
@@ -358,6 +362,13 @@ namespace EyeKnowRight
 
             if (sender != null)
             {
+                PaternityLeave.IsEnabled = true;
+                MaternityLeave.IsEnabled = true;
+                PersonalLeave.IsEnabled = true;
+                MedicalLeave.IsEnabled = true;
+                SickLeave.IsEnabled = true;
+                BereavementLeave.IsEnabled = true;
+
                 int employeeId = (int)((Button)sender).Tag;
                 var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeeId);
                 DataContext = employee;
@@ -492,6 +503,12 @@ namespace EyeKnowRight
 
         private void AddNewUserClick(object sender, RoutedEventArgs e)
         {
+            PaternityLeave.IsEnabled = false;
+            MaternityLeave.IsEnabled = false;
+            PersonalLeave.IsEnabled = false;
+            MedicalLeave.IsEnabled = false;
+            SickLeave.IsEnabled = false;
+            BereavementLeave.IsEnabled = false;
             StepChangeVisibility(1);
             Mode.Text = "Add";
             DataContext = null;

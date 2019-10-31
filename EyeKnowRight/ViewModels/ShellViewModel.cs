@@ -47,12 +47,10 @@ namespace EyeKnowRight.ViewModels
         }
 
         EyeKnowRightDB db = new EyeKnowRightDB();
-        //  private readonly IWindowManager windowManager;
         public ShellViewModel()
         {
             ///// 
-            ///
-            //
+           
             var getUserList = db.Employees.ToList();
             var leave = db.Leaves.ToList();
             TimeSpan? remainingLeave ;

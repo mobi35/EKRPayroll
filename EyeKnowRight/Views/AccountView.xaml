@@ -268,7 +268,7 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Email Address"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Padding="2 0 0 1" x:Name="Email"  Text="{Binding Path=Email , Mode=TwoWay}"   Width="200"  Height="25" ></TextBox>
+                                    <TextBox  Padding="2 0 0 1" x:Name="Email"  Text="{Binding Path=Email , Mode=TwoWay}"   Width="200"  Height="25" ></TextBox>
                                 </Border>
                                 <TextBlock Foreground="Red" Padding="4" x:Name="Email_ValidationMsg" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
 

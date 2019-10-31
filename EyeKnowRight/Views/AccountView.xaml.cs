@@ -23,6 +23,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace EyeKnowRight
 {
+
+
+    public static class ValidatorExtensions
+    {
+        public static bool IsValidEmailAddress(this string s)
+        {
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            return regex.IsMatch(s);
+        }
+    }
     /// <summary>
     /// Interaction logic for Account.xaml
     /// </summary>
@@ -66,6 +76,7 @@ namespace EyeKnowRight
             EmployeeGrid.ItemsSource = data;
         }
         int numberOfWrong = 0;
+
      
         private int CheckValidations()
         {
@@ -85,13 +96,34 @@ namespace EyeKnowRight
 
 
             // START FIRST NAME
-
+            var employees = db.Employees.ToList();
             if (UserName.Text == "" && Mode.Text == "Add")
             {
                 numberOfWrong++;
                 StepChangeVisibility(2);
                 UserName_ValidationMsg.Text = "This field is required";
                 UserName_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else if (employees.Count > 0)
+            {
+                Employee last = db.Employees.ToList().Last();
+
+                foreach (var emp in employees)
+                {
+                    if (UserName.Text == emp.UserName && Mode.Text == "Add")
+                    {
+                        numberOfWrong++;
+                        StepChangeVisibility(2);
+                        UserName_ValidationMsg.Text = "Username already existed";
+                        UserName_ValidationMsg.Visibility = Visibility.Visible;
+                        break;
+                    }
+                    else if (last == emp)
+                    {
+                        UserName_ValidationMsg.Visibility = Visibility.Collapsed;
+                    }
+                }
+
             }
             else
             {
@@ -100,31 +132,6 @@ namespace EyeKnowRight
 
             }
 
-
-            var employees = db.Employees.ToList();
-
-            if(employees.Count > 0) {  
-            Employee last = db.Employees.ToList().Last();
-           
-            foreach(var emp in employees)
-            {
-                if(UserName.Text == emp.UserName && Mode.Text == "Add")
-                {
-                    numberOfWrong++;
-                    StepChangeVisibility(2);
-                    UserName_ValidationMsg.Text = "Username already existed";
-                    UserName_ValidationMsg.Visibility = Visibility.Visible;
-                    break;
-                }else if (last == emp)
-                {
-                    UserName_ValidationMsg.Visibility = Visibility.Collapsed;
-                }
-            }
-
-            }
-
-
-           
 
             if (FirstName.Text == "")
             {
@@ -135,10 +142,28 @@ namespace EyeKnowRight
             }
             else
             {
-
                 FirstName_ValidationMsg.Visibility = Visibility.Collapsed;
-                
             }
+
+            if (Email.Text == "")
+            {
+                numberOfWrong++;
+                StepChangeVisibility(2);
+                Email_ValidationMsg.Text = "This field is required";
+                Email_ValidationMsg.Visibility = Visibility.Visible;
+            }else if (!ValidatorExtensions.IsValidEmailAddress(Email.Text))
+            {
+                numberOfWrong++;
+                StepChangeVisibility(2);
+                Email_ValidationMsg.Text = "Wrong Email Address";
+                Email_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Email_ValidationMsg.Visibility = Visibility.Collapsed;
+
+            }
+           
 
             if (MiddleName.Text == "")
             {
@@ -717,9 +742,6 @@ namespace EyeKnowRight
             }
         }
 
-
-
-
         byte[] imageString;
         private void OpenFileDialog(object sender, RoutedEventArgs e)
         {
@@ -832,5 +854,7 @@ namespace EyeKnowRight
             if (Gender_Female.Content != null)
                 _gender = Gender_Female.Content.ToString();
         }
+
+     
     }
 }

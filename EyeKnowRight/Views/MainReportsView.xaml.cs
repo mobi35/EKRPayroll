@@ -25,14 +25,17 @@ namespace EyeKnowRight.Views
     {
 
         EyeKnowRightDB db = new EyeKnowRightDB();
-        public MainReportsView(dynamic reportObject)
+        public MainReportsView(dynamic reportObject, dynamic reportDate)
         {
             InitializeComponent();
 
             ReportViewerDemo.Reset();
             DataTable dt = ToDataTable(reportObject);
+            DataTable reportD = ToDataTable(reportDate);
             ReportDataSource ds = new ReportDataSource("mainattendancereport", dt);
+            ReportDataSource date = new ReportDataSource("dateTime", reportD);
             ReportViewerDemo.LocalReport.DataSources.Add(ds);
+            ReportViewerDemo.LocalReport.DataSources.Add(date);
             ReportViewerDemo.LocalReport.ReportEmbeddedResource = "EyeKnowRight.Reports.AttendanceReport.rdlc";
            
             ReportViewerDemo.RefreshReport();

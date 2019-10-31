@@ -83,6 +83,24 @@ namespace EyeKnowRight
                
             }
 
+
+            // START FIRST NAME
+
+            if (UserName.Text == "" && Mode.Text == "Add")
+            {
+                numberOfWrong++;
+                StepChangeVisibility(2);
+                UserName_ValidationMsg.Text = "This field is required";
+                UserName_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else
+            {
+
+                UserName_ValidationMsg.Visibility = Visibility.Collapsed;
+
+            }
+
+
             var employees = db.Employees.ToList();
 
             if(employees.Count > 0) {  
@@ -106,21 +124,7 @@ namespace EyeKnowRight
             }
 
 
-            // START FIRST NAME
-
-            if (UserName.Text == "" && Mode.Text == "Add")
-            {
-                numberOfWrong++;
-                StepChangeVisibility(2);
-                UserName_ValidationMsg.Text = "This field is required";
-                UserName_ValidationMsg.Visibility = Visibility.Visible;
-            }
-            else
-            {
-
-                UserName_ValidationMsg.Visibility = Visibility.Collapsed;
-
-            }
+           
 
             if (FirstName.Text == "")
             {
@@ -587,8 +591,8 @@ namespace EyeKnowRight
             SickLeave.IsEnabled = false;
             BereavementLeave.IsEnabled = false;
             StepChangeVisibility(1);
-            Mode.Text = "Add";
             DataContext = null;
+            Mode.Text = "Add";
         }
 
         private void DoneClose(object sender, RoutedEventArgs e)

@@ -139,6 +139,13 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="DateRange" msprop:Generator_TableClassName="DateRangeDataTable" msprop:Generator_TableVarName="tableDateRange" msprop:Generator_RowChangedName="DateRangeRowChanged" msprop:Generator_TablePropName="DateRange" msprop:Generator_RowDeletingName="DateRangeRowDeleting" msprop:Generator_RowChangingName="DateRangeRowChanging" msprop:Generator_RowEvHandlerName="DateRangeRowChangeEventHandler" msprop:Generator_RowDeletedName="DateRangeRowDeleted" msprop:Generator_RowClassName="DateRangeRow" msprop:Generator_UserTableName="DateRange" msprop:Generator_RowEvArgName="DateRangeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

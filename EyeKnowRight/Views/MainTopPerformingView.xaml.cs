@@ -25,14 +25,17 @@ namespace EyeKnowRight.Views
     {
 
         EyeKnowRightDB db = new EyeKnowRightDB();
-        public MainTopPerformingView(dynamic reportObject)
+        public MainTopPerformingView(dynamic reportObject, dynamic date)
         {
             InitializeComponent();
 
             ReportViewerDemo.Reset();
             DataTable dt = ToDataTable(reportObject);
+            DataTable dates = ToDataTable(date);
             ReportDataSource ds = new ReportDataSource("topperforming", dt);
+            ReportDataSource date1 = new ReportDataSource("dateTime", dates);
             ReportViewerDemo.LocalReport.DataSources.Add(ds);
+            ReportViewerDemo.LocalReport.DataSources.Add(date1);
             ReportViewerDemo.LocalReport.ReportEmbeddedResource = "EyeKnowRight.Reports.TopPerformingReport.rdlc";
             ReportViewerDemo.RefreshReport();
         }

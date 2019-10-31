@@ -25,14 +25,17 @@ namespace EyeKnowRight.Views
     {
 
         EyeKnowRightDB db = new EyeKnowRightDB();
-        public MainEmployeeMasterlistView(dynamic reportObject)
+        public MainEmployeeMasterlistView(dynamic reportObject, dynamic date)
         {
             InitializeComponent();
 
             ReportViewerDemo.Reset();
             DataTable dt = ToDataTable(reportObject);
+            DataTable dates = ToDataTable(date);
             ReportDataSource ds = new ReportDataSource("employeemasterlist", dt);
+            ReportDataSource date2 = new ReportDataSource("employeemasterlist", dates);
             ReportViewerDemo.LocalReport.DataSources.Add(ds);
+            ReportViewerDemo.LocalReport.DataSources.Add(date2);
             ReportViewerDemo.LocalReport.ReportEmbeddedResource = "EyeKnowRight.Reports.EmployeeMasterlist.rdlc";
             ReportViewerDemo.RefreshReport();
         }

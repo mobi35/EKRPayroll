@@ -31,7 +31,6 @@ namespace EyeKnowRight
         public AdminOvertimeView()
         {
             InitializeComponent();
-          //  var user = Application.Current.Properties["UserName"].ToString();
             var leave = db.Leaves.Where(a => a.Status == "Pending").ToList();
             OvertimeGrid.ItemsSource = leave;
 

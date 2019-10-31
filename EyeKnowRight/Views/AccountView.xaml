@@ -228,7 +228,7 @@
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <TextBox Padding="2 0 0 1" x:Name="UserName" Width="200"  Text="{Binding Path=UserName , Mode=TwoWay}"  Height="25" ></TextBox>
                                 </Border>
-                                <TextBlock Foreground="Red" x:Name="UserName_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                                <TextBlock Foreground="Red"  x:Name="UserName_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
 
                             </StackPanel>
 

@@ -32,7 +32,7 @@ namespace EyeKnowRight
         {
             InitializeComponent();
           //  var user = Application.Current.Properties["UserName"].ToString();
-            var leave = db.Leaves.Where(a => a.Status == "Pending").ToList();
+            var leave = db.Leaves.ToList();
             LeaveGrid.ItemsSource = leave;
 
             

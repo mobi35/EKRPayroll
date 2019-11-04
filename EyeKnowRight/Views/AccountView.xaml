@@ -395,9 +395,9 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Heirarchy"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <ComboBox SelectedIndex="2"  Padding="5 7   0 1" x:Name="Position"  Text="{Binding Path=Position , Mode=TwoWay}"   Width="200"  Height="25">
+                                    <ComboBox SelectedIndex="1"  Padding="5 7   0 1" x:Name="Position"  Text="{Binding Path=Position , Mode=TwoWay}"   Width="200"  Height="25">
                                         <ComboBoxItem>Admin</ComboBoxItem>
-                                        <ComboBoxItem IsSelected="True">Employee</ComboBoxItem>
+                                        <ComboBoxItem >Employee</ComboBoxItem>
                                         <ComboBoxItem>HR Assistant</ComboBoxItem>
                                     </ComboBox>
                                 </Border>
@@ -553,6 +553,8 @@
                             </StackPanel>
 
 
+
+
                         </StackPanel>
 
 
@@ -578,9 +580,24 @@
                                     <TextBlock Foreground="Gray" FontSize="10" Text="Salary" Margin="2"/>
                                 </StackPanel>
                                 <TextBlock Text="{Binding Salary, Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="50 5" TextWrapping="Wrap">
-                   
+
                                 </TextBlock>
+                                
+                                
                             </StackPanel>
+
+                            <StackPanel Margin="-300 0 0 0" Width="400">
+
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="Houzz" Margin="50 0 0 0"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Text="Department" Margin="2"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Department}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="50 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>   
 
                         </StackPanel>
 

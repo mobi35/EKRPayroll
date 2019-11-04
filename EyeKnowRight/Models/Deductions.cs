@@ -36,5 +36,7 @@ namespace EyeKnowRight.Models
 
         public int? DaysPresent { get; set; }
 
+        public string Remarks { get; set; }
+
     }
 }

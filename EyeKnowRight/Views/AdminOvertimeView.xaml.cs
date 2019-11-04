@@ -25,73 +25,41 @@ namespace EyeKnowRight
     /// </summary>
     public partial class AdminOvertimeView : UserControl
     {
-      
 
         EyeKnowRightDB db = new EyeKnowRightDB();
         public AdminOvertimeView()
         {
             InitializeComponent();
-            var leave = db.Leaves.Where(a => a.Status == "Pending").ToList();
-            OvertimeGrid.ItemsSource = leave;
-
-            
+            var overtime = db.Overtimes.ToList();
+            OvertimeGrid.ItemsSource = overtime;
         }
 
-        private void LeaveClick(object sender, RoutedEventArgs e)
+        private void OvertimeClick(object sender, RoutedEventArgs e)
         {
-            int leavePK = (int)((Button)sender).Tag;
-            var leave = db.Leaves.FirstOrDefault(a => a.LeavePK == leavePK);
-            DataContext = leave;
+            int overtimePk = (int)((Button)sender).Tag;
+            var overtime = db.Overtimes.FirstOrDefault(a => a.OvertimePK == overtimePk);
+            DataContext = overtime;
+        
         }
 
-        private void LeaveAccept(object sender, RoutedEventArgs e)
+        private void OvertimeAccept(object sender, RoutedEventArgs e)
         {
-            int leavePK = Int32.Parse(LeavePK.Text);
-            var leave = db.Leaves.FirstOrDefault(a => a.LeavePK == leavePK);
-            leave.Status = "Accepted";
-            var user = db.Employees.FirstOrDefault(a => a.UserName == leave.UserName);
-            TimeSpan? difference = leave.EndLeave - leave.StartDate;
-            for (int i = 0; i <= difference.Value.TotalDays;i++)
-            {
-                var leaveDate = leave.StartDate.Value.AddDays(i).Date;
-                var getDTR = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user.UserName && a.DateTimeStamps == leaveDate);
-                getDTR.Remarks = "Leave";
-                getDTR.Accumulated = 540;
-                db.SaveChanges();
-            }
-            if (leave.TypeOfLeave == "Sick Leave")
-            {
-                user.SickLeave -= (int)difference.Value.TotalDays;
-            } else if (leave.TypeOfLeave == "Medical Leave")
-            {
-                user.MedicalLeave -= (int)difference.Value.TotalDays;
-            }
-            else if (leave.TypeOfLeave == "Bereavement Leave")
-            {
-                user.BereavementLeave -= (int)difference.Value.TotalDays;
-            }
-            else if (leave.TypeOfLeave == "Personal Leave")
-            {
-                user.PersonalLeave -= (int)difference.Value.TotalDays;
-            }
-            else if (leave.TypeOfLeave == "Paternity Leave")
-            {
-                user.PaternityLeave -= (int)difference.Value.TotalDays;
-            }
-            else if (leave.TypeOfLeave == "Maternity Leave")
-            {
-                user.MaternityLeave -= (int)difference.Value.TotalDays;
-            }
+            int overtimePK = Int32.Parse(OvertimePK.Text);
+            var overtime = db.Overtimes.FirstOrDefault(a => a.OvertimePK == overtimePK);
+            overtime.Status = "Accepted";
             db.SaveChanges();
-           
+            var overtimeList = db.Overtimes.ToList();
+            OvertimeGrid.ItemsSource = overtimeList;
         }
 
-        private void LeaveReject(object sender, RoutedEventArgs e)
+        private void OvertimeReject(object sender, RoutedEventArgs e)
         {
-            int leavePK = Int32.Parse(LeavePK.Text);
-            var leave = db.Leaves.FirstOrDefault(a => a.LeavePK == leavePK);
-            leave.Status = "Rejected";
+            int overtimePK = Int32.Parse(OvertimePK.Text);
+            var overtime = db.Overtimes.FirstOrDefault(a => a.OvertimePK == overtimePK);
+            overtime.Status = "Rejected";
             db.SaveChanges();
+            var overtimeList = db.Overtimes.ToList();
+            OvertimeGrid.ItemsSource = overtimeList;
         }
 
         private void SearchChanged(object sender, TextChangedEventArgs e)
@@ -100,9 +68,9 @@ namespace EyeKnowRight
             {
                 Magnifier.Visibility = Visibility.Hidden;
                 var text = SearchBox.Text;
-                var data = db.Leaves
+                var data = db.Overtimes
                   .Where(a =>
-                  a.ReasonForLeaving.StartsWith(text) || a.ReasonForLeaving.EndsWith(text) ||
+                  a.Reason.StartsWith(text) || a.Reason.EndsWith(text) ||
                   a.Status.StartsWith(text) || a.Status.EndsWith(text) ||
                   a.UserName.StartsWith(text) || a.UserName.EndsWith(text) 
                ).ToList();
@@ -111,7 +79,7 @@ namespace EyeKnowRight
             else
             {
                 Magnifier.Visibility = Visibility.Visible;
-                var data = db.Leaves.ToList();
+                var data = db.Overtimes.ToList();
                 OvertimeGrid.ItemsSource = data;
             }
         }

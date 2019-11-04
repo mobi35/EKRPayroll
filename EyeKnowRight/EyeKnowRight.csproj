@@ -204,6 +204,18 @@
     <Compile Include="Migrations\201910290452213_Added remainingLeave .designer.cs">
       <DependentUpon>201910290452213_Added remainingLeave .cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911011622381_asd.cs" />
+    <Compile Include="Migrations\201911011622381_asd.designer.cs">
+      <DependentUpon>201911011622381_asd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911251759227_added overtime.cs" />
+    <Compile Include="Migrations\201911251759227_added overtime.designer.cs">
+      <DependentUpon>201911251759227_added overtime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911252017302_Added Holiday.cs" />
+    <Compile Include="Migrations\201911252017302_Added Holiday.designer.cs">
+      <DependentUpon>201911252017302_Added Holiday.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
     <Compile Include="Models\Overtime.cs" />
@@ -318,6 +330,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910290452213_Added remainingLeave .resx">
       <DependentUpon>201910290452213_Added remainingLeave .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911011622381_asd.resx">
+      <DependentUpon>201911011622381_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911251759227_added overtime.resx">
+      <DependentUpon>201911251759227_added overtime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911252017302_Added Holiday.resx">
+      <DependentUpon>201911252017302_Added Holiday.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

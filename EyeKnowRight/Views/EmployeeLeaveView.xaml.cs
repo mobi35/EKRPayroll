@@ -58,6 +58,7 @@ namespace EyeKnowRight
             var userName = Application.Current.Properties["UserName"].ToString();
             var employeeLeave = db.Leaves.Where(a => a.UserName == userName).ToList();
             bool leaveStack = false;
+          
             for (int i = 0; i <= dateRangeComparison.Value.TotalDays; i++)
             {
                 if (StartLeaveDate.SelectedDate.Value.Date.AddDays(i).DayOfWeek != DayOfWeek.Sunday
@@ -70,16 +71,17 @@ namespace EyeKnowRight
                         {
                             leaveStack = true;
                         }
+
+                       
                     }
                     numberOfWorkingDays++;
                 }
             }
 
-            if (StartLeaveDate.SelectedDate < DateTime.Now || EndLeaveDate.SelectedDate < DateTime.Now)
+            if (TypeOfLeave.Text != "Sick Leave" && StartLeaveDate.SelectedDate < DateTime.Now || EndLeaveDate.SelectedDate < DateTime.Now)
             {
-
                 MessageBox.Show("No past dates");
-            }else if (StartLeaveDate.SelectedDate == null || EndLeaveDate.SelectedDate == null)
+            } else if (StartLeaveDate.SelectedDate == null || EndLeaveDate.SelectedDate == null)
             {
                 MessageBox.Show("Please fill up the date");
             }
@@ -87,18 +89,22 @@ namespace EyeKnowRight
             {
                 MessageBox.Show("This is not a valid date");
             }
+            else if (TypeOfLeave.Text == "Sick Leave" && StartLeaveDate.SelectedDate >= DateTime.Now.AddDays(-15))
+            {
+                MessageBox.Show("This date is too late. ");
+            }
             else if (ReasonForLeave.Text == "")
             {
                 MessageBox.Show("Please add a reason for leaving");
-            }else if(TypeOfLeave.SelectedItem == null)
+            } else if (TypeOfLeave.SelectedItem == null)
             {
                 MessageBox.Show("Please add the type of leave");
-            }else if (numberOfWorkingDays == 0)
+            } else if (numberOfWorkingDays == 0)
             {
                 MessageBox.Show("Please select atleast 1 working days");
             }
             else {
-                   
+
                 var user = Application.Current.Properties["UserName"].ToString();
                 var getUser = db.Employees.FirstOrDefault(a => a.UserName == user);
 
@@ -126,25 +132,24 @@ namespace EyeKnowRight
                 else if (TypeOfLeave.Text == "Sick Leave" && getUser.SickLeave < numberOfWorkingDays)
                 {
                     MessageBox.Show("Not enough sick leave");
-                }  else {
+                } else {
 
+                    if (!leaveStack) {
+                        Leave leave = new Leave();
+                        leave.ReasonForLeaving = ReasonForLeave.Text;
+                        leave.UserName = user;
+                        leave.TypeOfLeave = TypeOfLeave.Text;
+                        leave.StartDate = StartLeaveDate.SelectedDate;
+                        leave.EndLeave = EndLeaveDate.SelectedDate;
+                        leave.Status = "Pending";
+                        db.Leaves.Add(leave);
+                        db.SaveChanges();
 
-                    if (!leaveStack) { 
-                    Leave leave = new Leave();
-                    leave.ReasonForLeaving = ReasonForLeave.Text;
-                    leave.UserName = user;
-                    leave.TypeOfLeave = TypeOfLeave.Text;
-                    leave.StartDate = StartLeaveDate.SelectedDate;
-                    leave.EndLeave = EndLeaveDate.SelectedDate;
-                    leave.Status = "Pending";
-                    db.Leaves.Add(leave);
-                    db.SaveChanges();
+                        var leaveList = db.Leaves.Where(a => a.UserName == user).ToList();
 
-                    var leaveList = db.Leaves.Where(a => a.UserName == user).ToList();
-
-                    LeaveGrid.ItemsSource = leaveList;
-                    MessageBox.Show("Leave Added");
-                    }else
+                        LeaveGrid.ItemsSource = leaveList;
+                        MessageBox.Show("Leave Added");
+                    } else
                     {
                         MessageBox.Show("No leave tenure");
                     }

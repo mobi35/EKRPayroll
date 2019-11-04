@@ -57,5 +57,7 @@ namespace EyeKnowRight.Models
         public bool IsActive { get; set; }
         public string Status { get; set; }
         public int RemainingLeave { get; set; }
+
+        public int SickLeaveCredit { get; set; }
     }
 }

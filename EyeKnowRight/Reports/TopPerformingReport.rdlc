@@ -6,18 +6,21 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.11458in</Width>
+              <Width>1.36458in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.11458in</Width>
+              <Width>1.36458in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.11458in</Width>
+              <Width>1.36458in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.25in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.32292in</Height>
+              <Height>0.24479in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -109,10 +112,40 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Accumulated</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.32292in</Height>
+              <Height>0.24479in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -174,6 +207,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -206,12 +240,45 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TotalAccumulated">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!TotalAccumulated.Value</Value>
+                              <Style>
+                                <Format>0.00;(0.00)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TotalAccumulated</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -229,9 +296,9 @@
         </TablixRowHierarchy>
         <DataSetName>topperforming</DataSetName>
         <Top>0.76958in</Top>
-        <Left>0.91542in</Left>
-        <Height>0.64584in</Height>
-        <Width>3.34374in</Width>
+        <Left>1.11918in</Left>
+        <Height>0.48958in</Height>
+        <Width>5.34374in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -447,10 +514,14 @@
           <DataField>TotalAttendance</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="TotalAccumulated">
+          <DataField>TotalAccumulated</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>EKRDataset</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\ADICHAN\Desktop\anuther\ekrpayroll\EyeKnowRight\Reports\EKRDataset.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\Reports\EKRDataset.xsd</rd:SchemaPath>
         <rd:TableName>TopPerforming</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

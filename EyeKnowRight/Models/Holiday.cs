@@ -15,5 +15,7 @@ namespace EyeKnowRight.Models
         public DateTime? Month { get; set; }
 
         public string HolidayName { get; set; }
+
+        public float SalaryInrease { get; set; }
     }
 }

@@ -10,7 +10,15 @@
     <Grid >
         <StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
-  
+
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+
 
 
             <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">

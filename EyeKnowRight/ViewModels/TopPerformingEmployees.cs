@@ -14,5 +14,7 @@ namespace EyeKnowRight.ViewModels
         public int TotalAttendance { get; set; }
 
         public double TotalLate { get; set; }
+
+        public double TotalAccumulated { get; set; }
     }
 }

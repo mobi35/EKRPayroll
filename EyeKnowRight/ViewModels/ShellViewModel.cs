@@ -11,8 +11,6 @@ namespace EyeKnowRight.ViewModels
 {
     public class ShellViewModel : Screen
     {
-
-
         private string typeOfReports;
 
         public string TypeOfReports
@@ -70,9 +68,6 @@ namespace EyeKnowRight.ViewModels
                     }
             }
             }
-
-
-
 
             var getPayroll = db.Payrolls.ToList();
           
@@ -184,6 +179,7 @@ namespace EyeKnowRight.ViewModels
             try { 
             var dailyTimeRecord = db.DailyTimeRecords.Where(a => a.DateTimeStamps >= start && a.DateTimeStamps <= end).ToList();
             var userList = db.Employees.ToList();
+            var getHoliday = db.Holidays.ToList();
             foreach (var user in userList)
             {
                 Deductions deduction = new Deductions();
@@ -191,15 +187,46 @@ namespace EyeKnowRight.ViewModels
                     int daysPresent = 0;
                 foreach (var dtr in dailyTimeRecord)
                   {
+                        foreach (var hol in getHoliday)
+                        {
+                            if (dtr.Accumulated >= 400) { 
+                            if (hol.Month.Value.Month == dtr.DateTimeStamps.Value.Month && hol.Month.Value.Day == dtr.DateTimeStamps.Value.Day )
+                            {
+                                //This is a holiday.
+                                dtr.Remarks += " " + hol.HolidayName;
+                                    if (hol.SalaryInrease == 30)
+                                    {
+                                        double percentage = 0.30 * dtr.Accumulated;
+                                        // salary increase
+                                        dtr.Accumulated += percentage;
+                                        
+                                    }
+                                    else
+                                    {
+                                        double percentage = 1.0 * dtr.Accumulated;
+                                        dtr.Accumulated += percentage;
 
-                    if (dtr.TimeOut != null)
-                            daysPresent++;
+                                    }
+                            }
+                            }
+                        }
 
-                    if(user.UserName == dtr.UserName)
+                        if (user.UserName == dtr.UserName)
                     {
-                        deduction.AllAccumulatedTimeAddition += dtr.Accumulated * basicSalaryPerMinute;
+                        if (dtr.TimeOut != null)
+                            daysPresent++;
+                            deduction.AllAccumulatedTimeAddition += dtr.Accumulated * basicSalaryPerMinute;
                         deduction.LateDeduction += dtr.Late * basicSalaryPerMinute;
+                        if (user.SickLeaveCredit != 0)
+                        {
+                                deduction.AllAccumulatedTimeAddition += (540 * user.SickLeaveCredit) * basicSalaryPerMinute;
+                                deduction.Remarks += $" Added {user.SickLeave} Sick Leave/s";
+                                user.SickLeaveCredit = 0;
+                                db.SaveChanges();
+                        }
                     }
+
+                       
                  }
                     deduction.TotalSalary = deduction.AllAccumulatedTimeAddition;
                     deduction.PayrollPK = db.Payrolls.FirstOrDefault(a => a.StartPayroll == start && a.EndPayroll == end).PayrollPK;

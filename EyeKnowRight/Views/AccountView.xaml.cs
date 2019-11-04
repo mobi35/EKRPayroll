@@ -127,11 +127,47 @@ namespace EyeKnowRight
             }
             else
             {
-
                 UserName_ValidationMsg.Visibility = Visibility.Collapsed;
 
             }
 
+            if (Street.Text == "")
+            {
+                numberOfWrong++;
+                StepChangeVisibility(1);
+                Street_ValidationMsg.Text = "This field is required";
+                Street_ValidationMsg.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                Street_ValidationMsg.Visibility = Visibility.Collapsed;
+            }
+
+
+            if (City.Text == "")
+            {
+                numberOfWrong++;
+                StepChangeVisibility(1);
+                City_ValidationMsg.Text = "This field is required";
+                City_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                City_ValidationMsg.Visibility = Visibility.Collapsed;
+            }
+
+            if (BirthDate.SelectedDate.ToString() == "")
+            {
+                numberOfWrong++;
+                StepChangeVisibility(1);
+                BirthDate_ValidationMsg.Text = "This field is required";
+                BirthDate_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BirthDate_ValidationMsg.Visibility = Visibility.Collapsed;
+            }
 
             if (FirstName.Text == "")
             {
@@ -161,10 +197,7 @@ namespace EyeKnowRight
             else
             {
                 Email_ValidationMsg.Visibility = Visibility.Collapsed;
-
             }
-           
-
             if (MiddleName.Text == "")
             {
                 numberOfWrong++;
@@ -196,34 +229,25 @@ namespace EyeKnowRight
 
             if (Salary.Text == "")
             {
-                Salary.Text = "0";
                 numberOfWrong++;
                 StepChangeVisibility(5);
                 Salary_ValidationMsg.Text = "This field is required";
                 Salary_ValidationMsg.Visibility = Visibility.Visible;
             }
-            else
+            else if (Int32.Parse(Salary.Text) < 200)
             {
-
-                Salary_ValidationMsg.Visibility = Visibility.Collapsed;
-
-            }
-
-
-            if (Salary.Text == "")
-            {
-                Salary.Text = "0";
                 numberOfWrong++;
                 StepChangeVisibility(5);
-                Salary_ValidationMsg.Text = "This field is required";
+                Salary_ValidationMsg.Text = "Maximum of 200";
                 Salary_ValidationMsg.Visibility = Visibility.Visible;
             }
             else
             {
-
                 Salary_ValidationMsg.Visibility = Visibility.Collapsed;
-                
             }
+
+          
+            
 
             if (Password.Password == "")
             {
@@ -332,7 +356,6 @@ namespace EyeKnowRight
             string userName = (string)((Button)sender).Tag;
             var getEmployeeAppraisal = db.Evaluations.Where(a => a.UserName == userName).ToList();
             EmployeeAppraisal.ItemsSource = getEmployeeAppraisal;
-
         }
        private void GetEdit(object sender, RoutedEventArgs e)
         {
@@ -393,11 +416,8 @@ namespace EyeKnowRight
                     employee.Gender = Gender_Female.Content.ToString();
                 }
                 db.SaveChanges();
-
-
                 var data = db.Employees.ToList();
                 EmployeeGrid.ItemsSource = data;
-
             }
         }
         int step = 1;
@@ -440,20 +460,15 @@ namespace EyeKnowRight
              var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == attendancePK);
             AttendancePK = employee.EmployeePK;
             EmployeeAttendance.ItemsSource = db.DailyTimeRecords.Where(a => a.UserName == employee.UserName).ToList();
-
-
         }
-
         private void StepChangeVisibility(int step)
         {
-          
             LastStep.Visibility = Visibility.Collapsed;
             SecondStep.Visibility = Visibility.Collapsed;
             ThirdStep.Visibility = Visibility.Collapsed;
             Fourth.Visibility = Visibility.Collapsed;
             FirstStep.Visibility = Visibility.Collapsed;
             StepsCounter.Text = step.ToString();
-
             if (step == 1) { 
                 FirstStep.Visibility = Visibility.Visible;
                 this.step = 1;

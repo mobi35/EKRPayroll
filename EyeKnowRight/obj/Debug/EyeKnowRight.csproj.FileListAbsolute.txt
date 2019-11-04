@@ -1564,3 +1564,6 @@ C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompil
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.compiled
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.CoreCompileInputs.cache
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.CopyComplete
+C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.asd.resources
+C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.addedovertime.resources
+C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.AddedHoliday.resources

@@ -9,7 +9,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
-     
+
+        
+        <TextBlock x:Name="Bagwis" Text=""/>
+   
+        <StackPanel Width="200">
+            
+       
+        <TextBlock>
+            <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=HolidayDialog}"  Width="200">Holidays</Button>
+        </TextBlock>
+        </StackPanel>
         <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="PayrollGrid" Height="400" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
@@ -23,7 +33,6 @@
                                 <Button Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding PayrollPK}" Click="Button_Click"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=PayrollDialog}"   >
                                     <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
                                 </Button>
-
                                 <Button Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding PayrollPK}" Click="PrintPayroll"   >
                                     <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Kind="Printer"/>
                                 </Button>
@@ -38,7 +47,53 @@
                 </Style>
             </DataGrid.ItemContainerStyle>
         </DataGrid>
-      
+        <materialDesign:DialogHost  IsOpen="False" x:Name="HolidayDialog"  Margin="0,-126,0,-32"  >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Width="400">
+                    <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
+                    </Button>
+                    <StackPanel  Orientation="Vertical">
+                        <StackPanel Width="200">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Holiday Name"/>
+                            <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 0" x:Name="HolidayName"   Width="200"  Height="25" ></TextBox>
+                            </Border>
+                            <TextBlock Foreground="Red" x:Name="HolidayName_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                        </StackPanel>
+                        <StackPanel Width="200">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Salary Increase"/>
+                            <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 0" x:Name="SalaryIncrease"   Width="200"  Height="25" ></TextBox>
+                            </Border>
+                            <TextBlock Foreground="Red" x:Name="SalaryIncrease_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                        </StackPanel>
+                        <StackPanel Width="200">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Holiday Date"/>
+                            <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <DatePicker x:Name="HolidayDate" HorizontalAlignment="Right"   VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1"   Width="200"  Height="25"  >
+                                </DatePicker>
+                            </Border>
+                        </StackPanel>
+                        <TextBlock/>
+                        <Button x:Name="AddHoliday" Click="AddHoliday_Click" Width="200">Add Holiday</Button>
+                        <TextBlock/>
+                        <DataGrid  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  x:Name="HolidayGrid" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Holiday Name" Binding="{Binding HolidayName,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Holiday Increase" Binding="{Binding SalaryIncrease,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="120"  Header="Holiday Date" Binding="{Binding Month,Mode=TwoWay }"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <!-- ADD USER DIALOG BOX END -->
+
         <materialDesign:DialogHost  IsOpen="False" x:Name="PayrollDialog"  Margin="0,-126,0,-32"  >
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Width="900">

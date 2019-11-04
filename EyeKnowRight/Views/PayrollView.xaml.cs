@@ -39,6 +39,10 @@ namespace EyeKnowRight
         
             var payroll = db.Payrolls.Where(a => a.IsActive == false).ToList();
             PayrollGrid.ItemsSource = payroll;
+
+
+            var holidays = db.Holidays.ToList();
+            HolidayGrid.ItemsSource = holidays;
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
@@ -63,11 +67,49 @@ namespace EyeKnowRight
             DeductionGrid.ItemsSource = deductions;
         }
 
+        private void AddHoliday_Click(object sender, RoutedEventArgs e)
+        {
+            Holiday holiday = new Holiday();
+            holiday.HolidayName = HolidayName.Text;
+            holiday.Month = HolidayDate.SelectedDate;
+            holiday.SalaryInrease = float.Parse(SalaryIncrease.Text);
 
-    
+            //VALIDATION
 
-    
+            var holidayList = db.Holidays.ToList();
+            bool isValid = true;
+            foreach(var holi in holidayList)
+            {
+                if (holi.HolidayName == HolidayName.Text)
+                {
+                    isValid = false;
+                    break;
+                }
+               else if (holi.HolidayName == HolidayName.Text)
+                {
+                    isValid = false;
+                    break;
+                }
+               else if (holi.Month == HolidayDate.SelectedDate)
+                {
+                    isValid = false;
+                    break;
+                }
+            }
 
-  
+            if (isValid)
+            {
+                db.Holidays.Add(holiday);
+                db.SaveChanges();
+
+                var holidays = db.Holidays.ToList();
+                HolidayGrid.ItemsSource = holidays;
+            }
+            else
+            {
+                MessageBox.Show("Something's wrong dear");
+            }
+
+        }
     }
 }

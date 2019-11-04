@@ -18,7 +18,7 @@ namespace EyeKnowRight.Models
 
         public string UserName { get; set; }
 
-        public DateTime DateOfOvertime { get; set; }
+        public DateTime? DateOfOvertime { get; set; }
 
         public string Status { get; set; }
     }

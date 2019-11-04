@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EyeKnowRight.Views"
+         xmlns:locals="clr-namespace:EyeKnowRight"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Height="600" Width="1080" ResizeMode="NoResize" 
+        mc:Ignorable="d" Height="700" Width="1080" ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" WindowStyle="None">
 
   
@@ -472,6 +473,13 @@
                         </StackPanel>
                     </ListViewItem>
 
+                        <ListViewItem Height="45" Padding="0" Selected="AdminOvertimeSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Overtime" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
                         <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
                                 <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
@@ -485,13 +493,7 @@
 
                         </StackPanel>
                     </ListViewItem>
-                    
-                    <ListViewItem Height="45" Padding="0" x:Name="AccountLogout" Selected="LogoutAccount">
-                        <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Logout" Width="20" Height="20"  Foreground="Red" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Logout" Margin="10"/>
-                        </StackPanel>
-                    </ListViewItem>
+            
                 </ListView>
                 </Grid>
 
@@ -507,18 +509,19 @@
                             </StackPanel>
                         </ListViewItem>
 
-                        <ListViewItem Height="45" Padding="0" Selected="LogoutAccount">
+
+                        <ListViewItem Height="45" Padding="0" Selected="EmployeeOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="Logout" Width="20" Height="20"  Foreground="Red" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Logout" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Leave" Margin="10"/>
+
                             </StackPanel>
                         </ListViewItem>
+                
 
 
 
-                        <Button  Click="GetAccountDetailsData"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"  Content="My Profile"/>
-                        <Button   Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AccountSettings}"  Content="Settings"/>
-
+                     
                     </ListView>
                 </Grid>
 
@@ -558,23 +561,32 @@
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="45" Padding="0"  Selected="LogoutAccount">
-                                <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="Logout" Width="20" Height="20"  Foreground="Red" Margin="5" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Logout" Margin="10"/>
-                                </StackPanel>
-                            </ListViewItem>
+                 
                         </ListView>
 
 
-                        <Button  Click="GetAccountDetailsData"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"  Content="My Profile"/>
-                        <Button   Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AccountSettings}"  Content="Settings"/>
-
+                       
                     </ListView>
                 </Grid>
+                <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
+                    <Border CornerRadius="8,0,8,0">
+                        <Image  HorizontalAlignment="Left" Margin="10" Height="100" MaxHeight="80" MinWidth="100" MaxWidth="100" MinHeight="100" Stretch="UniformToFill" Width="100" x:Name="PictureSource">
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="48,48"
+                                    RadiusX="48"
+                                    RadiusY="48"
+                                    />
 
-                <TextBlock x:Name="UserNameText" Text="Adrian" Margin="0 90" FontSize="18" Padding="10"/>
-               
+                            </Image.Clip>
+                        </Image>
+                    </Border>
+
+                    <TextBlock x:Name="UserNameText" Foreground="Gray" Text="Adrian"  FontSize="16" Padding="10"/>
+                    <Button Margin="5 0 0 0" HorizontalAlignment="Left"  Width="100" Style="{StaticResource MaterialDesignFlatButton}" Click="GetAccountDetailsData"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"  Content="My Profile"/>
+                    <Button Margin="5 0 0 0" HorizontalAlignment="Left"  Width="100" Style="{StaticResource MaterialDesignFlatButton}"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AccountSettings}"  Content="Settings"/>
+                    <Button Click="LogoutAccount" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="100" Style="{StaticResource MaterialDesignFlatButton}">Logout</Button>
+                </StackPanel>
             </StackPanel>
             <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Click="ClosePanel">
                 <materialDesign:PackIcon Kind="Close"/>

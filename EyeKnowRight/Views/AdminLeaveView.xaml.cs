@@ -57,16 +57,19 @@ namespace EyeKnowRight
             {
               
                 if (leave.StartDate.Value.AddDays(i).DayOfWeek != DayOfWeek.Sunday
-                && leave.StartDate.Value.AddDays(i).DayOfWeek != DayOfWeek.Saturday
-                     )
+                && leave.StartDate.Value.AddDays(i).DayOfWeek != DayOfWeek.Saturday)
                 {
                     var leaveDate = leave.StartDate.Value.AddDays(i).Date;
                     var getDTR = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user.UserName && a.DateTimeStamps == leaveDate);
-                   
-                    getDTR.Remarks = "Leave";
+                    getDTR.Remarks = leave.TypeOfLeave;
+                    if(leave.TypeOfLeave == "Sick Leave")
+                    {
+                        user.SickLeaveCredit += 1;
+                    }
                     getDTR.Accumulated = 540;
                     db.SaveChanges();
                     numberOfWorkingDays++;
+                   
                 }
             }
           

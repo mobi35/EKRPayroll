@@ -28,10 +28,27 @@ namespace EyeKnowRight.Views
             try
             {
                 var user  = Application.Current.Properties["UserName"].ToString();
-                UserNameText.Text = user;
+                var employee = db.Employees.FirstOrDefault(a => a.UserName == user);
+                UserNameText.Text = "Hi!, " + user;
 
-               var employee = db.Employees.FirstOrDefault(a => a.UserName == user);
-                if(employee.Position == "Admin")
+                byte[] bytes = employee.Picture;
+
+                var image = new BitmapImage();
+                using (var mem = new MemoryStream(bytes))
+                {
+                    mem.Position = 0;
+                    image.BeginInit();
+                    image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = null;
+                    image.StreamSource = mem;
+                    image.EndInit();
+                }
+                image.Freeze();
+                PictureSource.Source = image;
+
+
+                if (employee.Position == "Admin")
                 {
                     AdminPanel.Visibility = Visibility.Visible;
                     HRPanel.Visibility = Visibility.Collapsed;
@@ -77,9 +94,15 @@ namespace EyeKnowRight.Views
 
         }
 
-        private void EmployeeOvertime(object sender, RoutedEventArgs e)
+        private void EmployeeOvertimeSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new OvertimeView());
+            FuckingGrid.Children.Add(new EmployeeOvertimeView());
+
+        }
+
+        private void AdminOvertimeSelect(object sender, RoutedEventArgs e)
+        {
+            FuckingGrid.Children.Add(new AdminOvertimeView());
 
         }
 
@@ -247,13 +270,25 @@ namespace EyeKnowRight.Views
         {
             var user = Application.Current.Properties["UserName"].ToString();
             var date = DateTime.Now.Date;
+         
+            var getOvertime = db.Overtimes.FirstOrDefault(a => a.DateOfOvertime == date);
+
             var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
             dtr.TimeOut = DateTime.Now;
             db.SaveChanges();
+          
+            int totalOTDate = 0;
+            if (getOvertime != null)
+            {
+
+                totalOTDate = getOvertime.UntilWhatTime.Value.Hour * 60;
+            }
             double timeInDate = 0;
             if (dtr.TimeIn != null)
             {
-                if (dtr.TimeIn.Value.TimeOfDay.TotalMinutes < 480)
+               
+
+             if (dtr.TimeIn.Value.TimeOfDay.TotalMinutes < 480)
                 {
                     timeInDate = 480;
                 }
@@ -261,7 +296,21 @@ namespace EyeKnowRight.Views
                 {
                     timeInDate = dtr.TimeIn.Value.TimeOfDay.TotalMinutes;
                 }
-                if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= 1020)
+             if(getOvertime != null) { 
+                if(getOvertime.DateOfOvertime == date) { 
+                if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= totalOTDate)
+                {
+                    double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
+                    dtr.Accumulated += accumulatedTime;
+                }else
+                {
+                    dtr.Accumulated += totalOTDate - timeInDate;
+                }
+
+                }
+                }
+                else { 
+                 if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= 1020)
                 {
                     double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
                     dtr.Accumulated += accumulatedTime;
@@ -269,6 +318,7 @@ namespace EyeKnowRight.Views
                 else
                 {
                     dtr.Accumulated += 1020 - timeInDate;
+                }
                 }
                 int hour = (int)dtr.Accumulated  / 60;
                 int minutes = (int)dtr.Accumulated % 60;
@@ -402,12 +452,14 @@ namespace EyeKnowRight.Views
                 foreach(var emp in employees)
                 {
                     double empLate = 0;
+                    double accumulated = 0;
                     int totalAttendance = 0;
                     foreach (var dtr in db.DailyTimeRecords.Where(a => a.DateTimeStamps >= startDate && a.DateTimeStamps <= endDate).ToList() )
                     {
                         if(emp.UserName == dtr.UserName)
                         {
                             empLate += dtr.Late;
+                            accumulated += dtr.Accumulated;
                             if (dtr.TimeIn != null && dtr.TimeOut != null)
                                 totalAttendance++;
                         }
@@ -416,11 +468,12 @@ namespace EyeKnowRight.Views
                     {
                         UserName = emp.UserName,
                         TotalAttendance = totalAttendance,
+                        TotalAccumulated = accumulated,
                         TotalLate = empLate
-                    });
+                    }); ;
                 }
 
-                MainTopPerformingView mainTop = new MainTopPerformingView(topPerformingEmp.OrderBy(a => a.TotalLate).Take(numberOfEntries).ToList(), daterep );
+                MainTopPerformingView mainTop = new MainTopPerformingView(topPerformingEmp.OrderByDescending(a => a.TotalAccumulated).Take(numberOfEntries).ToList(), daterep );
                 mainTop.Show();
 
             }

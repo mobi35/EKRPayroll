@@ -10,16 +10,14 @@
     <Grid >
         <StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
-            <Button  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Airplane"/>
-                    <TextBlock Text=" Request Leave"/>
-
-                </StackPanel>
-
-            </Button>
-
-            <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <TextBlock/>
+            <StackPanel  materialDesign:HintAssist.Hint="     Search overtime" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
               
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                     <TextBox Padding="2 0 0 0" TextChanged="SearchChanged"  x:Name="SearchBox"  Width="200"  Height="25" ></TextBox>
@@ -39,7 +37,7 @@
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="11" Width="100"  Header="Username" Binding="{Binding UserName}"/>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="Reason for Leave" Binding="{Binding Reason}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="Reason for Overtime" Binding="{Binding Reason}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Overtime Until" Binding="{Binding UntilWhatTime}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Date" Binding="{Binding DateOfOvertime}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Status" Binding="{Binding Status}"/>
@@ -47,8 +45,23 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel  Orientation="Horizontal">
-                                <Button Click="LeaveClick" Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding LeavePK}"   Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"  CommandTarget="{Binding ElementName=LeaveDialog}"  >
+                                <Button Click="OvertimeClick" Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding OvertimePK}"   Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"  CommandTarget="{Binding ElementName=OvertimeDialog}"  >
                                     <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Status}" Value="Pending">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="Accepted">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="Rejected">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
@@ -58,7 +71,7 @@
         </DataGrid>
         <!-- DATA GRID END -->
         <!-- ADD USER DIALOG BOX START -->
-        <materialDesign:DialogHost  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
+        <materialDesign:DialogHost  IsOpen="False" x:Name="OvertimeDialog"  Margin="0,-126,0,-32"  >
             <materialDesign:DialogHost.DialogContent >
                     <StackPanel Margin="40">
 
@@ -66,32 +79,30 @@
                         <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
                     </Button>
 
-                    <TextBlock x:Name="LeavePK" Text="{Binding LeavePK,Mode=TwoWay}"/>
+                    <TextBlock x:Name="OvertimePK" Text="{Binding OvertimePK,Mode=TwoWay}"/>
                     <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Name"/>
                     <TextBlock Text="{Binding UserName, Mode=TwoWay}" />
 
-                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Start Date"/>
-                    <TextBlock Text="{Binding StartDate, Mode=TwoWay}" />
-
-                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="End Date"/>
-                    <TextBlock Text="{Binding EndLeave, Mode=TwoWay}" />
+                  
+                    <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Overtime Date"/>
+                    <TextBlock Text="{Binding DateOfOvertime, Mode=TwoWay, StringFormat='D'}" />
                     
-                        <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Type of leave"/>
-                    <TextBlock Text="{Binding TypeOfLeave, Mode=TwoWay}" />
+                        <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Overtime Until"/>
+                    <TextBlock Text="{Binding UntilWhatTime, Mode=TwoWay,StringFormat='T' }" />
 
                     <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Reason for leaving"/>
-                    <TextBlock Text="{Binding ReasonForLeaving, Mode=TwoWay}" />
+                    <TextBlock Text="{Binding Reason, Mode=TwoWay}" />
 
                     
                     <TextBlock/>
-                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="LeaveAccept"   Width="200" >
+                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="OvertimeAccept"   Width="200" >
                         <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon Kind="Send" Margin="0 0 4 0"/>
                             <TextBlock Text="Accept"/>
                         </StackPanel>
                     </Button>
 
-                    <Button  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="LeaveReject"   Width="200" >
+                    <Button  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="OvertimeReject"   Width="200" >
                         <StackPanel Orientation="Horizontal" >
                             <materialDesign:PackIcon Kind="Send" Margin="0 0 4 0"/>
                             <TextBlock Text="Reject"/>

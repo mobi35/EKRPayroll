@@ -34,12 +34,90 @@ namespace EyeKnowRight
 
     public partial class DashboardView : UserControl
     {
+        public string[] TotalAbsenceLabel { get; set; }
 
+        public string[] TotalPerformingLabel { get; set; }
         EyeKnowRightDB db = new EyeKnowRightDB();
         public Func<ChartPoint, string> PointLabel { get; set; }
         public DashboardView()
         {
             InitializeComponent();
+
+
+
+            TopEmployee.Series.Clear();
+            LiveCharts.SeriesCollection topPerformingCollections = new LiveCharts.SeriesCollection();
+
+
+            var dtrSelect = db.DailyTimeRecords.Join(db.Employees, id => id.DailyTimeRecordPK, foreign =>
+            foreign.EmployeePK, (primaryId, foreignId) => new { PrimaryID = primaryId, ForeignID = foreignId })
+                .GroupBy(a => a.ForeignID.UserName)
+
+                .Select(l => new
+                {
+                    DtrID = l.Key,
+                    Number = l.Count(),
+                    SumEach = l.Sum(a => a.PrimaryID.Accumulated),
+                    Name = l.FirstOrDefault().ForeignID.UserName,
+                    Department = l.FirstOrDefault().ForeignID.Department
+                }).OrderByDescending(a => a.SumEach).ToList();
+
+            // var dtrList = db.DailyTimeRecords.ToList();
+
+
+            bool c1 = false, c2 = false, c3 = false, c4 = false, c5 = false, c6 = false, c7 = false;
+            int v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0, v7 = 0;
+            foreach (var dtr in dtrSelect)
+            {
+                if (dtr.Department == "Sales and Marketing" && c1 == false)
+                {
+                    v1 = (int)dtr.SumEach;
+                    c1 = true;
+                }
+                if (dtr.Department == "Creative" && c2 == false)
+                {
+                    v2 = (int)dtr.SumEach;
+                    c2 = true;
+                }
+                if (dtr.Department == "IT" && c3 == false)
+                {
+                    v3 = (int)dtr.SumEach;
+                    c3 = true;
+                }
+                if (dtr.Department == "Production" && c4 == false)
+                {
+                    v4 = (int)dtr.SumEach;
+                    c4 = true;
+                }
+                if (dtr.Department == "Inventory" && c5 == false)
+                {
+                    v5 = (int)dtr.SumEach;
+                    c5 = true;
+                }
+                if (dtr.Department == "Public Relations" && c6 == false)
+                {
+                    v6= (int)dtr.SumEach;
+                    c6 = true;
+                }
+
+                if (dtr.Department == "Human Resources" && c7 == false)
+                {
+                    v7 = (int)dtr.SumEach;
+                    c7 = true;
+                }
+
+              
+            }
+
+            topPerformingCollections.Add(new LiveCharts.Wpf.ColumnSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { v1, v2, v3, v4, v5, v6, v7 }, Title = "Departments" });
+
+            TotalPerformingLabel = new[] { "Sales and Marketing", "Creative", "IT", "Production", "Inventory", "Public Relations", "Human Resources" };
+            foreach (var topPerforming in topPerformingCollections)
+            {
+                TopEmployee.Series.Add(topPerforming);
+            }
+
+
 
             PointLabel = chartPoint =>
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
@@ -110,7 +188,7 @@ namespace EyeKnowRight
 
             //// CARTESIAN
             ///
-
+            DataContext = this;
             AppraisalChart.Series.Clear();
             LiveCharts.SeriesCollection appraisalCollections = new LiveCharts.SeriesCollection();
 
@@ -145,6 +223,98 @@ namespace EyeKnowRight
             foreach(var appcol in appraisalCollections)
             {
                 AppraisalChart.Series.Add(appcol);
+            }
+
+            /// TOP PERFORMING EMPLOYEES PER DEPARTMENT
+            /// 
+            DataContext = this;
+
+            //Total absence
+
+            TotalAbsence.Series.Clear();
+            LiveCharts.SeriesCollection totalAbsence = new LiveCharts.SeriesCollection();
+            var datetimeDTR = DateTime.Now;
+            var listOfAvailableDate = db.DailyTimeRecords.Where(a => a.DateTimeStamps <= datetimeDTR).ToList();
+            int d1 = 0, d2 = 0, d3 = 0, d4 = 0, d5 = 0, d6 = 0,d7 = 0, d8 = 0, d9 = 0, d10 = 0, d11 = 0, d12 = 0;
+            foreach (var dtr in listOfAvailableDate)
+            {
+                if (dtr.TimeIn == null)
+                {
+                    if (dtr.DateTimeStamps.Value.Month == 1)
+                        d1++;
+                    if (dtr.DateTimeStamps.Value.Month == 2)
+                        d2++;
+                    if (dtr.DateTimeStamps.Value.Month == 3)
+                        d3++;
+                    if (dtr.DateTimeStamps.Value.Month == 4)
+                        d4++;
+                    if (dtr.DateTimeStamps.Value.Month == 5)
+                        d5++;
+                    if (dtr.DateTimeStamps.Value.Month == 6)
+                        d6++;
+                    if (dtr.DateTimeStamps.Value.Month == 7)
+                        d7++;
+                    if (dtr.DateTimeStamps.Value.Month == 8)
+                        d8++;
+                    if (dtr.DateTimeStamps.Value.Month == 9)
+                        d9++;
+                    if (dtr.DateTimeStamps.Value.Month == 10)
+                        d10++;
+                    if (dtr.DateTimeStamps.Value.Month == 11)
+                        d11++;
+                    if (dtr.DateTimeStamps.Value.Month == 12)
+                        d12++;
+                }
+            }
+            totalAbsence.Add(new LiveCharts.Wpf.ColumnSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12}, Title = "Months" });
+
+
+            TotalAbsenceLabel = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            foreach (var absene in totalAbsence)
+            {
+                TotalAbsence.Series.Add(absene);
+            }
+            // Total Overtime
+
+            TotalOvertime.Series.Clear();
+            LiveCharts.SeriesCollection totalOvertime = new LiveCharts.SeriesCollection();
+            int od1 = 0, od2 = 0, od3 = 0, od4 = 0, od5 = 0, od6 = 0, od7 = 0, od8 = 0, od9 = 0, od10 = 0, od11 = 0, od12 = 0;
+            var overtime = DateTime.Now;
+            var listOfOvertime = db.Overtimes.Where(a => a.Status == "Accepted").ToList();
+            foreach (var ot in listOfOvertime)
+            {
+               
+                    if (ot.DateOfOvertime.Value.Month == 1)
+                        od1++;
+                    if (ot.DateOfOvertime.Value.Month == 2)
+                        od2++;
+                    if (ot.DateOfOvertime.Value.Month == 3)
+                        od3++;
+                    if (ot.DateOfOvertime.Value.Month == 4)
+                        od4++;
+                    if (ot.DateOfOvertime.Value.Month == 5)
+                        od5++;
+                    if (ot.DateOfOvertime.Value.Month == 6)
+                        od6++;
+                    if (ot.DateOfOvertime.Value.Month == 7)
+                        od7++;
+                    if (ot.DateOfOvertime.Value.Month == 8)
+                        od8++;
+                    if (ot.DateOfOvertime.Value.Month == 9)
+                        od9++;
+                    if (ot.DateOfOvertime.Value.Month == 10)
+                        od10++;
+                    if (ot.DateOfOvertime.Value.Month == 11)
+                        od11++;
+                    if (ot.DateOfOvertime.Value.Month == 12)
+                        od12++;
+            }
+
+            totalOvertime.Add(new LiveCharts.Wpf.ColumnSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { od1, od2, od3, od4, od5, od6, od7, od8, od9, od10, od11, od12 }, Title = "Months" });
+
+            foreach (var ot in totalOvertime)
+            {
+                TotalOvertime.Series.Add(ot);
             }
 
         }

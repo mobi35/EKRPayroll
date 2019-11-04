@@ -3286,6 +3286,8 @@ namespace EyeKnowRight.Reports {
             
             private global::System.Data.DataColumn columnTotalAttendance;
             
+            private global::System.Data.DataColumn columnTotalAccumulated;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TopPerformingDataTable() {
@@ -3345,6 +3347,14 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalAccumulatedColumn {
+                get {
+                    return this.columnTotalAccumulated;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3380,12 +3390,13 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TopPerformingRow AddTopPerformingRow(string UserName, string TotalLate, string TotalAttendance) {
+            public TopPerformingRow AddTopPerformingRow(string UserName, string TotalLate, string TotalAttendance, string TotalAccumulated) {
                 TopPerformingRow rowTopPerformingRow = ((TopPerformingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         UserName,
                         TotalLate,
-                        TotalAttendance};
+                        TotalAttendance,
+                        TotalAccumulated};
                 rowTopPerformingRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTopPerformingRow);
                 return rowTopPerformingRow;
@@ -3411,6 +3422,7 @@ namespace EyeKnowRight.Reports {
                 this.columnUserName = base.Columns["UserName"];
                 this.columnTotalLate = base.Columns["TotalLate"];
                 this.columnTotalAttendance = base.Columns["TotalAttendance"];
+                this.columnTotalAccumulated = base.Columns["TotalAccumulated"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3422,6 +3434,8 @@ namespace EyeKnowRight.Reports {
                 base.Columns.Add(this.columnTotalLate);
                 this.columnTotalAttendance = new global::System.Data.DataColumn("TotalAttendance", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalAttendance);
+                this.columnTotalAccumulated = new global::System.Data.DataColumn("TotalAccumulated", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalAccumulated);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6092,6 +6106,22 @@ namespace EyeKnowRight.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TotalAccumulated {
+                get {
+                    try {
+                        return ((string)(this[this.tableTopPerforming.TotalAccumulatedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalAccumulated\' in table \'TopPerforming\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTopPerforming.TotalAccumulatedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsUserNameNull() {
                 return this.IsNull(this.tableTopPerforming.UserNameColumn);
             }
@@ -6124,6 +6154,18 @@ namespace EyeKnowRight.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTotalAttendanceNull() {
                 this[this.tableTopPerforming.TotalAttendanceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalAccumulatedNull() {
+                return this.IsNull(this.tableTopPerforming.TotalAccumulatedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalAccumulatedNull() {
+                this[this.tableTopPerforming.TotalAccumulatedColumn] = global::System.Convert.DBNull;
             }
         }
         

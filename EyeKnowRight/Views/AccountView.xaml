@@ -277,9 +277,11 @@
                             <StackPanel Width="200" >
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Image"/>
                                 <StackPanel Orientation="Horizontal">
-
+                                    <TextBox x:Name="ImageName"/>
                                     <Button Height="25" Width="80" HorizontalAlignment="Right"  Click="Button_Click"  Style="{StaticResource MaterialDesignFlatButton}"  Content="Upload" />
                                 </StackPanel>
+                                <TextBlock Foreground="Red" Padding="4" x:Name="Image_Validation" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+
                             </StackPanel>
 
 

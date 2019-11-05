@@ -76,12 +76,12 @@ namespace EyeKnowRight.ViewModels
                 checkTriesEmployee.NumberOfTries += 1;
                 dbz.SaveChanges();
             }
+
             if (userModel == null)
             {
                 passwordValidation = "Wrong Information";
                 NotifyOfPropertyChange("PasswordValidation");
             }
-
             else if (userModel.IsActive == false)
             {
                 passwordValidation = "This user is already terminated";
@@ -92,19 +92,29 @@ namespace EyeKnowRight.ViewModels
                 passwordValidation = "This user is already expired.";
                 NotifyOfPropertyChange("PasswordValidation");
             }
-          
-            else if(userModel != null && employee == null) { 
-            if (userModel.NumberOfTries > 5 )
+
+            else if (userModel != null && employee == null)
+            {
+                if (userModel.NumberOfTries > 5)
                 {
-                    passwordValidation = "Maximum tries";
+                    passwordValidation = "Maximum of 5 tries reached (Account Locked)";
                     NotifyOfPropertyChange("PasswordValidation");
 
-                }else
+                }
+                else
                 {
                     passwordValidation = "Wrong Password";
                     NotifyOfPropertyChange("PasswordValidation");
                 }
-            } else if (employee != null)
+            }
+            else if (userModel.NumberOfTries > 5)
+            {
+
+                passwordValidation = "Maximum of 5 tries reached (Account Locked)";
+                NotifyOfPropertyChange("PasswordValidation");
+
+            }
+            else if (employee != null)
                 {
                 var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
                 var date = DateTime.Now.Date;

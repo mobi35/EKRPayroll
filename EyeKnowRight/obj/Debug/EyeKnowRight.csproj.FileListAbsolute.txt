@@ -1471,7 +1471,6 @@ C:\Users\ADICHAN\Desktop\lassie\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.c
 C:\Users\ADICHAN\Desktop\lassie\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.exe
 C:\Users\ADICHAN\Desktop\lassie\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
 C:\Users\ADICHAN\Desktop\lassie\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.AddedremainingLeave.resources
-C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csprojAssemblyReference.cache
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\Views\AdminOvertimeView.g.cs
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\Views\AppraisalView.g.cs
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\Views\DashboardView.g.cs
@@ -1567,3 +1566,4 @@ C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRi
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.asd.resources
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.addedovertime.resources
 C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.AddedHoliday.resources
+C:\Users\ADICHAN\Desktop\Smoothburat\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csprojAssemblyReference.cache

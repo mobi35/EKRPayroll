@@ -181,6 +181,19 @@ namespace EyeKnowRight
                 FirstName_ValidationMsg.Visibility = Visibility.Collapsed;
             }
 
+            if (ImageName.Text == "")
+            {
+                numberOfWrong++;
+                StepChangeVisibility(2);
+                Image_Validation.Text = "Please upload your picture";
+                Image_Validation.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Image_Validation.Visibility = Visibility.Collapsed;
+            }
+
+
             if (Email.Text == "")
             {
                 numberOfWrong++;
@@ -784,7 +797,7 @@ namespace EyeKnowRight
                     encoder.Save(ms);
                     imageString = ms.ToArray();
                 }
-
+                ImageName.Text = filename;
             }
         }
         

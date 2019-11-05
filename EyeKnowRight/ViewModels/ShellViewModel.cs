@@ -48,25 +48,34 @@ namespace EyeKnowRight.ViewModels
         public ShellViewModel()
         {
             ///// 
-           
+
             var getUserList = db.Employees.ToList();
             var leave = db.Leaves.ToList();
-            TimeSpan? remainingLeave ;
-            foreach(var emp in getUserList) { 
-            foreach(var l in leave)
+            TimeSpan? remainingLeave;
+            foreach (var emp in getUserList)
             {
-                if (DateTime.Now >= l.StartDate && DateTime.Now <= l.EndLeave)
+                foreach (var l in leave)
                 {
-                        remainingLeave = l.EndLeave - l.StartDate;
-                        emp.RemainingLeave = (int)remainingLeave.Value.TotalDays;
+                    if (emp.UserName == l.UserName && DateTime.Now.Date >= l.StartDate && DateTime.Now.Date <= l.EndLeave.Value.AddHours(24))
+                    {
+                        remainingLeave = l.EndLeave - DateTime.Now.Date;
+                        if (l.EndLeave == l.StartDate)
+                        {
+                            emp.RemainingLeave = 1;
+                        }
+                        else
+                        {
+                            emp.RemainingLeave = (int)remainingLeave.Value.TotalDays;
+                        }
+
+                        if ((int)remainingLeave.Value.TotalDays < 0)
+                        {
+                            emp.RemainingLeave = 0;
+                        }
                         db.SaveChanges();
                         break;
-                }else
-                    {
-                        emp.RemainingLeave = 0;
-                        db.SaveChanges();
                     }
-            }
+                }
             }
 
             var getPayroll = db.Payrolls.ToList();

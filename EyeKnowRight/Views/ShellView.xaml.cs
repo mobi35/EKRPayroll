@@ -25,6 +25,7 @@ namespace EyeKnowRight.Views
         public ShellView()
         {
             InitializeComponent();
+            MainGrid.Children.Add(new DashboardView());
             try
             {
                 var user  = Application.Current.Properties["UserName"].ToString();
@@ -73,61 +74,60 @@ namespace EyeKnowRight.Views
 
             }
             ButtonOpen.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            FuckingGrid.Margin = new Thickness(270, 15, 0, 0);
+            MainGrid.Margin = new Thickness(270, 15, 0, 0);
         }
         private void ClosePanel(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Margin = new Thickness(50, 15, 0, 0);
+            MainGrid.Margin = new Thickness(50, 15, 0, 0);
         }
         private void OpenPanel(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Margin = new Thickness(270, 15, 0, 0);
+            MainGrid.Margin = new Thickness(270, 15, 0, 0);
         }
         private void AccountSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new AccountView());
+            MainGrid.Children.Add(new AccountView());
 
         }
         private void PayrollSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new PayrollView());
+            MainGrid.Children.Add(new PayrollView());
 
         }
 
         private void EmployeeOvertimeSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new EmployeeOvertimeView());
+            MainGrid.Children.Add(new EmployeeOvertimeView());
 
         }
 
         private void AdminOvertimeSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new AdminOvertimeView());
+            MainGrid.Children.Add(new AdminOvertimeView());
 
         }
 
         private void AppraisalSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new AppraisalView());
+            MainGrid.Children.Add(new AppraisalView());
 
         }
-
         private void DashboardSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new DashboardView());
+            MainGrid.Children.Add(new DashboardView());
 
         }
 
         
         private void EmployeeLeave(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new EmployeeLeaveView());
+            MainGrid.Children.Add(new EmployeeLeaveView());
 
         }
 
         private void AdminLeaveSelect(object sender, RoutedEventArgs e)
         {
-            FuckingGrid.Children.Add(new AdminLeaveView());
+            MainGrid.Children.Add(new AdminLeaveView());
 
         }
         public void DisableOtherOptions()

@@ -422,7 +422,7 @@
         <Button x:Name="ButtonOpen" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Click="OpenPanel">
             <materialDesign:PackIcon Kind="Menu" Foreground="#FF313131"/>
         </Button>
-        <Grid Margin="40 0 0 0" x:Name="FuckingGrid" Width="auto" >
+        <Grid Margin="40 0 0 0" x:Name="MainGrid" Width="auto" >
             <TextBlock></TextBlock>
         </Grid>
         <Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">

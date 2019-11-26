@@ -12,14 +12,33 @@
        
 
         <StackPanel>
+            <StackPanel Orientation="Horizontal"> 
+            <TextBlock Foreground="Gray" Text="Personal Leave : "/>
+                <TextBlock Text="{Binding PersonalLeave}"/>
+                <TextBlock Foreground="Gray" Text="Medical Leave : "/>
+                <TextBlock Text="{Binding MedicalLeave}"/>
+                <TextBlock Foreground="Gray" Text="Sick Leave : "/>
+                <TextBlock Text="{Binding SickLeave}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="Gray" Text="Bereavement Leave : "/>
+                <TextBlock Text="{Binding BereavementLeave}"/>
+                <StackPanel Visibility="Collapsed"  x:Name="Maternity" Orientation="Horizontal">
+                <TextBlock Foreground="Gray"  Text="Maternity Leave : "/>
+                <TextBlock Text="{Binding MaternityLeave}"/>
+                </StackPanel>
+
+                <StackPanel x:Name="Paternity" Visibility="Collapsed"  Orientation="Horizontal">
+                    <TextBlock Foreground="Gray" Text="Paternity Leave : "/>
+                    <TextBlock Text="{Binding PaternityLeave}"/>
+                </StackPanel>
+            </StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
             <Button  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=LeaveDialog}">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Airplane"/>
                     <TextBlock Text=" Request Leave"/>
-
                 </StackPanel>
-
             </Button>
 
 

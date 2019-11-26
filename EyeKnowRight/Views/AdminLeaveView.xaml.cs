@@ -51,37 +51,47 @@ namespace EyeKnowRight
             var leave = db.Leaves.FirstOrDefault(a => a.LeavePK == leavePK);
             leave.Status = "Accepted";
             var user = db.Employees.FirstOrDefault(a => a.UserName == leave.UserName);
-            TimeSpan? difference = leave.EndLeave - leave.StartDate;
-            for (int i = 0; i <= difference.Value.TotalDays;i++)
+            TimeSpan? dateRangeComparison = leave.EndLeave - leave.StartDate;
+            int numberOfWorkingDays = 0;
+            for (int i = 0; i <= dateRangeComparison.Value.TotalDays; i++)
             {
-                var leaveDate = leave.StartDate.Value.AddDays(i).Date;
-                var getDTR = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user.UserName && a.DateTimeStamps == leaveDate);
-                getDTR.Remarks = "Leave";
-                getDTR.Accumulated = 540;
-                db.SaveChanges();
+              
+                if (leave.StartDate.Value.AddDays(i).DayOfWeek != DayOfWeek.Sunday
+                && leave.StartDate.Value.AddDays(i).DayOfWeek != DayOfWeek.Saturday
+                     )
+                {
+                    var leaveDate = leave.StartDate.Value.AddDays(i).Date;
+                    var getDTR = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user.UserName && a.DateTimeStamps == leaveDate);
+                   
+                    getDTR.Remarks = "Leave";
+                    getDTR.Accumulated = 540;
+                    db.SaveChanges();
+                    numberOfWorkingDays++;
+                }
             }
+          
             if (leave.TypeOfLeave == "Sick Leave")
             {
-                user.SickLeave -= (int)difference.Value.TotalDays;
+                user.SickLeave -= numberOfWorkingDays;
             } else if (leave.TypeOfLeave == "Medical Leave")
             {
-                user.MedicalLeave -= (int)difference.Value.TotalDays;
+                user.MedicalLeave -= numberOfWorkingDays;
             }
             else if (leave.TypeOfLeave == "Bereavement Leave")
             {
-                user.BereavementLeave -= (int)difference.Value.TotalDays;
+                user.BereavementLeave -= numberOfWorkingDays;
             }
             else if (leave.TypeOfLeave == "Personal Leave")
             {
-                user.PersonalLeave -= (int)difference.Value.TotalDays;
+                user.PersonalLeave -= numberOfWorkingDays;
             }
             else if (leave.TypeOfLeave == "Paternity Leave")
             {
-                user.PaternityLeave -= (int)difference.Value.TotalDays;
+                user.PaternityLeave -= numberOfWorkingDays;
             }
             else if (leave.TypeOfLeave == "Maternity Leave")
             {
-                user.MaternityLeave -= (int)difference.Value.TotalDays;
+                user.MaternityLeave -= numberOfWorkingDays;
             }
             db.SaveChanges();
            

@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201910271133500_NEWS.designer.cs">
       <DependentUpon>201910271133500_NEWS.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910290452213_Added remainingLeave .cs" />
+    <Compile Include="Migrations\201910290452213_Added remainingLeave .designer.cs">
+      <DependentUpon>201910290452213_Added remainingLeave .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
     <Compile Include="Models\Overtime.cs" />
@@ -311,6 +315,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201910271133500_NEWS.resx">
       <DependentUpon>201910271133500_NEWS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290452213_Added remainingLeave .resx">
+      <DependentUpon>201910290452213_Added remainingLeave .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

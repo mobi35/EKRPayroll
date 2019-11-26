@@ -36,19 +36,46 @@ namespace EyeKnowRight
             if(name.Gender == "Male")
             {
                 TypeOfLeave.Items.Add("Paternity Leave");
+                Paternity.Visibility = Visibility.Visible;
             }
             else
             {
                 TypeOfLeave.Items.Add("Maternity Leave");
+                Maternity.Visibility = Visibility.Visible;
             }
             var leave = db.Leaves.Where(a => a.UserName == user).ToList();
-
+            var userList = db.Employees.Where(a => a.UserName == user).ToList();
+            DataContext = userList;
             LeaveGrid.ItemsSource = leave;
         }
 
         private void SendRequestLeave(object sender, RoutedEventArgs e)
         {
-            if(StartLeaveDate.SelectedDate < DateTime.Now || EndLeaveDate.SelectedDate < DateTime.Now)
+            TimeSpan? dateRangeComparison = EndLeaveDate.SelectedDate - StartLeaveDate.SelectedDate;
+            int numberOfWorkingDays = 0;
+
+
+            var userName = Application.Current.Properties["UserName"].ToString();
+            var employeeLeave = db.Leaves.Where(a => a.UserName == userName).ToList();
+            bool leaveStack = false;
+            for (int i = 0; i <= dateRangeComparison.Value.TotalDays; i++)
+            {
+                if (StartLeaveDate.SelectedDate.Value.Date.AddDays(i).DayOfWeek != DayOfWeek.Sunday
+                && StartLeaveDate.SelectedDate.Value.Date.AddDays(i).DayOfWeek != DayOfWeek.Saturday
+                     )
+                {
+                    foreach (var empl in employeeLeave)
+                    {
+                        if (empl.StartDate.Value.AddDays(i) == StartLeaveDate.SelectedDate.Value.AddDays(i))
+                        {
+                            leaveStack = true;
+                        }
+                    }
+                    numberOfWorkingDays++;
+                }
+            }
+
+            if (StartLeaveDate.SelectedDate < DateTime.Now || EndLeaveDate.SelectedDate < DateTime.Now)
             {
 
                 MessageBox.Show("No past dates");
@@ -66,35 +93,61 @@ namespace EyeKnowRight
             }else if(TypeOfLeave.SelectedItem == null)
             {
                 MessageBox.Show("Please add the type of leave");
-            }else
+            }else if (numberOfWorkingDays == 0)
             {
-                TimeSpan? dateRangeComparison = EndLeaveDate.SelectedDate - StartLeaveDate.SelectedDate;
+                MessageBox.Show("Please select atleast 1 working days");
+            }
+            else {
+                   
                 var user = Application.Current.Properties["UserName"].ToString();
                 var getUser = db.Employees.FirstOrDefault(a => a.UserName == user);
 
-               // bool leaveOk = false;
-                if(TypeOfLeave.Text == "Paternity Leave" && getUser.PaternityLeave < dateRangeComparison.Value.TotalDays)
+                // bool leaveOk = false;
+                if (TypeOfLeave.Text == "Paternity Leave" && getUser.PaternityLeave < numberOfWorkingDays)
                 {
                     MessageBox.Show("Not enough paternity leave");
                 }
-                else if (TypeOfLeave.Text == "Sick Leave" && getUser.SickLeave < dateRangeComparison.Value.TotalDays)
+                else if (TypeOfLeave.Text == "Bereavement Leave" && getUser.BereavementLeave < numberOfWorkingDays)
+                {
+                    MessageBox.Show("Not enough Bereavement leave");
+                }
+                else if (TypeOfLeave.Text == "Maternity Leave" && getUser.MaternityLeave < numberOfWorkingDays)
+                {
+                    MessageBox.Show("Not enough Maternity leave");
+                }
+                else if (TypeOfLeave.Text == "Medical Leave" && getUser.MedicalLeave < numberOfWorkingDays)
+                {
+                    MessageBox.Show("Not enough Medical leave");
+                }
+                else if (TypeOfLeave.Text == "Personal Leave" && getUser.PersonalLeave < numberOfWorkingDays)
+                {
+                    MessageBox.Show("Not enough Personal leave");
+                }
+                else if (TypeOfLeave.Text == "Sick Leave" && getUser.SickLeave < numberOfWorkingDays)
                 {
                     MessageBox.Show("Not enough sick leave");
-                }else { 
-                Leave leave = new Leave();
-                leave.ReasonForLeaving = ReasonForLeave.Text;
-                leave.UserName = user;
-                leave.TypeOfLeave = TypeOfLeave.Text;
-                leave.StartDate = StartLeaveDate.SelectedDate;
-                leave.EndLeave = EndLeaveDate.SelectedDate;
+                }  else {
+
+
+                    if (!leaveStack) { 
+                    Leave leave = new Leave();
+                    leave.ReasonForLeaving = ReasonForLeave.Text;
+                    leave.UserName = user;
+                    leave.TypeOfLeave = TypeOfLeave.Text;
+                    leave.StartDate = StartLeaveDate.SelectedDate;
+                    leave.EndLeave = EndLeaveDate.SelectedDate;
                     leave.Status = "Pending";
-                db.Leaves.Add(leave);
-                db.SaveChanges();
+                    db.Leaves.Add(leave);
+                    db.SaveChanges();
 
                     var leaveList = db.Leaves.Where(a => a.UserName == user).ToList();
 
                     LeaveGrid.ItemsSource = leaveList;
                     MessageBox.Show("Leave Added");
+                    }else
+                    {
+                        MessageBox.Show("No leave tenure");
+                    }
                 }
             }
             //MessageBox.Show("No past dates");

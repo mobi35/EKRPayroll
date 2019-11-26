@@ -46,16 +46,38 @@ namespace EyeKnowRight.ViewModels
             set { numberOfEntries = value; }
         }
 
-
-
-
-
         EyeKnowRightDB db = new EyeKnowRightDB();
         //  private readonly IWindowManager windowManager;
         public ShellViewModel()
         {
-            var getPayroll = db.Payrolls.ToList();
+            ///// 
+            ///
+            //
             var getUserList = db.Employees.ToList();
+            var leave = db.Leaves.ToList();
+            TimeSpan? remainingLeave ;
+            foreach(var emp in getUserList) { 
+            foreach(var l in leave)
+            {
+                if (DateTime.Now >= l.StartDate && DateTime.Now <= l.EndLeave)
+                {
+                        remainingLeave = l.EndLeave - l.StartDate;
+                        emp.RemainingLeave = (int)remainingLeave.Value.TotalDays;
+                        db.SaveChanges();
+                        break;
+                }else
+                    {
+                        emp.RemainingLeave = 0;
+                        db.SaveChanges();
+                    }
+            }
+            }
+
+
+
+
+            var getPayroll = db.Payrolls.ToList();
+          
 
             if (getPayroll.Count == 0)
             {
@@ -145,11 +167,10 @@ namespace EyeKnowRight.ViewModels
                 if (isExist11)
                 {
 
-                
                     Payroll payroll = new Payroll();
                     payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 11);
                     payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 25);
-
+                    payroll.IsActive = true;
                     db.Payrolls.Add(payroll);
                   
                     db.SaveChanges();
@@ -199,10 +220,7 @@ namespace EyeKnowRight.ViewModels
 
         public void ReportClick()
         {
-            Console.Write("damn");
-            Console.Write("damn");
-            Console.Write("damn");
-            Console.Write("damn");
+           
 
         }
        

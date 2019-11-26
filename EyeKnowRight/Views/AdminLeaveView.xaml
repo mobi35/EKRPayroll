@@ -10,14 +10,7 @@
     <Grid >
         <StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
-            <Button  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Airplane"/>
-                    <TextBlock Text=" Request Leave"/>
-
-                </StackPanel>
-
-            </Button>
+  
 
 
             <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
@@ -53,8 +46,11 @@
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Status}" Value="Accepted">
+                                                <DataTrigger Binding="{Binding Status}" Value="Pending">
                                                     <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="Accepted">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding Status}" Value="Rejected">
                                                     <Setter Property="Visibility" Value="Collapsed" />

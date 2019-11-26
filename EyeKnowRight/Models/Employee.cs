@@ -36,44 +36,26 @@ namespace EyeKnowRight.Models
         public string Address { get; set; }
         [MaxLength(50)]
         public string Position { get; set; }
-
         public string JobTitle { get; set; }
-
         public double Salary { get; set; }
-
         public byte[] Picture { get; set; }
-
         public DateTime? BirthDate { get; set; }
         public int? MyProperty { get; set; }
-
         public int MaternityLeave { get; set; }
-
         public int PaternityLeave { get; set; }
-
         public int SickLeave { get; set; }
-
         public int BereavementLeave { get; set; }
-
         public int MedicalLeave { get; set; }
-
         public int PersonalLeave { get; set; }
-
         public int NumberOfTries { get; set; }
-
         public int DaysContract { get; set; }
-
         public string SSSNumber { get; set; }
-
         public string TINNumber { get; set; }
         public string PagibigNumber { get; set; }
-
         public DateTime? LastAppraiseDate { get; set; }
-
         public string Department { get; set; }
-
         public bool IsActive { get; set; }
-
         public string Status { get; set; }
-
+        public int RemainingLeave { get; set; }
     }
 }

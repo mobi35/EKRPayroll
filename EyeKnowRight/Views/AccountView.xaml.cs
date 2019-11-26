@@ -289,7 +289,15 @@ namespace EyeKnowRight
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-        private void AddUser(object sender, RoutedEventArgs e)
+
+        private void ButtonPrint (object sender, RoutedEventArgs e)
+        {
+            int buttonId = (int)((Button)sender).Tag;
+            //MessageBox.Show(xx.StartPayroll + " ");
+            EmployeePrintView employeePrint = new EmployeePrintView(buttonId);
+            employeePrint.Show();
+        }
+            private void AddUser(object sender, RoutedEventArgs e)
         {
             AddUserExecute();
         }
@@ -505,7 +513,7 @@ namespace EyeKnowRight
                     addNew.UserName = UserName.Text;
                     addNew.DateRegistered = DateTime.Now;
                     addNew.EmployeeID = "Tanjiro";
-                    addNew.Age = 69;
+                    addNew.Age = GiveBirthday(BirthDate.SelectedDate);
                     addNew.DaysContract = Int32.Parse(MonthsOfStay.Text);
                     db.Employees.Add(addNew);
 
@@ -539,8 +547,7 @@ namespace EyeKnowRight
                         employee.BirthDate = BirthDate.SelectedDate;
                         employee.Position = Position.Text;
                         employee.PersonalLeave = Int32.Parse(PersonalLeave.Text);
-
-
+                        
                         employee.SickLeave = Int32.Parse(SickLeave.Text);
                         if (employee.Gender == "Male")
                         {
@@ -561,7 +568,7 @@ namespace EyeKnowRight
                         employee.UserName = UserName.Text;
                         employee.DateRegistered = DateTime.Now;
                         employee.EmployeeID = "Tanjiro";
-                        employee.Age = 69;
+                        employee.Age = GiveBirthday(BirthDate.SelectedDate);
 
                         db.SaveChanges();
                         SuccessfullyEdited.IsOpen = true;

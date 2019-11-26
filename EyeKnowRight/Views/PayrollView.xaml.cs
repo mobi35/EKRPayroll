@@ -49,8 +49,14 @@ namespace EyeKnowRight
             payrollPrintView.Show();
 
         }
+        private void PrintPayroll(object sender, RoutedEventArgs e)
+        {
+            int payrollPK = (int)((Button)sender).Tag;
+            PayrollPrintView payrollPrintView = new PayrollPrintView(payrollPK);
+            payrollPrintView.Show();
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        }
+            private void Button_Click(object sender, RoutedEventArgs e)
         {
             int payrollPK = (int)((Button)sender).Tag;
             var deductions = db.Deductionss.Where(a => a.PayrollPK == payrollPK).ToList();

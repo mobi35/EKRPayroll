@@ -59,11 +59,22 @@
             <DataGrid.Columns>
              
                 <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="Middle Name" Binding="{Binding MiddleName}"/>
+
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
                 <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
-            
-                <DataGridTemplateColumn Width="200">
+                <DataGridTextColumn  FontSize="11" Width="120"  Header="Remaining Leave" Binding="{Binding RemainingLeave}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RemainingLeave}" Value="0">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="300">
                     <DataGridTemplateColumn.CellTemplate>
 
                         <DataTemplate>
@@ -88,7 +99,7 @@
                                     </TextBlock>
                                   
                                 </Button>
-
+                                
                                 <Button Width="70"  Height="23" Click="GetEdit" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
                                     <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="Black" Kind="AccountEdit"/>
                                 </Button>
@@ -98,12 +109,16 @@
                                     <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
                                 </Button>
 
-                                <Button Width="70"   Height="25" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
+                                <Button Width="70" Margin="0"  Height="25" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
                                     <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Attendance" Foreground="CadetBlue" Kind="AccountStar"/>
                                 </Button>
 
-                                <Button Width="70"  Margin="-30"  Height="23" Click="GetAppraisal" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding UserName}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAppraisal}"   >
+                                <Button Width="70" Margin="-30 0 0 0"   Height="23" Click="GetAppraisal" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding UserName}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAppraisal}"   >
                                     <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Appraisal" Foreground="Black" Kind="School"/>
+                                </Button>
+
+                                <Button Width="70"  Margin="-30"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="ButtonPrint" Tag="{Binding EmployeePK}" ToolTip="Print User"     >
+                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Print" Foreground="Black" Kind="Printer"/>
                                 </Button>
 
                             </StackPanel>

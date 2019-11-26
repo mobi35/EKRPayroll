@@ -247,11 +247,18 @@ namespace EyeKnowRight
                 Salary_ValidationMsg.Text = "This field is required";
                 Salary_ValidationMsg.Visibility = Visibility.Visible;
             }
-            else if (Int32.Parse(Salary.Text) < 200)
+            else if (Int32.Parse(Salary.Text) < 200 )
             {
                 numberOfWrong++;
                 StepChangeVisibility(5);
-                Salary_ValidationMsg.Text = "Maximum of 200";
+                Salary_ValidationMsg.Text = "Minimum of 200";
+                Salary_ValidationMsg.Visibility = Visibility.Visible;
+            }
+            else if (Int32.Parse(Salary.Text) > 10000)
+            {
+                numberOfWrong++;
+                StepChangeVisibility(5);
+                Salary_ValidationMsg.Text = "Maximum of 10000";
                 Salary_ValidationMsg.Visibility = Visibility.Visible;
             }
             else
@@ -359,6 +366,10 @@ namespace EyeKnowRight
         }
             private void AddUser(object sender, RoutedEventArgs e)
         {
+            FirstName.IsEnabled = true;
+            MiddleName.IsEnabled = true;
+            LastName.IsEnabled = true;
+
             AddUserExecute();
         }
 
@@ -373,6 +384,10 @@ namespace EyeKnowRight
 
             if (sender != null)
             {
+                FirstName.IsEnabled = false;
+                MiddleName.IsEnabled = false;
+                LastName.IsEnabled = false;
+
                 PaternityLeave.IsEnabled = true;
                 MaternityLeave.IsEnabled = true;
                 PersonalLeave.IsEnabled = true;
@@ -518,6 +533,9 @@ namespace EyeKnowRight
             {
                 if (Mode.Text == "Add")
                 {
+                   
+
+                   
                     Employee addNew = new Employee();
                     addNew.EmployeeID = "New";
                     if (Gender_Male.IsChecked == true)
@@ -576,8 +594,10 @@ namespace EyeKnowRight
                 }
                 else if (Mode.Text == "Edit")
                 {
+                
                     if (CheckValidations() == 0)
                     {
+
                         int employeePk = Int32.Parse(EmployeePK.Text);
                         var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeePk);
                         if (Gender_Male.IsChecked == true)

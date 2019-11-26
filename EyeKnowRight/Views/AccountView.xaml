@@ -6,16 +6,23 @@
              xmlns:local="clr-namespace:EyeKnowRight.Views"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" Background="White" d:DesignWidth="800" >
+             d:DesignHeight="600" Background="White" d:DesignWidth="800" >
 
 
 
     <Grid>
 
-       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition Height="auto" ></RowDefinition>
+
+        </Grid.RowDefinitions>
         
-        <StackPanel>
-            <TextBlock x:Name="Bagwis" Text=""/>
+      
+            <StackPanel Grid.Row="0"> 
+             <TextBlock  FontSize="30"  Foreground="Gray" Text="Accounts"/>
+            <TextBlock/>
+            <TextBlock/>
             <Button Click="AddNewUserClick" Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}">
                 <StackPanel Orientation="Horizontal"> 
                 <materialDesign:PackIcon Kind="AccountPlus"/>
@@ -47,96 +54,101 @@
             <Grid>
                 <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 -30 200 0" Foreground="Gray" Kind="Magnify"/>
             </Grid>
-            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
+                <TextBlock/>
+            </StackPanel>
 
-        </StackPanel>
-
-        <!-- DATA GRID START -->
-        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeGrid" Height="400" Background="{x:Null}"
+            <StackPanel Grid.Row="1">
+                <!-- DATA GRID START -->
+            <StackPanel Background="Beige"> 
+            <TextBlock  FontSize="20"  HorizontalAlignment="Center" Text="User's List"/>
+            </StackPanel>
+            <DataGrid BorderBrush="Transparent"  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeGrid" Height="auto" Background="Beige"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="OnSelect" >
-            
-            <DataGrid.Columns>
-             
-                <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
+           
+                <DataGrid.Columns>
 
-                <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
-                <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
-                <DataGridTextColumn  FontSize="11" Width="120"  Header="Remaining Leave" Binding="{Binding RemainingLeave}">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding RemainingLeave}" Value="0">
-                                    <Setter Property="Visibility" Value="Collapsed" />
-                                </DataTrigger>
+                    <DataGridTextColumn FontSize="11" Width="130"  Header="Firsts Name" Binding="{Binding FirstName}"/>
 
-                            </Style.Triggers>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTemplateColumn Width="300">
-                    <DataGridTemplateColumn.CellTemplate>
+                    <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
+                    <DataGridTextColumn  FontSize="11" Width="120"  Header="Remaining Leave" Binding="{Binding RemainingLeave}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RemainingLeave}" Value="0">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </DataTrigger>
 
-                        <DataTemplate>
-                            <StackPanel  Orientation="Horizontal">
-                                <Button Width="70" Margin="-29"  Height="23" Background="{x:Null}" Foreground="CadetBlue" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
-                                    <TextBlock   >
-                                        <TextBlock.Style>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IsActive}" Value="True">
-                                                        <Setter Property="Foreground" Value="Green" />
-                                                        <Setter Property="Text" Value="Active" />
-                                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Width="2000">
+                        <DataGridTemplateColumn.CellTemplate>
 
-                                                <DataTrigger Binding="{Binding IsActive}" Value="False">
-                                                        <Setter Property="Foreground" Value="Red" />
-                                                        <Setter Property="Text" Value="Inactive" />
-                                                    </DataTrigger>
-                                            </Style.Triggers>
-                                            </Style>
-                                    </TextBlock.Style>
-                                    </TextBlock>
-                                  
-                                </Button>
-                                
-                                <Button Width="70"  Height="23" Click="GetEdit" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
-                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="Black" Kind="AccountEdit"/>
-                                </Button>
+                            <DataTemplate>
+                                <StackPanel  Orientation="Horizontal">
+                                    <Button Width="70" Margin="-29"  Height="23" Background="{x:Null}" Foreground="CadetBlue" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
+                                        <TextBlock   >
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                            <Setter Property="Foreground" Value="Green" />
+                                                            <Setter Property="Text" Value="Active" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                                            <Setter Property="Foreground" Value="Red" />
+                                                            <Setter Property="Text" Value="Inactive" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+
+                                    </Button>
+
+                                    <Button Width="70"  Height="23" Click="GetEdit" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AddUserDialog}"   >
+                                        <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Edit User" Foreground="Black" Kind="AccountEdit"/>
+                                    </Button>
 
 
-                                <Button Width="70"  Margin="-30" Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
-                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
-                                </Button>
+                                    <Button Width="70"  Margin="-10" Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
+                                        <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
+                                    </Button>
 
-                                <Button Width="70" Margin="0"  Height="25" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
-                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Attendance" Foreground="CadetBlue" Kind="AccountStar"/>
-                                </Button>
+                                    <Button Width="70" Margin="0"  Height="25" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
+                                        <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Attendance" Foreground="CadetBlue" Kind="AccountStar"/>
+                                    </Button>
 
-                                <Button Width="70" Margin="-30 0 0 0"   Height="23" Click="GetAppraisal" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding UserName}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAppraisal}"   >
-                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Appraisal" Foreground="Black" Kind="School"/>
-                                </Button>
+                                    <Button Width="70" Margin="-10 0 0 0"   Height="23" Click="GetAppraisal" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding UserName}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAppraisal}"   >
+                                        <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Appraisal" Foreground="Black" Kind="School"/>
+                                    </Button>
 
-                                <Button Width="70"  Margin="-30"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="ButtonPrint" Tag="{Binding EmployeePK}" ToolTip="Print User"     >
-                                    <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Print" Foreground="Black" Kind="Printer"/>
-                                </Button>
+                                    <Button Width="70"  Margin="-20"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="ButtonPrint" Tag="{Binding EmployeePK}" ToolTip="Print User"     >
+                                        <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Print" Foreground="Black" Kind="Printer"/>
+                                    </Button>
 
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-            <DataGrid.ItemContainerStyle >
-                <Style TargetType="{x:Type DataGridRow}" >
-                    <EventSetter  Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
-                </Style>
-            </DataGrid.ItemContainerStyle>
-        </DataGrid>
-        <!-- DATA GRID END -->
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                <DataGrid.ItemContainerStyle >
+                    <Style TargetType="{x:Type DataGridRow}" >
+                        <EventSetter  Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    </Style>
+                </DataGrid.ItemContainerStyle>
+            </DataGrid>
+            <!-- DATA GRID END -->
+        </StackPanel>
+
 
 
         <!-- ADD USER DIALOG BOX START -->
-        <materialDesign:DialogHost  IsOpen="False" x:Name="AddUserDialog"  Margin="0,-126,0,-32"  >
+        <materialDesign:DialogHost  IsOpen="False" Opacity="0" x:Name="AddUserDialog"    >
 
             <materialDesign:DialogHost.DialogContent>
 
@@ -160,9 +172,9 @@
                             <TextBlock/>
 
                             <StackPanel Width="200">
-                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="First Name"/>
+                                <TextBlock HorizontalAlignment="Left"  FontSize="11"  Foreground="Gray" Padding="6" Text="First Name"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox PreviewKeyDown="EnterClicked" Padding="2 0 0 0" x:Name="FirstName" Text="{Binding Path=FirstName , Mode=TwoWay}"  Width="200"  Height="25" >
+                                    <TextBox PreviewKeyDown="EnterClicked"  Padding="2 0 0 0" x:Name="FirstName" Text="{Binding Path=FirstName , Mode=TwoWay}"  Width="200"  Height="25" >
                                       
                                     </TextBox>
                                 </Border>
@@ -680,9 +692,9 @@
 
                     </StackPanel>
 
-                    <StackPanel  Margin="0 240 0 0">
+                    <StackPanel >
 
-                        <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeDTR" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                        <DataGrid Margin="0 250" HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeDTR" SelectionMode="Extended" Height="300" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
                             <DataGrid.Columns>
@@ -900,7 +912,7 @@
             </materialDesign:DialogHost.DialogContent>
 
         </materialDesign:DialogHost>
-
+    
     </Grid>
 
 

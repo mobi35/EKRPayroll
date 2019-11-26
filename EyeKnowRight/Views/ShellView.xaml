@@ -537,14 +537,6 @@
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem  Height="45" Padding="0" Selected="AccountSelect"  >
-                                <StackPanel  Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="Account" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Accounts" Margin="10"/>
-
-
-                                </StackPanel>
-                            </ListViewItem>
                             <ListViewItem Height="45" Padding="0" Selected="PayrollSelect">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
                                     <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>

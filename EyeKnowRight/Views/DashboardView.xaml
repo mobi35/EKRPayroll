@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="0" >
-            <Button Click="PrintDashboard" Width="50"  HorizontalAlignment="Left" Height="Auto" Grid.Row="1" Grid.RowSpan="2">
+            <Button Click="PrintDashboard" Margin="5 0 0 0" Width="50"  HorizontalAlignment="Left" Height="Auto" Grid.Row="1" Grid.RowSpan="2">
                 <materialDesign:PackIcon Kind="Printer"/>
             </Button>
 

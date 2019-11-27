@@ -8,18 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
-        <StackPanel>
-            <TextBlock x:Name="Bagwis" Text=""/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
 
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-
-
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock  FontSize="30"  Foreground="Gray" Text="Overtime"/>
 
             <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
               
@@ -31,12 +26,15 @@
             <Grid>
                 <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 -30 200 0" Foreground="Gray" Kind="Magnify"/>
             </Grid>
-            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
+      
 
         </StackPanel>
-
+        <StackPanel Grid.Row="1">
         <!-- DATA GRID START -->
-        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="LeaveGrid" Height="400" Background="{x:Null}"
+            <StackPanel>
+                <TextBlock FontSize="20" HorizontalAlignment="Center" Text="User Leaves"/>
+            </StackPanel>
+        <DataGrid  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="LeaveGrid" Height="auto" Background="Beige"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
@@ -73,6 +71,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        </StackPanel>
         <!-- DATA GRID END -->
         <!-- ADD USER DIALOG BOX START -->
         <materialDesign:DialogHost  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >

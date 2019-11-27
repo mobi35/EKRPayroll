@@ -40,7 +40,7 @@
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid>
+    <Grid >
         <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="ReportDialog" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Background="{x:Null}" Width="250" Height="400" HorizontalAlignment="Center">
@@ -415,7 +415,7 @@
 
         </materialDesign:DialogHost>
 
-        <Grid  x:Name="GridBackground" >
+        <Grid   x:Name="GridBackground" >
            
         </Grid>
         

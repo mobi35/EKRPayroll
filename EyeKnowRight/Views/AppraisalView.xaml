@@ -9,7 +9,11 @@
              d:DesignHeight="450" Background="White" d:DesignWidth="800">
        
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
 
+        </Grid.RowDefinitions>
         <materialDesign:DialogHost Background="{x:Null}" IsOpen="False" x:Name="OpenAppraisalWindow"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
                 <Grid Background="{x:Null}" Width="300" Height="550" HorizontalAlignment="Center">
@@ -108,8 +112,15 @@
             </materialDesign:DialogHost.DialogContent>
 
         </materialDesign:DialogHost>
+        <StackPanel Grid.Row="0">
+            <TextBlock  FontSize="30"  Foreground="Gray" Text="Evaluation"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" >
         <!-- DATA GRID START -->
-        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="AppraisalGrid" Height="400" Background="{x:Null}"
+            <StackPanel Background="Beige">
+                <TextBlock HorizontalAlignment="Center"  FontSize="20" Text="User Evaluation"/>
+            </StackPanel>
+        <DataGrid Background="Beige" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="AppraisalGrid" Height="auto" 
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
@@ -128,5 +139,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        </StackPanel>
     </Grid>
 </UserControl>

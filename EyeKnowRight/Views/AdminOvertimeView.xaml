@@ -8,15 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
-        <StackPanel>
-            <TextBlock x:Name="Bagwis" Text=""/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+       
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock  FontSize="30"  Foreground="Gray" Text="Overtime"/>
             <TextBlock/>
             <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
-            <TextBlock/>
+        
             <StackPanel  materialDesign:HintAssist.Hint="     Search overtime" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
               
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
@@ -30,9 +31,12 @@
             <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
 
         </StackPanel>
-
+        <StackPanel Grid.Row="1"> 
         <!-- DATA GRID START -->
-        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="OvertimeGrid" Height="400" Background="{x:Null}"
+            <StackPanel Background="Beige">
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Overtime List" />
+            </StackPanel>
+        <DataGrid   HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="OvertimeGrid" Height="auto" Background="Beige"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
@@ -69,6 +73,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        </StackPanel>
         <!-- DATA GRID END -->
         <!-- ADD USER DIALOG BOX START -->
         <materialDesign:DialogHost  IsOpen="False" x:Name="OvertimeDialog"  Margin="0,-126,0,-32"  >

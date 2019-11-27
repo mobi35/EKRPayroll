@@ -7,10 +7,10 @@
         xmlns:local="clr-namespace:EyeKnowRight.Views"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+        Title="Login" Height="350" Width="350" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
     <Grid>
         <StackPanel >
-            <materialDesign:PackIcon HorizontalAlignment="Center" Width="100"  Height="100" Kind="Account"/>
+            <Image Height="120" Source="../Assets/ekr.png"/>
             <StackPanel Width="200">
                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Username"/>
                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">

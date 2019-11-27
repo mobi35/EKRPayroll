@@ -12,16 +12,20 @@
        
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+          
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.Column="0" >
+
+        
+
             <Button Click="PrintDashboard" Margin="5 0 0 0" Width="50"  HorizontalAlignment="Left" Height="Auto" Grid.Row="1" Grid.RowSpan="2">
                 <materialDesign:PackIcon Kind="Printer"/>
             </Button>
@@ -59,6 +63,8 @@
 
 
         <StackPanel  Grid.Row="0" Grid.Column="1">
+            <TextBlock FontSize="30" Foreground="Gray" />
+            <Separator/>
             <TextBlock HorizontalAlignment="Center"  Text="Top Performing Employees"/>
 
             <Wpf:CartesianChart Width="auto" x:Name="TopEmployee"  Height="180">
@@ -69,14 +75,6 @@
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom"  Orientation="Horizontal">
-
-
-
-
-
-
-
-
 
 
         </StackPanel>
@@ -93,6 +91,8 @@
         </StackPanel>
 
         <StackPanel  >
+            <TextBlock FontSize="30" Foreground="Gray" Text="Dashboard"/>
+            <Separator/>
             <TextBlock HorizontalAlignment="Center"  Text="Total No. Absence by month"/>
 
             <Wpf:CartesianChart  Height="180" x:Name="TotalAbsence"  Width="auto" >

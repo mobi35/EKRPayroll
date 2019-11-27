@@ -8,30 +8,49 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
 
-       
+        </Grid.RowDefinitions>
+    
 
-        <StackPanel>
-            <StackPanel Orientation="Horizontal"> 
-            <TextBlock Foreground="Gray" Text="Personal Leave : "/>
-                <TextBlock Text="{Binding PersonalLeave}"/>
-                <TextBlock Foreground="Gray" Text=" Medical Leave : "/>
-                <TextBlock Text="{Binding MedicalLeave}"/>
-                <TextBlock Foreground="Gray" Text=" Sick Leave : "/>
-                <TextBlock Text="{Binding SickLeave}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Foreground="Gray" Text="Bereavement Leave : "/>
-                <TextBlock Text="{Binding BereavementLeave}"/>
+        <StackPanel Grid.Row="0">
+            <TextBlock FontSize="30" Foreground="Gray" Text="Leaves"/>
+            <Separator/>
+            <StackPanel Orientation="Horizontal" > 
+            <TextBlock FontSize="20" Foreground="Gray" Text="Personal Leave : "/>
+                <Border Background="Beige" CornerRadius="9" Padding="3"> 
+                <TextBlock FontSize="20"   Text="{Binding PersonalLeave}"/>
+                </Border>
+                <TextBlock FontSize="20" Foreground="Gray" Text=" Medical Leave : "/>
+                <Border Background="Beige" CornerRadius="9" Padding="3">
+                    <TextBlock FontSize="20" Text="{Binding MedicalLeave}"/>
+                </Border>
+                <TextBlock FontSize="20" Foreground="Gray" Text=" Sick Leave : "/>
+                <Border Background="Beige" CornerRadius="9" Padding="3">
+                    <TextBlock FontSize="20" Text="{Binding SickLeave}"/>
+                </Border>
+                <TextBlock FontSize="20" Foreground="Gray" Text=" Bereavement Leave : "/>
+                <Border Background="Beige" CornerRadius="9" Padding="3">
+                    <TextBlock FontSize="20" Text="{Binding BereavementLeave}"/>
+                </Border>
                 <StackPanel Visibility="Collapsed"  x:Name="Maternity" Orientation="Horizontal">
-                <TextBlock Foreground="Gray"  Text="Maternity Leave : "/>
-                <TextBlock Text="{Binding MaternityLeave}"/>
+                    <TextBlock FontSize="20" Foreground="Gray"  Text=" Maternity Leave : "/>
+                    <Border Background="Beige" CornerRadius="9" Padding="3">
+                        <TextBlock FontSize="20" Text="{Binding MaternityLeave}"/>
+                    </Border>
                 </StackPanel>
 
                 <StackPanel x:Name="Paternity" Visibility="Collapsed"  Orientation="Horizontal">
                     <TextBlock Foreground="Gray" Text=" Paternity Leave : "/>
-                    <TextBlock Text="{Binding PaternityLeave}"/>
+                    <Border Background="Beige" CornerRadius="9" Padding="3">
+                        <TextBlock Text="{Binding PaternityLeave}"/>
+                    </Border>
                 </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+              
             </StackPanel>
             <TextBlock x:Name="Bagwis" Text=""/>
             <Button  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=LeaveDialog}">
@@ -44,9 +63,12 @@
             <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
 
         </StackPanel>
-
+        <StackPanel Grid.Row="1">
         <!-- DATA GRID START -->
-        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="LeaveGrid" Height="400" Background="{x:Null}"
+            <StackPanel Background="Beige">
+                <TextBlock Text="My Leave" HorizontalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+        <DataGrid  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="LeaveGrid" Height="auto" Background="Beige"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
@@ -68,10 +90,10 @@
             </DataGrid.Columns>
         </DataGrid>
         <!-- DATA GRID END -->
-
+        </StackPanel>
 
         <!-- ADD USER DIALOG BOX START -->
-        <materialDesign:DialogHost  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
+        <materialDesign:DialogHost Opacity="0"  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
 
             <materialDesign:DialogHost.DialogContent >
 

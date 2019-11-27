@@ -8,10 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Background="White" d:DesignWidth="800" >
     <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
 
-       
+        </Grid.RowDefinitions>
 
-        <StackPanel>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock FontSize="30" Foreground="Gray" Text="Overtime"/>
+            <Separator/>
             <TextBlock x:Name="Bagwis" Text=""/>
             <Button  Margin="20 10 0 0" HorizontalAlignment="Left"  Width="150" Height="30" FontSize="10" Tag="{Binding id}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=LeaveDialog}">
                 <StackPanel Orientation="Horizontal">
@@ -24,12 +30,15 @@
 
 
           
-            <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
+           
 
         </StackPanel>
-
-        <!-- DATA GRID START -->
-        <DataGrid Margin="20,25,47,25" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="OvertimeGrid" Height="400" Background="{x:Null}"
+        <StackPanel Grid.Row="1">
+            <!-- DATA GRID START -->
+            <StackPanel Background="Beige">
+                <TextBlock Text="My Overtime" HorizontalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+            <DataGrid HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="OvertimeGrid" Height="auto" Background="Beige"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
@@ -52,9 +61,9 @@
         </DataGrid>
         <!-- DATA GRID END -->
 
-
+        </StackPanel>
         <!-- ADD USER DIALOG BOX START -->
-        <materialDesign:DialogHost  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
+        <materialDesign:DialogHost Opacity="0"  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
 
             <materialDesign:DialogHost.DialogContent >
 

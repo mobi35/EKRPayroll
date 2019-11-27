@@ -391,7 +391,7 @@
 
                     <StackPanel  Margin="0 240 0 0">
 
-                        <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeDTR" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                        <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeDTR" SelectionMode="Extended" Height="320" Background="{x:Null}"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
                             <DataGrid.Columns>
@@ -425,7 +425,8 @@
         <Grid Margin="40 0 0 0" x:Name="MainGrid" Width="auto" >
             <TextBlock></TextBlock>
         </Grid>
-        <Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
+        <Grid x:Name="GridMenu" Width="250"   HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White"  RenderTransformOrigin="0.5,0.5">
+            
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -434,8 +435,19 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <StackPanel >
-                <Image Height="120" Source="../Assets/ekr.png" Width="250" Margin="-10"/>
+
+            <Border 
+            BorderBrush="Black"
+            BorderThickness="0.0980"
+           >
+                <Border.Effect>
+                    <DropShadowEffect />
+                </Border.Effect>
+            </Border>
+        
+            <StackPanel  >
+                
+                <Image Height="120" Source="../Assets/ekr.png" Width="300" Margin="-10"/>
 
                 <Grid Visibility="Visible" x:Name="AdminPanel"> 
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
@@ -452,7 +464,7 @@
 
                         <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ReportDialog}"  Background="{x:Null}" BorderBrush="{x:Null}" Height="40">
                             <StackPanel Orientation="Horizontal"> 
-                            <materialDesign:PackIcon Kind="ViewDashboard" Width="20" Height="20" Foreground="Gray" Margin="-10 0 15 0" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="Printer" Width="20" Height="20" Foreground="Gray" Margin="-10 0 15 0" VerticalAlignment="Center"/>
                             <TextBlock Foreground="Black" FontSize="20" FontWeight="Normal" Text="Reports"/>
                             </StackPanel>
                       
@@ -468,27 +480,27 @@
                     </ListViewItem>
                     <ListViewItem Height="45" Padding="0" Selected="PayrollSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Payroll" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
 
                         <ListViewItem Height="45" Padding="0" Selected="AdminOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="Timelapse" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Overtime" Margin="10"/>
                             </StackPanel>
                         </ListViewItem>
 
                         <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Appraisal" Margin="10"/>
+                                <materialDesign:PackIcon Kind="AccountPlus" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Evaluation" Margin="10"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
-                            <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                            <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Leave" Margin="10"/>
 
                         </StackPanel>
@@ -503,7 +515,7 @@
                    
                         <ListViewItem Height="45" Padding="0" Selected="EmployeeLeave">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Leave" Margin="10"/>
 
                             </StackPanel>
@@ -512,7 +524,7 @@
 
                         <ListViewItem Height="45" Padding="0" Selected="EmployeeOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="Timer" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                                <materialDesign:PackIcon Kind="Timer" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Overtime" Margin="10"/>
 
                             </StackPanel>
@@ -530,7 +542,7 @@
                     <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
 
 
-                        <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                      
                             <ListViewItem  Height="45" Padding="0" Selected="DashboardSelect"  >
                                 <StackPanel  Orientation="Horizontal" Margin="10 0">
                                     <materialDesign:PackIcon Kind="ViewDashboard" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
@@ -542,29 +554,24 @@
 
                             <ListViewItem Height="45" Padding="0" Selected="PayrollSelect">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                     <TextBlock Text="Payroll" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
 
                             <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="#FFF08033" Margin="5" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                     <TextBlock Text="Appraisal" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
                             <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                                    <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                     <TextBlock Text="Leave" Margin="10"/>
 
                                 </StackPanel>
                             </ListViewItem>
-
-                 
-                        </ListView>
-
-
                        
                     </ListView>
                 </Grid>
@@ -583,9 +590,31 @@
                     </Border>
 
                     <TextBlock x:Name="UserNameText" Foreground="Gray" Text="Adrian"  FontSize="16" Padding="10"/>
-                    <Button Margin="5 0 0 0" HorizontalAlignment="Left"  Width="100" Style="{StaticResource MaterialDesignFlatButton}" Click="GetAccountDetailsData"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"  Content="My Profile"/>
-                    <Button Margin="5 0 0 0" HorizontalAlignment="Left"  Width="100" Style="{StaticResource MaterialDesignFlatButton}"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AccountSettings}"  Content="Settings"/>
-                    <Button Click="LogoutAccount" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="100" Style="{StaticResource MaterialDesignFlatButton}">Logout</Button>
+
+
+                    <Button Foreground="Black" FontWeight="Normal" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="130" Style="{StaticResource MaterialDesignFlatButton}" Click="GetAccountDetailsData"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"  >
+                        <StackPanel Orientation="Horizontal"> 
+                        <materialDesign:PackIcon Kind="Account"/>
+                        <TextBlock Text="My Account"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Foreground="Black" FontWeight="Normal" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="130" Style="{StaticResource MaterialDesignFlatButton}"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AccountSettings}" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Settings" />
+                            <TextBlock Text="Settings"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Foreground="Black" FontWeight="Normal" Click="LogoutAccount" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="130" Style="{StaticResource MaterialDesignFlatButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Logout"/>
+                            <TextBlock Text="Logout"/>
+                        </StackPanel>
+                    
+                    </Button>
+                
+                    
                 </StackPanel>
             </StackPanel>
             <Button x:Name="ButtonClose" HorizontalAlignment="Right" Foreground="Black" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Click="ClosePanel">

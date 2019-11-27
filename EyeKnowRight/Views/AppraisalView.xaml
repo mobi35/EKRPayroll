@@ -114,9 +114,12 @@
         </materialDesign:DialogHost>
         <StackPanel Grid.Row="0">
             <TextBlock  FontSize="30"  Foreground="Gray" Text="Evaluation"/>
+            <Separator/>
+         
         </StackPanel>
         <StackPanel Grid.Row="1" >
-        <!-- DATA GRID START -->
+            <TextBlock/>
+            <!-- DATA GRID START -->
             <StackPanel Background="Beige">
                 <TextBlock HorizontalAlignment="Center"  FontSize="20" Text="User Evaluation"/>
             </StackPanel>

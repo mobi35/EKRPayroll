@@ -19,9 +19,10 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock  FontSize="30"  Foreground="Gray" Text="Payrolls"/>
+            <Separator/>
             <TextBlock/>
             <TextBlock>
-            <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=HolidayDialog}" Margin="10 0 0 0"  Width="200">Add Holidays</Button>
+            <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=HolidayDialog}" Margin="10 0 0 0"  Width="130">Add Holidays</Button>
         </TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="1" Background="Beige" >

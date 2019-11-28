@@ -36,10 +36,10 @@
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="11" Width="100"  Header="Username" Binding="{Binding UserName}"/>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="Reason for Overtime" Binding="{Binding Reason}"/>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="Overtime Until" Binding="{Binding UntilWhatTime}"/>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="Date" Binding="{Binding DateOfOvertime}"/>
+                <DataGridTextColumn FontSize="11" Width="120"  Header="Username" Binding="{Binding UserName}"/>
+                <DataGridTextColumn FontSize="11" Width="150"  Header="Reason for Overtime"  Binding="{Binding Reason}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="Overtime Until" Binding="{Binding UntilWhatTime,StringFormat='t'}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="Date" Binding="{Binding DateOfOvertime,StringFormat='d'}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Status" Binding="{Binding Status}"/>
                 <DataGridTemplateColumn Width="200">
                     <DataGridTemplateColumn.CellTemplate>

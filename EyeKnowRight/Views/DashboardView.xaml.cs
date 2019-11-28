@@ -51,7 +51,7 @@ namespace EyeKnowRight
 
             var dtrSelect = db.DailyTimeRecords.Join(db.Employees, id => id.DailyTimeRecordPK, foreign =>
             foreign.EmployeePK, (primaryId, foreignId) => new { PrimaryID = primaryId, ForeignID = foreignId })
-                .GroupBy(a => a.ForeignID.UserName)
+                .GroupBy(a => a.PrimaryID.UserName)
 
                 .Select(l => new
                 {

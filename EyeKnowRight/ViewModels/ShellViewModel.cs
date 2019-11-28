@@ -187,7 +187,9 @@ namespace EyeKnowRight.ViewModels
                     int daysPresent = 0;
                 foreach (var dtr in dailyTimeRecord)
                   {
-                        foreach (var hol in getHoliday)
+                      
+
+                            foreach (var hol in getHoliday)
                         {
                             if (dtr.Accumulated >= 400) { 
                             if (hol.Month.Value.Month == dtr.DateTimeStamps.Value.Month && hol.Month.Value.Day == dtr.DateTimeStamps.Value.Day )
@@ -205,10 +207,10 @@ namespace EyeKnowRight.ViewModels
                                     {
                                         double percentage = 1.0 * dtr.Accumulated;
                                         dtr.Accumulated += percentage;
-
                                     }
                             }
                             }
+
                         }
 
                         if (user.UserName == dtr.UserName)
@@ -225,13 +227,15 @@ namespace EyeKnowRight.ViewModels
                                 db.SaveChanges();
                         }
                     }
-
-                       
                  }
                     deduction.TotalSalary = deduction.AllAccumulatedTimeAddition;
                     deduction.PayrollPK = db.Payrolls.FirstOrDefault(a => a.StartPayroll == start && a.EndPayroll == end).PayrollPK;
                     deduction.UserName = user.UserName;
-                    deduction.DaysPresent = daysPresent;
+                    if (start.Value.AddDays(-1).Date.Day == DateTime.Now.Day )
+                    {
+                        deduction.SSSDeduction = 500.0;
+                        deduction.PagibigDeduction = 100;
+                    }
                     deduction.BasicSalary = user.Salary; 
                     db.Deductionss.Add(deduction);
                     db.SaveChanges();

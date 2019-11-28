@@ -227,7 +227,6 @@ namespace EyeKnowRight.Views
             {
                 string filename = ofd.FileName;
                 // ImageName.Text = filename;
-
                 BitmapImage bi3 = new BitmapImage();
                 bi3.BeginInit();
                 bi3.UriSource = new Uri(filename, UriKind.Relative);

@@ -26,7 +26,7 @@
                 </Wpf:PieChart>
             </StackPanel>
             <StackPanel Width="400">
-                <TextBlock HorizontalAlignment="Center"  Text="Number of "/>
+                <TextBlock HorizontalAlignment="Center"  Text="Top Evaluated Employees"/>
                 <Wpf:CartesianChart  x:Name="AppraisalChart" Margin="0,30,-30,0" Height="150">
                 </Wpf:CartesianChart>
             </StackPanel>

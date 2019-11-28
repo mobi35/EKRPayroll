@@ -24,8 +24,8 @@
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="11" Width="100"  Header="Start Payroll" Binding="{Binding StartPayroll}"/>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="End Payroll" Binding="{Binding EndPayroll}"/>
+                <DataGridTextColumn FontSize="11" Width="100"  Header="Start Payroll" Binding="{Binding StartPayroll,StringFormat='d'}"/>
+                <DataGridTextColumn FontSize="11" Width="130"  Header="End Payroll" Binding="{Binding EndPayroll,StringFormat='d'}"/>
                 <DataGridTemplateColumn Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -49,7 +49,7 @@
         </DataGrid>
         <materialDesign:DialogHost  IsOpen="False" x:Name="HolidayDialog"  Margin="0,-126,0,-32"  >
             <materialDesign:DialogHost.DialogContent>
-                <StackPanel Width="400">
+                <StackPanel Width="450">
                     <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
                         <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
                     </Button>
@@ -83,9 +83,19 @@
                   AutoGenerateColumns="False" IsReadOnly="True"  x:Name="HolidayGrid" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn FontSize="11" Width="100"  Header="Holiday Name" Binding="{Binding HolidayName,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="100"  Header="Holiday Increase" Binding="{Binding SalaryIncrease,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="120"  Header="Holiday Date" Binding="{Binding Month,Mode=TwoWay }"/>
-
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Holiday Increase (%)" Binding="{Binding SalaryInrease,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="120"  Header="Holiday Date" Binding="{Binding Month,Mode=TwoWay, StringFormat='m' }"/>
+                                <DataGridTemplateColumn Width="70">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel  Orientation="Horizontal">
+                                                <Button Click="HolidayDelete" Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding HolidayPK}"    >
+                                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

@@ -245,8 +245,6 @@ namespace EyeKnowRight
             {
                 Salary_ValidationMsg.Visibility = Visibility.Collapsed;
             }
-
-          
             
 
             if (Password.Password == "")
@@ -272,7 +270,7 @@ namespace EyeKnowRight
             }
             else
             {
-                Salary_ValidationMsg.Visibility = Visibility.Collapsed;
+                RepeatPassword_ValidationMsg.Visibility = Visibility.Collapsed;
              
             }
 

@@ -53,7 +53,19 @@ namespace EyeKnowRight
             payrollPrintView.Show();
 
         }
-        private void PrintPayroll(object sender, RoutedEventArgs e)
+
+        
+        private void HolidayDelete(object sender, RoutedEventArgs e)
+        {
+           
+            int holidayPK = (int)((Button)sender).Tag;
+            var holiday = db.Holidays.FirstOrDefault(a => a.HolidayPK == holidayPK);
+            db.Holidays.Remove(holiday);
+            db.SaveChanges();
+            var holidays = db.Holidays.ToList();
+            HolidayGrid.ItemsSource = holidays;
+        }
+            private void PrintPayroll(object sender, RoutedEventArgs e)
         {
             int payrollPK = (int)((Button)sender).Tag;
             PayrollPrintView payrollPrintView = new PayrollPrintView(payrollPK);

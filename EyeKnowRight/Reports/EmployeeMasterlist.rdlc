@@ -550,40 +550,6 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox10">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!Date.Value, "dateTime")</Value>
-                  <Style>
-                    <Format>d</Format>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>1.36333in</Top>
-          <Left>1.90042in</Left>
-          <Height>0.25in</Height>
-          <Width>3.98958in</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -690,26 +656,6 @@
         <rd:DataSetName>EKRDataset</rd:DataSetName>
         <rd:SchemaPath>C:\Users\ADICHAN\Desktop\anuther\ekrpayroll\EyeKnowRight\Reports\EKRDataset.xsd</rd:SchemaPath>
         <rd:TableName>EmployeeMasterList</rd:TableName>
-        <rd:TableAdapterFillMethod />
-        <rd:TableAdapterGetDataMethod />
-        <rd:TableAdapterName />
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="dateTime">
-      <Query>
-        <DataSourceName>EKRDataset</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Date">
-          <DataField>Date</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>EKRDataset</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\ADRIAN\Desktop\Putanginasanalastna\ekrpayroll\EyeKnowRight\Reports\EKRDataset.xsd</rd:SchemaPath>
-        <rd:TableName>DateRange</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

@@ -6,30 +6,36 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.5829in</Width>
+              <Width>1.50337in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.55165in</Width>
+              <Width>1.47212in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.76123in</Width>
+              <Width>1.47572in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91276in</Width>
+              <Width>1.24314in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91276in</Width>
+              <Width>0.96065in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91276in</Width>
+              <Width>0.96065in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91276in</Width>
+              <Width>0.83323in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.83323in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.83323in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.28646in</Height>
+              <Height>0.33333in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -155,6 +161,66 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>TAX</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Philhealth</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox24">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -246,7 +312,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.28646in</Height>
+              <Height>0.33333in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -379,6 +445,66 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>0</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TIN">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!TIN.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TIN</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="SSS">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -441,7 +567,6 @@
                         <rd:FormatSymbolCulture>fil-PH</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -490,6 +615,8 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -505,8 +632,8 @@
         <DataSetName>dataset</DataSetName>
         <Top>0.405in</Top>
         <Left>0.14719in</Left>
-        <Height>0.57292in</Height>
-        <Width>8.54682in</Width>
+        <Height>0.66666in</Height>
+        <Width>10.11531in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -517,7 +644,7 @@
     <Height>5.33333in</Height>
     <Style />
   </Body>
-  <Width>9.85678in</Width>
+  <Width>11.88151in</Width>
   <Page>
     <PageHeader>
       <Height>1.70708in</Height>
@@ -528,9 +655,10 @@
           <Source>Embedded</Source>
           <Value>ekr</Value>
           <Sizing>Fit</Sizing>
-          <Left>2.91667in</Left>
+          <Top>0.02777in</Top>
+          <Left>2.6205in</Left>
           <Height>0.95833in</Height>
-          <Width>4.52083in</Width>
+          <Width>4.6458in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -556,10 +684,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.96402in</Top>
-          <Left>2.91667in</Left>
+          <Top>0.99179in</Top>
+          <Left>2.6205in</Left>
           <Height>0.27083in</Height>
-          <Width>4.4875in</Width>
+          <Width>4.61247in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -586,10 +714,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox39</rd:DefaultName>
-          <Top>1.39806in</Top>
-          <Left>2.54042in</Left>
+          <Top>1.42583in</Top>
+          <Left>2.24425in</Left>
           <Height>0.23958in</Height>
-          <Width>2.22917in</Width>
+          <Width>2.35414in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -616,10 +744,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox39</rd:DefaultName>
-          <Top>1.39806in</Top>
-          <Left>5.80209in</Left>
+          <Top>1.42583in</Top>
+          <Left>5.50592in</Left>
           <Height>0.23958in</Height>
-          <Width>2.22917in</Width>
+          <Width>2.35414in</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>

@@ -2328,3 +2328,7 @@ C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRig
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.CopyComplete
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.exe
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
+C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.cache
+C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.compiled

@@ -409,8 +409,12 @@ namespace EyeKnowRight.Views
 
         private void ReportClick(object sender, RoutedEventArgs e)
         {
+            try { 
             Reports(TypeOfReports.Text, StartDate.SelectedDate, EndDate.SelectedDate, Int32.Parse(NumberOfEntries.Text));
-           
+            }catch(Exception xe)
+            {
+
+            }
         }
 
         private void TimeIn(object sender, RoutedEventArgs e)

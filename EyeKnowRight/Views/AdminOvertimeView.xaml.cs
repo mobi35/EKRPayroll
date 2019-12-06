@@ -50,12 +50,12 @@ namespace EyeKnowRight
                    
                 }
              
-                OvertimeGrid.ItemsSource = newOvertime;
+                OvertimeGrid.ItemsSource = newOvertime.OrderByDescending(a => a.OvertimePK).ToList();
                 
             }
             else
             {
-                var data = db.Overtimes.ToList();
+                var data = db.Overtimes.OrderByDescending(a => a.OvertimePK).ToList();
                 OvertimeGrid.ItemsSource = data;
             }
 

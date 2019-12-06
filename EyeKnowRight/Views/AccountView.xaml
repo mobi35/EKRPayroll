@@ -13,8 +13,8 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition Height="auto" ></RowDefinition>
+            <RowDefinition Height="130"></RowDefinition>
+            <RowDefinition Height="600" ></RowDefinition>
 
         </Grid.RowDefinitions>
         
@@ -62,7 +62,7 @@
             <StackPanel Background="Beige">     
             <TextBlock  FontSize="20"  HorizontalAlignment="Center" Text="User's List"/>
             </StackPanel>
-            <DataGrid BorderBrush="Transparent"  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeGrid" Height="auto" Background="Beige"
+            <DataGrid  BorderBrush="Transparent"  Width="1100"  SelectionMode="Extended" x:Name="EmployeeGrid" Height="auto" Background="Beige"
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="OnSelect" >
            
@@ -71,7 +71,6 @@
                     <DataGridTextColumn FontSize="11" Width="130"  Header="Firsts Name" Binding="{Binding FirstName}"/>
 
                     <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
-                    <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
                     <DataGridTextColumn FontSize="11" Width="130"  Header="Department" Binding="{Binding Department}"/>
                     <DataGridTextColumn  FontSize="11" Width="120"  Header="Remaining Leave" Binding="{Binding RemainingLeave}">
                         <DataGridTextColumn.ElementStyle>
@@ -85,7 +84,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTemplateColumn Width="800">
+                    <DataGridTemplateColumn Width="560">
                         <DataGridTemplateColumn.CellTemplate>
 
                             <DataTemplate>
@@ -116,28 +115,28 @@
                                     </Button>
 
 
-                                    <Button Width="70"  Margin="-10" Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
+                                    <Button Width="70"  Margin="-30 0 0 0" Height="23" Click="GetAccountDetailsData" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"   >
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Details" Foreground="Orange" Kind="AccountCardDetails"/>
                                     </Button>
 
-                                    <Button Width="70" Margin="0"  Height="25" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
+                                    <Button Width="70"  Margin="-30 0 0 0"  Height="25" Click="GetAttendance" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeePK}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAttendance}"   >
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Attendance" Foreground="CadetBlue" Kind="AccountStar"/>
                                     </Button>
 
-                                    <Button Width="70" Margin="-10 0 0 0"   Height="23" Click="GetAppraisal" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding UserName}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAppraisal}"   >
+                                    <Button Width="70"  Margin="-30 0 0 0"   Height="23" Click="GetAppraisal" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding UserName}" ToolTip="Edit User"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ViewAppraisal}"   >
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Appraisal" Foreground="Black" Kind="School"/>
                                     </Button>
 
-                                    <Button Width="70"  Margin="-10"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="ButtonPrint" Tag="{Binding EmployeePK}" ToolTip="Print User"     >
+                                    <Button Width="70"   Margin="-30 0 0 0" Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="ButtonPrint" Tag="{Binding EmployeePK}" ToolTip="Print User"     >
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Print" Foreground="Black" Kind="Printer"/>
                                     </Button>
 
-                                    <Button Width="70"  Margin="-10"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="TrainingClick" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=TrainingDialog}"  ToolTip="Training"     >
+                                    <Button Width="70"  Margin="-30 0 0 0"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="TrainingClick" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=TrainingDialog}"  ToolTip="Training"     >
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Training" Foreground="Black" Kind="Certificate"/>
                                     </Button>
 
 
-                                    <Button Width="70"  Margin="-10"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="OpenPayslipList" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ListOfPayslip}"  ToolTip="Payslip"     >
+                                    <Button Width="70"   Margin="-30 0 0 0"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="OpenPayslipList" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ListOfPayslip}"  ToolTip="Payslip"     >
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Payslip" Foreground="Orange" Kind="Coin"/>
                                     </Button>
 
@@ -157,7 +156,7 @@
                                         </TextBlock.Style>
                                     </TextBlock>
 
-                                    <Button  Content="Assign Department"  Width="100"  Margin="1"  Height="23" Click="AssignDepartmentClick"   FontSize="10" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=DepartmentDialog}"  ToolTip="Make Supervisor"     >
+                                    <Button  Content="Assign"  Width="50"  Margin="1"  Height="23" Click="AssignDepartmentClick"   FontSize="10" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=DepartmentDialog}"  ToolTip="Make Supervisor"     >
                                        
                                         <Button.Style>
                                             <Style TargetType="Button">
@@ -297,8 +296,8 @@
                             </StackPanel>
 
 
-                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Gender "/>
-                            <StackPanel   Orientation="Horizontal" Width="200">
+                            <TextBlock x:Name="GenderText" HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Gender "/>
+                            <StackPanel  x:Name="GenderForm" Orientation="Horizontal" Width="200">
 
                                 <RadioButton x:Name="Gender_Male"   Margin="20 0 20 0" Content="Male" Checked="MaleCheck"/>
                                 <RadioButton Checked="FemaleCheck" IsChecked="True" x:Name="Gender_Female" Content="Female"/>

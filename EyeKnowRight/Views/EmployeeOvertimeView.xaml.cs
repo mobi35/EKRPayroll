@@ -32,7 +32,7 @@ namespace EyeKnowRight
         {
             InitializeComponent();
             var userName = Application.Current.Properties["UserName"].ToString();
-            var employeeOvertime = db.Overtimes.Where(a => a.UserName == userName).ToList();
+            var employeeOvertime = db.Overtimes.Where(a => a.UserName == userName).OrderByDescending(a => a.OvertimePK).ToList();
             OvertimeGrid.ItemsSource = employeeOvertime;
 
             OvertimeDate.DisplayDateStart = DateTime.Now;
@@ -115,7 +115,7 @@ namespace EyeKnowRight
 
 
 
-                    var employeeOvertime = db.Overtimes.Where(a => a.UserName == userName).ToList();
+                    var employeeOvertime = db.Overtimes.Where(a => a.UserName == userName).OrderByDescending(a => a.OvertimePK).ToList();
                 OvertimeGrid.ItemsSource = employeeOvertime;
                 }else
                 {

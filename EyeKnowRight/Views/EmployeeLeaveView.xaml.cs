@@ -43,7 +43,7 @@ namespace EyeKnowRight
                 TypeOfLeave.Items.Add("Maternity Leave");
                 Maternity.Visibility = Visibility.Visible;
             }
-            var leave = db.Leaves.Where(a => a.UserName == user).ToList();
+            var leave = db.Leaves.Where(a => a.UserName == user).OrderByDescending(a => a.LeavePK).ToList();
             var userList = db.Employees.Where(a => a.UserName == user).ToList();
             DataContext = userList;
             LeaveGrid.ItemsSource = leave;
@@ -92,6 +92,9 @@ namespace EyeKnowRight
 
                     numberOfWorkingDays++;
                 }
+                var leaveList = db.Leaves.Where(a => a.UserName == userName).OrderByDescending(a => a.LeavePK).ToList();
+
+                LeaveGrid.ItemsSource = leaveList;
             }
 
 
@@ -176,7 +179,7 @@ namespace EyeKnowRight
                         db.SaveChanges();
 
 
-                        var leaveList = db.Leaves.Where(a => a.UserName == user).ToList();
+                        var leaveList = db.Leaves.Where(a => a.UserName == user).OrderByDescending(a => a.LeavePK).ToList();
 
                         LeaveGrid.ItemsSource = leaveList;
                         MessageBox.Show("Leave Added");

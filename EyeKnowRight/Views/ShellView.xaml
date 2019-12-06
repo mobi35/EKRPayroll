@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EyeKnowRight.Views"
          xmlns:locals="clr-namespace:EyeKnowRight"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Height="700" Width="1080" ResizeMode="CanMinimize" 
+        mc:Ignorable="d" Height="500" Width="1366" ResizeMode="CanMinimize" 
         WindowStartupLocation="CenterScreen"  WindowStyle="None" WindowState="Maximized">
 
   

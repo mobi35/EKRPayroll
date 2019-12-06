@@ -497,6 +497,8 @@ namespace EyeKnowRight
 
             if (sender != null)
             {
+                GenderText.Visibility = Visibility.Collapsed;
+                GenderForm.Visibility = Visibility.Collapsed;
                 FirstName.IsEnabled = false;
                 MiddleName.IsEnabled = false;
                 LastName.IsEnabled = false;
@@ -816,14 +818,7 @@ namespace EyeKnowRight
 
                         int employeePk = Int32.Parse(EmployeePK.Text);
                         var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeePk);
-                        if (Gender_Male.IsChecked == true)
-                        {
-                            employee.Gender = Gender_Male.Content.ToString();
-                        }
-                        else
-                        {
-                            employee.Gender = Gender_Female.Content.ToString();
-                        }
+                       
                         employee.Salary = 0;
                         employee.FirstName = FirstName.Text;
                         employee.MiddleName = MiddleName.Text;
@@ -901,6 +896,8 @@ namespace EyeKnowRight
 
         private void AddNewUserClick(object sender, RoutedEventArgs e)
         {
+            GenderText.Visibility = Visibility.Visible;
+            GenderForm.Visibility = Visibility.Visible;
             FirstName.IsEnabled = true;
             MiddleName.IsEnabled = true;
             LastName.IsEnabled = true;

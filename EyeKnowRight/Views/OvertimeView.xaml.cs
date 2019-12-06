@@ -31,7 +31,7 @@ namespace EyeKnowRight
         public OvertimeView()
         {
             InitializeComponent();
-            var payroll = db.Payrolls.Where(a => a.IsActive == false).ToList();
+            var payroll = db.Payrolls.OrderByDescending(a => a.PayrollPK).Where(a => a.IsActive == false).ToList();
             
             PayrollGrid.ItemsSource = payroll;
         }

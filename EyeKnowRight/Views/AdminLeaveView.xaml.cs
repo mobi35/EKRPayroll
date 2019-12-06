@@ -50,12 +50,12 @@ namespace EyeKnowRight
                     }
                 }
 
-                LeaveGrid.ItemsSource = newLeave;
+                LeaveGrid.ItemsSource = newLeave.OrderByDescending(a => a.LeavePK).ToList();
 
             }
             else
             {
-                var data = db.Leaves.ToList();
+                var data = db.Leaves.OrderByDescending(a => a.LeavePK).ToList();
                 LeaveGrid.ItemsSource = data;
             }
 

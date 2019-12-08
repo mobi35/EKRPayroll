@@ -68,7 +68,7 @@
            
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn FontSize="11" Width="130"  Header="Firsts Name" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn FontSize="11" Width="130"  Header="First Name" Binding="{Binding FirstName}"/>
 
                     <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
                     <DataGridTextColumn FontSize="11" Width="130"  Header="Department" Binding="{Binding Department}"/>
@@ -577,9 +577,17 @@
                                 <materialDesign:PackIcon Kind="AccountBox"/>
                                 <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Full Name"/>
                             </StackPanel>
-                            <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left" Foreground="Black" FontSize="18" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                    <StackPanel Orientation="Horizontal"> 
+                            <TextBlock Text="{Binding FirstName, Mode=TwoWay}" Margin="5 5 5 0" Foreground="Black" FontSize="18"  TextWrapping="Wrap">
 
                             </TextBlock>
+
+                                    <TextBlock Text="{Binding LastName, Mode=TwoWay}"  Foreground="Black" FontSize="18"  Margin="0 5 5 0" TextWrapping="Wrap">
+
+                                    </TextBlock>
+                                    </StackPanel>
+
+
                                 </StackPanel>
                                 <Border BorderBrush="Black" BorderThickness="1" Width="70"  Height="70">  
                                 <Image Width="250"  Stretch="Uniform"  MaxHeight="120" MaxWidth="150" Height="70" Source="{Binding Picture}"/>
@@ -666,7 +674,7 @@
                                     <materialDesign:PackIcon Kind="Briefcase"/>
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Position"/>
                                 </StackPanel>
-                                <TextBlock Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                <TextBlock Text="{Binding Position, Mode=TwoWay}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 
@@ -806,7 +814,6 @@
                                 <DataGridTextColumn FontSize="11" Width="90"  Header="Time out" Binding="{Binding TimeOut, StringFormat='T',Mode=TwoWay}"/>
                                 <DataGridTextColumn FontSize="11" Width="135"  Header="Accumulated (mins)" Binding="{Binding AccumulatedString}"/>
                                 <DataGridTextColumn FontSize="11" Width="80"  Header="Late" Binding="{Binding LateString,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="60"  Header="Overtime" Binding="{Binding OverTime,Mode=TwoWay}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

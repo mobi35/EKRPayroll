@@ -830,7 +830,33 @@ namespace EyeKnowRight
                 }
                 var data = db.Employees.ToList();
                 ResetGrid();
+
+
+
             }
+ 
+             FirstName.Text = "" ;
+            MiddleName.Text = "";
+           LastName.Text = "";
+             Email.Text = "";
+          Password.Password = "";
+            Street.Text = "";
+                City.Text = "";
+           BirthDate.SelectedDate = null;
+            MaritalStatus.Text = "";
+          Position.Text = "";
+    
+       
+           Department.Text = "";
+          
+             SSSNumber.Text = "";
+         PagibigNumber.Text = "";
+             TINNumber.Text = "";
+         
+           Salary.Text = "";
+            JobTitle.Text = "";
+            UserName.Text = "";
+
         }
        
 
@@ -845,6 +871,10 @@ namespace EyeKnowRight
 
         private void AddNewUserClick(object sender, RoutedEventArgs e)
         {
+            FirstName.IsEnabled = true;
+            MiddleName.IsEnabled = true;
+            LastName.IsEnabled = true;
+
             PaternityLeave.IsEnabled = false;
             MaternityLeave.IsEnabled = false;
             PersonalLeave.IsEnabled = false;

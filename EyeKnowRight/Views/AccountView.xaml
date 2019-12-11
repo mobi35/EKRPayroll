@@ -341,7 +341,7 @@
                             <StackPanel Width="200" >
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Image"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBox x:Name="ImageName"/>
+                                    <TextBox Visibility="Collapsed" x:Name="ImageName"/>
                                     <Button Height="25" Width="80" HorizontalAlignment="Right"  Click="Button_Click"  Style="{StaticResource MaterialDesignFlatButton}"  Content="Upload" />
                                 </StackPanel>
                                 <TextBlock Foreground="Red" Padding="4" x:Name="Image_Validation" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
@@ -473,12 +473,12 @@
                             </StackPanel>
 
                             <StackPanel Width="200">
-                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Job Position"/>
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Level"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <ComboBox  SelectedIndex="1" Padding="5 7   0 1" x:Name="JobTitle"  Text="{Binding Path=JobTitle , Mode=TwoWay}"   Width="200"  Height="25">
-                                        <ComboBoxItem  IsSelected="True">Junior Programmer</ComboBoxItem>
-                                        <ComboBoxItem>Senior Programmer</ComboBoxItem>
-                                        <ComboBoxItem>Graphic Artist</ComboBoxItem>
+                                        <ComboBoxItem  IsSelected="True">First Level</ComboBoxItem>
+                                        <ComboBoxItem>Second Level</ComboBoxItem>
+                                        <ComboBoxItem>Third Level</ComboBoxItem>
                                     </ComboBox>
 
                                 </Border>

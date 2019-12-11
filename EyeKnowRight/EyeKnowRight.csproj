@@ -203,17 +203,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Helper\PasswordBoxHelper.cs" />
-    <Compile Include="Migrations\201911282124158_xxxxc.cs" />
-    <Compile Include="Migrations\201911282124158_xxxxc.designer.cs">
-      <DependentUpon>201911282124158_xxxxc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911282128590_ihatethis.cs" />
-    <Compile Include="Migrations\201911282128590_ihatethis.designer.cs">
-      <DependentUpon>201911282128590_ihatethis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911282313161_Hahaha panis.cs" />
-    <Compile Include="Migrations\201911282313161_Hahaha panis.designer.cs">
-      <DependentUpon>201911282313161_Hahaha panis.cs</DependentUpon>
+    <Compile Include="Migrations\201912051723431_meme.cs" />
+    <Compile Include="Migrations\201912051723431_meme.designer.cs">
+      <DependentUpon>201912051723431_meme.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
@@ -332,14 +324,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201911282124158_xxxxc.resx">
-      <DependentUpon>201911282124158_xxxxc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911282128590_ihatethis.resx">
-      <DependentUpon>201911282128590_ihatethis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911282313161_Hahaha panis.resx">
-      <DependentUpon>201911282313161_Hahaha panis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201912051723431_meme.resx">
+      <DependentUpon>201912051723431_meme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

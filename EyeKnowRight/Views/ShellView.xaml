@@ -457,7 +457,7 @@
                                 <DataGridTextColumn FontSize="11" Width="90"  Header="Time out" Binding="{Binding TimeOut, StringFormat='T',Mode=TwoWay}"/>
                                 <DataGridTextColumn FontSize="11" Width="135"  Header="Accumulated (mins)" Binding="{Binding AccumulatedString}"/>
                                 <DataGridTextColumn FontSize="11" Width="80"  Header="Late" Binding="{Binding LateString,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="80"  Header="Overtime" Binding="{Binding OverTime,Mode=TwoWay}"/>
+                           
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

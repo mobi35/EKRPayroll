@@ -115,7 +115,7 @@
 
         <materialDesign:DialogHost  IsOpen="False" x:Name="PayrollDialog"  Margin="0,-126,0,-32" Opacity="0"  >
             <materialDesign:DialogHost.DialogContent>
-                <StackPanel Width="900">
+                <StackPanel Width="1000">
                     <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
                         <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
                     </Button>
@@ -128,14 +128,13 @@
                   AutoGenerateColumns="False" IsReadOnly="True"  x:Name="DeductionGrid" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn FontSize="11" Width="100"  Header="Username" Binding="{Binding UserName,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="100"  Header="Basic Salary" Binding="{Binding BasicSalary,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="120"  Header="Accumulated" Binding="{Binding AllAccumulatedTimeAddition,Mode=TwoWay }"/>
-                                <DataGridTextColumn FontSize="11" Width="100"  Header="Late" Binding="{Binding LateDeduction,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="100"  Header="Overtime" Binding="{Binding OvertimeAddition}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Basic Salary" Binding="{Binding BasicSalary,Mode=TwoWay, StringFormat='N'}"/>
+                                <DataGridTextColumn FontSize="11" Width="120"  Header="Accumulated" Binding="{Binding AllAccumulatedTimeAddition,Mode=TwoWay, StringFormat='N' }"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Late" Binding="{Binding LateDeduction,Mode=TwoWay , StringFormat='N'}"/>
                                 <DataGridTextColumn FontSize="11" Width="100"  Header="SSS" Binding="{Binding SSSDeduction,Mode=TwoWay}"/>
                                 <DataGridTextColumn FontSize="11" Width="100"  Header="TIN" Binding="{Binding TinDeduction,Mode=TwoWay}"/>
                                 <DataGridTextColumn FontSize="11" Width="100"  Header="Pagibig" Binding="{Binding PagibigDeduction,Mode=TwoWay}"/>
-                                <DataGridTextColumn FontSize="11" Width="100"  Header="Total Salary" Binding="{Binding TotalSalary,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Total Salary" Binding="{Binding TotalSalary,Mode=TwoWay, StringFormat='N'}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 

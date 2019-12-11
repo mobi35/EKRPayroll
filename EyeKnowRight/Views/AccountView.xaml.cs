@@ -103,7 +103,13 @@ namespace EyeKnowRight
             ResetGrid();
            
             BirthDate.DisplayDateEnd = DateTime.Now.AddYears(-16);
+            JobTitle.ItemsSource = null; 
+            Department.ItemsSource = null;
 
+            JobTitle.ItemsSource = db.Positions.Where(a => a.Status == true).Select(a => a.PositionName).ToList();
+            Department.ItemsSource = db.Departments.Where(a => a.Status == true).Select(a => a.DepartmentName).ToList();
+
+            DepartmentList.ItemsSource = db.Departments.Where(a => a.Status == true && a.SupervisorName == null).Select(a => a.DepartmentName).ToList();
         }
         int numberOfWrong = 0;
 
@@ -648,10 +654,21 @@ namespace EyeKnowRight
             {
                 if (sender != null)
                 {
+
+               
+
                 int employeeId = (int)((Button)sender).Tag;
                 var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeeId);
-
-                DepartmentUserName.Text = employee.UserName;
+                if (employee.SupervisedDepartment != null) {
+                    DepartmentList.Visibility = Visibility.Collapsed;
+                    DepartmentUserName.Text = employee.UserName;
+                    DepartmentList.ItemsSource = db.Departments.Where(a => a.Status == true && a.SupervisorName == null).Select(a => a.DepartmentName).ToList();
+                }
+                else {
+                    DepartmentList.Visibility = Visibility.Visible;
+                    DepartmentUserName.Text = employee.UserName;
+                DepartmentList.ItemsSource = db.Departments.Where(a => a.Status == true && a.SupervisorName == null).Select(a => a.DepartmentName).ToList();
+                }
             }
 
             }
@@ -664,8 +681,13 @@ namespace EyeKnowRight
 
             var employee = db.Employees.FirstOrDefault(a => a.UserName == userName);
 
+            var empDep = employee.SupervisedDepartment;
+           
             employee.SupervisedDepartment = null;
-          
+
+
+            var getModel = db.Departments.FirstOrDefault(a => a.DepartmentName == empDep);
+            getModel.SupervisorName = null;
             db.SaveChanges();
             ResetGrid();
 
@@ -677,6 +699,11 @@ namespace EyeKnowRight
           var employee = db.Employees.FirstOrDefault(a => a.UserName == userName);
 
             employee.SupervisedDepartment = DepartmentList.Text;
+
+            string dep = DepartmentList.Text;
+            var departmentModel = db.Departments.FirstOrDefault(a => a.DepartmentName == dep);
+            departmentModel.SupervisorName = userName;
+
             db.SaveChanges();
             ResetGrid();
 

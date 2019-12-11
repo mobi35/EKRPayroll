@@ -169,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\DepartmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\OvertimeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -222,7 +226,16 @@
     <Compile Include="Migrations\201912051723431_meme.designer.cs">
       <DependentUpon>201912051723431_meme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912110646327_f.cs" />
+    <Compile Include="Migrations\201912110646327_f.designer.cs">
+      <DependentUpon>201912110646327_f.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912110742308_added new .cs" />
+    <Compile Include="Migrations\201912110742308_added new .designer.cs">
+      <DependentUpon>201912110742308_added new .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\UserNotified.cs" />
     <Compile Include="Models\EmployeeTraining.cs" />
@@ -270,6 +283,9 @@
     </Compile>
     <Compile Include="Views\MainEmployeeMasterlistView.xaml.cs">
       <DependentUpon>MainEmployeeMasterlistView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepartmentView.xaml.cs">
+      <DependentUpon>DepartmentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OvertimeView.xaml.cs">
       <DependentUpon>OvertimeView.xaml</DependentUpon>
@@ -341,6 +357,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201912051723431_meme.resx">
       <DependentUpon>201912051723431_meme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912110646327_f.resx">
+      <DependentUpon>201912110646327_f.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912110742308_added new .resx">
+      <DependentUpon>201912110742308_added new .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

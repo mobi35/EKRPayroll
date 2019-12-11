@@ -496,9 +496,7 @@
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Level"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <ComboBox  SelectedIndex="1" Padding="5 7   0 1" x:Name="JobTitle"  Text="{Binding Path=JobTitle , Mode=TwoWay}"   Width="200"  Height="25">
-                                        <ComboBoxItem  IsSelected="True">First Level</ComboBoxItem>
-                                        <ComboBoxItem>Second Level</ComboBoxItem>
-                                        <ComboBoxItem>Third Level</ComboBoxItem>
+                                      
                                     </ComboBox>
 
                                 </Border>
@@ -514,18 +512,11 @@
 
                                 </StackPanel>
 
-
                                 <StackPanel Width="200">
                                     <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Department"/>
                                     <Border PreviewKeyDown="EnterClicked"  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                         <ComboBox SelectedIndex="1"  Padding="5 7   0 1" x:Name="Department"  Text="{Binding Path=Department , Mode=TwoWay}"   Width="200"  Height="25">
-                                            <ComboBoxItem  IsSelected="True">Sales and Marketing</ComboBoxItem>
-                                            <ComboBoxItem>Creative</ComboBoxItem>
-                                            <ComboBoxItem>IT</ComboBoxItem>
-                                            <ComboBoxItem>Production</ComboBoxItem>
-                                            <ComboBoxItem>Inventory</ComboBoxItem>
-                                            <ComboBoxItem>Public Relations</ComboBoxItem>
-                                            <ComboBoxItem>Human Resources</ComboBoxItem>
+                                         
                                         </ComboBox>
                                     </Border>
                                     <TextBlock Foreground="Red"  x:Name="Department_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
@@ -908,13 +899,7 @@
                         <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Department List"/>
                         <Border  PreviewKeyDown="EnterClicked" Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                             <ComboBox SelectedIndex="1"  Padding="5 7   0 1" x:Name="DepartmentList"  Text="{Binding Path=Department , Mode=TwoWay}"   Width="200"  Height="25">
-                                <ComboBoxItem  IsSelected="True">Sales and Marketing</ComboBoxItem>
-                                <ComboBoxItem>Creative</ComboBoxItem>
-                                <ComboBoxItem>IT</ComboBoxItem>
-                                <ComboBoxItem>Production</ComboBoxItem>
-                                <ComboBoxItem>Inventory</ComboBoxItem>
-                                <ComboBoxItem>Public Relations</ComboBoxItem>
-                                <ComboBoxItem>Human Resources</ComboBoxItem>
+                               
                             </ComboBox>
                         </Border>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"   Margin="15">

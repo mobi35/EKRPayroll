@@ -514,28 +514,30 @@
 
                 <Grid Visibility="Visible" x:Name="AdminPanel"> 
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                       
                         <ListViewItem  Visibility="Collapsed" Height="45" Padding="0" Selected="DashboardSelect"  >
                             <StackPanel  Orientation="Horizontal" Margin="10 0">
                                 <materialDesign:PackIcon Kind="ViewDashboard" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Dashboard" Margin="10"/>
-
-
                             </StackPanel>
                         </ListViewItem>
+                        
 
-                      
                         <ListViewItem  Height="45" Padding="0" Selected="AccountSelect"  >
                         <StackPanel  Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Account" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Accounts" Margin="10"/>
                         </StackPanel>
                         </ListViewItem>
-                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="PayrollSelect">
+
+                   
+                    
+                        <ListViewItem Height="45" Visibility="Visible" Padding="0" Selected="DepartmentSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                            <TextBlock Text="Payroll" Margin="10"/>
+                            <TextBlock Text="Department" Margin="10"/>
                         </StackPanel>
-                    </ListViewItem>
+                      </ListViewItem>
 
                         <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="AdminOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">

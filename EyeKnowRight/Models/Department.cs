@@ -16,6 +16,7 @@ namespace EyeKnowRight.Models
 
         public string SupervisorName { get; set; }
 
+        public bool Status { get; set; }
 
     }
 }

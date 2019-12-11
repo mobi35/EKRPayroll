@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\ADICHAN\Desktop\fk\ekrpayroll\EyeKnowRight\App.xaml
-20-669760219
+21-1785300288
 
-58-1152010636
+65-1190743563
 991399351571
-Views\AdminOvertimeView.xaml;Views\AppraisalView.xaml;Views\DashboardView.xaml;Views\AdminLeaveView.xaml;Views\EmployeeOvertimeView.xaml;Views\MainAssesmentReportsView.xaml;Views\MainTopPerformingView.xaml;Views\MainEmployeeMasterlistView.xaml;Views\OvertimeView.xaml;Views\EmployeeLeaveView.xaml;Views\EmployeePrintView.xaml;Views\DailyAttendanceReport.xaml;Views\EvaluationPrintView.xaml;Views\MainReportsView.xaml;Views\PayrollPrintView.xaml;Views\TrainingView.xaml;Views\PayrollView.xaml;Views\AccountView.xaml;Views\LoginView.xaml;Views\ShellView.xaml;
+Views\AdminOvertimeView.xaml;Views\AppraisalView.xaml;Views\DashboardView.xaml;Views\AdminLeaveView.xaml;Views\EmployeeOvertimeView.xaml;Views\MainAssesmentReportsView.xaml;Views\MainTopPerformingView.xaml;Views\MainEmployeeMasterlistView.xaml;Views\DepartmentView.xaml;Views\OvertimeView.xaml;Views\EmployeeLeaveView.xaml;Views\EmployeePrintView.xaml;Views\DailyAttendanceReport.xaml;Views\EvaluationPrintView.xaml;Views\MainReportsView.xaml;Views\PayrollPrintView.xaml;Views\TrainingView.xaml;Views\PayrollView.xaml;Views\AccountView.xaml;Views\LoginView.xaml;Views\ShellView.xaml;
 
-False
+True
 

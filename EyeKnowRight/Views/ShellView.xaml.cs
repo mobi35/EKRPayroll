@@ -193,6 +193,12 @@ namespace EyeKnowRight.Views
             MainGrid.Children.Add(new AppraisalView());
 
         }
+
+        private void DepartmentSelect(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Add(new DepartmentView());
+
+        }
         private void DashboardSelect(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Add(new DashboardView());

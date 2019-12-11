@@ -33,6 +33,7 @@ namespace EyeKnowRight.Models
         public virtual DbSet<Training> Trainings { get; set; }
 
         public virtual DbSet<EmployeeTraining> EmployeeTrainings { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

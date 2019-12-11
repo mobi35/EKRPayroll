@@ -41,6 +41,36 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid >
+
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="UserTrainingDialog" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <StackPanel Background="{x:Null}" Width="500" Height="400" HorizontalAlignment="Center">
+
+                    <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
+                    </Button>
+
+                    <TextBlock HorizontalAlignment="Center" FontSize="20" Foreground="Gray" Text="My Training"/>
+                    <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="EmployeeTraining" SelectionMode="Extended" Height="320" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn FontSize="11" Width="200"  Header="Training" Binding="{Binding Training,Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="90"  Header="Date" Binding="{Binding DateOfTraining,StringFormat='d',Mode=TwoWay }"/>
+                            <DataGridTextColumn FontSize="11" Width="90"  Header="Time" Binding="{Binding TimeOfTraining, StringFormat='T',Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="90"  Header="Status" Binding="{Binding TrainingStatus,Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+
+
+
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+
         <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="ReportDialog" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Background="{x:Null}" Width="250" Height="400" HorizontalAlignment="Center">
@@ -460,7 +490,7 @@
                             </StackPanel>
                         </ListViewItem>
 
-
+                      
 
                         <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ReportDialog}"  Background="{x:Null}" BorderBrush="{x:Null}" Height="40">
                             <StackPanel Orientation="Horizontal"> 
@@ -505,8 +535,16 @@
 
                         </StackPanel>
                     </ListViewItem>
-            
-                </ListView>
+
+                        <ListViewItem Height="45" Padding="0" Selected="AdminTrainingSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Certificate" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Training" Margin="10"/>
+
+                            </StackPanel>
+                        </ListViewItem>
+
+                    </ListView>
                 </Grid>
 
                 <Grid x:Name="UserPanel">
@@ -520,7 +558,15 @@
 
                             </StackPanel>
                         </ListViewItem>
+                        
+                        
+                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=UserTrainingDialog}"  Background="{x:Null}" BorderBrush="{x:Null}" Height="40">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Certificate" Width="20" Height="20" Foreground="Gray" Margin="-10 0 15 0" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="Black" FontSize="20" FontWeight="Normal" Text="Training"/>
+                            </StackPanel>
 
+                        </Button>
 
                         <ListViewItem Height="45" Padding="0" Selected="EmployeeOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -534,6 +580,52 @@
 
 
                      
+                    </ListView>
+                </Grid>
+
+
+
+                <Grid x:Name="SuperVisorPanel">
+                    <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
+
+
+                        <ListViewItem Height="45" Padding="0" Selected="PayrollSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Payroll" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem Height="45" Padding="0" Selected="AccountSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Account" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem Height="45" Padding="0" Selected="AdminOvertimeSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Timelapse" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Overtime" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="AccountPlus" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Evaluation" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Leave" Margin="10"/>
+
+                            </StackPanel>
+                        </ListViewItem>
+
+
+
                     </ListView>
                 </Grid>
 
@@ -590,6 +682,22 @@
                     </Border>
 
                     <TextBlock x:Name="UserNameText" Foreground="Gray" Text="Adrian"  FontSize="16" Padding="10"/>
+
+
+                    <Button x:Name="TimeInName" Foreground="Black" Click="TimeIn" FontWeight="Normal" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="130" Style="{StaticResource MaterialDesignFlatButton}" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Account"/>
+                            <TextBlock Text="Time In"/>
+                        </StackPanel>
+                    </Button>
+
+
+                    <Button x:Name="TimeOutName" Foreground="Black" Click="TimeOut" FontWeight="Normal" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="130" Style="{StaticResource MaterialDesignFlatButton}"      >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Account"/>
+                            <TextBlock Text="Time Out"/>
+                        </StackPanel>
+                    </Button>
 
 
                     <Button Foreground="Black" FontWeight="Normal" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="130" Style="{StaticResource MaterialDesignFlatButton}" Click="GetAccountDetailsData"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=AcountDetails}"  >

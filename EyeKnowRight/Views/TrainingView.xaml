@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="EyeKnowRight.TrainingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EyeKnowRight.Views"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+           xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" Background="White" d:DesignWidth="800" >
+    <Grid >
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="auto" ></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock  FontSize="30"   Foreground="Gray" Text="Training"/>
+            <Separator/>
+            <TextBlock/>
+            <TextBlock>
+            <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=TrainingDialog}" Margin="10 0 0 0"  Width="130">Add Training</Button>
+      
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Background="Beige" >
+            <TextBlock HorizontalAlignment="Center" FontSize="20"  Text="Employee Training List"/>
+      
+        <DataGrid  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeTraining" Height="auto" Background="Beige"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="11" Width="120"  Header="Full Name" Binding="{Binding FullName,Mode=TwoWay}"/>
+                    <DataGridTextColumn FontSize="11" Width="170"  Header="Training" Binding="{Binding Training,Mode=TwoWay}"/>
+                    <DataGridTextColumn FontSize="11" Width="120"  Header="Training Date" Binding="{Binding DateOfTraining,Mode=TwoWay, StringFormat='d' }"/>
+                    <DataGridTextColumn FontSize="11" Width="120"  Header="Training Time" Binding="{Binding TimeOfTraining,Mode=TwoWay, StringFormat='T' }"/>
+                    <DataGridTextColumn FontSize="11" Width="120"  Header="Status" Binding="{Binding TrainingStatus,Mode=TwoWay }"/>
+                    <DataGridTemplateColumn Width="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+
+                                <StackPanel  Orientation="Horizontal">
+                                    <Button Click="TrainingAccept" Width="70" Margin="20 0 0 0"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeeTrainingPK}"    >
+                                        <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="Check"/>
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="TrainingDue">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="Completed">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="Failed">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="Pending">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Click="TrainingDecline" Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding EmployeeTrainingPK}"    >
+                                        <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Kind="Cancel"/>
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="TrainingDue">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="Completed">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="Failed">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding TrainingStatus}" Value="Pending">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                <DataGrid.ItemContainerStyle >
+                <Style TargetType="{x:Type DataGridRow}" >
+                    <EventSetter  Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+        </DataGrid>
+        </StackPanel>
+        <materialDesign:DialogHost  IsOpen="False" Opacity="0" x:Name="TrainingDialog"  Margin="0,-126,0,-32"  >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Width="450">
+                    <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
+                    </Button>
+                    <StackPanel  Orientation="Vertical">
+                        <StackPanel Width="200">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Training Name"/>
+                            <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 0" x:Name="TrainingName"   Width="200"  Height="25" ></TextBox>
+                            </Border>
+                            <TextBlock Foreground="Red" x:Name="TrainingName_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                        </StackPanel>
+                        <StackPanel Width="200">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Training Description"/>
+                            <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <TextBox Padding="2 0 0 0" x:Name="TrainingDescription"   Width="200"  Height="25" ></TextBox>
+                            </Border>
+                            <TextBlock Foreground="Red" x:Name="TrainingDescription_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                        </StackPanel>
+    
+                        <TextBlock/>
+                        <Button x:Name="AddTraining"  Click="AddTraining_Click" Width="200">Add Training</Button>
+                        <TextBlock/>
+                        <DataGrid  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  x:Name="TrainingGrid" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn FontSize="11" Width="120"  Header="Training Name" Binding="{Binding Name,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="140"  Header="Training Description" Binding="{Binding Description,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="120"  Header="Training Date" Binding="{Binding DateMade,Mode=TwoWay, StringFormat='m' }"
+                                                    
+                                                    />
+                                <DataGridTemplateColumn Width="70">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel  Orientation="Horizontal">
+                                                <Button Click="TrainingDelete" Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding TrainingPK}"    >
+                                                    <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="AccountEdit"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <!-- ADD USER DIALOG BOX END -->
+
+        <materialDesign:DialogHost  IsOpen="False" x:Name="TrainUserDialog"  Margin="0,-126,0,-32" Opacity="0"  >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel >
+                    
+                    <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
+                    </Button>
+                    <StackPanel Width="200">
+                        <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Training Name"/>
+                        <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                            <TextBox Padding="2 0 0 0" x:Name="TraininUsergName"   Width="200"  Height="25" ></TextBox>
+                        </Border>
+                        <TextBlock Foreground="Red" x:Name="TraininUsergName_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="60 10 50  60"  Orientation="Vertical">
+                        <TextBox Visibility="Collapsed" x:Name="EmployeePK"></TextBox>
+                        <TextBox Visibility="Collapsed"  x:Name="Mode">Add</TextBox>
+
+                        <DataGrid  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" Height="400" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  x:Name="DeductionGrid" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Username" Binding="{Binding UserName,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="100"  Header="Basic Salary" Binding="{Binding BasicSalary,Mode=TwoWay}"/>
+                                <DataGridTextColumn FontSize="11" Width="120"  Header="Accumulated" Binding="{Binding AllAccumulatedTimeAddition,Mode=TwoWay }"/>
+                              
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <TextBlock/>
+                  
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <!-- ADD USER DIALOG BOX END -->
+
+
+    </Grid>
+
+
+</UserControl>

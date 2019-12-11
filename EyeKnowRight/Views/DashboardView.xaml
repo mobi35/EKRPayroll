@@ -7,8 +7,8 @@
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="600" Background="White" d:DesignWidth="800" >
-    <Grid x:Name="print">
+             d:DesignHeight="600" Background="White" d:DesignWidth="800"  x:Name="print">
+    <Grid >
        
         <Grid.ColumnDefinitions>
 
@@ -26,9 +26,7 @@
 
         
 
-            <Button Click="PrintDashboard" Margin="5 0 0 0" Width="50"  HorizontalAlignment="Left" Height="Auto" Grid.Row="1" Grid.RowSpan="2">
-                <materialDesign:PackIcon Kind="Printer"/>
-            </Button>
+        
 
             <TextBlock HorizontalAlignment="Center" Text="Number of user per each department"/>
 

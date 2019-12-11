@@ -29,7 +29,10 @@ namespace EyeKnowRight.Models
 
         public virtual DbSet<Overtime> Overtimes { get; set; }
 
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Training> Trainings { get; set; }
 
+        public virtual DbSet<EmployeeTraining> EmployeeTrainings { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

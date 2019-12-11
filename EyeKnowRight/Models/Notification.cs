@@ -11,5 +11,12 @@ namespace EyeKnowRight.Models
     {
         [Key]
         public int NotificationPK { get; set; }
+        public string UserName { get; set; }
+        public string Message { get; set; }
+        public bool IsRead { get; set; }
+        public DateTime? NotifiedOn { get; set; }
+
+
+
     }
 }

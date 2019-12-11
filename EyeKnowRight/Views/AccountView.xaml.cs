@@ -67,13 +67,41 @@ namespace EyeKnowRight
         }
 
         EyeKnowRightDB db = new EyeKnowRightDB();
+
+        private void ResetGrid(dynamic item = null)
+        {
+            string username = Application.Current.Properties["UserName"].ToString();
+            var employeeModel = db.Employees.Where(a => a.UserName == username).FirstOrDefault();
+
+            if(item != null)
+            {
+                EmployeeGrid.ItemsSource = item;
+            }
+            else if (employeeModel.SupervisedDepartment != null)
+            {
+                var data = db.Employees.Where(a => a.Department == employeeModel.SupervisedDepartment).ToList();
+                EmployeeGrid.ItemsSource = data;
+            }
+            else
+            {
+                var data = db.Employees.ToList();
+                EmployeeGrid.ItemsSource = data;
+            }
+
+
+        }
+
         public AccountView()
         {
           
             InitializeComponent();
-          
-            var data = db.Employees.ToList();
-            EmployeeGrid.ItemsSource = data;
+            string username = Application.Current.Properties["UserName"].ToString();
+            var employeeModel = db.Employees.Where(a => a.UserName == username).FirstOrDefault();
+
+            ResetGrid();
+
+            BirthDate.DisplayDateEnd = DateTime.Now.AddYears(-16);
+
         }
         int numberOfWrong = 0;
 
@@ -379,7 +407,89 @@ namespace EyeKnowRight
             var getEmployeeAppraisal = db.Evaluations.Where(a => a.UserName == userName).ToList();
             EmployeeAppraisal.ItemsSource = getEmployeeAppraisal;
         }
-       private void GetEdit(object sender, RoutedEventArgs e)
+
+        private void PrintPayslip_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.IsEnabled = false;
+
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintVisual(PrintPayslip,"Payslip");
+                }
+            }
+            finally
+            {
+                this.IsEnabled = true;
+            }
+        }
+        
+        private void GeneratePayslip(object sender, RoutedEventArgs e)
+        {   
+            int payrollPK = (int)((Button)sender).Tag;
+            var payrollModel = db.Payrolls.FirstOrDefault(a => a.PayrollPK == payrollPK);
+           
+            int employeePK =Int32.Parse( userPayslip.Text);
+            var employeeModel = db.Employees.FirstOrDefault(a => a.EmployeePK == employeePK);
+
+            var deductionModel = db.Deductionss.FirstOrDefault(a => a.PayrollPK == payrollPK && a.UserName == employeeModel.UserName);
+
+            Payslip paySlip = new Payslip();
+            // USER DETAILS
+            paySlip.EmployeeName = employeeModel.FirstName + " " +employeeModel.LastName;
+            paySlip.EmployeeAddress = employeeModel.Address;
+            paySlip.JobTitle = employeeModel.JobTitle;
+
+            double totalAccumulated = 0;
+            double totalEarned = 0;
+            double totalLate = 0;
+            double basicSalaryPerMinute = ((employeeModel.Salary / 9) / 60);
+            double totalDeduction = 0;
+            foreach (var dtr in db.DailyTimeRecords
+                .Where(a => a.DateTimeStamps >= payrollModel.StartPayroll
+            && a.DateTimeStamps <= payrollModel.EndPayroll && a.UserName == employeeModel.UserName))
+            {
+             
+                totalLate += dtr.Late;
+                totalAccumulated += dtr.Accumulated;
+                totalEarned += dtr.Accumulated * basicSalaryPerMinute;
+
+
+            }
+
+            paySlip.Earnings_Accumulated = (int)totalAccumulated / 60 + " hr / " + (int)totalAccumulated % 60 + " min";
+
+            paySlip.Earnings_TotalAccumulated = "P" + totalEarned.ToString("N");
+
+
+            // DEDUCTIONS;;
+            paySlip.Deductions_Late = (int)totalLate;
+            paySlip.Deductions_Pagibig = deductionModel.PagibigDeduction;
+            paySlip.Deductions_Philhealth = deductionModel.TinDeduction;
+            paySlip.Deductions_SSS = deductionModel.SSSDeduction;
+            paySlip.Deductions_TAX = 0;
+           
+            totalDeduction += totalLate;
+            paySlip.Deductions_Late_String_Format = (int)totalLate / 60 + " hr / " + (int)totalLate % 60 + " m";
+            totalDeduction += deductionModel.PagibigDeduction;
+            totalDeduction += deductionModel.TinDeduction;
+            totalDeduction += deductionModel.SSSDeduction;
+            paySlip.Deductions_Total = "P"+ totalDeduction.ToString("N");
+
+            paySlip.TotalSalary = totalEarned - totalDeduction;
+            decimal NumberSalary =  Decimal.Round( (decimal)paySlip.TotalSalary,2);
+            paySlip.TotalSalaryStringFormat = "P " + NumberSalary;
+            DataContext = paySlip;
+        }
+        private void OpenPayslipList(object sender, RoutedEventArgs e)
+        {
+            int employeePK = (int)((Button)sender).Tag;
+            userPayslip.Text = employeePK.ToString() ;
+            ListPayslipGrid.ItemsSource = db.Payrolls.Where(a => a.IsActive == false).ToList();
+        }
+        private void GetEdit(object sender, RoutedEventArgs e)
         {
 
             if (sender != null)
@@ -413,7 +523,79 @@ namespace EyeKnowRight
             }
         }
 
-        private void EditUser(object sender, RoutedEventArgs e)
+
+        private void TrainingClick(object sender, RoutedEventArgs e)
+        {
+
+            if (sender != null)
+            {
+                int employeeId = (int)((Button)sender).Tag;
+                var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeeId);
+                employeeID.Text = employee.EmployeePK.ToString();
+                TrainingType.ItemsSource = db.Trainings.Select(a => a.Name).ToList();
+                TrainingList.ItemsSource = db.EmployeeTrainings.Where(a => a.UserName == employee.UserName).ToList();
+
+                TrainingDate.DisplayDateStart = DateTime.Now;
+            }
+
+        }
+
+        private void SubmitTraining(object sender, RoutedEventArgs e)
+        {
+
+            if (TrainingDate.SelectedDate != null) { 
+            int employeePK = Int32.Parse(employeeID.Text);
+            var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeePK);
+
+               
+
+                EmployeeTraining empTrain = new EmployeeTraining();
+            empTrain.FullName = employee.FirstName + " " + employee.LastName;
+            empTrain.UserName = employee.UserName;
+            empTrain.Training = TrainingType.Text;
+            empTrain.DateOfTraining = TrainingDate.SelectedDate;
+            empTrain.TimeOfTraining = TrainingTime.SelectedTime;
+            empTrain.TrainingStatus = "Pending";
+                db.EmployeeTrainings.Add(empTrain);
+            db.SaveChanges();
+
+             TrainingList.ItemsSource = db.EmployeeTrainings.Where(a => a.UserName == employee.UserName).ToList();
+
+            }
+            else
+            {
+                MessageBox.Show("Select Date");
+            }
+
+        }
+        
+            private void AssignDepartmentClick(object sender, RoutedEventArgs e)
+            {
+                if (sender != null)
+                {
+                int employeeId = (int)((Button)sender).Tag;
+                var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeeId);
+
+                DepartmentUserName.Text = employee.UserName;
+            }
+
+            }
+
+
+        private void AddDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = DepartmentUserName.Text;
+
+          var employee = db.Employees.FirstOrDefault(a => a.UserName == userName);
+
+            employee.SupervisedDepartment = DepartmentList.Text;
+            db.SaveChanges();
+
+        }
+        
+
+
+            private void EditUser(object sender, RoutedEventArgs e)
         {
             StepChangeVisibility(1);
             if (sender != null)
@@ -442,8 +624,7 @@ namespace EyeKnowRight
                     employee.Gender = Gender_Female.Content.ToString();
                 }
                 db.SaveChanges();
-                var data = db.Employees.ToList();
-                EmployeeGrid.ItemsSource = data;
+                ResetGrid();
             }
         }
         int step = 1;
@@ -515,8 +696,7 @@ namespace EyeKnowRight
             {
                 if(Position.SelectedItem == null)
                 Position.SelectedIndex = 2;
-                if (MonthsOfStay.SelectedItem == null)
-                    MonthsOfStay.SelectedIndex = 1;
+          
                 if (JobTitle.SelectedItem == null)
                     JobTitle.SelectedIndex = 1;
                 if (Department.SelectedItem == null)
@@ -556,6 +736,7 @@ namespace EyeKnowRight
                     addNew.Password = Password.Password;
                     addNew.Address = Street.Text + ", " + City.Text;
                     addNew.BirthDate = BirthDate.SelectedDate;
+                    addNew.MaritalStatus = MaritalStatus.Text;
                     addNew.Position = Position.Text;
                     addNew.Status = "Active";
                     if (addNew.Gender == "Male")
@@ -583,7 +764,7 @@ namespace EyeKnowRight
                     addNew.DateRegistered = DateTime.Now;
                     addNew.EmployeeID = "Tanjiro";
                     addNew.Age = GiveBirthday(BirthDate.SelectedDate);
-                    addNew.DaysContract = Int32.Parse(MonthsOfStay.Text);
+                    addNew.DaysContract = 30;
                     db.Employees.Add(addNew);
 
                     db.SaveChanges();
@@ -635,6 +816,7 @@ namespace EyeKnowRight
                         employee.PagibigNumber = PagibigNumber.Text;
                         employee.TINNumber = TINNumber.Text;
                         employee.Salary = Double.Parse(Salary.Text);
+                        employee.MaritalStatus = MaritalStatus.Text;
                         employee.JobTitle = JobTitle.Text;
                         employee.UserName = UserName.Text;
                         employee.DateRegistered = DateTime.Now;
@@ -646,7 +828,7 @@ namespace EyeKnowRight
                     }
                 }
                 var data = db.Employees.ToList();
-                EmployeeGrid.ItemsSource = data;
+                ResetGrid();
             }
         }
        
@@ -694,8 +876,7 @@ namespace EyeKnowRight
             }
             SuccessfullyDeletedDialogBox.IsOpen = true;
             SuccessfullyDeletedDialogBoxText.Text = $"Successfully Terminate {EmployeeGrid.SelectedItems.Count} users";
-            var data = db.Employees.ToList();
-            EmployeeGrid.ItemsSource = data;
+            ResetGrid();
         }
         private void AccountRestoreYes(object sender, RoutedEventArgs e)
         {
@@ -714,8 +895,7 @@ namespace EyeKnowRight
             }
             SuccessfullyDeletedDialogBox.IsOpen = true;
             SuccessfullyDeletedDialogBoxText.Text = $"Successfully Restored {EmployeeGrid.SelectedItems.Count} users";
-            var data = db.Employees.ToList();
-            EmployeeGrid.ItemsSource = data;
+            ResetGrid();
         }
         private void DeleteUser(object sender, RoutedEventArgs e)
         {
@@ -749,13 +929,12 @@ namespace EyeKnowRight
                   a.UserName.StartsWith(text) || a.UserName.EndsWith(text) ||
                   a.Address.StartsWith(text) || a.Address.EndsWith(text)
                ).ToList();
-                EmployeeGrid.ItemsSource = data;
+                ResetGrid(data);
             }
             else
             {
                 Magnifier.Visibility = Visibility.Visible;
-                var data = db.Employees.ToList();
-                EmployeeGrid.ItemsSource = data;
+                ResetGrid();
             }
         }
 

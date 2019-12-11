@@ -47,6 +47,21 @@ namespace EyeKnowRight.ViewModels
         EyeKnowRightDB db = new EyeKnowRightDB();
         public ShellViewModel()
         {
+
+
+            //TRAINING VIEW MODEL
+            var trainingCount = db.EmployeeTrainings.Where(a => a.TrainingStatus == "Pending").ToList();
+            if (trainingCount.Count  > 0 ) { 
+            foreach(var train in trainingCount)
+            {
+                if(train.DateOfTraining < DateTime.Now)
+                {
+                    train.TrainingStatus = "TrainingDue";
+                    db.SaveChanges();
+                }
+            }
+            }
+
             ///// 
 
             var getUserList = db.Employees.ToList();
@@ -242,10 +257,13 @@ namespace EyeKnowRight.ViewModels
                     deduction.UserName = user.UserName;
                     if (end.Value.AddDays(1).Date.Day == 26 )
                     {
-                        deduction.SSSDeduction = 1800;
-                        deduction.PagibigDeduction = 100;
-                        deduction.TotalSalary -= 1800;
-                        deduction.TotalSalary -= 100;
+                        double monthlySalary = user.Salary * 26;
+                        deduction.SSSDeduction = monthlySalary * 0.0363;
+                        deduction.PagibigDeduction = monthlySalary * 0.0200;
+                        deduction.TinDeduction = monthlySalary * 0.01375;
+                        deduction.TotalSalary -= deduction.SSSDeduction;
+                        deduction.TotalSalary -= deduction.PagibigDeduction;
+                        deduction.TotalSalary -= deduction.TinDeduction;
                     }
                     deduction.BasicSalary = user.Salary; 
                     db.Deductionss.Add(deduction);

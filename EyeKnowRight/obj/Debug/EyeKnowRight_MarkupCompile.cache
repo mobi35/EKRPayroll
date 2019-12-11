@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ADICHAN\Desktop\PEKPEK\ekrpayroll\EyeKnowRight\obj\Debug\
+C:\Users\ADICHAN\Desktop\FULGOSHO\ekrpayroll\EyeKnowRight\obj\Debug\
 EyeKnowRight
 none
 false
 DEBUG;TRACE
-C:\Users\ADICHAN\Desktop\PEKPEK\ekrpayroll\EyeKnowRight\App.xaml
-19-1945915537
+C:\Users\ADICHAN\Desktop\FULGOSHO\ekrpayroll\EyeKnowRight\App.xaml
+20-669760219
 
-60-2042812148
-931273304036
-Views\AdminOvertimeView.xaml;Views\AppraisalView.xaml;Views\DashboardView.xaml;Views\AdminLeaveView.xaml;Views\EmployeeOvertimeView.xaml;Views\MainAssesmentReportsView.xaml;Views\MainTopPerformingView.xaml;Views\MainEmployeeMasterlistView.xaml;Views\OvertimeView.xaml;Views\EmployeeLeaveView.xaml;Views\EmployeePrintView.xaml;Views\DailyAttendanceReport.xaml;Views\EvaluationPrintView.xaml;Views\MainReportsView.xaml;Views\PayrollPrintView.xaml;Views\PayrollView.xaml;Views\AccountView.xaml;Views\LoginView.xaml;Views\ShellView.xaml;
+781757831042
+932060474440
+Views\AdminOvertimeView.xaml;Views\AppraisalView.xaml;Views\DashboardView.xaml;Views\AdminLeaveView.xaml;Views\EmployeeOvertimeView.xaml;Views\MainAssesmentReportsView.xaml;Views\MainTopPerformingView.xaml;Views\MainEmployeeMasterlistView.xaml;Views\OvertimeView.xaml;Views\EmployeeLeaveView.xaml;Views\EmployeePrintView.xaml;Views\DailyAttendanceReport.xaml;Views\EvaluationPrintView.xaml;Views\MainReportsView.xaml;Views\PayrollPrintView.xaml;Views\TrainingView.xaml;Views\PayrollView.xaml;Views\AccountView.xaml;Views\LoginView.xaml;Views\ShellView.xaml;
 
 False
 

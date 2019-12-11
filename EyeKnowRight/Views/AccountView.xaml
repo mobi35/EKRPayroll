@@ -59,7 +59,7 @@
 
             <StackPanel Grid.Row="1">
                 <!-- DATA GRID START -->
-            <StackPanel Background="Beige"> 
+            <StackPanel Background="Beige">     
             <TextBlock  FontSize="20"  HorizontalAlignment="Center" Text="User's List"/>
             </StackPanel>
             <DataGrid BorderBrush="Transparent"  HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="EmployeeGrid" Height="auto" Background="Beige"
@@ -84,7 +84,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTemplateColumn Width="2000">
+                    <DataGridTemplateColumn Width="600">
                         <DataGridTemplateColumn.CellTemplate>
 
                             <DataTemplate>
@@ -127,8 +127,49 @@
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Appraisal" Foreground="Black" Kind="School"/>
                                     </Button>
 
-                                    <Button Width="70"  Margin="-20"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="ButtonPrint" Tag="{Binding EmployeePK}" ToolTip="Print User"     >
+                                    <Button Width="70"  Margin="-10"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="ButtonPrint" Tag="{Binding EmployeePK}" ToolTip="Print User"     >
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Print" Foreground="Black" Kind="Printer"/>
+                                    </Button>
+
+                                    <Button Width="70"  Margin="-10"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="TrainingClick" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=TrainingDialog}"  ToolTip="Training"     >
+                                        <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Training" Foreground="Black" Kind="Certificate"/>
+                                    </Button>
+
+
+                                    <Button Width="70"  Margin="-10"  Height="23"  Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Click="OpenPayslipList" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ListOfPayslip}"  ToolTip="Payslip"     >
+                                        <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Payslip" Foreground="Orange" Kind="Coin"/>
+                                    </Button>
+
+
+                                    <Button Content="Assign Department" Width="100"  Margin="1"  Height="23" Click="AssignDepartmentClick"   FontSize="10" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=DepartmentDialog}"  ToolTip="Make Supervisor"     >
+                                       
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Position}" Value="Admin">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Setter Property="Background" Value="Blue"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Position}" Value="Employee">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Setter Property="Background" Value="Blue"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Position}" Value="HR Assistant">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Setter Property="Background" Value="Blue"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding Position}" Value="Supervisor">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                        <Setter Property="Foreground" Value="Blue"/>
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                    
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
                                     </Button>
 
                                 </StackPanel>
@@ -140,6 +181,8 @@
                     <Style TargetType="{x:Type DataGridRow}" >
                         <EventSetter  Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
                     </Style>
+                    
+                    
                 </DataGrid.ItemContainerStyle>
             </DataGrid>
             <!-- DATA GRID END -->
@@ -228,6 +271,21 @@
                                 </Border>
                                 <TextBlock Foreground="Red" x:Name="City_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
                             </StackPanel>
+
+
+                            <StackPanel Width="200">
+                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Marital Status"/>
+                                <Border  PreviewKeyDown="EnterClicked" Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                    <ComboBox SelectedIndex="1"  Padding="5 7   0 1" x:Name="MaritalStatus"  Text="{Binding Path=MaritalStatus , Mode=TwoWay}"   Width="200"  Height="25">
+                                        <ComboBoxItem>Single</ComboBoxItem>
+                                        <ComboBoxItem>Married</ComboBoxItem>
+                                        <ComboBoxItem>Widowed</ComboBoxItem>
+                                        <ComboBoxItem>Divorce</ComboBoxItem>
+                                    </ComboBox>
+                                </Border>
+                             
+                            </StackPanel>
+
 
                             <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Gender "/>
                             <StackPanel   Orientation="Horizontal" Width="200">
@@ -376,7 +434,7 @@
                             </StackPanel>
 
                             <StackPanel Width="200">
-                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="TIN Number"/>
+                                <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Philhealth Number"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <TextBox Padding="2 0 0 0" PreviewTextInput="NumberValidationTextBox" x:Name="TINNumber" Text="{Binding Path=TINNumber , Mode=TwoWay}"  Width="200"  Height="25" ></TextBox>
                                 </Border>
@@ -411,21 +469,13 @@
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
                                     <ComboBox SelectedIndex="1"  Padding="5 7   0 1" x:Name="Position"  Text="{Binding Path=Position , Mode=TwoWay}"   Width="200"  Height="25">
                                         <ComboBoxItem>Admin</ComboBoxItem>
-                                        <ComboBoxItem >Employee</ComboBoxItem>
                                         <ComboBoxItem>HR Assistant</ComboBoxItem>
+                                        <ComboBoxItem >Employee</ComboBoxItem>
+                                        <ComboBoxItem >Supervisor</ComboBoxItem>
                                     </ComboBox>
                                 </Border>
                             
-                                <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Months of stay"/>
-                                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <ComboBox SelectedIndex="1" Padding="5 7   0 1" x:Name="MonthsOfStay"  Text="{Binding Path=DaysContract , Mode=TwoWay}"   Width="200"  Height="25">
-                                        <ComboBoxItem  IsSelected="True">12</ComboBoxItem>
-                                        <ComboBoxItem>24</ComboBoxItem>
-                                        <ComboBoxItem>36</ComboBoxItem>
-                                    </ComboBox>
-                                </Border>
-                                <TextBlock Foreground="Red" x:Name="Position_ValidationMsg" Padding="4" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
-
+                              
                             </StackPanel>
 
                             <StackPanel Width="200">
@@ -567,6 +617,19 @@
                             </StackPanel>
 
 
+                            <StackPanel Margin="-230 0 0 0" Width="400">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="HomeCircle"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Hiring Date"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding DateRegistered, Mode=TwoWay, StringFormat='D'}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+
 
 
                         </StackPanel>
@@ -611,7 +674,24 @@
                                 </TextBlock>
 
 
-                            </StackPanel>   
+                            </StackPanel>
+
+
+                            <StackPanel Margin="-300 0 0 0" Width="400">
+
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="Houzz" Margin="50 0 0 0"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Text="Marital Status" Margin="2"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding MaritalStatus}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="50 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+
+
 
                         </StackPanel>
 
@@ -738,6 +818,95 @@
             </materialDesign:DialogHost.DialogContent>
 
         </materialDesign:DialogHost>
+        
+        
+        
+
+
+        <materialDesign:DialogHost IsOpen="False" Background="{x:Null}" x:Name="ListOfPayslip" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="500" Height="300" HorizontalAlignment="Center">
+                    <TextBlock Visibility="Hidden" x:Name="userPayslip"/>
+                    <DataGrid   HorizontalScrollBarVisibility="Hidden" x:Name="ListPayslipGrid" SelectionMode="Extended" Height="300" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Start Date" Binding="{Binding StartPayroll ,StringFormat='d',Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="End Date" Binding="{Binding EndPayroll ,StringFormat='d', Mode=TwoWay }"/>
+                            <DataGridTemplateColumn Width="200">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel  Orientation="Horizontal">
+                                            <Button Width="70"  Height="23" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" Tag="{Binding PayrollPK}" Click="GeneratePayslip"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=PayslipDialog}"   >
+                                                <materialDesign:PackIcon Width="30" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" Kind="Coin"/>
+                                            </Button>
+                                         
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                        <DataGrid.ItemContainerStyle >
+                            <Style TargetType="{x:Type DataGridRow}" >
+                                <EventSetter  Event="Control.MouseDoubleClick" Handler="AppraisalDoubleClick"/>
+                            </Style>
+                        </DataGrid.ItemContainerStyle>
+                    </DataGrid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="15">
+                        <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Done
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+
+        <materialDesign:DialogHost IsOpen="False" Background="{x:Null}" x:Name="DepartmentDialog" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Background="{x:Null}" Width="500" Height="200" HorizontalAlignment="Center">
+                    <StackPanel Width="200">
+                        <TextBlock Visibility="Hidden" x:Name="DepartmentUserName" Text="20"/>
+                        <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Department List"/>
+                        <Border  PreviewKeyDown="EnterClicked" Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                            <ComboBox SelectedIndex="1"  Padding="5 7   0 1" x:Name="DepartmentList"  Text="{Binding Path=Department , Mode=TwoWay}"   Width="200"  Height="25">
+                                <ComboBoxItem  IsSelected="True">Sales and Marketing</ComboBoxItem>
+                                <ComboBoxItem>Creative</ComboBoxItem>
+                                <ComboBoxItem>IT</ComboBoxItem>
+                                <ComboBoxItem>Production</ComboBoxItem>
+                                <ComboBoxItem>Inventory</ComboBoxItem>
+                                <ComboBoxItem>Public Relations</ComboBoxItem>
+                                <ComboBoxItem>Human Resources</ComboBoxItem>
+                            </ComboBox>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"   Margin="15">
+                            <Button Click="AddDepartment_Click" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  VerticalAlignment="Center">
+                                Add Department
+                            </Button>
+
+                        </StackPanel>
+                    </StackPanel>
+
+                   
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="15">
+                        <Button Click="DoneClose" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Close
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+
+
+
+
+
 
         <materialDesign:DialogHost Background="{x:Null}" IsOpen="False" Identifier="RootDialog" x:Name="SuccessfullyDeletedDialogBox" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
@@ -799,6 +968,128 @@
         </materialDesign:DialogHost>
 
 
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="PayslipDialog"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid x:Name="PrintPayslip" Background="{x:Null}" Width="500" Height="600" HorizontalAlignment="Center">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" >
+                            <TextBlock Padding="10" FontSize="30" Text="Eye Know Right" Foreground="Gray"/>
+                            <TextBlock Margin="10 0 0 0" Text="eyeknow address 492. manila"/>
+                            <TextBlock Margin="10 0 0 0" Text="0995260320 - 099302"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" >
+                            <Border Padding="10" Background="Gray"> 
+                            <TextBlock  Foreground="White" FontWeight="Bold" Text="Employee Information"/>
+                            </Border>
+
+                            <TextBlock Text="{Binding EmployeeName, Mode=TwoWay}" Margin="10 4 0 0" />
+                            <TextBlock Text="{Binding EmployeeAddress, Mode=TwoWay}"  Margin="10 0 0 0" />
+                            <TextBlock Text="{Binding JobTitle, Mode=TwoWay}"  Margin="10 0 0 0" />
+                        </StackPanel>
+                       
+       
+
+                        <StackPanel Grid.Row="0" Grid.Column="1" >
+                            <TextBlock Padding="10" FontSize="30" Text="PAY SLIP" HorizontalAlignment="Right" FontWeight="Bold" Foreground="Gray"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2"  Grid.Column="2"   >
+
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Height="auto"  >
+                            <Border Padding="5" Background="Gray">
+                                <TextBlock  HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="15" Text="Earnings"/>
+                            </Border>
+
+                            <StackPanel Orientation="Horizontal"> 
+                            <TextBlock Padding="5" Text="Accumulated Hours"/>
+                                <TextBlock Margin="40 0 0 0" Padding="5" Text="{Binding Earnings_Accumulated, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <Separator/>
+
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <TextBlock Padding="5" Text="Total Earned"/>
+                                <TextBlock Margin="40 0 0 0" Padding="5" Text="{Binding Earnings_TotalAccumulated, Mode=TwoWay}"/>
+                            </StackPanel>
+                         
+                           
+
+                            <Border Padding="5" Background="Gray">
+                                <TextBlock  HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="15" Text="Deductions"/>
+                            </Border>
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Padding="5" Text="Late"/>
+                                <TextBlock Margin="130 0 0 0" Padding="5" Text="{Binding Deductions_Late_String_Format, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <Separator/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Padding="5" Text="SSS"/>
+                                <TextBlock Margin="130 0 0 0" Padding="5" Text="{Binding Deductions_SSS, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <Separator/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Padding="5" Text="Philhealth"/>
+                                <TextBlock Margin="96   0 0 0" Padding="5" Text="{Binding Deductions_Philhealth, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <Separator/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Padding="5" Text="Pagibig"/>
+                                <TextBlock Margin="110 0 0 0" Padding="5" Text="{Binding Deductions_Pagibig, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <Separator/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Padding="5" Text="Tax"/>
+                                <TextBlock Margin="133 0 0 0" Padding="5" Text="{Binding Deductions_TAX, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <Separator/>
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <TextBlock Padding="5" Text="Total Deductions"/>
+                                <TextBlock Margin="40 0 0 0" Padding="5" Text="{Binding Deductions_Total, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <Separator/>
+                            <Border Background="Gray"> 
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <TextBlock Padding="5" Foreground="White" Text="Total Salary"/>
+                                    <TextBlock Foreground="White" Background="Orange" Margin="40 0 0 0" Padding="5" Text="{Binding TotalSalaryStringFormat, Mode=TwoWay}"/>
+                            </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="PrintPayslip_Click" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal"> 
+                            <materialDesign:PackIcon Kind="Printer"/>
+                            <TextBlock Text="Print"/>
+                            </StackPanel>
+                        </Button>
+
+
+                        <Button   Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                            
+                                <TextBlock Text="Cancel"/>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
 
         <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="AccountRestoreDialog"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
@@ -912,7 +1203,78 @@
             </materialDesign:DialogHost.DialogContent>
 
         </materialDesign:DialogHost>
-    
+
+
+        <materialDesign:DialogHost Background="{x:Null}"  IsOpen="False"  Identifier="RootDialog" x:Name="TrainingDialog"  Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+
+                <Grid Background="{x:Null}" Width="700" Height="500" HorizontalAlignment="Center">
+
+                    <StackPanel Margin="0 20" HorizontalAlignment="Center" Orientation="Horizontal">
+
+                        <StackPanel Width="200">
+                            <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Training"/>
+                            <Border  PreviewKeyDown="EnterClicked" Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <ComboBox SelectedIndex="0"  Padding="5 7   0 1" x:Name="TrainingType"  Text="{Binding Path=MaritalStatus , Mode=TwoWay}"   Width="200"  Height="25">
+                                   
+                                </ComboBox>
+                            </Border>
+
+                        </StackPanel>
+
+                        <StackPanel Width="100" Margin="40 0 0 0">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Training Date"/>
+                            <Border  Width="100"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <DatePicker SelectedDateChanged="EndDateUpdate"  HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="TrainingDate"   Width="100"  Height="25" >
+
+                                </DatePicker>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Width="100" Margin="40 0 0 0">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Training Time"/>
+                            <Border  Width="100"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
+                                <materialDesign:TimePicker  HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="TrainingTime"   Width="100"  Height="25" >
+
+                                </materialDesign:TimePicker>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Width="90" Margin="40 0 0 0">
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Visibility="Hidden" Text=""/>
+                            <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="SubmitTraining">Submit</Button>
+                            <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" x:Name="employeeID" Visibility="Hidden" Text=""/>
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <DataGrid Margin="20 50 50 50"  HorizontalScrollBarVisibility="Hidden" x:Name="TrainingList" SelectionMode="Extended" Height="300" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Full Name" Binding="{Binding FullName,Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="100"  Header="Training" Binding="{Binding Training,Mode=TwoWay }"/>
+                            <DataGridTextColumn FontSize="11" Width="200"  Header="Date of training" Binding="{Binding DateOfTraining, StringFormat='D',Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="120"  Header="Time training" Binding="{Binding DateOfTraining, StringFormat='T',Mode=TwoWay}"/>
+                            <DataGridTextColumn FontSize="11" Width="150"  Header="Training Status" Binding="{Binding TrainingStatus}"/>
+                    
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignFlatButton}" VerticalAlignment="Center">
+                            Close
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
+        
+        
+
     </Grid>
 
 

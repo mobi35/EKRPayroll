@@ -57,8 +57,13 @@ namespace EyeKnowRight
 
             var userName = Application.Current.Properties["UserName"].ToString();
             var employeeLeave = db.Leaves.Where(a => a.UserName == userName).ToList();
+
+            var overtime = db.Overtimes.Where(a => a.UserName == userName).ToList();
             bool leaveStack = false;
-          
+            bool overStack = false;
+
+
+
             for (int i = 0; i <= dateRangeComparison.Value.TotalDays; i++)
             {
                 if (StartLeaveDate.SelectedDate.Value.Date.AddDays(i).DayOfWeek != DayOfWeek.Sunday
@@ -71,12 +76,22 @@ namespace EyeKnowRight
                         {
                             leaveStack = true;
                         }
-
-                       
                     }
+
+                    foreach (var over in overtime)
+                    {
+                        if (over.DateOfOvertime.Value.AddDays(i) == StartLeaveDate.SelectedDate.Value.AddDays(i))
+                        {
+                            overStack = true;
+                        }
+                    }
+
+
                     numberOfWorkingDays++;
                 }
             }
+
+
 
             if (TypeOfLeave.Text != "Sick Leave" && StartLeaveDate.SelectedDate < DateTime.Now || EndLeaveDate.SelectedDate < DateTime.Now)
             {
@@ -134,7 +149,11 @@ namespace EyeKnowRight
                     MessageBox.Show("Not enough sick leave");
                 } else {
 
-                    if (!leaveStack) {
+                    if (overStack)
+                    {
+                        MessageBox.Show("You have overtime in this date.");
+                    }
+                    else if (!leaveStack) {
                         Leave leave = new Leave();
                         leave.ReasonForLeaving = ReasonForLeave.Text;
                         leave.UserName = user;

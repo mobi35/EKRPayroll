@@ -116,33 +116,11 @@ namespace EyeKnowRight.ViewModels
             }
             else if (employee != null)
                 {
-                var user = dbz.Employees.Where(a => a.UserName == username && a.Password == password).FirstOrDefault().UserName;
-                var date = DateTime.Now.Date;
-                var dtrs = dbz.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
-                    if(dtrs != null) {  
-                    dtrs.TimeIn = DateTime.Now;
-                    userModel.NumberOfTries = 0;
-                    if (dtrs.FirstTimeIn == null)
-                    {
-                        dtrs.FirstTimeIn = DateTime.Now;
 
-                        if (dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes > 480)
-                        {
-                            dtrs.Late = dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes - 480;
-                            int hour = (int)dtrs.Late / 60;
-                            int minutes = (int)dtrs.Late % 60;
-                            dtrs.LateString = $"{ hour }h:{ minutes }m";
-                        }
-                    }
-                    dbz.SaveChanges();
-                Application.Current.Properties["UserName"] = Username;
+                employee.NumberOfTries = 0;
+                     Application.Current.Properties["UserName"] = Username;
                     windowManager.ShowWindow(shellViewModel);
                 TryClose();
-                }else
-                {
-                    passwordValidation = "Can't login on weekends";
-                    NotifyOfPropertyChange("PasswordValidation");
-                }
             }
                 else
             {

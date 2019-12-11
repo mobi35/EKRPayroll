@@ -179,6 +179,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TrainingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PayrollView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -216,7 +220,36 @@
     <Compile Include="Migrations\201911252017302_Added Holiday.designer.cs">
       <DependentUpon>201911252017302_Added Holiday.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911281041299_new.cs" />
+    <Compile Include="Migrations\201911281041299_new.designer.cs">
+      <DependentUpon>201911281041299_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911281128083_training.cs" />
+    <Compile Include="Migrations\201911281128083_training.designer.cs">
+      <DependentUpon>201911281128083_training.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911281404167_Zxc.cs" />
+    <Compile Include="Migrations\201911281404167_Zxc.designer.cs">
+      <DependentUpon>201911281404167_Zxc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911281421121_asda.cs" />
+    <Compile Include="Migrations\201911281421121_asda.designer.cs">
+      <DependentUpon>201911281421121_asda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912111210122_supervised.cs" />
+    <Compile Include="Migrations\201912111210122_supervised.designer.cs">
+      <DependentUpon>201912111210122_supervised.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912111221205_dept.cs" />
+    <Compile Include="Migrations\201912111221205_dept.designer.cs">
+      <DependentUpon>201912111221205_dept.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\UserNotified.cs" />
+    <Compile Include="Models\EmployeeTraining.cs" />
+    <Compile Include="Models\Payslip.cs" />
+    <Compile Include="Models\Training.cs" />
     <Compile Include="Models\EyeKnowRightDB.cs" />
     <Compile Include="Models\Overtime.cs" />
     <Compile Include="Reports\EKRDataset.cs">
@@ -281,6 +314,9 @@
     <Compile Include="Views\PayrollPrintView.xaml.cs">
       <DependentUpon>PayrollPrintView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TrainingView.xaml.cs">
+      <DependentUpon>TrainingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PayrollView.xaml.cs">
       <DependentUpon>PayrollView.xaml</DependentUpon>
     </Compile>
@@ -339,6 +375,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911252017302_Added Holiday.resx">
       <DependentUpon>201911252017302_Added Holiday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911281041299_new.resx">
+      <DependentUpon>201911281041299_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911281128083_training.resx">
+      <DependentUpon>201911281128083_training.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911281404167_Zxc.resx">
+      <DependentUpon>201911281404167_Zxc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911281421121_asda.resx">
+      <DependentUpon>201911281421121_asda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912111210122_supervised.resx">
+      <DependentUpon>201912111210122_supervised.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912111221205_dept.resx">
+      <DependentUpon>201912111221205_dept.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -58,6 +58,10 @@ namespace EyeKnowRight.Models
         public string Status { get; set; }
         public int RemainingLeave { get; set; }
 
+        public string MaritalStatus { get; set; }
         public int SickLeaveCredit { get; set; }
+
+        public string SupervisedDepartment { get; set; } 
+
     }
 }

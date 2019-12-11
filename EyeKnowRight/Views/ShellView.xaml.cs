@@ -26,13 +26,20 @@ namespace EyeKnowRight.Views
         {
             InitializeComponent();
             MainGrid.Children.Add(new DashboardView());
-            try
-            {
+           
                 var user  = Application.Current.Properties["UserName"].ToString();
                 var employee = db.Employees.FirstOrDefault(a => a.UserName == user);
                 UserNameText.Text = "Hi!, " + user;
 
-                byte[] bytes = employee.Picture;
+                EmployeeTraining.ItemsSource = db.EmployeeTrainings.Where(a => a.UserName == user).ToList();
+
+                DateTime? dateNow = DateTime.Now.Date;
+                var dtr = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user && a.DateTimeStamps == dateNow);
+   
+
+
+
+            byte[] bytes = employee.Picture;
 
                 var image = new BitmapImage();
                 using (var mem = new MemoryStream(bytes))
@@ -53,28 +60,53 @@ namespace EyeKnowRight.Views
                 {
                     AdminPanel.Visibility = Visibility.Visible;
                     HRPanel.Visibility = Visibility.Collapsed;
+                    SuperVisorPanel.Visibility = Visibility.Collapsed;
                     UserPanel.Visibility = Visibility.Collapsed;
                 }
                 else if(employee.Position == "Employee")
                 {
                     UserPanel.Visibility = Visibility.Visible;
+                    SuperVisorPanel.Visibility = Visibility.Collapsed;
                     AdminPanel.Visibility = Visibility.Collapsed;
                     HRPanel.Visibility = Visibility.Collapsed;
 
+                }else if (employee.Position == "Supervisor")
+                {
+                    UserPanel.Visibility = Visibility.Collapsed;
+                    SuperVisorPanel.Visibility = Visibility.Visible;
+                    AdminPanel.Visibility = Visibility.Collapsed;
+                    HRPanel.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
                     HRPanel.Visibility = Visibility.Visible;
                     AdminPanel.Visibility = Visibility.Collapsed;
+                    SuperVisorPanel.Visibility = Visibility.Collapsed;
                     UserPanel.Visibility = Visibility.Collapsed;
                 }
-            }
-            catch (Exception e)
-            {
-
-            }
+        
             ButtonOpen.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             MainGrid.Margin = new Thickness(270, 15, 0, 0);
+
+            if (dtr != null)
+            {
+                if (dtr.TimeIn == null)
+                {
+                    TimeOutName.Visibility = Visibility.Collapsed;
+                }
+                else if (dtr.TimeOut > dtr.TimeIn)
+                {
+                    TimeOutName.Visibility = Visibility.Collapsed;
+                    TimeInName.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    TimeOutName.Visibility = Visibility.Visible;
+                    TimeInName.Visibility = Visibility.Collapsed;
+                }
+            }
+
+
         }
         private void ClosePanel(object sender, RoutedEventArgs e)
         {
@@ -95,6 +127,12 @@ namespace EyeKnowRight.Views
 
         }
 
+        private void AdminTrainingSelect(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Add(new TrainingView());
+
+        }
+        
         private void EmployeeOvertimeSelect(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Add(new EmployeeOvertimeView());
@@ -267,66 +305,9 @@ namespace EyeKnowRight.Views
         EyeKnowRightDB db = new EyeKnowRightDB();
         private void LogoutAccount(object sender, RoutedEventArgs e)
         {
-            var user = Application.Current.Properties["UserName"].ToString();
-            var date = DateTime.Now.Date;
-         
-            var getOvertime = db.Overtimes.FirstOrDefault(a => a.DateOfOvertime == date);
+           
 
-            var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
-            dtr.TimeOut = DateTime.Now;
-            db.SaveChanges();
-          
-            int totalOTDate = 0;
-            if (getOvertime != null)
-            {
-
-                totalOTDate = getOvertime.UntilWhatTime.Value.Hour * 60;
-            }
-            double timeInDate = 0;
-            if (dtr.TimeIn != null)
-            {
-               
-
-             if (dtr.TimeIn.Value.TimeOfDay.TotalMinutes < 480)
-                {
-                    timeInDate = 480;
-                }
-                else
-                {
-                    timeInDate = dtr.TimeIn.Value.TimeOfDay.TotalMinutes;
-                }
-             if(getOvertime != null) { 
-                if(getOvertime.DateOfOvertime == date) { 
-                if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= totalOTDate)
-                {
-                    double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
-                    dtr.Accumulated += accumulatedTime;
-                }else
-                {
-                    dtr.Accumulated += totalOTDate - timeInDate;
-                }
-
-                }
-                }
-                else { 
-                 if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= 1020)
-                {
-                    double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
-                    dtr.Accumulated += accumulatedTime;
-                }
-                else
-                {
-                    dtr.Accumulated += 1020 - timeInDate;
-                }
-                }
-                int hour = (int)dtr.Accumulated  / 60;
-                int minutes = (int)dtr.Accumulated % 60;
-                dtr.AccumulatedString = $"{ hour }h:{ minutes }m";
-                db.SaveChanges();
-            }
-            else
-            {
-            }
+            Application.Current.Properties["UserName"] = "";
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();
 
@@ -389,6 +370,168 @@ namespace EyeKnowRight.Views
             Reports(TypeOfReports.Text, StartDate.SelectedDate, EndDate.SelectedDate, Int32.Parse(NumberOfEntries.Text));
            
         }
+
+        private void TimeIn(object sender, RoutedEventArgs e)
+        {
+
+            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday && DateTime.Now.DayOfWeek != DayOfWeek.Saturday)
+            {
+                string userName = Application.Current.Properties["UserName"].ToString();
+                var user = db.Employees.Where(a => a.UserName == userName).FirstOrDefault().UserName;
+                var date = DateTime.Now.Date;
+                var dtrs = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
+                if (dtrs != null)
+                {
+                    dtrs.TimeIn = DateTime.Now;
+
+                    if (dtrs.FirstTimeIn == null)
+                    {
+                        dtrs.FirstTimeIn = DateTime.Now;
+
+                        if (dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes > 480)
+                        {
+                            dtrs.Late = dtrs.FirstTimeIn.Value.TimeOfDay.TotalMinutes - 480;
+                            int hour = (int)dtrs.Late / 60;
+                            int minutes = (int)dtrs.Late % 60;
+                            dtrs.LateString = $"{ hour }h:{ minutes }m";
+                        }
+                    }
+                    db.SaveChanges();
+                }
+
+
+
+                DateTime? dateNow = DateTime.Now.Date;
+                var dtr = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user && a.DateTimeStamps == dateNow);
+
+                if (dtr.TimeIn == null)
+                {
+                    TimeOutName.Visibility = Visibility.Collapsed;
+                }
+                else if (dtr.TimeOut == null)
+                {
+                    TimeInName.Visibility = Visibility.Collapsed;
+                }
+                else if (dtr.TimeOut > dtr.TimeIn)
+                {
+                    TimeOutName.Visibility = Visibility.Collapsed;
+                    TimeInName.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    TimeOutName.Visibility = Visibility.Visible;
+                    TimeInName.Visibility = Visibility.Collapsed;
+                }
+            }else
+            {
+                MessageBox.Show("You can't time in on this date.");
+            }
+
+
+           
+
+        }
+
+        private void TimeOut(object sender, RoutedEventArgs e)
+        {
+
+            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday && DateTime.Now.DayOfWeek != DayOfWeek.Saturday)
+            {
+
+
+                var user = Application.Current.Properties["UserName"].ToString();
+                var date = DateTime.Now.Date;
+
+                var getOvertime = db.Overtimes.FirstOrDefault(a => a.DateOfOvertime == date);
+
+                var dtr = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
+                dtr.TimeOut = DateTime.Now;
+                db.SaveChanges();
+
+                int totalOTDate = 0;
+                if (getOvertime != null)
+                {
+
+                    totalOTDate = getOvertime.UntilWhatTime.Value.Hour * 60;
+                }
+                double timeInDate = 0;
+                if (dtr.TimeIn != null)
+                {
+
+
+                    if (dtr.TimeIn.Value.TimeOfDay.TotalMinutes < 480)
+                    {
+                        timeInDate = 480;
+                    }
+                    else
+                    {
+                        timeInDate = dtr.TimeIn.Value.TimeOfDay.TotalMinutes;
+                    }
+                    if (getOvertime != null)
+                    {
+                        if (getOvertime.DateOfOvertime == date)
+                        {
+                            if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= totalOTDate)
+                            {
+                                double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
+                                dtr.Accumulated += accumulatedTime;
+                            }
+                            else
+                            {
+                                dtr.Accumulated += totalOTDate - timeInDate;
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        if (dtr.TimeOut.Value.TimeOfDay.TotalMinutes <= 1020)
+                        {
+                            double accumulatedTime = dtr.TimeOut.Value.TimeOfDay.TotalMinutes - timeInDate;
+                            dtr.Accumulated += accumulatedTime;
+                        }
+                        else
+                        {
+                            dtr.Accumulated += 1020 - timeInDate;
+                        }
+                    }
+                    int hour = (int)dtr.Accumulated / 60;
+                    int minutes = (int)dtr.Accumulated % 60;
+                    dtr.AccumulatedString = $"{ hour }h:{ minutes }m";
+                    db.SaveChanges();
+                }
+                else
+                {
+                }
+
+
+                if (dtr.TimeIn == null)
+                {
+                    TimeOutName.Visibility = Visibility.Collapsed;
+                }
+                else if (dtr.TimeOut == null)
+                {
+                    TimeInName.Visibility = Visibility.Collapsed;
+                }
+                else if (dtr.TimeOut > dtr.TimeIn)
+                {
+                    TimeOutName.Visibility = Visibility.Collapsed;
+                    TimeInName.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    TimeOutName.Visibility = Visibility.Visible;
+                    TimeInName.Visibility = Visibility.Collapsed;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("You can't Time out on this date.");
+            }
+
+        }
+
 
         public class DateRange
         {

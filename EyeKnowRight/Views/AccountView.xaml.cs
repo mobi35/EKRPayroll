@@ -91,6 +91,7 @@ namespace EyeKnowRight
 
         }
 
+   
         public AccountView()
         {
           
@@ -322,7 +323,65 @@ namespace EyeKnowRight
                 RepeatPassword_ValidationMsg.Visibility = Visibility.Collapsed;
              
             }
+            string sssNumber = SSSNumber.Text;
+            string pagibigNumber = PagibigNumber.Text;
+            string philhealth = TINNumber.Text;
+            if (SSSNumber.Text.Length != 10)
+            {
+                numberOfWrong++;
 
+                StepChangeVisibility(4);
+                SSS_Validation.Text = "Not a valid SSS Number";
+                SSS_Validation.Visibility = Visibility.Visible;
+            }else if (db.Employees.FirstOrDefault(a => a.SSSNumber == sssNumber ) != null)
+            {
+                numberOfWrong++;
+                StepChangeVisibility(4);
+                SSS_Validation.Text = "SSS Number already existed";
+                SSS_Validation.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SSS_Validation.Visibility = Visibility.Collapsed;
+            }
+
+            if (TINNumber.Text.Length != 12)
+            {
+                numberOfWrong++;
+                StepChangeVisibility(4);
+                TINNumber_Validation.Text = "Not a valid Philhealth Number";
+                TINNumber_Validation.Visibility = Visibility.Visible;
+            }
+            else if (db.Employees.FirstOrDefault(a => a.TINNumber == philhealth) != null)
+            {
+                numberOfWrong++;
+                StepChangeVisibility(4);
+                TINNumber_Validation.Text = "Philhealth Already existed";
+                TINNumber_Validation.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                TINNumber_Validation.Visibility = Visibility.Collapsed;
+            }
+
+            if (PagibigNumber.Text.Length != 12)
+            {
+                numberOfWrong++; 
+                PagibigNumber_Validation.Text = "Not a valid Pagibig Number";
+                StepChangeVisibility(4);
+                PagibigNumber_Validation.Visibility = Visibility.Visible;
+            }
+            else if (db.Employees.FirstOrDefault(a => a.PagibigNumber == pagibigNumber) != null)
+            {
+                numberOfWrong++;
+                StepChangeVisibility(4);
+                PagibigNumber_Validation.Text = "Pagibig number Already existed";
+                PagibigNumber_Validation.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                PagibigNumber_Validation.Visibility = Visibility.Collapsed;
+            }
 
             if (FirstName.Text != "")
             {
@@ -858,30 +917,30 @@ namespace EyeKnowRight
                     }
                 }
                 var data = db.Employees.ToList();
-             
 
 
+
+                FirstName.Text = "";
+                MiddleName.Text = "";
+                LastName.Text = "";
+                Email.Text = "";
+                Password.Password = "";
+                Street.Text = "";
+                City.Text = "";
+
+                Department.Text = "";
+
+                SSSNumber.Text = "";
+                PagibigNumber.Text = "";
+                TINNumber.Text = "";
+
+                Salary.Text = "";
+
+                UserName.Text = "";
+                ResetGrid();
 
             }
  
-             FirstName.Text = "" ;
-            MiddleName.Text = "";
-           LastName.Text = "";
-             Email.Text = "";
-          Password.Password = "";
-            Street.Text = "";
-                City.Text = "";
-       
-           Department.Text = "";
-          
-             SSSNumber.Text = "";
-         PagibigNumber.Text = "";
-             TINNumber.Text = "";
-         
-           Salary.Text = "";
-     
-            UserName.Text = "";
-            ResetGrid();
         }
        
 

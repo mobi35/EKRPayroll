@@ -252,8 +252,13 @@
                             <StackPanel Width="200">
                                 <TextBlock HorizontalAlignment="Left" FontSize="11"  Foreground="Gray" Padding="6" Text="Birth Date"/>
                                 <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                                    <DatePicker HorizontalAlignment="Right"  Text="{Binding Path=BirthDate , Mode=TwoWay}" VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="BirthDate"   Width="200"  Height="25" >
-
+                                    <DatePicker HorizontalAlignment="Right" Focusable="False"  Text="{Binding Path=BirthDate , Mode=TwoWay}" VerticalAlignment="Center" Margin="-10 6 -20 0" Padding="7 0 0 1" x:Name="BirthDate"   Width="200"  Height="25" >
+                                        <DatePicker.Resources>
+                                            <Style TargetType="DatePickerTextBox">
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                          
+                                            </Style>
+                                        </DatePicker.Resources>
 
                                     </DatePicker>
                                 </Border>

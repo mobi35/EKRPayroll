@@ -3,6 +3,7 @@ using EyeKnowRight.ViewModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -419,10 +420,29 @@ namespace EyeKnowRight.Views
 
         private void TimeIn(object sender, RoutedEventArgs e)
         {
-
-            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday && DateTime.Now.DayOfWeek != DayOfWeek.Saturday)
+            var dateNow = DateTime.Now.Date;
+            string userName = Application.Current.Properties["UserName"].ToString();
+            var getLeave = db.Leaves.ToList();
+            int leaveCount = 0;
+            
+            foreach (var leave in getLeave)
             {
-                string userName = Application.Current.Properties["UserName"].ToString();
+                TimeSpan? compare = leave.EndLeave - leave.StartDate;
+                if(leave.UserName == userName && leave.Status == "Accepted")
+                {
+                   for(int i = 0; i < compare.Value.TotalDays; i++)
+                    {
+                        if (leave.StartDate.Value.AddDays(i).Date == dateNow)
+                            leaveCount++;
+                    }
+                }
+            }
+
+            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday && DateTime.Now.DayOfWeek != DayOfWeek.Saturday &&  leaveCount == 0)
+            {
+
+               
+
                 var user = db.Employees.Where(a => a.UserName == userName).FirstOrDefault().UserName;
                 var date = DateTime.Now.Date;
                 var dtrs = db.DailyTimeRecords.Where(a => a.DateTimeStamps == date && a.UserName == user).FirstOrDefault();
@@ -446,7 +466,7 @@ namespace EyeKnowRight.Views
                 }
 
 
-                DateTime? dateNow = DateTime.Now.Date;
+               
                 var dtr = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user && a.DateTimeStamps == dateNow);
 
                 if (dtr.TimeOut != null) { 
@@ -516,8 +536,27 @@ namespace EyeKnowRight.Views
 
         private void TimeOut(object sender, RoutedEventArgs e)
         {
+            var dateNow = DateTime.Now.Date;
+            string userName = Application.Current.Properties["UserName"].ToString();
+            var getLeave = db.Leaves.ToList();
+            int leaveCount = 0;
 
-            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday && DateTime.Now.DayOfWeek != DayOfWeek.Saturday)
+            foreach (var leave in getLeave)
+            {
+                TimeSpan? compare = leave.EndLeave - leave.StartDate;
+                if (leave.UserName == userName && leave.Status == "Accepted")
+                {
+                    for (int i = 0; i < compare.Value.TotalDays; i++)
+                    {
+                        if (leave.StartDate.Value.AddDays(i).Date == dateNow)
+                            leaveCount++;
+                    }
+                }
+            }
+
+
+
+            if (DateTime.Now.DayOfWeek != DayOfWeek.Sunday && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && leaveCount == 0)
             {
 
 

@@ -164,8 +164,8 @@ namespace EyeKnowRight
                         leave.ReasonForLeaving = ReasonForLeave.Text;
                         leave.UserName = user;
                         leave.TypeOfLeave = TypeOfLeave.Text;
-                        leave.StartDate = StartLeaveDate.SelectedDate;
-                        leave.EndLeave = EndLeaveDate.SelectedDate;
+                        leave.StartDate = StartLeaveDate.SelectedDate.Value.Date;
+                        leave.EndLeave = EndLeaveDate.SelectedDate.Value.Date;
                         leave.Status = "Pending";
                         db.Leaves.Add(leave);
                         db.SaveChanges();

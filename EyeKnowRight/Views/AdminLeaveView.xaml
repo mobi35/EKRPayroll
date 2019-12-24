@@ -75,7 +75,7 @@
         </StackPanel>
         <!-- DATA GRID END -->
         <!-- ADD USER DIALOG BOX START -->
-        <materialDesign:DialogHost  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
+        <materialDesign:DialogHost Opacity="0"  IsOpen="False" x:Name="LeaveDialog"  Margin="0,-126,0,-32"  >
             <materialDesign:DialogHost.DialogContent >
                     <StackPanel Margin="40">
 

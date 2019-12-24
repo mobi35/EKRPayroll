@@ -2260,7 +2260,6 @@ C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Microsoft.
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\MySql.Data.dll
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Renci.SshNet.dll
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\System.Windows.Interactivity.dll
-C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Microsoft.SqlServer.Types.dll
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.xml
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.Platform.xml
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Caliburn.Micro.Platform.Core.xml
@@ -2273,10 +2272,8 @@ C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\LiveCharts
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\LiveCharts.Wpf.xml
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Microsoft.ReportViewer.WinForms.xml
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\MySql.Data.xml
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\bin\Debug\Renci.SshNet.xml
-C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\Views\AdminOvertimeView.g.cs
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\Views\AppraisalView.g.cs
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\Views\DashboardView.g.cs
@@ -2323,11 +2320,11 @@ C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\Views\Acco
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\Views\LoginView.baml
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\Views\ShellView.baml
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.g.resources
+C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.xxxxc.resources
+C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.ihatethis.resources
+C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.Hahahapanis.resources
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Properties.Resources.resources
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.GenerateResource.cache
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.CopyComplete
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.exe
 C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
-C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.xxxxc.resources
-C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.ihatethis.resources
-C:\Users\Administrator\Desktop\File\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.Hahahapanis.resources

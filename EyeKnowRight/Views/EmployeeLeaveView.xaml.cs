@@ -47,6 +47,9 @@ namespace EyeKnowRight
             var userList = db.Employees.Where(a => a.UserName == user).ToList();
             DataContext = userList;
             LeaveGrid.ItemsSource = leave;
+
+            StartLeaveDate.DisplayDateStart = name.DateRegistered.Value.Date.AddDays(1);
+           
         }
 
         private void SendRequestLeave(object sender, RoutedEventArgs e)
@@ -93,14 +96,14 @@ namespace EyeKnowRight
 
 
 
-            if (TypeOfLeave.Text != "Sick Leave" && StartLeaveDate.SelectedDate < DateTime.Now || EndLeaveDate.SelectedDate < DateTime.Now)
+            if (TypeOfLeave.Text != "Sick Leave" && StartLeaveDate.SelectedDate < DateTime.Now )
             {
                 MessageBox.Show("No past dates");
             } else if (StartLeaveDate.SelectedDate == null || EndLeaveDate.SelectedDate == null)
             {
                 MessageBox.Show("Please fill up the date");
             }
-            else if (StartLeaveDate.SelectedDate > EndLeaveDate.SelectedDate)
+            else if (StartLeaveDate.SelectedDate > EndLeaveDate.SelectedDate && TypeOfLeave.Text != "Sick Leave" )
             {
                 MessageBox.Show("This is not a valid date");
             }

@@ -508,7 +508,7 @@
 
                 <Grid Visibility="Visible" x:Name="AdminPanel"> 
                 <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
-                        <ListViewItem  Height="45" Padding="0" Selected="DashboardSelect"  >
+                        <ListViewItem  Visibility="Collapsed" Height="45" Padding="0" Selected="DashboardSelect"  >
                             <StackPanel  Orientation="Horizontal" Margin="10 0">
                                 <materialDesign:PackIcon Kind="ViewDashboard" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Dashboard" Margin="10"/>
@@ -518,44 +518,33 @@
                         </ListViewItem>
 
                       
-
-                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ReportDialog}"  Background="{x:Null}" BorderBrush="{x:Null}" Height="40">
-                            <StackPanel Orientation="Horizontal"> 
-                            <materialDesign:PackIcon Kind="Printer" Width="20" Height="20" Foreground="Gray" Margin="-10 0 15 0" VerticalAlignment="Center"/>
-                            <TextBlock Foreground="Black" FontSize="20" FontWeight="Normal" Text="Reports"/>
-                            </StackPanel>
-                      
-                        </Button>
-
                         <ListViewItem  Height="45" Padding="0" Selected="AccountSelect"  >
                         <StackPanel  Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Account" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Accounts" Margin="10"/>
-                           
-                            
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0" Selected="PayrollSelect">
+                        </ListViewItem>
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="PayrollSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Payroll" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
 
-                        <ListViewItem Height="45" Padding="0" Selected="AdminOvertimeSelect">
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="AdminOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
                                 <materialDesign:PackIcon Kind="Timelapse" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Overtime" Margin="10"/>
                             </StackPanel>
                         </ListViewItem>
 
-                        <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="AppraisalSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
                                 <materialDesign:PackIcon Kind="AccountPlus" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Evaluation" Margin="10"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="AdminLeaveSelect">
                         <StackPanel Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                             <TextBlock Text="Leave" Margin="10"/>
@@ -563,7 +552,7 @@
                         </StackPanel>
                     </ListViewItem>
 
-                        <ListViewItem Height="45" Padding="0" Selected="AdminTrainingSelect">
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="AdminTrainingSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
                                 <materialDesign:PackIcon Kind="Certificate" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                 <TextBlock Text="Training" Margin="10"/>
@@ -585,15 +574,6 @@
 
                             </StackPanel>
                         </ListViewItem>
-                        
-                        
-                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=UserTrainingDialog}"  Background="{x:Null}" BorderBrush="{x:Null}" Height="40">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Certificate" Width="20" Height="20" Foreground="Gray" Margin="-10 0 15 0" VerticalAlignment="Center"/>
-                                <TextBlock Foreground="Black" FontSize="20" FontWeight="Normal" Text="Training"/>
-                            </StackPanel>
-
-                        </Button>
 
                         <ListViewItem Height="45" Padding="0" Selected="EmployeeOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -602,6 +582,15 @@
 
                             </StackPanel>
                         </ListViewItem>
+
+                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=UserTrainingDialog}"  Background="{x:Null}" BorderBrush="{x:Null}" Height="40">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Certificate" Width="20" Height="20" Foreground="Gray" Margin="-10 0 15 0" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="Black" FontSize="20" FontWeight="Normal" Text="Training"/>
+                            </StackPanel>
+                        </Button>
+
+                     
                 
 
 
@@ -616,33 +605,6 @@
                     <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
 
 
-                        <ListViewItem Height="45" Padding="0" Selected="PayrollSelect">
-                            <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Payroll" Margin="10"/>
-                            </StackPanel>
-                        </ListViewItem>
-
-                        <ListViewItem Height="45" Padding="0" Selected="AccountSelect">
-                            <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Account" Margin="10"/>
-                            </StackPanel>
-                        </ListViewItem>
-
-                        <ListViewItem Height="45" Padding="0" Selected="AdminOvertimeSelect">
-                            <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="Timelapse" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Overtime" Margin="10"/>
-                            </StackPanel>
-                        </ListViewItem>
-
-                        <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
-                            <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="AccountPlus" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Evaluation" Margin="10"/>
-                            </StackPanel>
-                        </ListViewItem>
                         <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
                                 <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
@@ -653,6 +615,39 @@
 
 
 
+                        <ListViewItem Height="45" Padding="0" Selected="AdminOvertimeSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Timelapse" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Overtime" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="PayrollSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Payroll" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem  Height="45" Padding="0" Selected="AccountSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Account" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+
+                        <ListViewItem  Height="45" Padding="0" Selected="AppraisalSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="AccountPlus" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Evaluation" Margin="10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                   
+
+
+
                     </ListView>
                 </Grid>
 
@@ -660,16 +655,9 @@
                 <Grid x:Name="HRPanel">
                     <ListView Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18">
 
+                     
 
-                      
-                            <ListViewItem  Height="45" Padding="0" Selected="DashboardSelect"  >
-                                <StackPanel  Orientation="Horizontal" Margin="10 0">
-                                    <materialDesign:PackIcon Kind="ViewDashboard" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Dashboard" Margin="10"/>
-
-
-                                </StackPanel>
-                            </ListViewItem>
+                     
 
                             <ListViewItem Height="45" Padding="0" Selected="PayrollSelect">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
@@ -678,13 +666,39 @@
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="45" Padding="0" Selected="AppraisalSelect">
+                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=ReportDialog}"  Background="{x:Null}" BorderBrush="{x:Null}" Height="40">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Printer" Width="20" Height="20" Foreground="Gray" Margin="-10 0 15 0" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="Black" FontSize="20" FontWeight="Normal" Text="Reports"/>
+                            </StackPanel>
+
+                        </Button>
+
+                        <ListViewItem  Height="45" Padding="0" Selected="DashboardSelect"  >
+                            <StackPanel  Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="ViewDashboard" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Dashboard" Margin="10"/>
+
+
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem Height="45" Padding="0" Selected="AdminTrainingSelect">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Certificate" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Training" Margin="10"/>
+
+                            </StackPanel>
+                        </ListViewItem>
+
+
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="AppraisalSelect">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
                                     <materialDesign:PackIcon Kind="LibraryBooks" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                     <TextBlock Text="Appraisal" Margin="10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="45" Padding="0" Selected="AdminLeaveSelect">
+                        <ListViewItem Visibility="Collapsed" Height="45" Padding="0" Selected="AdminLeaveSelect">
                                 <StackPanel Orientation="Horizontal" Margin="10 0">
                                     <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                                     <TextBlock Text="Leave" Margin="10"/>

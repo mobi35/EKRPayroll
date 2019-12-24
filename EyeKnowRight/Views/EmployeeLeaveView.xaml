@@ -42,12 +42,16 @@
                     </Border>
                 </StackPanel>
 
-                <StackPanel x:Name="Paternity" Visibility="Collapsed"  Orientation="Horizontal">
-                    <TextBlock Foreground="Gray" Text=" Paternity Leave : "/>
+                <StackPanel Visibility="Collapsed"  x:Name="Paternity" Orientation="Horizontal">
+                    <TextBlock FontSize="20" Foreground="Gray"  Text=" Paternity Leave : "/>
                     <Border Background="Beige" CornerRadius="9" Padding="3">
-                        <TextBlock Text="{Binding PaternityLeave}"/>
+                        <TextBlock FontSize="20" Text="{Binding PaternityLeave}"/>
                     </Border>
                 </StackPanel>
+
+             
+                
+                
             </StackPanel>
             <StackPanel Orientation="Horizontal">
               

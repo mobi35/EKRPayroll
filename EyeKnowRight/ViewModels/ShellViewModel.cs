@@ -62,12 +62,12 @@ namespace EyeKnowRight.ViewModels
                     }
             }
                 float totalNumberOfEarnedLeave = (totalAccumulatedMinutes / 60.0f) * 0.02f ;
-                userMod.MaternityLeave = totalNumberOfEarnedLeave;
-                userMod.PaternityLeave = totalNumberOfEarnedLeave;
-                userMod.SickLeave = totalNumberOfEarnedLeave;
-                userMod.BereavementLeave = totalNumberOfEarnedLeave;
-                userMod.MedicalLeave = totalNumberOfEarnedLeave;
-                userMod.PersonalLeave = totalNumberOfEarnedLeave;
+                userMod.MaternityLeave += totalNumberOfEarnedLeave;
+                userMod.PaternityLeave += totalNumberOfEarnedLeave;
+                userMod.SickLeave += totalNumberOfEarnedLeave;
+                userMod.BereavementLeave += totalNumberOfEarnedLeave;
+                userMod.MedicalLeave += totalNumberOfEarnedLeave;
+                userMod.PersonalLeave += totalNumberOfEarnedLeave;
                 db.SaveChanges();
             }
 

@@ -121,15 +121,15 @@
             <TextBlock/>
             <!-- DATA GRID START -->
             <StackPanel Background="Beige">
-                <TextBlock HorizontalAlignment="Center"  FontSize="20" Text="User Evaluation"/>
+                <TextBlock HorizontalAlignment="Center"  FontSize="20" Text="Pending Evaluation"/>
             </StackPanel>
         <DataGrid Background="Beige" HorizontalScrollBarVisibility="Hidden" SelectionMode="Extended" x:Name="AppraisalGrid" Height="auto" 
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
                 <DataGridTextColumn FontSize="11" Width="100"  Header="Username" Binding="{Binding UserName}"/>
-              
-                <DataGridTemplateColumn Width="200">
+                    
+                    <DataGridTemplateColumn Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel  Orientation="Horizontal">

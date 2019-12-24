@@ -25,7 +25,7 @@ namespace EyeKnowRight.Views
         public ShellView()
         {
             InitializeComponent();
-            MainGrid.Children.Add(new DashboardView());
+            //MainGrid.Children.Add(new DashboardView());
 
 
 
@@ -128,8 +128,11 @@ namespace EyeKnowRight.Views
                 if (dtr.TimeIn == null)
                 {
                     TimeOutName.Visibility = Visibility.Collapsed;
-                }
-                else if (dtr.TimeOut > dtr.TimeIn)
+                }else if (dtr.TimeOut == null)
+                    {
+                        TimeInName.Visibility = Visibility.Collapsed;
+                    }
+                    else if (dtr.TimeOut > dtr.TimeIn)
                 {
                     TimeOutName.Visibility = Visibility.Collapsed;
                     TimeInName.Visibility = Visibility.Visible;
@@ -439,19 +442,11 @@ namespace EyeKnowRight.Views
                 }
 
 
-
                 DateTime? dateNow = DateTime.Now.Date;
                 var dtr = db.DailyTimeRecords.FirstOrDefault(a => a.UserName == user && a.DateTimeStamps == dateNow);
 
-                if (dtr.TimeIn == null)
-                {
-                    TimeOutName.Visibility = Visibility.Collapsed;
-                }
-                else if (dtr.TimeOut == null)
-                {
-                    TimeInName.Visibility = Visibility.Collapsed;
-                }
-                else if (dtr.TimeOut > dtr.TimeIn)
+                if (dtr.TimeOut != null) { 
+                if (dtr.TimeOut > dtr.TimeIn)
                 {
                     TimeOutName.Visibility = Visibility.Collapsed;
                     TimeInName.Visibility = Visibility.Visible;
@@ -461,7 +456,15 @@ namespace EyeKnowRight.Views
                     TimeOutName.Visibility = Visibility.Visible;
                     TimeInName.Visibility = Visibility.Collapsed;
                 }
-            }else
+                }else
+                {
+                    TimeOutName.Visibility = Visibility.Visible;
+                    TimeInName.Visibility = Visibility.Collapsed;
+                }
+
+
+            }
+            else
             {
                 MessageBox.Show("You can't time in on this date.");
             }

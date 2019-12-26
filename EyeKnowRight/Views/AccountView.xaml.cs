@@ -95,11 +95,12 @@ namespace EyeKnowRight
         {
           
             InitializeComponent();
+           
             string username = Application.Current.Properties["UserName"].ToString();
             var employeeModel = db.Employees.Where(a => a.UserName == username).FirstOrDefault();
 
             ResetGrid();
-
+           
             BirthDate.DisplayDateEnd = DateTime.Now.AddYears(-16);
 
         }

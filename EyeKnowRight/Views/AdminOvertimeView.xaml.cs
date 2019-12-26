@@ -26,12 +26,47 @@ namespace EyeKnowRight
     public partial class AdminOvertimeView : UserControl
     {
 
+        private void ResetGrid(dynamic item = null)
+        {
+            string username = Application.Current.Properties["UserName"].ToString();
+            var employeeModel = db.Employees.Where(a => a.UserName == username).FirstOrDefault();
+
+            if (item != null)
+            {
+                OvertimeGrid.ItemsSource = item;
+            }
+            else if (employeeModel.SupervisedDepartment != null )
+            {
+                List<Overtime> newOvertime = new List<Overtime>();
+                foreach (var user in db.Employees.ToList())
+                {
+                    foreach (var over in db.Overtimes.ToList())
+                    {
+                        if (user.Department == employeeModel.SupervisedDepartment && user.UserName == over.UserName)
+                        {
+                            newOvertime.Add(over);
+                         }
+                    }
+                   
+                }
+             
+                OvertimeGrid.ItemsSource = newOvertime;
+                
+            }
+            else
+            {
+                var data = db.Overtimes.ToList();
+                OvertimeGrid.ItemsSource = data;
+            }
+
+
+        }
+
         EyeKnowRightDB db = new EyeKnowRightDB();
         public AdminOvertimeView()
         {
             InitializeComponent();
-            var overtime = db.Overtimes.ToList();
-            OvertimeGrid.ItemsSource = overtime;
+            ResetGrid();
         }
 
         private void OvertimeClick(object sender, RoutedEventArgs e)
@@ -48,8 +83,13 @@ namespace EyeKnowRight
             var overtime = db.Overtimes.FirstOrDefault(a => a.OvertimePK == overtimePK);
             overtime.Status = "Accepted";
             db.SaveChanges();
-            var overtimeList = db.Overtimes.ToList();
-            OvertimeGrid.ItemsSource = overtimeList;
+            ResetGrid();
+
+            Notification notification = new Notification();
+            notification.NotificationToWho = overtime.UserName;
+            notification.Message = "Your overtime has been accepted. Congratulations";
+            db.Notifications.Add(notification);
+            db.SaveChanges();
         }
 
         private void OvertimeReject(object sender, RoutedEventArgs e)
@@ -58,8 +98,7 @@ namespace EyeKnowRight
             var overtime = db.Overtimes.FirstOrDefault(a => a.OvertimePK == overtimePK);
             overtime.Status = "Rejected";
             db.SaveChanges();
-            var overtimeList = db.Overtimes.ToList();
-            OvertimeGrid.ItemsSource = overtimeList;
+            ResetGrid();
         }
 
         private void SearchChanged(object sender, TextChangedEventArgs e)
@@ -75,12 +114,12 @@ namespace EyeKnowRight
                   a.UserName.StartsWith(text) || a.UserName.EndsWith(text) 
                ).ToList();
                 OvertimeGrid.ItemsSource = data;
+                ResetGrid(data);
             }
             else
             {
                 Magnifier.Visibility = Visibility.Visible;
-                var data = db.Overtimes.ToList();
-                OvertimeGrid.ItemsSource = data;
+                ResetGrid();
             }
         }
 

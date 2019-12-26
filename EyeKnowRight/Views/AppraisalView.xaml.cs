@@ -20,15 +20,41 @@ namespace EyeKnowRight.Views
     /// <summary>
     /// Interaction logic for AppraisalView.xaml
     /// </summary>
+    /// 
+
     public partial class AppraisalView : UserControl
     {
+
+        private void ResetGrid(dynamic item = null)
+        {
+            string username = Application.Current.Properties["UserName"].ToString();
+            var employeeModel = db.Employees.Where(a => a.UserName == username).FirstOrDefault();
+
+            if (item != null)
+            {
+                AppraisalGrid.ItemsSource = item;
+            }
+            else if (employeeModel.SupervisedDepartment != null)
+            {
+                var data = db.Employees.Where(a => a.Department == employeeModel.SupervisedDepartment && a.LastAppraiseDate == null).ToList();
+                AppraisalGrid.ItemsSource = data;
+            }
+            else
+            {
+                var data = db.Employees.Where(a => a.LastAppraiseDate == null).ToList();
+                AppraisalGrid.ItemsSource = data;
+            }
+
+
+        }
+
+
         EyeKnowRightDB db = new EyeKnowRightDB();
         public AppraisalView()
         {
             InitializeComponent();
             //DateTime? date = new DateTime(1900, 01, 01);
-            var appraisal = db.Employees.Where(a => a.LastAppraiseDate == null).ToList();
-            AppraisalGrid.ItemsSource = appraisal;
+            ResetGrid();
 
         }
 
@@ -111,8 +137,7 @@ namespace EyeKnowRight.Views
              var getUser = db.Employees.FirstOrDefault(a => a.UserName == user);
             getUser.LastAppraiseDate = DateTime.Now;
             db.SaveChanges();
-            var appraisal = db.Employees.Where(a => a.LastAppraiseDate == null).ToList();
-            AppraisalGrid.ItemsSource = appraisal;
+            ResetGrid();
         }
     }
 }

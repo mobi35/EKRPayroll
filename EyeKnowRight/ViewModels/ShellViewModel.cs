@@ -48,6 +48,28 @@ namespace EyeKnowRight.ViewModels
         public ShellViewModel()
         {
 
+            //Earning Leave
+            foreach (var userMod in db.Employees.ToList()) {
+                float totalAccumulatedMinutes = 0;
+                DateTime? dateNow = DateTime.Now.Date;
+            foreach (var earnLeave in db.DailyTimeRecords.Where(a => a.leaveEarned == false && a.DateTimeStamps < dateNow).ToList())
+            {
+                    if (userMod.UserName == earnLeave.UserName)
+                    {
+                        earnLeave.leaveEarned = true;
+                        db.SaveChanges();
+                        totalAccumulatedMinutes += (float)earnLeave.Accumulated;
+                    }
+            }
+                float totalNumberOfEarnedLeave = (totalAccumulatedMinutes / 60.0f) * 0.02f ;
+                userMod.MaternityLeave = totalNumberOfEarnedLeave;
+                userMod.PaternityLeave = totalNumberOfEarnedLeave;
+                userMod.SickLeave = totalNumberOfEarnedLeave;
+                userMod.BereavementLeave = totalNumberOfEarnedLeave;
+                userMod.MedicalLeave = totalNumberOfEarnedLeave;
+                userMod.PersonalLeave = totalNumberOfEarnedLeave;
+                db.SaveChanges();
+            }
 
             //TRAINING VIEW MODEL
             var trainingCount = db.EmployeeTrainings.Where(a => a.TrainingStatus == "Pending").ToList();
@@ -150,7 +172,7 @@ namespace EyeKnowRight.ViewModels
                 {
                     Payroll payroll = new Payroll();
                     payroll.StartPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 26);
-                    payroll.EndPayroll = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, 10);
+                    payroll.EndPayroll = new DateTime(DateTime.Now.AddMonths(1).Year, DateTime.Now.AddMonths(1).Month, 10);
                     payroll.IsActive = true;
                     
                     db.Payrolls.Add(payroll);

@@ -73,10 +73,13 @@ namespace EyeKnowRight
             if (leaveStack)
             {
                 MessageBox.Show("You have a leave on this date, you can't apply for overtime.");
+            }else if (OvertimeUntil.SelectedTime == null || OvertimeDate.SelectedDate == null)
+            {
+                MessageBox.Show("Please complete the fields");
             }
             else if (OvertimeDate.SelectedDate <= DateTime.Now)
             {
-                MessageBox.Show("No Past Dates");
+             
             } else if (   OvertimeUntil.SelectedTime <= newDt) {
                 MessageBox.Show("Choose date after 5pm");
             } else
@@ -104,8 +107,15 @@ namespace EyeKnowRight
                 db.Overtimes.Add(overtime);
                 db.SaveChanges();
 
+                    Notification notification = new Notification();
+                    notification.UserName = userName;
+                    notification.Message = userName + " has requested for an overtime on " + OvertimeDate.SelectedDate.Value.ToString("D") + " on " + OvertimeUntil.SelectedTime.Value.ToString("T");
+                    db.Notifications.Add(notification);
+                    db.SaveChanges();
 
-                var employeeOvertime = db.Overtimes.Where(a => a.UserName == userName).ToList();
+
+
+                    var employeeOvertime = db.Overtimes.Where(a => a.UserName == userName).ToList();
                 OvertimeGrid.ItemsSource = employeeOvertime;
                 }else
                 {

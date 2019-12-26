@@ -16,7 +16,7 @@ namespace EyeKnowRight.Models
         public bool IsRead { get; set; }
         public DateTime? NotifiedOn { get; set; }
 
-
+        public string NotificationToWho { get; set; }
 
     }
 }

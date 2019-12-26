@@ -25,15 +25,49 @@ namespace EyeKnowRight
     /// </summary>
     public partial class AdminLeaveView : UserControl
     {
-      
+
+
+        private void ResetGrid(dynamic item = null)
+        {
+            string username = Application.Current.Properties["UserName"].ToString();
+            var employeeModel = db.Employees.Where(a => a.UserName == username).FirstOrDefault();
+
+            if (item != null)
+            {
+                LeaveGrid.ItemsSource = item;
+            }
+            else if (employeeModel.SupervisedDepartment != null)
+            {
+                List<Leave> newLeave = new List<Leave>();
+                foreach (var user in db.Employees.ToList())
+                {
+                    foreach (var leave in db.Leaves.ToList())
+                    {
+                        if (user.Department == employeeModel.SupervisedDepartment && user.UserName == leave.UserName)
+                        {
+                            newLeave.Add(leave);
+                        }
+                    }
+                }
+
+                LeaveGrid.ItemsSource = newLeave;
+
+            }
+            else
+            {
+                var data = db.Leaves.ToList();
+                LeaveGrid.ItemsSource = data;
+            }
+
+
+        }
 
         EyeKnowRightDB db = new EyeKnowRightDB();
         public AdminLeaveView()
         {
             InitializeComponent();
-          //  var user = Application.Current.Properties["UserName"].ToString();
-            var leave = db.Leaves.ToList();
-            LeaveGrid.ItemsSource = leave;
+            //  var user = Application.Current.Properties["UserName"].ToString();
+            ResetGrid();
 
             
         }
@@ -97,7 +131,15 @@ namespace EyeKnowRight
                 user.MaternityLeave -= numberOfWorkingDays;
             }
             db.SaveChanges();
-           
+
+
+            Notification notification = new Notification();
+            notification.NotificationToWho = user.UserName;
+            notification.Message = "Your leave has been accepted. Congratulations";
+            db.Notifications.Add(notification);
+            db.SaveChanges();
+
+
         }
 
         private void LeaveReject(object sender, RoutedEventArgs e)
@@ -120,13 +162,12 @@ namespace EyeKnowRight
                   a.Status.StartsWith(text) || a.Status.EndsWith(text) ||
                   a.UserName.StartsWith(text) || a.UserName.EndsWith(text) 
                ).ToList();
-                LeaveGrid.ItemsSource = data;
+                ResetGrid(data);
             }
             else
             {
                 Magnifier.Visibility = Visibility.Visible;
-                var data = db.Leaves.ToList();
-                LeaveGrid.ItemsSource = data;
+                ResetGrid();
             }
         }
 

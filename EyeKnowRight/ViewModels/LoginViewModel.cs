@@ -118,6 +118,7 @@ namespace EyeKnowRight.ViewModels
                 {
 
                 employee.NumberOfTries = 0;
+                dbz.SaveChanges();
                      Application.Current.Properties["UserName"] = Username;
                     windowManager.ShowWindow(shellViewModel);
                 TryClose();

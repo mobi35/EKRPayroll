@@ -78,7 +78,7 @@
         </StackPanel>
         <!-- DATA GRID END -->
         <!-- ADD USER DIALOG BOX START -->
-        <materialDesign:DialogHost  IsOpen="False" x:Name="OvertimeDialog"  Margin="0,-126,0,-32"  >
+        <materialDesign:DialogHost  IsOpen="False" x:Name="OvertimeDialog" Opacity="0"  Margin="0,-126,0,-32"  >
             <materialDesign:DialogHost.DialogContent >
                     <StackPanel Margin="40">
 

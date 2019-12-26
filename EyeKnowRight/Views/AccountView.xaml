@@ -177,13 +177,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
-                <DataGrid.ItemContainerStyle >
-                    <Style TargetType="{x:Type DataGridRow}" >
-                        <EventSetter  Event="Control.MouseDoubleClick" Handler="Row_DoubleClick"/>
-                    </Style>
-                    
-                    
-                </DataGrid.ItemContainerStyle>
+             
             </DataGrid>
             <!-- DATA GRID END -->
         </StackPanel>
@@ -617,12 +611,26 @@
                             </StackPanel>
 
 
-                            <StackPanel Margin="-230 0 0 0" Width="400">
+                            <StackPanel Margin="-300 0 0 0" Width="400">
                                 <StackPanel Orientation="Horizontal" >
                                     <materialDesign:PackIcon Kind="HomeCircle"/>
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Hiring Date"/>
                                 </StackPanel>
                                 <TextBlock Text="{Binding DateRegistered, Mode=TwoWay, StringFormat='D'}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+
+                                </TextBlock>
+
+
+                            </StackPanel>
+
+
+
+                            <StackPanel Margin="-230 0 0 0" Width="400">
+                                <StackPanel Orientation="Horizontal" >
+                                    <materialDesign:PackIcon Kind="HomeCircle"/>
+                                    <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Supervisor "/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding SupervisedDepartment, Mode=TwoWay, StringFormat='D'}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 

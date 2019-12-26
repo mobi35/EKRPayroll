@@ -71,6 +71,33 @@
         </materialDesign:DialogHost>
 
 
+        <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="NotificationDialog" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+            <materialDesign:DialogHost.DialogContent >
+                <StackPanel Background="{x:Null}" Width="1000" Height="700" HorizontalAlignment="Center">
+
+                    <Button   HorizontalAlignment="Right" Width="50"  Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Background="{x:Null}" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon Foreground="Black" Kind="Close"/>
+                    </Button>
+
+                    <TextBlock HorizontalAlignment="Center" FontSize="20" Foreground="Gray" Text="Notification"/>
+                    <TextBlock/>
+                    <DataGrid  HorizontalScrollBarVisibility="Hidden" x:Name="NotificationGrid" SelectionMode="Extended" Height="320" Background="{x:Null}"
+                  EnableRowVirtualization="False" EnableColumnVirtualization="False"   
+                  AutoGenerateColumns="False" IsReadOnly="True"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn FontSize="11" Width="1000"  Header="Notification" Binding="{Binding Message,Mode=TwoWay}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+
+
+
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+
         <materialDesign:DialogHost Background="{x:Null}" IsOpen="False"  x:Name="ReportDialog" Opacity="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Background="{x:Null}" Width="250" Height="400" HorizontalAlignment="Center">
@@ -711,6 +738,14 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Settings" />
                             <TextBlock Text="Settings"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Foreground="Black" FontWeight="Normal" Click="Notification_Click" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="150" Style="{StaticResource MaterialDesignFlatButton}"  Tag="{Binding EmployeePK}"  Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=NotificationDialog}" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Bell" />
+                            <TextBlock Text="Notification"/>
+                            <TextBlock x:Name="NotificationCount" Margin="5 0 0 0" Background="Red" FontSize="14" Text="20"/>
                         </StackPanel>
                     </Button>
 

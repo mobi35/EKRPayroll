@@ -23,6 +23,5 @@ namespace EyeKnowRight.Models
         public DateTime? TimeOfTraining { get; set; }
 
         public string TrainingStatus { get; set; }
-
     }
 }

@@ -39,5 +39,7 @@ namespace EyeKnowRight.Models
     
         public string Remarks { get; set; }
 
+        public bool leaveEarned { get; set; }
+
     }
 }

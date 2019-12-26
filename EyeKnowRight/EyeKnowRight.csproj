@@ -200,49 +200,17 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Helper\PasswordBoxHelper.cs" />
-    <Compile Include="Migrations\201910271133500_NEWS.cs" />
-    <Compile Include="Migrations\201910271133500_NEWS.designer.cs">
-      <DependentUpon>201910271133500_NEWS.cs</DependentUpon>
+    <Compile Include="Migrations\201911282124158_xxxxc.cs" />
+    <Compile Include="Migrations\201911282124158_xxxxc.designer.cs">
+      <DependentUpon>201911282124158_xxxxc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910290452213_Added remainingLeave .cs" />
-    <Compile Include="Migrations\201910290452213_Added remainingLeave .designer.cs">
-      <DependentUpon>201910290452213_Added remainingLeave .cs</DependentUpon>
+    <Compile Include="Migrations\201911282128590_ihatethis.cs" />
+    <Compile Include="Migrations\201911282128590_ihatethis.designer.cs">
+      <DependentUpon>201911282128590_ihatethis.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911011622381_asd.cs" />
-    <Compile Include="Migrations\201911011622381_asd.designer.cs">
-      <DependentUpon>201911011622381_asd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911251759227_added overtime.cs" />
-    <Compile Include="Migrations\201911251759227_added overtime.designer.cs">
-      <DependentUpon>201911251759227_added overtime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911252017302_Added Holiday.cs" />
-    <Compile Include="Migrations\201911252017302_Added Holiday.designer.cs">
-      <DependentUpon>201911252017302_Added Holiday.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911281041299_new.cs" />
-    <Compile Include="Migrations\201911281041299_new.designer.cs">
-      <DependentUpon>201911281041299_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911281128083_training.cs" />
-    <Compile Include="Migrations\201911281128083_training.designer.cs">
-      <DependentUpon>201911281128083_training.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911281404167_Zxc.cs" />
-    <Compile Include="Migrations\201911281404167_Zxc.designer.cs">
-      <DependentUpon>201911281404167_Zxc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911281421121_asda.cs" />
-    <Compile Include="Migrations\201911281421121_asda.designer.cs">
-      <DependentUpon>201911281421121_asda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912111210122_supervised.cs" />
-    <Compile Include="Migrations\201912111210122_supervised.designer.cs">
-      <DependentUpon>201912111210122_supervised.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912111221205_dept.cs" />
-    <Compile Include="Migrations\201912111221205_dept.designer.cs">
-      <DependentUpon>201912111221205_dept.cs</DependentUpon>
+    <Compile Include="Migrations\201911282313161_Hahaha panis.cs" />
+    <Compile Include="Migrations\201911282313161_Hahaha panis.designer.cs">
+      <DependentUpon>201911282313161_Hahaha panis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
@@ -361,38 +329,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201910271133500_NEWS.resx">
-      <DependentUpon>201910271133500_NEWS.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911282124158_xxxxc.resx">
+      <DependentUpon>201911282124158_xxxxc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910290452213_Added remainingLeave .resx">
-      <DependentUpon>201910290452213_Added remainingLeave .cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911282128590_ihatethis.resx">
+      <DependentUpon>201911282128590_ihatethis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911011622381_asd.resx">
-      <DependentUpon>201911011622381_asd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911251759227_added overtime.resx">
-      <DependentUpon>201911251759227_added overtime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911252017302_Added Holiday.resx">
-      <DependentUpon>201911252017302_Added Holiday.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911281041299_new.resx">
-      <DependentUpon>201911281041299_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911281128083_training.resx">
-      <DependentUpon>201911281128083_training.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911281404167_Zxc.resx">
-      <DependentUpon>201911281404167_Zxc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911281421121_asda.resx">
-      <DependentUpon>201911281421121_asda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912111210122_supervised.resx">
-      <DependentUpon>201912111210122_supervised.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912111221205_dept.resx">
-      <DependentUpon>201912111221205_dept.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911282313161_Hahaha panis.resx">
+      <DependentUpon>201911282313161_Hahaha panis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -164,6 +164,15 @@ namespace EyeKnowRight
                         db.Leaves.Add(leave);
                         db.SaveChanges();
 
+
+                        Notification notification = new Notification();
+                        notification.NotificationToWho = db.Employees.FirstOrDefault(a => a.UserName == user).Department;
+                        notification.UserName = user;
+                        notification.Message = user+  " has requested for a leave on " + StartLeaveDate.SelectedDate.Value.ToString("D") + " until " + EndLeaveDate.SelectedDate.Value.ToString("D");
+                        db.Notifications.Add(notification);
+                        db.SaveChanges();
+
+
                         var leaveList = db.Leaves.Where(a => a.UserName == user).ToList();
 
                         LeaveGrid.ItemsSource = leaveList;

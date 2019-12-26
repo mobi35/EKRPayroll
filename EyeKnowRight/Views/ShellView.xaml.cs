@@ -26,10 +26,45 @@ namespace EyeKnowRight.Views
         {
             InitializeComponent();
             MainGrid.Children.Add(new DashboardView());
-           
+
+
+
+            try { 
                 var user  = Application.Current.Properties["UserName"].ToString();
                 var employee = db.Employees.FirstOrDefault(a => a.UserName == user);
                 UserNameText.Text = "Hi!, " + user;
+
+            
+                var getEmployeeDetails = db.Employees.FirstOrDefault(a => a.UserName == user);
+
+                List<Notification> notifList = new List<Notification>();
+
+                foreach (var item in db.Notifications.ToList())
+                {
+                    if (item.NotificationToWho == null)
+                    {
+                        var getUser = db.Employees.FirstOrDefault(a => a.UserName == item.UserName);
+
+                        if (getUser != null)
+                        {
+                            if (getUser.Department == getEmployeeDetails.SupervisedDepartment && item.IsRead == false)
+                            {
+                                notifList.Add(item);
+                            }
+                        }
+
+                    }
+                    else if (item.NotificationToWho == getEmployeeDetails.UserName && item.IsRead == false)
+                    {
+                        notifList.Add(item);
+                    }
+
+                }
+
+                NotificationCount.Text = notifList.ToList().Count().ToString();
+
+
+
 
                 EmployeeTraining.ItemsSource = db.EmployeeTrainings.Where(a => a.UserName == user).ToList();
 
@@ -104,6 +139,10 @@ namespace EyeKnowRight.Views
                     TimeOutName.Visibility = Visibility.Visible;
                     TimeInName.Visibility = Visibility.Collapsed;
                 }
+            }
+            }catch(Exception E)
+            {
+
             }
 
 
@@ -430,6 +469,42 @@ namespace EyeKnowRight.Views
 
            
 
+        }
+
+        
+
+        private void Notification_Click(object sender, RoutedEventArgs e)
+        {
+            var user = Application.Current.Properties["UserName"].ToString();
+            var getEmployeeDetails = db.Employees.FirstOrDefault(a => a.UserName == user);
+
+            List<Notification> notifList = new List<Notification>();
+
+            foreach (var item in db.Notifications.ToList()){
+                if (item.NotificationToWho == null)
+                {
+                    var getUser = db.Employees.FirstOrDefault(a => a.UserName == item.UserName);
+
+                    if (getUser != null)
+                    {
+                        if(getUser.Department == getEmployeeDetails.SupervisedDepartment) { 
+                        notifList.Add(item);
+                        item.IsRead = true;
+                            db.SaveChanges();
+                        }
+                    }
+
+
+                }else if(item.NotificationToWho == getEmployeeDetails.UserName)
+                {
+                    notifList.Add(item);
+                    item.IsRead = true;
+                    db.SaveChanges();
+                }
+               
+            }
+
+            NotificationGrid.ItemsSource = notifList;
         }
 
         private void TimeOut(object sender, RoutedEventArgs e)

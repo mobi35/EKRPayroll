@@ -23,16 +23,7 @@
             </Button>
 
 
-            <StackPanel  materialDesign:HintAssist.Hint="     Search user" HorizontalAlignment="Right" Margin="0 -30 20 0" Width="200">
-              
-                <Border  Width="200"  Height="25"  CornerRadius="4" Background="{x:Null}" BorderBrush="Black" BorderThickness="1">
-                    <TextBox Padding="2 0 0 0"   x:Name="SearchBox"  Width="200"  Height="25" ></TextBox>
-                </Border>
-            </StackPanel>
-
-            <Grid>
-                <materialDesign:PackIcon HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="Magnifier" Margin="0 -30 200 0" Foreground="Gray" Kind="Magnify"/>
-            </Grid>
+          
             <TextBlock  FontSize="100" Text="{Binding Bagwis , Mode=TwoWay}"></TextBlock>
 
         </StackPanel>
@@ -42,7 +33,7 @@
                   EnableRowVirtualization="False" EnableColumnVirtualization="False"   
                   AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
-                <DataGridTextColumn FontSize="11" Width="130"  Header="Reason for Overtime" Binding="{Binding Reason}"/>
+                <DataGridTextColumn FontSize="11" Width="140"  Header="Reason for Overtime" Binding="{Binding Reason}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Overtime Until" Binding="{Binding UntilWhatTime}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Date" Binding="{Binding DateOfOvertime}"/>
                 <DataGridTextColumn FontSize="11" Width="130"  Header="Status" Binding="{Binding Status}"/>

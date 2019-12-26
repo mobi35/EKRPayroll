@@ -688,6 +688,7 @@ namespace EyeKnowRight
             {
                 var selectEmployee = db.Employees.First(a => a.EmployeePK == id);
                 selectEmployee.IsActive = true;
+                selectEmployee.NumberOfTries = 0;
                 selectEmployee.Status = "Active";
                 db.SaveChanges();
             }

@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:EyeKnowRight.Views"
          xmlns:locals="clr-namespace:EyeKnowRight"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Height="700" Width="1080" ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" WindowStyle="None">
+        mc:Ignorable="d" Height="700" Width="1080" ResizeMode="CanMinimize" 
+        WindowStartupLocation="CenterScreen"  WindowStyle="None" WindowState="Maximized">
 
   
     <Window.Resources>
-        <Storyboard x:Key="CloseMenu">
+        <Storyboard  x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
@@ -33,7 +33,7 @@
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonClose">
+        <EventTrigger RoutedEvent="ButtonBase.Click"  SourceName="ButtonClose">
             <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpen">
@@ -512,8 +512,8 @@
 
                         <ListViewItem Height="45" Padding="0" Selected="EmployeeOvertimeSelect">
                             <StackPanel Orientation="Horizontal" Margin="10 0">
-                                <materialDesign:PackIcon Kind="Airplane" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
-                                <TextBlock Text="Leave" Margin="10"/>
+                                <materialDesign:PackIcon Kind="Timer" Width="20" Height="20" Foreground="#FFD41515" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Overtime" Margin="10"/>
 
                             </StackPanel>
                         </ListViewItem>
@@ -588,8 +588,8 @@
                     <Button Click="LogoutAccount" Margin="5 0 0 0" HorizontalAlignment="Left"  Width="100" Style="{StaticResource MaterialDesignFlatButton}">Logout</Button>
                 </StackPanel>
             </StackPanel>
-            <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Click="ClosePanel">
-                <materialDesign:PackIcon Kind="Close"/>
+            <Button x:Name="ButtonClose" HorizontalAlignment="Right" Foreground="Black" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" Click="ClosePanel">
+                <materialDesign:PackIcon Kind="ArrowLeft"/>
             </Button>
         </Grid>
     </Grid>

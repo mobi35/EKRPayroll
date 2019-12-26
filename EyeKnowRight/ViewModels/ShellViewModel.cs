@@ -240,10 +240,12 @@ namespace EyeKnowRight.ViewModels
                     deduction.TotalSalary = deduction.AllAccumulatedTimeAddition;
                     deduction.PayrollPK = db.Payrolls.FirstOrDefault(a => a.StartPayroll == start && a.EndPayroll == end).PayrollPK;
                     deduction.UserName = user.UserName;
-                    if (start.Value.AddDays(-1).Date.Day == DateTime.Now.Day )
+                    if (end.Value.AddDays(1).Date.Day == 26 )
                     {
-                        deduction.SSSDeduction = 500.0;
+                        deduction.SSSDeduction = 1800;
                         deduction.PagibigDeduction = 100;
+                        deduction.TotalSalary -= 1800;
+                        deduction.TotalSalary -= 100;
                     }
                     deduction.BasicSalary = user.Salary; 
                     db.Deductionss.Add(deduction);

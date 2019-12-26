@@ -95,7 +95,7 @@ namespace EyeKnowRight.ViewModels
 
             else if (userModel != null && employee == null)
             {
-                if (userModel.NumberOfTries > 5)
+                if (userModel.NumberOfTries > 5 && userModel.Position != "Admin")
                 {
                     passwordValidation = "Maximum of 5 tries reached (Account Locked)";
                     NotifyOfPropertyChange("PasswordValidation");
@@ -107,7 +107,7 @@ namespace EyeKnowRight.ViewModels
                     NotifyOfPropertyChange("PasswordValidation");
                 }
             }
-            else if (userModel.NumberOfTries > 5)
+            else if (userModel.NumberOfTries > 5 && userModel.Position != "Admin")
             {
 
                 passwordValidation = "Maximum of 5 tries reached (Account Locked)";

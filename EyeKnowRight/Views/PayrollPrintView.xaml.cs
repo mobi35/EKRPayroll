@@ -43,6 +43,7 @@ namespace EyeKnowRight.Views
                     UserName = l.FirstOrDefault().id.UserName,
                     LateDeduction = l.FirstOrDefault().id.LateDeduction,
                     BasicSalary = l.FirstOrDefault().id.BasicSalary,
+                    Pagibig = l.FirstOrDefault().id.PagibigDeduction,
                     Accumulated = l.FirstOrDefault().id.AllAccumulatedTimeAddition,
                     SSS = l.FirstOrDefault().id.SSSDeduction,
                     TotalSalary = l.FirstOrDefault().id.TotalSalary,

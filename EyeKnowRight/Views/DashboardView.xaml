@@ -12,11 +12,12 @@
 
 
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel  >
             <TextBlock x:Name="Bagwis" Text=""/>
-            <StackPanel Width="300" >
-                <TextBlock HorizontalAlignment="Center"  Text="Number of user per each department"/>
-                <Wpf:PieChart Height="150" x:Name="DepartmentChart" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
+            <StackPanel Margin="0 0 2 20" >
+                <TextBlock  Margin="70 0 0 0" Text="Number of user per each department"/>
+                <TextBlock Margin="20 0 0 0"  HorizontalAlignment="Center"  Text="Top Evaluated Employees"/>
+                <Wpf:PieChart Height="200"  x:Name="DepartmentChart" VerticalAlignment="Top" Width="350" HorizontalAlignment="Left">
                     <Wpf:PieChart.Series>
                         <Wpf:PieSeries LabelPoint="{Binding PointLabel}" DataLabels="True" Title="Ventes" Values="40"  />
                         <Wpf:PieSeries LabelPoint="{Binding PointLabel}" DataLabels="True" Title="ZXC" Values="40"  />
@@ -25,19 +26,19 @@
                     </Wpf:PieChart.Series>
                 </Wpf:PieChart>
             </StackPanel>
-            <StackPanel Width="400">
-                <TextBlock HorizontalAlignment="Center"  Text="Top Evaluated Employees"/>
-                <Wpf:CartesianChart  x:Name="AppraisalChart" Margin="0,30,-30,0" Height="150">
+            <StackPanel>
+              
+                <Wpf:CartesianChart Width="500"  x:Name="AppraisalChart" Margin="0,-200,-30,0" Height="150">
                 </Wpf:CartesianChart>
             </StackPanel>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom"  Orientation="Horizontal">
             
-            <StackPanel Width="350" >
+            <StackPanel  >
                 <TextBlock HorizontalAlignment="Center"  Text="Total Leave of user"/>
                 <TextBlock Text=""/>
-                <Wpf:PieChart Margin="0 0 0 260"  Height="150" x:Name="LeaveChart" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
+                <Wpf:PieChart Margin="50 0 0 250"  Height="200" x:Name="LeaveChart" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
                     <Wpf:PieChart.Series>
                         <Wpf:PieSeries Title="aaa" Values="40" />
                         <Wpf:PieSeries Title="sdasd" Values="40" />
@@ -47,10 +48,10 @@
                 </Wpf:PieChart>
             </StackPanel>
 
-            <StackPanel Width="430" >
+            <StackPanel >
                 <TextBlock HorizontalAlignment="Center"  Text="Top Performing Employees"/>
                 <TextBlock Text=""/>
-                <Wpf:CartesianChart Width="400" x:Name="TopEmployee"  Height="150">
+                <Wpf:CartesianChart Width="550" x:Name="TopEmployee"  Height="150">
                     <Wpf:CartesianChart.AxisX>
                         <Wpf:Axis Title="Month" FontSize="10" Labels="{Binding TotalPerformingLabel}"></Wpf:Axis>
                     </Wpf:CartesianChart.AxisX>
@@ -69,7 +70,7 @@
             <StackPanel  >
                 <TextBlock HorizontalAlignment="Center"  Text="Total overtime by month"/>
                 <TextBlock Text=""/>
-                <Wpf:CartesianChart Margin="53 0 0 20"  Height="150" x:Name="TotalOvertime" VerticalAlignment="Top" Width="291" HorizontalAlignment="Right">
+                <Wpf:CartesianChart Margin="53 0 0 20"  Height="150" x:Name="TotalOvertime" VerticalAlignment="Top" Width="400" HorizontalAlignment="Right">
                     <Wpf:CartesianChart.AxisX>
                         <Wpf:Axis Title="Month" FontSize="10" Labels="{Binding TotalAbsenceLabel}"></Wpf:Axis>
                     </Wpf:CartesianChart.AxisX>
@@ -79,7 +80,7 @@
             <StackPanel  >
                 <TextBlock HorizontalAlignment="Center"  Text="Total No. Absence by month"/>
                 <TextBlock Text=""/>
-                <Wpf:CartesianChart Margin="45 0 0 20"  Height="150" x:Name="TotalAbsence" VerticalAlignment="Top" Width="320" HorizontalAlignment="Right">
+                <Wpf:CartesianChart Margin="45 0 0 20"  Height="150" x:Name="TotalAbsence" VerticalAlignment="Top" Width="400" HorizontalAlignment="Right">
                     <Wpf:CartesianChart.AxisX>
                         <Wpf:Axis Title="Month" FontSize="10" Labels="{Binding TotalAbsenceLabel}"></Wpf:Axis>
                     </Wpf:CartesianChart.AxisX>

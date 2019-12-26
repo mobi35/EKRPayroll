@@ -101,6 +101,13 @@ namespace EyeKnowRight
             int trainingPK = (int)((Button)sender).Tag;
             var training = db.EmployeeTrainings.FirstOrDefault(a => a.EmployeeTrainingPK == trainingPK);
             training.TrainingStatus = "Completed";
+
+            Notification notification = new Notification();
+            notification.NotificationToWho = training.UserName;
+            notification.Message = "You have completed the " + training.Training + " training. Congratulations";
+            db.Notifications.Add(notification);
+
+
             db.SaveChanges();
             var trainingList = db.EmployeeTrainings.ToList();
             EmployeeTraining.ItemsSource = trainingList;
@@ -114,6 +121,11 @@ namespace EyeKnowRight
             db.SaveChanges();
             var trainingList = db.EmployeeTrainings.ToList();
             EmployeeTraining.ItemsSource = trainingList;
+
+            Notification notification = new Notification();
+            notification.NotificationToWho = training.UserName;
+            notification.Message = "You have failed the " + training.Training + " training. Congratulations";
+            db.Notifications.Add(notification);
 
         }
 

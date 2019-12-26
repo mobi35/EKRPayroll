@@ -46,14 +46,33 @@ namespace EyeKnowRight.Views
                     Pagibig = l.FirstOrDefault().id.PagibigDeduction,
                     Accumulated = l.FirstOrDefault().id.AllAccumulatedTimeAddition,
                     SSS = l.FirstOrDefault().id.SSSDeduction,
+                    TIN = l.FirstOrDefault().id.TinDeduction,
                     TotalSalary = l.FirstOrDefault().id.TotalSalary,
                     PayrollStart = l.FirstOrDefault().forId.StartPayroll,
                     PayrollEnd = l.FirstOrDefault().forId.EndPayroll
 
                 }).ToList();
 
+            var otherJoin = deductionsJoin.Join(db.Employees, id => id.UserName, forId => forId.UserName, (id, forId) => new { id = id, forId = forId }).Where(a => a.id.UserName == a.forId.UserName).GroupBy(a => a.id.UserName)
+                .Select(l => new
+                {
+                    PayrollViewKey = l.Key,
+                    UserName = l.FirstOrDefault().id.UserName,
+                    LateDeduction = l.FirstOrDefault().id.LateDeduction,
+                    BasicSalary = l.FirstOrDefault().id.BasicSalary,
+                    Pagibig = l.FirstOrDefault().id.Pagibig,
+                    Accumulated = l.FirstOrDefault().id.Accumulated,
+                    SSS = l.FirstOrDefault().id.SSS,
+                    TIN = l.FirstOrDefault().id.TIN,
+                    TotalSalary = l.FirstOrDefault().id.TotalSalary,
+                    PayrollStart = l.FirstOrDefault().id.PayrollStart,
+                    PayrollEnd = l.FirstOrDefault().id.PayrollEnd,
+                    FirstName = l.FirstOrDefault().forId.FirstName,
+                    LastName = l.FirstOrDefault().forId.LastName
+                }).ToList();
+
             ReportViewerDemo.Reset();
-            DataTable dt = ToDataTable(deductionsJoin);
+            DataTable dt = ToDataTable(otherJoin);
             ReportDataSource ds = new ReportDataSource("dataset", dt);
             ReportViewerDemo.LocalReport.DataSources.Add(ds);
             ReportViewerDemo.LocalReport.ReportEmbeddedResource = "EyeKnowRight.Reports.PayrollReport.rdlc";

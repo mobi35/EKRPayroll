@@ -6,22 +6,22 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.43576in</Width>
+              <Width>1.03708in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.34549in</Width>
+              <Width>1.07118in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.34549in</Width>
+              <Width>1.05903in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.7066in</Width>
+              <Width>1.43056in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.16493in</Width>
+              <Width>1.03472in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.34549in</Width>
+              <Width>1.21528in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -37,8 +37,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Date Time Stamps</Value>
-                              <Style />
+                              <Value>Date </Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -50,6 +53,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -68,7 +72,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Time In</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -80,6 +87,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -98,7 +106,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Time Out</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -110,6 +121,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -128,7 +140,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Accumulated</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -140,6 +155,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -158,7 +174,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Late</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -170,6 +189,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -188,7 +208,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Remarks</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -200,6 +223,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -322,7 +346,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>AccumulatedString</rd:DefaultName>
@@ -352,7 +378,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>LateString</rd:DefaultName>
@@ -382,7 +410,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Remarks</rd:DefaultName>
@@ -425,9 +455,9 @@
         </TablixRowHierarchy>
         <DataSetName>attendance</DataSetName>
         <Top>0.49875in</Top>
-        <Left>0.39806in</Left>
+        <Left>0.27306in</Left>
         <Height>0.61458in</Height>
-        <Width>8.34376in</Width>
+        <Width>6.84785in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -435,13 +465,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>1.94792in</Height>
+    <Height>1.40625in</Height>
     <Style />
   </Body>
-  <Width>9.51265in</Width>
+  <Width>7.63765in</Width>
   <Page>
     <PageHeader>
-      <Height>1.61333in</Height>
+      <Height>1.67583in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -449,7 +479,7 @@
           <Source>Embedded</Source>
           <Value>ekr</Value>
           <Sizing>Fit</Sizing>
-          <Left>2.49591in</Left>
+          <Left>2.12091in</Left>
           <Height>0.95833in</Height>
           <Width>4.52083in</Width>
           <Style>
@@ -478,7 +508,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>0.96402in</Top>
-          <Left>2.49591in</Left>
+          <Left>2.12091in</Left>
           <Height>0.27083in</Height>
           <Width>4.4875in</Width>
           <ZIndex>1</ZIndex>
@@ -499,7 +529,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!UserName.Value, "attendance")</Value>
+                  <Value>=First(Fields!FirstName.Value, "fullName") &amp; " " &amp; First(Fields!LastName.Value, "fullName")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -508,7 +538,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox12</rd:DefaultName>
           <Top>1.33555in</Top>
-          <Left>4.17647in</Left>
+          <Left>3.80147in</Left>
           <Height>0.25in</Height>
           <Width>2.41667in</Width>
           <ZIndex>2</ZIndex>
@@ -529,7 +559,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Username : </Value>
+                  <Value>Full Name: </Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -538,9 +568,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox12</rd:DefaultName>
           <Top>1.33555in</Top>
-          <Left>2.49591in</Left>
+          <Left>2.62091in</Left>
           <Height>0.25in</Height>
-          <Width>2.41667in</Width>
+          <Width>0.88542in</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -559,10 +589,47 @@
         </Border>
       </Style>
     </PageHeader>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <PageFooter>
+      <Height>1in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox9">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals.PageNumber &amp; " of " &amp; Globals.TotalPages</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox8</rd:DefaultName>
+          <Top>0.375in</Top>
+          <Left>4.00633in</Left>
+          <Height>0.25in</Height>
+          <Width>1in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -615,6 +682,34 @@
         <rd:DataSetName>EKRDataset</rd:DataSetName>
         <rd:SchemaPath>C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\Reports\EKRDataset.xsd</rd:SchemaPath>
         <rd:TableName>Attendance</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="fullName">
+      <Query>
+        <DataSourceName>EKRDataset</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="FirstName">
+          <DataField>FirstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LastName">
+          <DataField>LastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MiddleName">
+          <DataField>MiddleName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>EKRDataset</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\Reports\EKRDataset.xsd</rd:SchemaPath>
+        <rd:TableName>fullName</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

@@ -79,7 +79,7 @@ namespace EyeKnowRight
             }
             else if (employeeModel.SupervisedDepartment != null)
             {
-                var data = db.Employees.Where(a => a.Department == employeeModel.SupervisedDepartment).ToList();
+                var data = db.Employees.Where(a => a.Department == employeeModel.SupervisedDepartment && a.Position != "Admin" && a.UserName != employeeModel.UserName).ToList();
                 EmployeeGrid.ItemsSource = data;
             }
             else
@@ -186,7 +186,7 @@ namespace EyeKnowRight
                 City_ValidationMsg.Visibility = Visibility.Collapsed;
             }
 
-            if (BirthDate.SelectedDate.ToString() == "")
+            if (BirthDate.SelectedDate.ToString() == "" && Mode.Text == "Add")
             {
                 numberOfWrong++;
                 StepChangeVisibility(1);
@@ -210,7 +210,7 @@ namespace EyeKnowRight
                 FirstName_ValidationMsg.Visibility = Visibility.Collapsed;
             }
 
-            if (ImageName.Text == "")
+            if (ImageName.Text == "" && Mode.Text == "Add")
             {
                 numberOfWrong++;
                 StepChangeVisibility(2);
@@ -395,6 +395,8 @@ namespace EyeKnowRight
         }
             private void AddUser(object sender, RoutedEventArgs e)
         {
+
+           
             FirstName.IsEnabled = true;
             MiddleName.IsEnabled = true;
             LastName.IsEnabled = true;
@@ -520,7 +522,10 @@ namespace EyeKnowRight
 
                 }
                 EmployeePK.Text = employeeId.ToString();
-                Mode.Text = "Edit"; 
+                Mode.Text = "Edit";
+                UploadImageButton.Visibility = Visibility.Collapsed;
+                BirthDate.Visibility = Visibility.Collapsed;
+                StepChangeVisibility(1);
             }
         }
 
@@ -558,7 +563,15 @@ namespace EyeKnowRight
             empTrain.TimeOfTraining = TrainingTime.SelectedTime;
             empTrain.TrainingStatus = "Pending";
                 db.EmployeeTrainings.Add(empTrain);
-            db.SaveChanges();
+
+                Notification notification = new Notification();
+                notification.NotificationToWho = empTrain.UserName;
+                notification.Message = "You have a new training (" +  empTrain.Training +" ) on " + empTrain.DateOfTraining;
+                db.Notifications.Add(notification);
+
+                db.SaveChanges();
+
+
 
              TrainingList.ItemsSource = db.EmployeeTrainings.Where(a => a.UserName == employee.UserName).ToList();
 
@@ -582,7 +595,20 @@ namespace EyeKnowRight
 
             }
 
+       
 
+      private void RemoveDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = DepartmentUserName.Text;
+
+            var employee = db.Employees.FirstOrDefault(a => a.UserName == userName);
+
+            employee.SupervisedDepartment = null;
+          
+            db.SaveChanges();
+            ResetGrid();
+
+        }
         private void AddDepartment_Click(object sender, RoutedEventArgs e)
         {
             string userName = DepartmentUserName.Text;
@@ -591,6 +617,7 @@ namespace EyeKnowRight
 
             employee.SupervisedDepartment = DepartmentList.Text;
             db.SaveChanges();
+            ResetGrid();
 
         }
         
@@ -598,9 +625,14 @@ namespace EyeKnowRight
 
             private void EditUser(object sender, RoutedEventArgs e)
         {
+
+
             StepChangeVisibility(1);
             if (sender != null)
             {
+
+              
+
                 int employeeId = Int32.Parse(EmployeePK.Text);
 
                 var employee = db.Employees.FirstOrDefault(a => a.EmployeePK == employeeId);
@@ -626,6 +658,8 @@ namespace EyeKnowRight
                 }
                 db.SaveChanges();
                 ResetGrid();
+
+               
             }
         }
         int step = 1;
@@ -771,7 +805,7 @@ namespace EyeKnowRight
                     db.SaveChanges();
 
                     UpdateDailyTimeRecord(UserName.Text, addNew.DaysContract);
-
+               
                     MaterialDesign.IsOpen = true;
                 }
                 else if (Mode.Text == "Edit")
@@ -796,22 +830,22 @@ namespace EyeKnowRight
                         employee.LastName = LastName.Text;
                         employee.Email = Email.Text;
                         employee.Password = Password.Password;
-                        employee.Address = Street.Text + ", " + City.Text;
+        
                         employee.BirthDate = BirthDate.SelectedDate;
                         employee.Position = Position.Text;
-                        employee.PersonalLeave = Int32.Parse(PersonalLeave.Text);
+                        employee.PersonalLeave = float.Parse(PersonalLeave.Text);
                         
-                        employee.SickLeave = Int32.Parse(SickLeave.Text);
+                        employee.SickLeave = float.Parse(SickLeave.Text);
                         if (employee.Gender == "Male")
                         {
-                            employee.PaternityLeave = Int32.Parse(PaternityLeave.Text);
+                            employee.PaternityLeave = float.Parse(PaternityLeave.Text);
                         }
                         else
                         {
-                            employee.MaternityLeave = Int32.Parse(MaternityLeave.Text);
+                            employee.MaternityLeave = float.Parse(MaternityLeave.Text);
                         }
-                        employee.BereavementLeave = Int32.Parse(BereavementLeave.Text);
-                        employee.MedicalLeave = Int32.Parse(MedicalLeave.Text);
+                        employee.BereavementLeave = float.Parse(BereavementLeave.Text);
+                        employee.MedicalLeave = float.Parse(MedicalLeave.Text);
                         employee.Department = Department.Text;
                         employee.SSSNumber = SSSNumber.Text;
                         employee.PagibigNumber = PagibigNumber.Text;
@@ -829,7 +863,7 @@ namespace EyeKnowRight
                     }
                 }
                 var data = db.Employees.ToList();
-                ResetGrid();
+             
 
 
 
@@ -842,10 +876,6 @@ namespace EyeKnowRight
           Password.Password = "";
             Street.Text = "";
                 City.Text = "";
-           BirthDate.SelectedDate = null;
-            MaritalStatus.Text = "";
-          Position.Text = "";
-    
        
            Department.Text = "";
           
@@ -854,9 +884,9 @@ namespace EyeKnowRight
              TINNumber.Text = "";
          
            Salary.Text = "";
-            JobTitle.Text = "";
+     
             UserName.Text = "";
-
+            ResetGrid();
         }
        
 
@@ -884,6 +914,8 @@ namespace EyeKnowRight
             StepChangeVisibility(1);
             DataContext = null;
             Mode.Text = "Add";
+            UploadImageButton.Visibility = Visibility.Visible;
+            BirthDate.Visibility = Visibility.Visible;
         }
 
         private void DoneClose(object sender, RoutedEventArgs e)

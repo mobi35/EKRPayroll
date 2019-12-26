@@ -6,25 +6,25 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.88194in</Width>
+              <Width>1.04051in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.88194in</Width>
+              <Width>1.04051in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.88194in</Width>
+              <Width>1.04051in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.88194in</Width>
+              <Width>1.04051in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.88194in</Width>
+              <Width>1.04051in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.88194in</Width>
+              <Width>1.04051in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.15857in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -41,7 +41,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Firstname</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -53,6 +56,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -71,7 +75,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Middle Name</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -83,6 +90,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -101,7 +109,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Last Name</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -113,6 +124,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -131,7 +143,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Status</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -143,6 +158,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -161,7 +177,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Position</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -173,6 +192,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -191,7 +211,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Salary</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -203,6 +226,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -221,7 +245,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Department</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#48daeb</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -233,6 +260,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#343434</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -485,7 +513,7 @@
         <Top>0.26958in</Top>
         <Left>0.35292in</Left>
         <Height>0.47916in</Height>
-        <Width>6.29164in</Width>
+        <Width>7.40166in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -493,10 +521,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>5.33333in</Height>
+    <Height>1.10416in</Height>
     <Style />
   </Body>
-  <Width>7.75917in</Width>
+  <Width>8.16542in</Width>
   <Page>
     <PageHeader>
       <Height>1.61333in</Height>
@@ -558,27 +586,29 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1in</Height>
+      <Height>0.59375in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox11">
+        <Textbox Name="Textbox8">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>1</Value>
+                  <Value>=Globals.PageNumber &amp; " of " &amp; Globals.TotalPages</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
-          <rd:DefaultName>Textbox11</rd:DefaultName>
-          <Top>0.08209in</Top>
-          <Left>6.75917in</Left>
+          <rd:DefaultName>Textbox8</rd:DefaultName>
+          <Top>0.125in</Top>
+          <Left>3.50458in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <Style>
@@ -600,8 +630,6 @@
     </PageFooter>
     <PageHeight>13in</PageHeight>
     <PageWidth>8.4in</PageWidth>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>
     <BottomMargin>1in</BottomMargin>
     <Style />

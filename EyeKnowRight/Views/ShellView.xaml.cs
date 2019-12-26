@@ -661,7 +661,23 @@ namespace EyeKnowRight.Views
 
             }else if (typeOfReports == "Assesment Reports")
             {
-                var assesmentList = db.Evaluations.Where(a => a.DateAppraise >= startDate && a.DateAppraise <= endDate).ToList();
+                var assesmentList = db.Evaluations.Join(db.Employees, primaryID => primaryID.UserName, foreignID => foreignID.UserName, (primaryID,foreignID) => new { ID = primaryID, FORID = foreignID }).Where(a => a.ID.UserName == a.FORID.UserName && a.ID.DateAppraise >= startDate  && a.ID.DateAppraise <= endDate)
+                    .GroupBy(x => x.ID.UserName)
+                .Select(l => new
+                {
+                    AssesmentID = l.Key,
+                    UserName = l.FirstOrDefault().ID.UserName,
+                    DateAppraise = l.FirstOrDefault().ID.DateAppraise,
+                    TotalScore = l.Sum(a => a.ID.TotalScore) / l.Count(),
+                    NumberOfRate = l.Count(),
+                    Comment = l.FirstOrDefault().ID.Comment,
+                    Remarks = l.FirstOrDefault().ID.Remarks,
+                    FirstName = l.FirstOrDefault().FORID.FirstName,
+                    LastName = l.FirstOrDefault().FORID.LastName
+                }).ToList()
+                ;
+
+
                 MainAssesmentReportsView assesmentReports = new MainAssesmentReportsView(assesmentList.Take(numberOfEntries).ToList(), daterep);
                 assesmentReports.Show();
             }else if (typeOfReports == "Employee Masterlist")
@@ -669,6 +685,7 @@ namespace EyeKnowRight.Views
                 var employeeList = db.Employees.Where(a => a.DateRegistered >= startDate && a.DateRegistered <= endDate);
                 MainEmployeeMasterlistView mainEmployee = new MainEmployeeMasterlistView(employeeList.Take(numberOfEntries).ToList(), daterep);
                 mainEmployee.Show();
+           
             }else if (typeOfReports == "Top Performing Employees")
             {
                 var employees = db.Employees.ToList();
@@ -686,11 +703,13 @@ namespace EyeKnowRight.Views
                             accumulated += dtr.Accumulated;
                             if (dtr.TimeIn != null && dtr.TimeOut != null)
                                 totalAttendance++;
+
+
                         }
                     }
                     topPerformingEmp.Add(new TopPerformingEmployees
                     {
-                        UserName = emp.UserName,
+                        UserName = emp.FirstName + " " + emp.LastName,
                         TotalAttendance = totalAttendance,
                         TotalAccumulated = accumulated,
                         TotalLate = empLate

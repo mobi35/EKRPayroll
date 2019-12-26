@@ -742,13 +742,8 @@ C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\A
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\LoginView.baml
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\ShellView.baml
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.g.resources
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.Test.resources
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.AddedPersonalLeave.resources
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.ZXXZ.resources
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Properties.Resources.resources
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.GenerateResource.cache
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.cache
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.compiled
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.csproj.CopyComplete
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.exe
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
@@ -760,13 +755,8 @@ C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\D
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\DailyAttendanceReport.baml
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\AppraisalView.g.cs
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\AppraisalView.baml
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._2.resources
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.asd.resources
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._123.resources
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations._12.resources
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EvaluationPrintView.g.cs
 C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EvaluationPrintView.baml
-C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.zxc.resources
 C:\Users\ADICHAN\Desktop\Clown\ekrpayroll\EyeKnowRight\bin\Debug\App.config
 C:\Users\ADICHAN\Desktop\Clown\ekrpayroll\EyeKnowRight\bin\Debug\EyeKnowRight.exe.config
 C:\Users\ADICHAN\Desktop\Clown\ekrpayroll\EyeKnowRight\bin\Debug\EyeKnowRight.exe
@@ -2423,3 +2413,24 @@ C:\Users\ADICHAN\Desktop\wew\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.cspr
 C:\Users\ADICHAN\Desktop\wew\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.exe
 C:\Users\ADICHAN\Desktop\wew\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.pdb
 C:\Users\ADICHAN\Desktop\wew\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.meme.resources
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\bin\Debug\App.config
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\bin\Debug\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\AdminOvertimeView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EmployeeOvertimeView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainAssesmentReportsView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainTopPerformingView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainEmployeeMasterlistView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainReportsView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\TrainingView.g.cs
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\AdminOvertimeView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\EmployeeOvertimeView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainAssesmentReportsView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainTopPerformingView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainEmployeeMasterlistView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\MainReportsView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\Views\TrainingView.baml
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\EyeKnowRight.Migrations.meme.resources
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.cache
+C:\Users\ADRIAN\Desktop\New folder (4)\ekrpayroll\EyeKnowRight\obj\Debug\RdlCompile.compiled

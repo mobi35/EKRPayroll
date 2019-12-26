@@ -72,6 +72,7 @@
 
                     <DataGridTextColumn FontSize="11" Width="130"  Header="Last Name" Binding="{Binding LastName}"/>
                     <DataGridTextColumn FontSize="11" Width="100"  Header="UserName" Binding="{Binding UserName}"/>
+                    <DataGridTextColumn FontSize="11" Width="130"  Header="Department" Binding="{Binding Department}"/>
                     <DataGridTextColumn  FontSize="11" Width="120"  Header="Remaining Leave" Binding="{Binding RemainingLeave}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
@@ -84,7 +85,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTemplateColumn Width="600">
+                    <DataGridTemplateColumn Width="800">
                         <DataGridTemplateColumn.CellTemplate>
 
                             <DataTemplate>
@@ -140,8 +141,23 @@
                                         <materialDesign:PackIcon Width="30" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Payslip" Foreground="Orange" Kind="Coin"/>
                                     </Button>
 
+                                    <TextBlock >
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Text" Value="{Binding SupervisedDepartment}" />
+                                                <Setter Property="Background" Value="LightGreen"/>
+                                                <Setter Property="Padding" Value="5"></Setter>
+                                                <Setter Property="Foreground" Value="Gray"></Setter>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SupervisedDepartment}" Value="{x:Null}">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
 
-                                    <Button Content="Assign Department" Width="100"  Margin="1"  Height="23" Click="AssignDepartmentClick"   FontSize="10" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=DepartmentDialog}"  ToolTip="Make Supervisor"     >
+                                    <Button  Content="Assign Department"  Width="100"  Margin="1"  Height="23" Click="AssignDepartmentClick"   FontSize="10" Tag="{Binding EmployeePK}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" CommandTarget="{Binding ElementName=DepartmentDialog}"  ToolTip="Make Supervisor"     >
                                        
                                         <Button.Style>
                                             <Style TargetType="Button">
@@ -338,11 +354,11 @@
 
                             </StackPanel>
 
-                            <StackPanel Width="200" >
+                            <StackPanel x:Name="UploadImageButton" Width="200" >
                                 <TextBlock HorizontalAlignment="Left" Foreground="Gray" Padding="6" Text="Image"/>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel  Orientation="Horizontal">
                                     <TextBox Visibility="Collapsed" x:Name="ImageName"/>
-                                    <Button Height="25" Width="80" HorizontalAlignment="Right"  Click="Button_Click"  Style="{StaticResource MaterialDesignFlatButton}"  Content="Upload" />
+                                    <Button Height="25" Width="80" HorizontalAlignment="Right"   Click="Button_Click"  Style="{StaticResource MaterialDesignFlatButton}"  Content="Upload" />
                                 </StackPanel>
                                 <TextBlock Foreground="Red" Padding="4" x:Name="Image_Validation" TextWrapping="Wrap"  FontSize="12" Text="Required" Visibility = "Collapsed"/>
 
@@ -611,7 +627,7 @@
                             </StackPanel>
 
 
-                            <StackPanel Margin="-300 0 0 0" Width="400">
+                            <StackPanel Margin="-200 0 0 0" Width="400">
                                 <StackPanel Orientation="Horizontal" >
                                     <materialDesign:PackIcon Kind="HomeCircle"/>
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Hiring Date"/>
@@ -711,7 +727,7 @@
 
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Sick Leave"/>
                                 </StackPanel>
-                                <TextBlock  Text="{Binding SickLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                <TextBlock  Text="{Binding SickLeave, Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 
@@ -722,7 +738,7 @@
 
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Maternity Leave"/>
                                 </StackPanel>
-                                <TextBlock  Text="{Binding MaternityLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                <TextBlock  Text="{Binding MaternityLeave, Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 
@@ -734,7 +750,7 @@
 
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Paternity Leave"/>
                                 </StackPanel>
-                                <TextBlock   Text="{Binding PaternityLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                <TextBlock   Text="{Binding PaternityLeave, Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 
@@ -746,7 +762,7 @@
 
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Personal Leave"/>
                                 </StackPanel>
-                                <TextBlock  Text="{Binding PersonalLeave}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                <TextBlock  Text="{Binding PersonalLeave, Mode=TwoWay, StringFormat='N'}"  HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 
@@ -758,7 +774,7 @@
 
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Medical Leave"/>
                                 </StackPanel>
-                                <TextBlock  Text="{Binding MedicalLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                <TextBlock  Text="{Binding MedicalLeave , Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 
@@ -770,7 +786,7 @@
 
                                     <TextBlock Foreground="Gray" FontSize="10" Margin="2" Text="Bereavement Leave"/>
                                 </StackPanel>
-                                <TextBlock   Text="{Binding BereavementLeave}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
+                                <TextBlock   Text="{Binding BereavementLeave, Mode=TwoWay, StringFormat='N'}" HorizontalAlignment="Left"  Foreground="Black" FontSize="11" Width="200" Margin="0 5" TextWrapping="Wrap">
 
                                 </TextBlock>
 
@@ -894,6 +910,17 @@
                             <Button Click="AddDepartment_Click" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  VerticalAlignment="Center">
                                 Add Department
                             </Button>
+                            
+                           
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"   Margin="1">
+                            <Button Click="RemoveDepartment_Click"  Background="Red" BorderBrush="Red" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  VerticalAlignment="Center">
+                                Remove Department
+                            </Button>
+
+
 
                         </StackPanel>
                     </StackPanel>

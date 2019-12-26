@@ -167,12 +167,12 @@ namespace EyeKnowRight
                 sickLeaveCount += emp.SickLeave;
             }
          
-                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<float> { personalLeaveCount }, Title = "Personal Leave" });
-                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<float> { maternityLeaveCount }, Title = "Maternity Leave" });
-                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<float> { paternityLeaveCount }, Title = "Paternity Leave" });
-                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<float> { medicalLeaveCount }, Title = "Medical Leave" });
-                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<float> { bereavementLeaveCount }, Title = "Bereavement Leave" });
-                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<float> { sickLeaveCount }, Title = "Sick Leave" });
+                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { (int)personalLeaveCount }, Title = "Personal Leave" });
+                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { (int)maternityLeaveCount }, Title = "Maternity Leave" });
+                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { (int)paternityLeaveCount }, Title = "Paternity Leave" });
+                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { (int)medicalLeaveCount }, Title = "Medical Leave" });
+                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { (int)bereavementLeaveCount }, Title = "Bereavement Leave" });
+                leaveCollection.Add(new LiveCharts.Wpf.PieSeries { DataLabels = true, Values = new LiveCharts.ChartValues<int> { (int)sickLeaveCount }, Title = "Sick Leave" });
 
 
 

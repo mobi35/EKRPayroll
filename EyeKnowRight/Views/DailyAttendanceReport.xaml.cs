@@ -29,13 +29,26 @@ namespace EyeKnowRight.Views
         {
             InitializeComponent();
 
-
+            try {  
             ReportViewerDemo.Reset();
             DataTable dt = ToDataTable(dailyRecord);
+
+
             ReportDataSource ds = new ReportDataSource("attendance", dt);
+            var user = dailyRecord.FirstOrDefault().UserName;
+            var getUser = db.Employees.Where(a => a.UserName == user).ToList();
+
+            ReportDataSource fullNameDataSource = new ReportDataSource("fullName", getUser);
+
             ReportViewerDemo.LocalReport.DataSources.Add(ds);
+            ReportViewerDemo.LocalReport.DataSources.Add(fullNameDataSource);
             ReportViewerDemo.LocalReport.ReportEmbeddedResource = "EyeKnowRight.Reports.DailyReportPrint.rdlc";
             ReportViewerDemo.RefreshReport();
+
+            }catch(Exception e)
+            {
+                
+            }
         }
 
         public static DataTable ToDataTable<T>(List<T> items)

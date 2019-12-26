@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:EyeKnowRight.Views"
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         mc:Ignorable="d"
-        Title="PayrollPrintView" Height="800" Width="1000"  WindowStyle="ThreeDBorderWindow" >
+        Title="Top Performing Employees" Height="800" Width="800"  WindowStyle="ThreeDBorderWindow" >
     <Grid>
-        <WindowsFormsHost Name="WFH"   HorizontalAlignment="Left" Height="764"  VerticalAlignment="Top" Width="980" Margin="10,10,0,0" >
+        <WindowsFormsHost Name="WFH"   HorizontalAlignment="Left" Height="764"  VerticalAlignment="Top" Width="800" Margin="10,10,0,0" >
             <rv:ReportViewer  ShowRefreshButton="false" ShowFindControls="False" ShowContextMenu="false" ShowCredentialPrompts="false" ShowPromptAreaButton="false" ShowStopButton="false"  ShowZoomControl="false" ShowParameterPrompts="False"  ShowPageNavigationControls="False" ShowBackButton="False" ShowProgress="False" ShowDocumentMapButton="False" x:Name="ReportViewerDemo"/>
         </WindowsFormsHost>
 

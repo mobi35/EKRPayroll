@@ -4,6 +4,14 @@
 
     partial class EKRDataset
     {
+        partial class fullNameDataTable
+        {
+        }
+
+        partial class AssesmentReportDataTable
+        {
+        }
+
         partial class EmployeeMasterListDataTable
         {
         }
